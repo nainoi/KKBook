@@ -1,0 +1,17 @@
+//
+//  PrefixHeader.pch
+//  KKBooK
+//
+//  Created by PromptNow on 10/29/2557 BE.
+//  Copyright (c) 2557 GLive. All rights reserved.
+//
+
+#ifndef KKBooK_PrefixHeader_pch
+#define KKBooK_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "BaseViewController.h"
+
+#endif

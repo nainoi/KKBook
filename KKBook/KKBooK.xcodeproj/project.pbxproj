@@ -11,9 +11,7 @@
 		E050D4EC1A00A437007B3686 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E050D4EB1A00A437007B3686 /* AppDelegate.m */; };
 		E050D4EF1A00A437007B3686 /* KKBooK.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E050D4ED1A00A437007B3686 /* KKBooK.xcdatamodeld */; };
 		E050D4F21A00A437007B3686 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E050D4F11A00A437007B3686 /* ViewController.m */; };
-		E050D4F51A00A437007B3686 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E050D4F31A00A437007B3686 /* Main.storyboard */; };
 		E050D4F71A00A437007B3686 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E050D4F61A00A437007B3686 /* Images.xcassets */; };
-		E050D4FA1A00A437007B3686 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E050D4F81A00A437007B3686 /* LaunchScreen.xib */; };
 		E050D5061A00A437007B3686 /* KKBooKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E050D5051A00A437007B3686 /* KKBooKTests.m */; };
 		E050D51F1A00BA6A007B3686 /* BaseNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E050D51C1A00BA6A007B3686 /* BaseNavigationBar.m */; };
 		E050D5201A00BA6A007B3686 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E050D51E1A00BA6A007B3686 /* BaseNavigationController.m */; };
@@ -21,6 +19,7 @@
 		E050D5261A00DBC4007B3686 /* BaseWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E050D5251A00DBC4007B3686 /* BaseWindow.m */; };
 		E050D52A1A00DE20007B3686 /* KKBookStoreVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E050D5281A00DE20007B3686 /* KKBookStoreVC.m */; };
 		E050D52B1A00DE20007B3686 /* KKBookStoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E050D5291A00DE20007B3686 /* KKBookStoreVC.xib */; };
+		E07FD4551A01407400F890CF /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E07FD4541A01407400F890CF /* BaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,9 +41,7 @@
 		E050D4EE1A00A437007B3686 /* KKBooK.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KKBooK.xcdatamodel; sourceTree = "<group>"; };
 		E050D4F01A00A437007B3686 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E050D4F11A00A437007B3686 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E050D4F41A00A437007B3686 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E050D4F61A00A437007B3686 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E050D4F91A00A437007B3686 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E050D4FF1A00A437007B3686 /* KKBooKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KKBooKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E050D5041A00A437007B3686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E050D5051A00A437007B3686 /* KKBooKTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKBooKTests.m; sourceTree = "<group>"; };
@@ -59,6 +56,9 @@
 		E050D5271A00DE20007B3686 /* KKBookStoreVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKBookStoreVC.h; sourceTree = "<group>"; };
 		E050D5281A00DE20007B3686 /* KKBookStoreVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKBookStoreVC.m; sourceTree = "<group>"; };
 		E050D5291A00DE20007B3686 /* KKBookStoreVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKBookStoreVC.xib; sourceTree = "<group>"; };
+		E07FD4531A01407400F890CF /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = KKBook/BaseViewController.h; sourceTree = SOURCE_ROOT; };
+		E07FD4541A01407400F890CF /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = KKBook/BaseViewController.m; sourceTree = SOURCE_ROOT; };
+		E07FD4561A0140E200F890CF /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = KKBook/PrefixHeader.pch; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,9 +109,7 @@
 				E050D4EB1A00A437007B3686 /* AppDelegate.m */,
 				E050D4F01A00A437007B3686 /* ViewController.h */,
 				E050D4F11A00A437007B3686 /* ViewController.m */,
-				E050D4F31A00A437007B3686 /* Main.storyboard */,
 				E050D4F61A00A437007B3686 /* Images.xcassets */,
-				E050D4F81A00A437007B3686 /* LaunchScreen.xib */,
 				E050D4ED1A00A437007B3686 /* KKBooK.xcdatamodeld */,
 				E050D4E61A00A437007B3686 /* Supporting Files */,
 			);
@@ -123,6 +121,7 @@
 			children = (
 				E050D4E71A00A437007B3686 /* Info.plist */,
 				E050D4E81A00A437007B3686 /* main.m */,
+				E07FD4561A0140E200F890CF /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -156,6 +155,8 @@
 			children = (
 				E050D5241A00DBC4007B3686 /* BaseWindow.h */,
 				E050D5251A00DBC4007B3686 /* BaseWindow.m */,
+				E07FD4531A01407400F890CF /* BaseViewController.h */,
+				E07FD4541A01407400F890CF /* BaseViewController.m */,
 				E050D51B1A00BA6A007B3686 /* BaseNavigationBar.h */,
 				E050D51C1A00BA6A007B3686 /* BaseNavigationBar.m */,
 				E050D51D1A00BA6A007B3686 /* BaseNavigationController.h */,
@@ -302,9 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E050D4F51A00A437007B3686 /* Main.storyboard in Resources */,
 				E050D52B1A00DE20007B3686 /* KKBookStoreVC.xib in Resources */,
-				E050D4FA1A00A437007B3686 /* LaunchScreen.xib in Resources */,
 				E050D4F71A00A437007B3686 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E050D5201A00BA6A007B3686 /* BaseNavigationController.m in Sources */,
+				E07FD4551A01407400F890CF /* BaseViewController.m in Sources */,
 				E050D4EC1A00A437007B3686 /* AppDelegate.m in Sources */,
 				E050D4E91A00A437007B3686 /* main.m in Sources */,
 				E050D52A1A00DE20007B3686 /* KKBookStoreVC.m in Sources */,
@@ -353,25 +353,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		E050D4F31A00A437007B3686 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E050D4F41A00A437007B3686 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		E050D4F81A00A437007B3686 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E050D4F91A00A437007B3686 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		E050D5071A00A437007B3686 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -395,7 +376,10 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = KKBook/PrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -437,6 +421,9 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = KKBook/PrefixHeader.pch;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -455,6 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				INFOPLIST_FILE = KKBooK/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -465,6 +453,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				INFOPLIST_FILE = KKBooK/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -524,6 +513,7 @@
 				E050D50B1A00A437007B3686 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E050D50C1A00A437007B3686 /* Build configuration list for PBXNativeTarget "KKBooKTests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +522,7 @@
 				E050D50E1A00A437007B3686 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

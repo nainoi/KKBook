@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "BaseNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -17,8 +18,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
     self.window = [[BaseWindow alloc] initWithFrame:[UIScreen mainScreen].bounds ];
+    _window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    self.kkbookStoreVC = [[KKBookStoreVC alloc] initWithNibName:@"KKBookStoreVC" bundle:nil];
+    BaseNavigationController *naviCtrl = [[BaseNavigationController alloc] initWithRootViewController:_kkbookStoreVC];
+    
+    _window.rootViewController = naviCtrl;
+    
+//    UIColor *navigationTextColor = [UIColor whiteColor];
+//    
+//    self.window.tintColor = navigationTextColor;
+//    
+//    [[UINavigationBar appearance] setTitleTextAttributes:@{
+//                                                           NSForegroundColorAttributeName : navigationTextColor
+//                                                           }];
+
+    
+    
     return YES;
 }
 

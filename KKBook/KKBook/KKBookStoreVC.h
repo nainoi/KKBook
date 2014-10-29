@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KKBookStoreVC : UIViewController
+@interface KKBookStoreVC : BaseViewController
 
 @end
