@@ -84,4 +84,11 @@ else
     //return @"/Users/PromptnowMacMini2/Desktop/";
 }
 
++ (NSString *) getBookPath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    return [paths objectAtIndex:0];
+    //return @"/Users/PromptnowMacMini2/Desktop/";
+}
+
 @end

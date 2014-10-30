@@ -23,8 +23,8 @@
     _window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    self.kkbookStoreVC = [[KKBookStoreVC alloc] initWithNibName:@"KKBookStoreVC" bundle:nil];
-    BaseNavigationController *naviCtrl = [[BaseNavigationController alloc] initWithRootViewController:_kkbookStoreVC];
+    self.kkbookMainVC = [[KKBookMainVC alloc] init];
+    BaseNavigationController *naviCtrl = [[BaseNavigationController alloc] initWithRootViewController:_kkbookMainVC];
     
     _window.rootViewController = naviCtrl;
     
