@@ -39,7 +39,10 @@
 
 -(void)initMainViewController{
     self.mainController = [[UIViewController alloc] init];
-    _mainController.view.frame = self.view.bounds;
+    CGRect frame = self.view.bounds;
+    frame.origin.y = CGRectGetMaxY(self.navigationController.navigationBar.frame);
+    frame.size.height = CGRectGetHeight(frame) - CGRectGetMaxY(self.navigationController.navigationBar.frame);
+    _mainController.view.frame = frame;
     _mainController.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_mainController.view];
     _pageType = STORE;
@@ -48,8 +51,12 @@
 #pragma mark - top view
 
 -(void)toggleViewController{
+    CGRect frame = _mainController.view.bounds;
+    frame.origin.y = 0;
     switch (_pageType) {
         case STORE:
+            storeVC.view.frame = frame;
+            self.title = @"KKBook";
             [_mainController.view addSubview:storeVC.view];
             break;
             

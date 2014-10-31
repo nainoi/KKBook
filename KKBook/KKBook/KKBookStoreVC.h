@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CHTCollectionViewWaterfallLayout.h"
 
-@interface KKBookStoreVC : BaseViewController
+@interface KKBookStoreVC : BaseViewController<UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout>
+
+@property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 
 @end

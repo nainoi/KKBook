@@ -28,13 +28,13 @@
     
     _window.rootViewController = naviCtrl;
     
-//    UIColor *navigationTextColor = [UIColor whiteColor];
-//    
-//    self.window.tintColor = navigationTextColor;
-//    
-//    [[UINavigationBar appearance] setTitleTextAttributes:@{
-//                                                           NSForegroundColorAttributeName : navigationTextColor
-//                                                           }];
+    UIColor *navigationTextColor = [UIColor whiteColor];
+    
+    self.window.tintColor = navigationTextColor;
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:@{
+                                                           NSForegroundColorAttributeName : navigationTextColor
+                                                           }];
 
     
     
