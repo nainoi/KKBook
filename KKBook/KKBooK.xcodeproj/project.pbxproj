@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E00CB3561A02768800C8DC83 /* 10744601_803707369693962_1238204681_n.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E00CB3541A02768800C8DC83 /* 10744601_803707369693962_1238204681_n.jpg */; };
+		E00CB3571A02768800C8DC83 /* 10744980_803707299693969_1884771833_n.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E00CB3551A02768800C8DC83 /* 10744980_803707299693969_1884771833_n.jpg */; };
 		E02BEC4D1A0237D3002A5F6B /* ic_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = E02BEC4B1A0237D3002A5F6B /* ic_menu.png */; };
 		E02BEC4E1A0237D3002A5F6B /* ic_menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E02BEC4C1A0237D3002A5F6B /* ic_menu@2x.png */; };
 		E02BEC521A02397F002A5F6B /* KKBookLeftSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = E02BEC511A02397F002A5F6B /* KKBookLeftSidebar.m */; };
@@ -56,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E00CB3541A02768800C8DC83 /* 10744601_803707369693962_1238204681_n.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10744601_803707369693962_1238204681_n.jpg; sourceTree = "<group>"; };
+		E00CB3551A02768800C8DC83 /* 10744980_803707299693969_1884771833_n.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10744980_803707299693969_1884771833_n.jpg; sourceTree = "<group>"; };
 		E02BEC4B1A0237D3002A5F6B /* ic_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_menu.png; sourceTree = "<group>"; };
 		E02BEC4C1A0237D3002A5F6B /* ic_menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_menu@2x.png"; sourceTree = "<group>"; };
 		E02BEC501A02397F002A5F6B /* KKBookLeftSidebar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKBookLeftSidebar.h; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 				E050D50F1A00A651007B3686 /* Category */,
 				E050D4EA1A00A437007B3686 /* AppDelegate.h */,
 				E050D4EB1A00A437007B3686 /* AppDelegate.m */,
+				E00CB3541A02768800C8DC83 /* 10744601_803707369693962_1238204681_n.jpg */,
+				E00CB3551A02768800C8DC83 /* 10744980_803707299693969_1884771833_n.jpg */,
 				E050D4F61A00A437007B3686 /* Images.xcassets */,
 				E050D4ED1A00A437007B3686 /* KKBooK.xcdatamodeld */,
 				E050D4E61A00A437007B3686 /* Supporting Files */,
@@ -429,9 +435,11 @@
 				E02BEC6B1A02478E002A5F6B /* profile@2x.png in Resources */,
 				E050D4F71A00A437007B3686 /* Images.xcassets in Resources */,
 				E02BEC681A02478E002A5F6B /* globe.png in Resources */,
+				E00CB3561A02768800C8DC83 /* 10744601_803707369693962_1238204681_n.jpg in Resources */,
 				E02BEC691A02478E002A5F6B /* globe@2x.png in Resources */,
 				E02BEC6E1A02478E002A5F6B /* star.png in Resources */,
 				E02BEC4D1A0237D3002A5F6B /* ic_menu.png in Resources */,
+				E00CB3571A02768800C8DC83 /* 10744980_803707299693969_1884771833_n.jpg in Resources */,
 				E02BEC581A024012002A5F6B /* KKBookMainVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,6 +13,7 @@
 @interface KKBookStoreVC ()<PSCollectionViewDataSource, PSCollectionViewDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) PSCollectionView *collectionView;
+@property (strong, nonatomic) NSMutableArray *books;
 
 @end
 
@@ -58,29 +59,27 @@
 
 - (UIView *)collectionView:(PSCollectionView *)collectionView cellForRowAtIndex:(NSInteger)index {
     
-    PSCollectionViewCell *cell = (PSCollectionViewCell *)[collectionView dequeueReusableViewForClass:[PSCollectionViewCell class]];
-    if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"MCCollectionViewCell" owner:self options:nil];
-        cell = (MCCollectionViewCell *)[nib objectAtIndex:0];
+    NSDictionary *book = [self.books objectAtIndex:index];
+    // You should probably subclass PSCollectionViewCell
+    PSCollectionViewCell *v = (PSCollectionViewCell *)[collectionView dequeueReusableViewForClass:[PSCollectionViewCell class]];
+    if (!v) {
+        v = [[PSCollectionViewCell alloc] initWithFrame:CGRectZero];
     }
     
-    NSOperationQueue *imageQueue = [[NSOperationQueue alloc] init];
-    [imageQueue addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        int r = arc4random() % 3;
-        NSString *imageName = [NSString stringWithFormat:@"image%d", r];
-        UIImage *image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imageName ofType:@"jpg"]];
-        
-        [[NSOperationQueue mainQueue] addOperation:[NSBlockOperation blockOperationWithBlock:^{
-            cell.previewImageView.image = image;
-            cell.titleLabel.text = imageName;
-        }]];
-    }]];
+    [v fillViewWithObject:book]
     
-    return cell;
+    return v;
 }
 
 - (CGFloat)collectionView:(PSCollectionView *)collectionView heightForRowAtIndex:(NSInteger)index {
     return 0.0;
+}
+
+- (CGFloat)heightForViewAtIndex:(NSInteger)index {
+    NSDictionary *item = [self.books objectAtIndex:index];
+    
+    // You should probably subclass PSCollectionViewCell
+    return [PSCollectionViewCell heightForViewWithObject:item inColumnWidth:self.collectionView.colWidth];
 }
 
 @end
