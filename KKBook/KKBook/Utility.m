@@ -51,7 +51,7 @@
 }
 
 + (BOOL) isPad {
-if([[[UIDevice currentDevice] model] isEqual:@"iPhone"])
+if([[[UIDevice currentDevice] model] isEqual:@"iPhone"] || [[[UIDevice currentDevice] model] isEqual:@"iPhone Simulator"])
     return NO;
 else
     return YES;

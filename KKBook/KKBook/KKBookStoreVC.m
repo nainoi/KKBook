@@ -12,7 +12,6 @@
 #import "CHTCollectionViewWaterfallFooter.h"
 #import "KKBookStoreCollectionCell.h"
 
-#define CELL_COUNT 30
 #define CELL_IDENTIFIER @"WaterfallCell"
 #define HEADER_IDENTIFIER @"WaterfallHeader"
 #define FOOTER_IDENTIFIER @"WaterfallFooter"
@@ -32,11 +31,12 @@
     if (!_collectionView) {
         CHTCollectionViewWaterfallLayout *layout = [[CHTCollectionViewWaterfallLayout alloc] init];
         
-        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        layout.sectionInset = UIEdgeInsetsMake(5, 0, 5, 0);
         layout.headerHeight = 15;
         layout.footerHeight = 10;
-        layout.minimumColumnSpacing = 20;
-        layout.minimumInteritemSpacing = 10;
+        layout.minimumColumnSpacing = 5;
+        layout.minimumInteritemSpacing = 20;
+        layout.columnCount = [Utility isPad] ? 4 : 2;
         
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -57,16 +57,16 @@
     return _collectionView;
 }
 
-- (NSMutableArray *)cellSizes {
-    if (!_cellSizes) {
-        _cellSizes = [NSMutableArray array];
-        for (NSInteger i = 0; i < CELL_COUNT; i++) {
-            CGSize size = CGSizeMake(arc4random() % 50 + 50, arc4random() % 50 + 50);
-            _cellSizes[i] = [NSValue valueWithCGSize:size];
-        }
-    }
-    return _cellSizes;
-}
+//- (NSMutableArray *)cellSizes {
+//    if (!_cellSizes) {
+//        _cellSizes = [NSMutableArray array];
+//        for (NSInteger i = 0; i < CELL_COUNT; i++) {
+//            CGSize size = CGSizeMake(arc4random() % 50 + 50, arc4random() % 50 + 50);
+//            _cellSizes[i] = [NSValue valueWithCGSize:size];
+//        }
+//    }
+//    return _cellSizes;
+//}
 
 -(void)initArray{
     NSArray *data = @[@{@"price":@"FREE", @"image":@"phone.jpg", @"name":@"Hello world"},
@@ -117,7 +117,8 @@
 - (void)updateLayoutForOrientation:(UIInterfaceOrientation)orientation {
     CHTCollectionViewWaterfallLayout *layout =
     (CHTCollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
-    layout.columnCount = UIInterfaceOrientationIsPortrait(orientation) ? 2 : 3;
+    //layout.columnCount = UIInterfaceOrientationIsPortrait(orientation) ? 2 : 3;
+    layout.columnCount = [Utility isPad] ? 4 : 2;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -143,6 +144,7 @@
     KKBookStoreCollectionCell *cell =
     (KKBookStoreCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER
                                                                                 forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor clearColor];
     cell.book = _books[indexPath.row];
     //cell.displayString = [NSString stringWithFormat:@"cell %ld", (long)indexPath.item];
     return cell;
@@ -174,16 +176,13 @@
     NSDictionary *dic = _books[index];
     CGSize size = [UIImage imageNamed:dic[@"image"]].size;
     CGSize textSize = [self labelSizeForString:dic[@"name"]];
-    float height = size.height + kCollectionCellBorderTop + kCollectionCellBorderBottom ;
-    double scale = (120  - (kCollectionCellBorderLeft + kCollectionCellBorderRight)) / size.width;
-    CGSize rctSizeFinal = CGSizeMake(size.width * scale,(size.height * scale)+textSize.height);
-    size.height = height;
-    size.width = 120;
+    double scale = (CELL_WIDTH  - (kCollectionCellBorderLeft + kCollectionCellBorderRight)) / size.width;
+    CGSize rctSizeFinal = CGSizeMake(size.width*scale ,(size.height * scale)+(textSize.height));
     return rctSizeFinal;
 }
 
 - (CGSize)labelSizeForString:(NSString *)string {
-    CGSize maximumLabelSize = CGSizeMake(120, FLT_MAX);
+    CGSize maximumLabelSize = CGSizeMake(CELL_WIDTH-5, FLT_MAX);
     
     NSDictionary *stringAttributes = [NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:12] forKey: NSFontAttributeName];
     CGSize expectedLabelSize = [string boundingRectWithSize:maximumLabelSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin attributes:stringAttributes context:nil].size;

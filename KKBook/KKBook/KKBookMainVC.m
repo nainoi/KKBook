@@ -9,9 +9,11 @@
 #import "KKBookMainVC.h"
 #import "KKBookStoreVC.h"
 #import "KKBookLeftSidebar.h"
+#import "KKBookLibraryVC.h"
 
 @interface KKBookMainVC ()<KKBookLeftSidebarDelegate>{
     KKBookStoreVC *storeVC;
+    KKBookLibraryVC *libraryVC;
 }
 
 @property (nonatomic, strong) NSMutableIndexSet *optionIndices;
@@ -24,8 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //init
-    self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];
+    self.optionIndices = [NSMutableIndexSet indexSetWithIndex:0];
     storeVC = [[KKBookStoreVC alloc] init];
+    libraryVC = [[KKBookLibraryVC alloc] init];
     [self setNavigationBar];
     [self setMainMenuItem];
     [self initMainViewController];
@@ -46,6 +49,9 @@
     _mainController.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_mainController.view];
     _pageType = STORE;
+    storeVC.view.frame = frame;
+    self.title = @"KKBook";
+    [_mainController.view addSubview:storeVC.view];
 }
 
 #pragma mark - top view
@@ -55,9 +61,25 @@
     frame.origin.y = 0;
     switch (_pageType) {
         case STORE:
+            if (_mainController.view.superview == storeVC.view) {
+                return;
+            }else{
+                [libraryVC.view removeFromSuperview];
+            }
             storeVC.view.frame = frame;
             self.title = @"KKBook";
             [_mainController.view addSubview:storeVC.view];
+            break;
+            
+        case LIBRARY:
+            if (_mainController.view.superview == libraryVC.view) {
+                return;
+            }else{
+                [storeVC.view removeFromSuperview];
+            }
+            libraryVC.view.frame = frame;
+            self.title = @"Library";
+            [_mainController.view addSubview:libraryVC.view];
             break;
             
         default:
@@ -95,6 +117,7 @@
                             ];
         
         KKBookLeftSidebar *callout = [[KKBookLeftSidebar alloc] initWithImages:images selectedIndices:self.optionIndices borderColors:colors];
+        callout.isSingleSelect = YES;
         _leftSideBar = callout;
         callout.delegate = self;
 
@@ -108,14 +131,22 @@
 
 - (void)sidebar:(KKBookLeftSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
     NSLog(@"Tapped item at index %lu",(unsigned long)index);
-    if (index == 3) {
-        [sidebar dismissAnimated:YES completion:nil];
+    if (index == 0) {
+        _pageType = STORE;
+    }else if (index == 1){
+        _pageType = LIBRARY;
     }
+    if (index == 2) {
+        
+    }
+    [self toggleViewController];
+    [sidebar dismissAnimated:YES completion:nil];
 }
 
 - (void)sidebar:(KKBookLeftSidebar *)sidebar didEnable:(BOOL)itemEnabled itemAtIndex:(NSUInteger)index {
-    if (itemEnabled) {
+    //if (itemEnabled) {
+    
         [self.optionIndices addIndex:index];
-    }
+    //}
 }
 @end

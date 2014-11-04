@@ -1,15 +1,18 @@
 //
-//  MagazineCell.m
-//  Magrack
+//  KKBookLibraryCell.m
+//  KKBooK
 //
-//  Created by Valentin Filip on 11/17/12.
-//  Copyright (c) 2012 AppDesignVault. All rights reserved.
+//  Created by PromptNow on 11/1/2557 BE.
+//  Copyright (c) 2557 GLive. All rights reserved.
 //
 
-#import "MagazineCell.h"
+#import "KKBookLibraryCell.h"
 
-@implementation MagazineCell
+@implementation KKBookLibraryCell
 
+- (void)awakeFromNib {
+    // Initialization code
+}
 
 - (void)layoutSubviews {
     [super layoutSubviews];

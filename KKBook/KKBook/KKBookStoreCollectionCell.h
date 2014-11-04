@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#define CELL_WIDTH 130
 
-#define kCollectionCellBorderTop 17.0
-#define kCollectionCellBorderBottom 17.0
-#define kCollectionCellBorderLeft 17.0
-#define kCollectionCellBorderRight 17.0
+#define kCollectionCellBorderTop 15.0
+#define kCollectionCellBorderBottom 20.0
+#define kCollectionCellBorderLeft 10.0
+#define kCollectionCellBorderRight 10.0
 
 @interface KKBookStoreCollectionCell : UICollectionViewCell
 

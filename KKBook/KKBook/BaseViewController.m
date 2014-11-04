@@ -9,8 +9,11 @@
 #import "BaseViewController.h"
 #import "BaseNavigationController.h"
 #import "BaseNavigationBar.h"
+#import "MBProgressHUD.h"
 
-@interface BaseViewController ()
+@interface BaseViewController ()<MBProgressHUDDelegate>{
+    MBProgressHUD *HUD;
+}
 
 @end
 
@@ -19,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,6 +32,20 @@
 
 - (void)setNavigationBar{
     ((BaseNavigationController*)self.navigationController).navigationBar.barTintColor = [UIColor colorWithRed:3/255.0 green:166/255.0 blue:130/255.0 alpha:1.0];
+}
+
+-(void)showProgressLoading{
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:HUD];
+    
+    HUD.delegate = self;
+    HUD.labelText = @"Loading";
+    
+    [HUD show:YES];
+}
+
+-(void)dismissProgress{
+    [HUD hide:YES];
 }
 
 /*

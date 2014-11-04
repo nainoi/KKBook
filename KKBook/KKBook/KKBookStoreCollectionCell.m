@@ -8,7 +8,7 @@
 
 #import "KKBookStoreCollectionCell.h"
 
-#define CELL_WIDTH 120
+
 
 
 @implementation KKBookStoreCollectionCell{
@@ -70,7 +70,10 @@
     CGRect nameFrame = CGRectMake(kCollectionCellBorderLeft,CGRectGetMaxY(_priceLabel.frame),rctSizeFinal.width,[self labelSizeForString:_book[@"name"]].height);
     [_nameLabel setText:_book[@"name"]];
     [_nameLabel setFrame:nameFrame];
-
+    
+    CGRect fram = self.frame;
+    fram.size.height = CGRectGetMaxY(_nameLabel.frame) + 5;
+    self.frame = fram;
 }
 
 @end

@@ -12,4 +12,8 @@
 
 - (void)setNavigationBar;
 
+//progress
+-(void)showProgressLoading;
+-(void)dismissProgress;
+
 @end
