@@ -49,12 +49,6 @@ typedef enum{
 
 - (NSInteger)numberOfPagesInScrollView:(HGPageScrollView *)scrollView;   // Default is 1 if not implemented
 
-// you should re-use the UIView that you return here, only initialize it with appropriate values. 
-- (UIView *)pageScrollView:(HGPageScrollView *)scrollView headerViewForPageAtIndex:(NSInteger)index;  
-
-- (NSString *)pageScrollView:(HGPageScrollView *)scrollView titleForPageAtIndex:(NSInteger)index;  
-- (NSString *)pageScrollView:(HGPageScrollView *)scrollView subtitleForPageAtIndex:(NSInteger)index;  
-
 @end
 
 
@@ -107,7 +101,7 @@ typedef enum{
 
 	IBOutlet UIView			*_pageDeckBackgroundView;
 	
-	IBOutlet UIScrollView	*_scrollView; 
+	
 	IBOutlet HGTouchView	*_scrollViewTouch;
 	
 	IBOutlet UIPageControl	*_pageSelector;
@@ -124,7 +118,7 @@ typedef enum{
     BOOL                    _isPendingScrolledPageUpdateNotification;
 }
 
-
+@property(nonatomic, retain) IBOutlet UIScrollView	*scrollView;
 @property(nonatomic,assign)   id <HGPageScrollViewDataSource> dataSource;
 @property(nonatomic,assign)   id <HGPageScrollViewDelegate>   delegate;
 
@@ -153,23 +147,7 @@ typedef enum{
 - (HGPageView *)dequeueReusablePageWithIdentifier:(NSString *)identifier;  // Used by the delegate to acquire an already allocated page, instead of allocating a new one
 
 // Data
-- (void) reloadData; 
-
-
-
-// Page insertion/deletion/reloading.
-
-// insert on or more pages into the page scroller. 
-// This method invokes HGPageScrollViewDataSource method numberOfPagesInScrollView:. Specifically, it expects the new number of pages to be equal to the previous number of pages plus the number of inserted pages. If this is not the case an exception is thrown. 
-// Insertions are animated only if animated is set to YES and the insertion is into the visible page range.  
-- (void)insertPagesAtIndexes:(NSIndexSet *)indexes animated:(BOOL)animated;
-
-// delete one or more pages from the page scroller. 
-// This method invokes HGPageScrollViewDataSource method numberOfPagesInScrollView:. Specifically, it expects the new number of pages to be equal to the previous number of pages minus the number of deleted pages. If this is not the case an exception is thrown.  
-// Deletions are animated only if animated is set to YES and the deletion is from the visible page range.  
-- (void)deletePagesAtIndexes:(NSIndexSet *)indexes animated:(BOOL)animated; 
-
-- (void)reloadPagesAtIndexes:(NSIndexSet *)indexes;
+- (void) reloadData;
 
 
 

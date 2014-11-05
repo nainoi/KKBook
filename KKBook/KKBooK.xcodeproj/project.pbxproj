@@ -45,6 +45,17 @@
 		E0135A491A07FE6400947773 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E0135A371A07FE6400947773 /* UIImageView+HighlightedWebCache.m */; };
 		E0135A4A1A07FE6400947773 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E0135A391A07FE6400947773 /* UIImageView+WebCache.m */; };
 		E0135A4B1A07FE6400947773 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E0135A3B1A07FE6400947773 /* UIView+WebCacheOperation.m */; };
+		E02B06E81A0A282F00745E57 /* StoreScrollingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E02B06E31A0A282F00745E57 /* StoreScrollingTableViewCell.m */; };
+		E02B06EA1A0A282F00745E57 /* PPImageScrollingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = E02B06E71A0A282F00745E57 /* PPImageScrollingCellView.m */; };
+		E02B06F31A0A2ABE00745E57 /* sample_1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E02B06EC1A0A2ABE00745E57 /* sample_1.jpeg */; };
+		E02B06F41A0A2ABE00745E57 /* sample_2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E02B06ED1A0A2ABE00745E57 /* sample_2.jpeg */; };
+		E02B06F51A0A2ABE00745E57 /* sample_3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E02B06EE1A0A2ABE00745E57 /* sample_3.jpeg */; };
+		E02B06F61A0A2ABE00745E57 /* sample_4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E02B06EF1A0A2ABE00745E57 /* sample_4.jpeg */; };
+		E02B06F71A0A2ABE00745E57 /* sample_5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E02B06F01A0A2ABE00745E57 /* sample_5.jpeg */; };
+		E02B06F81A0A2ABE00745E57 /* sample_6.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E02B06F11A0A2ABE00745E57 /* sample_6.jpeg */; };
+		E02B06F91A0A2ABE00745E57 /* sample_7.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E02B06F21A0A2ABE00745E57 /* sample_7.jpeg */; };
+		E02B07031A0A307300745E57 /* KKBookStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E02B07011A0A307300745E57 /* KKBookStoreCell.m */; };
+		E02B07041A0A307300745E57 /* KKBookStoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E02B07021A0A307300745E57 /* KKBookStoreCell.xib */; };
 		E02BEC4D1A0237D3002A5F6B /* ic_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = E02BEC4B1A0237D3002A5F6B /* ic_menu.png */; };
 		E02BEC4E1A0237D3002A5F6B /* ic_menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E02BEC4C1A0237D3002A5F6B /* ic_menu@2x.png */; };
 		E02BEC521A02397F002A5F6B /* KKBookLeftSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = E02BEC511A02397F002A5F6B /* KKBookLeftSidebar.m */; };
@@ -134,7 +145,6 @@
 		E0B3E4C21A0946730012A450 /* image2.png in Resources */ = {isa = PBXBuildFile; fileRef = E0B3E4BE1A0946730012A450 /* image2.png */; };
 		E0B3E4C31A0946730012A450 /* image3.png in Resources */ = {isa = PBXBuildFile; fileRef = E0B3E4BF1A0946730012A450 /* image3.png */; };
 		E0B3E4C41A0946730012A450 /* image4.png in Resources */ = {isa = PBXBuildFile; fileRef = E0B3E4C01A0946730012A450 /* image4.png */; };
-		E0B3E4C61A0950250012A450 /* HGPageScrollViewPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B3E4C51A0950250012A450 /* HGPageScrollViewPad.xib */; };
 		E0B657731A0545C200196B14 /* KKBookLibraryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B657711A0545C200196B14 /* KKBookLibraryCell.m */; };
 		E0B657741A0545C200196B14 /* KKBookLibraryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B657721A0545C200196B14 /* KKBookLibraryCell.xib */; };
 		E0B657781A055AD700196B14 /* KKBookLibraryCell_Phone.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B657771A055AD700196B14 /* KKBookLibraryCell_Phone.xib */; };
@@ -231,6 +241,20 @@
 		E0135A391A07FE6400947773 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		E0135A3A1A07FE6400947773 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		E0135A3B1A07FE6400947773 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		E02B06E21A0A282F00745E57 /* StoreScrollingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreScrollingTableViewCell.h; sourceTree = "<group>"; };
+		E02B06E31A0A282F00745E57 /* StoreScrollingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreScrollingTableViewCell.m; sourceTree = "<group>"; };
+		E02B06E61A0A282F00745E57 /* PPImageScrollingCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPImageScrollingCellView.h; sourceTree = "<group>"; };
+		E02B06E71A0A282F00745E57 /* PPImageScrollingCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPImageScrollingCellView.m; sourceTree = "<group>"; };
+		E02B06EC1A0A2ABE00745E57 /* sample_1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_1.jpeg; sourceTree = "<group>"; };
+		E02B06ED1A0A2ABE00745E57 /* sample_2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_2.jpeg; sourceTree = "<group>"; };
+		E02B06EE1A0A2ABE00745E57 /* sample_3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_3.jpeg; sourceTree = "<group>"; };
+		E02B06EF1A0A2ABE00745E57 /* sample_4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_4.jpeg; sourceTree = "<group>"; };
+		E02B06F01A0A2ABE00745E57 /* sample_5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_5.jpeg; sourceTree = "<group>"; };
+		E02B06F11A0A2ABE00745E57 /* sample_6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_6.jpeg; sourceTree = "<group>"; };
+		E02B06F21A0A2ABE00745E57 /* sample_7.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_7.jpeg; sourceTree = "<group>"; };
+		E02B07001A0A307300745E57 /* KKBookStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKBookStoreCell.h; sourceTree = "<group>"; };
+		E02B07011A0A307300745E57 /* KKBookStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKBookStoreCell.m; sourceTree = "<group>"; };
+		E02B07021A0A307300745E57 /* KKBookStoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKBookStoreCell.xib; sourceTree = "<group>"; };
 		E02BEC4B1A0237D3002A5F6B /* ic_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_menu.png; sourceTree = "<group>"; };
 		E02BEC4C1A0237D3002A5F6B /* ic_menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_menu@2x.png"; sourceTree = "<group>"; };
 		E02BEC501A02397F002A5F6B /* KKBookLeftSidebar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKBookLeftSidebar.h; sourceTree = "<group>"; };
@@ -353,7 +377,6 @@
 		E0B3E4BE1A0946730012A450 /* image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image2.png; sourceTree = "<group>"; };
 		E0B3E4BF1A0946730012A450 /* image3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image3.png; sourceTree = "<group>"; };
 		E0B3E4C01A0946730012A450 /* image4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image4.png; sourceTree = "<group>"; };
-		E0B3E4C51A0950250012A450 /* HGPageScrollViewPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HGPageScrollViewPad.xib; path = KKBook/HGPageScrollViewPad.xib; sourceTree = SOURCE_ROOT; };
 		E0B657701A0545C200196B14 /* KKBookLibraryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookLibraryCell.h; path = KKBook/KKBookLibraryCell.h; sourceTree = SOURCE_ROOT; };
 		E0B657711A0545C200196B14 /* KKBookLibraryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBookLibraryCell.m; path = KKBook/KKBookLibraryCell.m; sourceTree = SOURCE_ROOT; };
 		E0B657721A0545C200196B14 /* KKBookLibraryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KKBookLibraryCell.xib; path = KKBook/KKBookLibraryCell.xib; sourceTree = SOURCE_ROOT; };
@@ -498,6 +521,69 @@
 				E0135A3B1A07FE6400947773 /* UIView+WebCacheOperation.m */,
 			);
 			name = SDWebImage;
+			sourceTree = "<group>";
+		};
+		E02B06EB1A0A2AA500745E57 /* dummy */ = {
+			isa = PBXGroup;
+			children = (
+				E02B06EC1A0A2ABE00745E57 /* sample_1.jpeg */,
+				E02B06ED1A0A2ABE00745E57 /* sample_2.jpeg */,
+				E02B06EE1A0A2ABE00745E57 /* sample_3.jpeg */,
+				E02B06EF1A0A2ABE00745E57 /* sample_4.jpeg */,
+				E02B06F01A0A2ABE00745E57 /* sample_5.jpeg */,
+				E02B06F11A0A2ABE00745E57 /* sample_6.jpeg */,
+				E02B06F21A0A2ABE00745E57 /* sample_7.jpeg */,
+			);
+			name = dummy;
+			sourceTree = "<group>";
+		};
+		E02B06FB1A0A2F8500745E57 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E02D97401A0353E20014BCBF /* KKBookStoreCollectionCell.h */,
+				E02D97411A0353E20014BCBF /* KKBookStoreCollectionCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E02B06FC1A0A2F8C00745E57 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E02B06FD1A0A2FB300745E57 /* StoreMain */ = {
+			isa = PBXGroup;
+			children = (
+				E02B06FF1A0A2FDA00745E57 /* View */,
+				E02B06FE1A0A2FCD00745E57 /* Controller */,
+			);
+			name = StoreMain;
+			sourceTree = "<group>";
+		};
+		E02B06FE1A0A2FCD00745E57 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E0B3E4B51A093A880012A450 /* KKBookStoreMain.h */,
+				E0B3E4B61A093A880012A450 /* KKBookStoreMain.m */,
+				E0B3E4B71A093A880012A450 /* KKBookStoreMain.xib */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E02B06FF1A0A2FDA00745E57 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E02B06E61A0A282F00745E57 /* PPImageScrollingCellView.h */,
+				E02B06E71A0A282F00745E57 /* PPImageScrollingCellView.m */,
+				E02B06E21A0A282F00745E57 /* StoreScrollingTableViewCell.h */,
+				E02B06E31A0A282F00745E57 /* StoreScrollingTableViewCell.m */,
+				E02B07001A0A307300745E57 /* KKBookStoreCell.h */,
+				E02B07011A0A307300745E57 /* KKBookStoreCell.m */,
+				E02B07021A0A307300745E57 /* KKBookStoreCell.xib */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		E02BEC4F1A02396D002A5F6B /* LeftSideBar */ = {
@@ -703,14 +789,13 @@
 		E050D5161A00A6C8007B3686 /* KKBookStore */ = {
 			isa = PBXGroup;
 			children = (
+				E02B06FD1A0A2FB300745E57 /* StoreMain */,
+				E02B06FC1A0A2F8C00745E57 /* Controller */,
+				E02B06FB1A0A2F8500745E57 /* View */,
+				E02B06EB1A0A2AA500745E57 /* dummy */,
 				E050D5271A00DE20007B3686 /* KKBookStoreVC.h */,
 				E050D5281A00DE20007B3686 /* KKBookStoreVC.m */,
 				E050D5291A00DE20007B3686 /* KKBookStoreVC.xib */,
-				E02D97401A0353E20014BCBF /* KKBookStoreCollectionCell.h */,
-				E02D97411A0353E20014BCBF /* KKBookStoreCollectionCell.m */,
-				E0B3E4B51A093A880012A450 /* KKBookStoreMain.h */,
-				E0B3E4B61A093A880012A450 /* KKBookStoreMain.m */,
-				E0B3E4B71A093A880012A450 /* KKBookStoreMain.xib */,
 			);
 			name = KKBookStore;
 			sourceTree = "<group>";
@@ -805,7 +890,6 @@
 				E0B3E4AA1A0937170012A450 /* HGPageScrollView.h */,
 				E0B3E4AB1A0937170012A450 /* HGPageScrollView.m */,
 				E0B3E4AC1A0937170012A450 /* HGPageScrollView.xib */,
-				E0B3E4C51A0950250012A450 /* HGPageScrollViewPad.xib */,
 				E0B3E4AD1A0937170012A450 /* HGPageView.h */,
 				E0B3E4AE1A0937170012A450 /* HGPageView.m */,
 				E0B3E4AF1A0937170012A450 /* HGPageImageView.h */,
@@ -900,6 +984,7 @@
 				E050D52B1A00DE20007B3686 /* KKBookStoreVC.xib in Resources */,
 				E02D97681A03A13A0014BCBF /* list-item-frame.png in Resources */,
 				E06BAE881A05A9CD007886F4 /* list-item-cover-vogue1-landscape@2x.png in Resources */,
+				E02B06F41A0A2ABE00745E57 /* sample_2.jpeg in Resources */,
 				E02D97671A03A13A0014BCBF /* list-item-frame-landscape@2x.png in Resources */,
 				E0B657781A055AD700196B14 /* KKBookLibraryCell_Phone.xib in Resources */,
 				E06BAE841A05A9CD007886F4 /* list-item-cover-men1@2x.png in Resources */,
@@ -907,11 +992,12 @@
 				E02D97591A03A1010014BCBF /* list-item-stage@2x.png in Resources */,
 				E0B3E4B21A0937170012A450 /* HGPageScrollView.xib in Resources */,
 				E06BAE8A1A05A9CD007886F4 /* list-item-cover-vogue1@2x.png in Resources */,
+				E02B06F81A0A2ABE00745E57 /* sample_6.jpeg in Resources */,
 				E06BAE831A05A9CD007886F4 /* list-item-cover-men1.png in Resources */,
-				E0B3E4C61A0950250012A450 /* HGPageScrollViewPad.xib in Resources */,
 				E02D976B1A03A13A0014BCBF /* list-item-frame~ipad.png in Resources */,
 				E02BEC671A02478E002A5F6B /* gear@2x.png in Resources */,
 				E06BAE901A05A9CD007886F4 /* list-item-cover-vogue2~ipad.png in Resources */,
+				E02B06F61A0A2ABE00745E57 /* sample_4.jpeg in Resources */,
 				E02BEC4E1A0237D3002A5F6B /* ic_menu@2x.png in Resources */,
 				E02BEC6C1A02478E002A5F6B /* Profile_image.png in Resources */,
 				E02D973C1A0341470014BCBF /* cat1.jpg in Resources */,
@@ -922,6 +1008,7 @@
 				E02D97571A03A1010014BCBF /* list-item-stage-landscape@2x.png in Resources */,
 				E06BAE8F1A05A9CD007886F4 /* list-item-cover-vogue2@2x~ipad.png in Resources */,
 				E06BAE8B1A05A9CD007886F4 /* list-item-cover-vogue2-landscape.png in Resources */,
+				E02B07041A0A307300745E57 /* KKBookStoreCell.xib in Resources */,
 				E06BAE871A05A9CD007886F4 /* list-item-cover-vogue1-landscape.png in Resources */,
 				E02D974A1A03A0CC0014BCBF /* list-item-glare.png in Resources */,
 				E02BEC661A02478E002A5F6B /* gear.png in Resources */,
@@ -937,12 +1024,14 @@
 				E02D974E1A03A0ED0014BCBF /* list-item-glare@2x~ipad.png in Resources */,
 				E06BAE961A05F921007886F4 /* background@2x.png in Resources */,
 				E0F2C7DB1A04D7B400DDE4AE /* KKBookLibraryVC.xib in Resources */,
+				E02B06F51A0A2ABE00745E57 /* sample_3.jpeg in Resources */,
 				E050D4F71A00A437007B3686 /* Images.xcassets in Resources */,
 				E02D97691A03A13A0014BCBF /* list-item-frame@2x.png in Resources */,
 				E06BAE8C1A05A9CD007886F4 /* list-item-cover-vogue2-landscape@2x.png in Resources */,
 				E0B3E4C21A0946730012A450 /* image2.png in Resources */,
 				E02BEC681A02478E002A5F6B /* globe.png in Resources */,
 				E02D975E1A03A1160014BCBF /* list-item.png in Resources */,
+				E02B06F71A0A2ABE00745E57 /* sample_5.jpeg in Resources */,
 				E00CB3561A02768800C8DC83 /* phone@2x.jpg in Resources */,
 				E02BEC691A02478E002A5F6B /* globe@2x.png in Resources */,
 				E02D974F1A03A0ED0014BCBF /* list-item-glare~ipad.png in Resources */,
@@ -954,9 +1043,11 @@
 				E0B3E4C31A0946730012A450 /* image3.png in Resources */,
 				E0B3E4C41A0946730012A450 /* image4.png in Resources */,
 				E0B657741A0545C200196B14 /* KKBookLibraryCell.xib in Resources */,
+				E02B06F31A0A2ABE00745E57 /* sample_1.jpeg in Resources */,
 				E02BEC581A024012002A5F6B /* KKBookMainVC.xib in Resources */,
 				E02D975F1A03A1160014BCBF /* list-item@2x.png in Resources */,
 				E02D975A1A03A1010014BCBF /* list-item-stage@2x~ipad.png in Resources */,
+				E02B06F91A0A2ABE00745E57 /* sample_7.jpeg in Resources */,
 				E02D97661A03A13A0014BCBF /* list-item-frame-landscape.png in Resources */,
 				E02D97561A03A1010014BCBF /* list-item-stage-landscape.png in Resources */,
 			);
@@ -986,6 +1077,7 @@
 				E02BEC751A024E21002A5F6B /* UINavigationBar+SCBNavigationBar.m in Sources */,
 				E0135A181A07F29C00947773 /* UIWebView+AFNetworking.m in Sources */,
 				E0135A481A07FE6400947773 /* UIImage+WebP.m in Sources */,
+				E02B06EA1A0A282F00745E57 /* PPImageScrollingCellView.m in Sources */,
 				E02D97331A033C4D0014BCBF /* CHTCollectionViewWaterfallHeader.m in Sources */,
 				E0135A161A07F29C00947773 /* UIProgressView+AFNetworking.m in Sources */,
 				E0135A111A07F29C00947773 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -1003,6 +1095,7 @@
 				E0135A141A07F29C00947773 /* UIButton+AFNetworking.m in Sources */,
 				E0B3E4B31A0937170012A450 /* HGPageView.m in Sources */,
 				E02D97371A033C5C0014BCBF /* CHTCollectionViewWaterfallLayout.m in Sources */,
+				E02B07031A0A307300745E57 /* KKBookStoreCell.m in Sources */,
 				E0135A3C1A07FE6400947773 /* MKAnnotationView+WebCache.m in Sources */,
 				E02D97321A033C4D0014BCBF /* CHTCollectionViewWaterfallCell.m in Sources */,
 				E01359FE1A07EF1B00947773 /* BookModel.m in Sources */,
@@ -1023,6 +1116,7 @@
 				E01359EF1A07DDF000947773 /* AFURLConnectionOperation.m in Sources */,
 				E0135A411A07FE6400947773 /* SDWebImageDownloader.m in Sources */,
 				E01359EB1A07DDF000947773 /* AFHTTPRequestOperationManager.m in Sources */,
+				E02B06E81A0A282F00745E57 /* StoreScrollingTableViewCell.m in Sources */,
 				E0B3E4BC1A093E190012A450 /* BannerModel.m in Sources */,
 				E050D4EF1A00A437007B3686 /* KKBooK.xcdatamodeld in Sources */,
 				E0135A461A07FE6400947773 /* UIImage+GIF.m in Sources */,
