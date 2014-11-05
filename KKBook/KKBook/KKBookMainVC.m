@@ -10,9 +10,10 @@
 #import "KKBookStoreVC.h"
 #import "KKBookLeftSidebar.h"
 #import "KKBookLibraryVC.h"
+#import "KKBookStoreMain.h"
 
 @interface KKBookMainVC ()<KKBookLeftSidebarDelegate>{
-    KKBookStoreVC *storeVC;
+    KKBookStoreMain *storeVC;
     KKBookLibraryVC *libraryVC;
 }
 
@@ -27,7 +28,7 @@
     [super viewDidLoad];
     //init
     self.optionIndices = [NSMutableIndexSet indexSetWithIndex:0];
-    storeVC = [[KKBookStoreVC alloc] init];
+    storeVC = [[KKBookStoreMain alloc] init];
     libraryVC = [[KKBookLibraryVC alloc] init];
     [self setNavigationBar];
     [self setMainMenuItem];
