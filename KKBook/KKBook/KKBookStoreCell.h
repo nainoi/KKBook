@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookModel.h"
 
 #define STORE_CELL [Utility isPad] ? @"KKBookStoreCell" : @"KKBookStoreCell"
 
@@ -15,6 +16,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imageCover;
 @property (strong, nonatomic) IBOutlet UILabel *labelTitle;
 @property (strong, nonatomic) IBOutlet UILabel *labelIssue;
-
+@property (strong, nonatomic) BookModel *bookModel;
 
 @end

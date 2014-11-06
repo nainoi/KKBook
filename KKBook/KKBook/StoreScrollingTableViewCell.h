@@ -21,7 +21,7 @@
 @property (weak, nonatomic) id<StoreScrollingTableViewCellDelegate> delegate;
 @property (nonatomic) CGFloat height;
 
-- (void) setImageData:(NSDictionary*) image;
+- (void) setCategoryData:(NSDictionary*)collection;
 - (void) setCollectionViewBackgroundColor:(UIColor*) color;
 - (void) setCategoryLabelText:(NSString*)text withColor:(UIColor*)color;
 - (void) setImageTitleLabelWitdh:(CGFloat)width withHeight:(CGFloat)height;

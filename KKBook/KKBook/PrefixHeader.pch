@@ -12,5 +12,7 @@
 #import "BaseViewController.h"
 #import "Macro.h"
 #import "Utility.h"
+#import "KKBookURL.h"
+#import "KKBookService.h"
 
 #endif

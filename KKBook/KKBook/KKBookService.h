@@ -12,5 +12,6 @@
 
 + (NSURLSessionDataTask *)listAllBookService:(void (^)(NSArray *posts, NSError *error))block;
 + (NSURLSessionDataTask *)previewBookService:(void (^)(NSArray *posts, NSError *error))block;
++ (NSURLSessionDataTask *)storeMainService:(void (^)(NSArray *posts, NSError *error))block;
 
 @end

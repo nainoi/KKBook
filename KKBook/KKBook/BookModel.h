@@ -15,9 +15,11 @@
 @property (nonatomic, copy) NSString *bookDate;
 @property (nonatomic, copy) NSString *bookName;
 @property (nonatomic, copy) NSString *fileTypeID;
+@property (nonatomic, copy) NSString *fileTypeName;
 @property (nonatomic, copy) NSString *fileSize;
 @property (nonatomic, copy) NSString *bookDesc;
 @property (nonatomic, copy) NSString *publisherID;
+@property (nonatomic, copy) NSString *publisherName;
 @property (nonatomic, copy) NSString *authorID;
 @property (nonatomic, copy) NSString *price;
 @property (nonatomic, copy) NSString *coverPrice;

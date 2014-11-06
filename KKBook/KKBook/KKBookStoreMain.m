@@ -14,6 +14,7 @@
 
 @property(strong, nonatomic) UITableView *tableView;
 @property(strong, nonatomic) NSArray *images;
+@property(strong, nonatomic) NSArray *dataSource;
 
 @end
 
@@ -22,7 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initBannerView];
-    [self dummyTable];
+    [self initTable];
+    [self loadStoreMainData];
+    //[self dummyTable];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,7 +93,7 @@
 
 #pragma mark - UITableViewDataSource
 
--(void)dummyTable{
+-(void)initTable{
     
     CGRect frame = CGRectMake(10, CGRectGetMaxY(_myPageScrollView.frame) + 5, CHILD_WIDTH, CGRectGetMaxY([UIScreen mainScreen].bounds) - CGRectGetMaxY(_myPageScrollView.frame) - 10);
     self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
@@ -102,7 +105,7 @@
     
     static NSString *CellIdentifier = @"Cell";
     [self.tableView registerClass:[StoreScrollingTableViewCell class] forCellReuseIdentifier:CellIdentifier];
-    self.images = @[
+    /*self.images = @[
                     @{ @"category": @"Category A",
                        @"images":
                            @[
@@ -148,12 +151,12 @@
                                @{ @"name":@"sample_4.jpeg", @"title":@"D-5"}
                                ]
                        }
-                    ];
+                    ];*/
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.images count];
+    return [self.dataSource count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -163,12 +166,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    /*static NSString *CellIdentifier = @"Cell";
     NSDictionary *cellData = [self.images objectAtIndex:[indexPath section]];
     StoreScrollingTableViewCell *customCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     [customCell setBackgroundColor:[UIColor grayColor]];
     [customCell setDelegate:self];
     [customCell setImageData:cellData];
+    [customCell setCategoryLabelText:[cellData objectForKey:@"category"] withColor:[UIColor whiteColor]];
+    [customCell setTag:[indexPath section]];
+    [customCell setImageTitleTextColor:[UIColor whiteColor] withBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
+    [customCell setImageTitleLabelWitdh:90 withHeight:45];
+    [customCell setCollectionViewBackgroundColor:[UIColor darkGrayColor]];
+    
+    return customCell;*/
+    
+    static NSString *CellIdentifier = @"Cell";
+    NSDictionary *cellData = [self.dataSource objectAtIndex:[indexPath section]];
+    StoreScrollingTableViewCell *customCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    [customCell setBackgroundColor:[UIColor grayColor]];
+    [customCell setDelegate:self];
+    [customCell setCategoryData:cellData];
     [customCell setCategoryLabelText:[cellData objectForKey:@"category"] withColor:[UIColor whiteColor]];
     [customCell setTag:[indexPath section]];
     [customCell setImageTitleTextColor:[UIColor whiteColor] withBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
@@ -201,6 +218,18 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles: nil];
     [alert show];
+}
+
+-(void)loadStoreMainData{
+    NSURLSessionTask *task = [KKBookService storeMainService:^(NSArray *source, NSError *error) {
+        if (!error) {
+            self.dataSource = source;
+            [self.tableView reloadData];
+        }
+    }];
+    
+//    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
+//    [self.refreshControl setRefreshingWithStateOfTask:task];
 }
 
 @end

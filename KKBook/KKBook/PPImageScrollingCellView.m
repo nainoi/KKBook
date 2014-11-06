@@ -15,7 +15,7 @@
 //@property (strong, nonatomic) PPCollectionViewCell *myCollectionViewCell;
 @property (strong, nonatomic) KKBookStoreCell *storeCollectionViewCell;
 @property (strong, nonatomic) UICollectionView *myCollectionView;
-@property (strong, nonatomic) NSArray *collectionImageData;
+@property (strong, nonatomic) NSArray *collectionBookData;
 @property (nonatomic) CGFloat imagetitleWidth;
 @property (nonatomic) CGFloat imagetitleHeight;
 @property (strong, nonatomic) UIColor *imageTilteBackgroundColor;
@@ -53,9 +53,9 @@
     return self;
 }
 
-- (void) setImageData:(NSArray*)collectionImageData{
+- (void) setBookData:(NSArray*)collectionBookData{
 
-    _collectionImageData = collectionImageData;
+    _collectionBookData = collectionBookData;
     [_myCollectionView reloadData];
 }
 
@@ -82,20 +82,15 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.collectionImageData count];
+    return [self.collectionBookData count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {    
-    /*PPCollectionViewCell *cell = (PPCollectionViewCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"PPCollectionCell" forIndexPath:indexPath];
-    NSDictionary *imageDic = [self.collectionImageData objectAtIndex:[indexPath row]];
-    
-    [cell setImage:[UIImage imageNamed:[imageDic objectForKey:@"name"]]];
-    [cell setImageTitleLabelWitdh:_imagetitleWidth withHeight:_imagetitleHeight];
-    [cell setImageTitleTextColor:_imageTilteTextColor withBackgroundColor:_imageTilteBackgroundColor];
-    [cell setTitle:[imageDic objectForKey:@"title"]];*/
     KKBookStoreCell *cell = (KKBookStoreCell*)[collectionView dequeueReusableCellWithReuseIdentifier:STORE_CELL forIndexPath:indexPath];
-    NSDictionary *imageDic = [self.collectionImageData objectAtIndex:[indexPath row]];
+    NSDictionary *bookDict = [self.collectionBookData objectAtIndex:[indexPath row]];
+    BookModel *book = [[BookModel alloc] initWithAttributes:bookDict];
+    [cell setBookModel:book];
     //cell.imageCover.image = [UIImage imageNamed:[imageDic objectForKey:@"name"]];
 //    [cell setImage:[UIImage imageNamed:[imageDic objectForKey:@"name"]]];
 //    [cell setImageTitleLabelWitdh:_imagetitleWidth withHeight:_imagetitleHeight];

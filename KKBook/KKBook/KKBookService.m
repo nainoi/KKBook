@@ -53,4 +53,24 @@
     }];
 }
 
++(NSURLSessionDataTask *)storeMainService:(void (^)(NSArray *, NSError *))block{
+    return [[AFAppDotNetAPIClient sharedClient] POST:STORE_MAIN_URL parameters:nil success:^(NSURLSessionDataTask * __unused task, id JSON) {
+        NSArray *postsFromResponse = JSON;
+//        NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[postsFromResponse count]];
+//        for (NSDictionary *attributes in postsFromResponse) {
+//            BookModel *post = [[BookModel alloc] initWithAttributes:attributes];
+//            [mutablePosts addObject:post];
+//        }
+        
+        if (block) {
+            block([NSArray arrayWithArray:postsFromResponse], nil);
+        }
+
+    } failure:^(NSURLSessionDataTask *__unused task, NSError *error) {
+        if (block) {
+            block([NSArray array], error);
+        }
+    }];
+}
+
 @end

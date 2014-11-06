@@ -54,10 +54,10 @@
     // Configure the view for the selected state
 }
 
-- (void)setImageData:(NSDictionary*)collectionImageData
+- (void)setCategoryData:(NSDictionary*)collection
 {
-    [_imageScrollingView setImageData:[collectionImageData objectForKey:@"images"]];
-    _categoryLabelText = [collectionImageData objectForKey:@"category"];
+    [_imageScrollingView setBookData:[collection objectForKey:@"book"]];
+    _categoryLabelText = [collection objectForKey:@"category"];
 }
 
 - (void)setCategoryLabelText:(NSString*)text withColor:(UIColor*)color{

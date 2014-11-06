@@ -22,7 +22,7 @@
 
 - (void) setImageTitleLabelWitdh:(CGFloat)width withHeight:(CGFloat)height;
 - (void) setImageTitleTextColor:(UIColor*)textColor withBackgroundColor:(UIColor*)bgColor;
-- (void) setImageData:(NSArray*)collectionImageData;
+- (void) setBookData:(NSArray*)collectionBookData;
 - (void) setBackgroundColor:(UIColor*)color;
 
 @end

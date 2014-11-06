@@ -361,6 +361,7 @@
 		E07FD4531A01407400F890CF /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = KKBook/BaseViewController.h; sourceTree = SOURCE_ROOT; };
 		E07FD4541A01407400F890CF /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = KKBook/BaseViewController.m; sourceTree = SOURCE_ROOT; };
 		E07FD4561A0140E200F890CF /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = KKBook/PrefixHeader.pch; sourceTree = SOURCE_ROOT; };
+		E087374E1A0A8006002AE166 /* KKBookURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookURL.h; path = KKBook/KKBookURL.h; sourceTree = SOURCE_ROOT; };
 		E0B3E4AA1A0937170012A450 /* HGPageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGPageScrollView.h; sourceTree = "<group>"; };
 		E0B3E4AB1A0937170012A450 /* HGPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGPageScrollView.m; sourceTree = "<group>"; };
 		E0B3E4AC1A0937170012A450 /* HGPageScrollView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HGPageScrollView.xib; sourceTree = "<group>"; };
@@ -753,6 +754,7 @@
 				E02BEC841A024FD1002A5F6B /* Reachability.m */,
 				E050D5211A00D4F2007B3686 /* Utility.h */,
 				E050D5221A00D4F2007B3686 /* Utility.m */,
+				E087374E1A0A8006002AE166 /* KKBookURL.h */,
 			);
 			name = ShareInstant;
 			sourceTree = "<group>";
