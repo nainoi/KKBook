@@ -48,6 +48,16 @@
 		E0135A491A07FE6400947773 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E0135A371A07FE6400947773 /* UIImageView+HighlightedWebCache.m */; };
 		E0135A4A1A07FE6400947773 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E0135A391A07FE6400947773 /* UIImageView+WebCache.m */; };
 		E0135A4B1A07FE6400947773 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E0135A3B1A07FE6400947773 /* UIView+WebCacheOperation.m */; };
+		E0276C501A0C766900254AAC /* KKBookFontHeaderPad.m in Sources */ = {isa = PBXBuildFile; fileRef = E0276C4F1A0C766900254AAC /* KKBookFontHeaderPad.m */; };
+		E0276C531A0C769700254AAC /* KKBookFontHeaderPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E0276C521A0C769700254AAC /* KKBookFontHeaderPhone.m */; };
+		E0276C571A0C76C400254AAC /* KKBookFontTitlePad.m in Sources */ = {isa = PBXBuildFile; fileRef = E0276C561A0C76C400254AAC /* KKBookFontTitlePad.m */; };
+		E0276C5A1A0C76FF00254AAC /* KKBookFontTitlePhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E0276C591A0C76FF00254AAC /* KKBookFontTitlePhone.m */; };
+		E0276C5D1A0C775400254AAC /* KKBookFontDetailPad.m in Sources */ = {isa = PBXBuildFile; fileRef = E0276C5C1A0C775400254AAC /* KKBookFontDetailPad.m */; };
+		E0276C601A0C777B00254AAC /* KKBookFontDetailPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E0276C5F1A0C777B00254AAC /* KKBookFontDetailPhone.m */; };
+		E0276C631A0C7CE000254AAC /* KKBookView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0276C621A0C7CE000254AAC /* KKBookView.m */; };
+		E0276C681A0C9EF700254AAC /* FormValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = E0276C671A0C9EF700254AAC /* FormValidation.m */; };
+		E0276C6B1A0C9F1300254AAC /* NSString+trimLeadingWhitespace.m in Sources */ = {isa = PBXBuildFile; fileRef = E0276C6A1A0C9F1300254AAC /* NSString+trimLeadingWhitespace.m */; };
+		E0276C6E1A0CA16F00254AAC /* InternetChecking.m in Sources */ = {isa = PBXBuildFile; fileRef = E0276C6D1A0CA16F00254AAC /* InternetChecking.m */; };
 		E02B06E81A0A282F00745E57 /* StoreScrollingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E02B06E31A0A282F00745E57 /* StoreScrollingTableViewCell.m */; };
 		E02B06EA1A0A282F00745E57 /* PPImageScrollingCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = E02B06E71A0A282F00745E57 /* PPImageScrollingCellView.m */; };
 		E02B06F31A0A2ABE00745E57 /* sample_1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E02B06EC1A0A2ABE00745E57 /* sample_1.jpeg */; };
@@ -248,6 +258,26 @@
 		E0135A391A07FE6400947773 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		E0135A3A1A07FE6400947773 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		E0135A3B1A07FE6400947773 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		E0276C4E1A0C766900254AAC /* KKBookFontHeaderPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookFontHeaderPad.h; path = KKBook/KKBookFontHeaderPad.h; sourceTree = SOURCE_ROOT; };
+		E0276C4F1A0C766900254AAC /* KKBookFontHeaderPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBookFontHeaderPad.m; path = KKBook/KKBookFontHeaderPad.m; sourceTree = SOURCE_ROOT; };
+		E0276C511A0C769700254AAC /* KKBookFontHeaderPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookFontHeaderPhone.h; path = KKBook/KKBookFontHeaderPhone.h; sourceTree = SOURCE_ROOT; };
+		E0276C521A0C769700254AAC /* KKBookFontHeaderPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBookFontHeaderPhone.m; path = KKBook/KKBookFontHeaderPhone.m; sourceTree = SOURCE_ROOT; };
+		E0276C551A0C76C400254AAC /* KKBookFontTitlePad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookFontTitlePad.h; path = KKBook/KKBookFontTitlePad.h; sourceTree = SOURCE_ROOT; };
+		E0276C561A0C76C400254AAC /* KKBookFontTitlePad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBookFontTitlePad.m; path = KKBook/KKBookFontTitlePad.m; sourceTree = SOURCE_ROOT; };
+		E0276C581A0C76FF00254AAC /* KKBookFontTitlePhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookFontTitlePhone.h; path = KKBook/KKBookFontTitlePhone.h; sourceTree = SOURCE_ROOT; };
+		E0276C591A0C76FF00254AAC /* KKBookFontTitlePhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBookFontTitlePhone.m; path = KKBook/KKBookFontTitlePhone.m; sourceTree = SOURCE_ROOT; };
+		E0276C5B1A0C775400254AAC /* KKBookFontDetailPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookFontDetailPad.h; path = KKBook/KKBookFontDetailPad.h; sourceTree = SOURCE_ROOT; };
+		E0276C5C1A0C775400254AAC /* KKBookFontDetailPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBookFontDetailPad.m; path = KKBook/KKBookFontDetailPad.m; sourceTree = SOURCE_ROOT; };
+		E0276C5E1A0C777B00254AAC /* KKBookFontDetailPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookFontDetailPhone.h; path = KKBook/KKBookFontDetailPhone.h; sourceTree = SOURCE_ROOT; };
+		E0276C5F1A0C777B00254AAC /* KKBookFontDetailPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBookFontDetailPhone.m; path = KKBook/KKBookFontDetailPhone.m; sourceTree = SOURCE_ROOT; };
+		E0276C611A0C7CE000254AAC /* KKBookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookView.h; path = KKBook/KKBookView.h; sourceTree = SOURCE_ROOT; };
+		E0276C621A0C7CE000254AAC /* KKBookView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBookView.m; path = KKBook/KKBookView.m; sourceTree = SOURCE_ROOT; };
+		E0276C661A0C9EF700254AAC /* FormValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormValidation.h; sourceTree = "<group>"; };
+		E0276C671A0C9EF700254AAC /* FormValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormValidation.m; sourceTree = "<group>"; };
+		E0276C691A0C9F1300254AAC /* NSString+trimLeadingWhitespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+trimLeadingWhitespace.h"; sourceTree = "<group>"; };
+		E0276C6A1A0C9F1300254AAC /* NSString+trimLeadingWhitespace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+trimLeadingWhitespace.m"; sourceTree = "<group>"; };
+		E0276C6C1A0CA16F00254AAC /* InternetChecking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetChecking.h; sourceTree = "<group>"; };
+		E0276C6D1A0CA16F00254AAC /* InternetChecking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetChecking.m; sourceTree = "<group>"; };
 		E02B06E21A0A282F00745E57 /* StoreScrollingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreScrollingTableViewCell.h; sourceTree = "<group>"; };
 		E02B06E31A0A282F00745E57 /* StoreScrollingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreScrollingTableViewCell.m; sourceTree = "<group>"; };
 		E02B06E61A0A282F00745E57 /* PPImageScrollingCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPImageScrollingCellView.h; sourceTree = "<group>"; };
@@ -547,6 +577,49 @@
 			name = SDWebImage;
 			sourceTree = "<group>";
 		};
+		E0276C4D1A0C754600254AAC /* CHTCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				E02D972C1A033C4D0014BCBF /* CHTCollectionViewWaterfallCell.h */,
+				E02D972D1A033C4D0014BCBF /* CHTCollectionViewWaterfallCell.m */,
+				E02D972E1A033C4D0014BCBF /* CHTCollectionViewWaterfallHeader.h */,
+				E02D972F1A033C4D0014BCBF /* CHTCollectionViewWaterfallHeader.m */,
+				E02D97301A033C4D0014BCBF /* CHTCollectionViewWaterfallFooter.h */,
+				E02D97311A033C4D0014BCBF /* CHTCollectionViewWaterfallFooter.m */,
+				E02D97351A033C5C0014BCBF /* CHTCollectionViewWaterfallLayout.h */,
+				E02D97361A033C5C0014BCBF /* CHTCollectionViewWaterfallLayout.m */,
+			);
+			name = CHTCollectionView;
+			sourceTree = "<group>";
+		};
+		E0276C641A0C7CF400254AAC /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				E0276C4E1A0C766900254AAC /* KKBookFontHeaderPad.h */,
+				E0276C4F1A0C766900254AAC /* KKBookFontHeaderPad.m */,
+				E0276C511A0C769700254AAC /* KKBookFontHeaderPhone.h */,
+				E0276C521A0C769700254AAC /* KKBookFontHeaderPhone.m */,
+				E0276C551A0C76C400254AAC /* KKBookFontTitlePad.h */,
+				E0276C561A0C76C400254AAC /* KKBookFontTitlePad.m */,
+				E0276C581A0C76FF00254AAC /* KKBookFontTitlePhone.h */,
+				E0276C591A0C76FF00254AAC /* KKBookFontTitlePhone.m */,
+				E0276C5B1A0C775400254AAC /* KKBookFontDetailPad.h */,
+				E0276C5C1A0C775400254AAC /* KKBookFontDetailPad.m */,
+				E0276C5E1A0C777B00254AAC /* KKBookFontDetailPhone.h */,
+				E0276C5F1A0C777B00254AAC /* KKBookFontDetailPhone.m */,
+			);
+			name = Label;
+			sourceTree = "<group>";
+		};
+		E0276C651A0C7D0A00254AAC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E0276C611A0C7CE000254AAC /* KKBookView.h */,
+				E0276C621A0C7CE000254AAC /* KKBookView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		E02B06EB1A0A2AA500745E57 /* dummy */ = {
 			isa = PBXGroup;
 			children = (
@@ -639,14 +712,8 @@
 		E02BEC821A024F9F002A5F6B /* KKBook UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				E02D972C1A033C4D0014BCBF /* CHTCollectionViewWaterfallCell.h */,
-				E02D972D1A033C4D0014BCBF /* CHTCollectionViewWaterfallCell.m */,
-				E02D972E1A033C4D0014BCBF /* CHTCollectionViewWaterfallHeader.h */,
-				E02D972F1A033C4D0014BCBF /* CHTCollectionViewWaterfallHeader.m */,
-				E02D97301A033C4D0014BCBF /* CHTCollectionViewWaterfallFooter.h */,
-				E02D97311A033C4D0014BCBF /* CHTCollectionViewWaterfallFooter.m */,
-				E02D97351A033C5C0014BCBF /* CHTCollectionViewWaterfallLayout.h */,
-				E02D97361A033C5C0014BCBF /* CHTCollectionViewWaterfallLayout.m */,
+				E0276C651A0C7D0A00254AAC /* View */,
+				E0276C641A0C7CF400254AAC /* Label */,
 			);
 			name = "KKBook UIKit";
 			sourceTree = "<group>";
@@ -721,6 +788,8 @@
 		E050D50F1A00A651007B3686 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				E0276C691A0C9F1300254AAC /* NSString+trimLeadingWhitespace.h */,
+				E0276C6A1A0C9F1300254AAC /* NSString+trimLeadingWhitespace.m */,
 				E02BEC7F1A024F98002A5F6B /* UIFont+Custom.h */,
 				E02BEC801A024F98002A5F6B /* UIFont+Custom.m */,
 				E02BEC7C1A024EA7002A5F6B /* NSUserDefaults+Encryption.h */,
@@ -784,6 +853,10 @@
 				E02BEC841A024FD1002A5F6B /* Reachability.m */,
 				E050D5211A00D4F2007B3686 /* Utility.h */,
 				E050D5221A00D4F2007B3686 /* Utility.m */,
+				E0276C661A0C9EF700254AAC /* FormValidation.h */,
+				E0276C671A0C9EF700254AAC /* FormValidation.m */,
+				E0276C6C1A0CA16F00254AAC /* InternetChecking.h */,
+				E0276C6D1A0CA16F00254AAC /* InternetChecking.m */,
 				E087374E1A0A8006002AE166 /* KKBookURL.h */,
 			);
 			name = ShareInstant;
@@ -896,6 +969,7 @@
 		E06BAE971A05FE6A007886F4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E0276C4D1A0C754600254AAC /* CHTCollectionView */,
 				E0B3E4A91A0936F20012A450 /* HGPageScroll */,
 				E0135A1A1A07FE3D00947773 /* SDWebImage */,
 				E01359D61A07DDB900947773 /* AFNetworking */,
@@ -1106,8 +1180,10 @@
 				E02BEC811A024F98002A5F6B /* UIFont+Custom.m in Sources */,
 				E01359ED1A07DDF000947773 /* AFNetworkReachabilityManager.m in Sources */,
 				E02BEC751A024E21002A5F6B /* UINavigationBar+SCBNavigationBar.m in Sources */,
+				E0276C6B1A0C9F1300254AAC /* NSString+trimLeadingWhitespace.m in Sources */,
 				E0135A181A07F29C00947773 /* UIWebView+AFNetworking.m in Sources */,
 				E0135A481A07FE6400947773 /* UIImage+WebP.m in Sources */,
+				E0276C681A0C9EF700254AAC /* FormValidation.m in Sources */,
 				E02B06EA1A0A282F00745E57 /* PPImageScrollingCellView.m in Sources */,
 				E02D97331A033C4D0014BCBF /* CHTCollectionViewWaterfallHeader.m in Sources */,
 				E0135A161A07F29C00947773 /* UIProgressView+AFNetworking.m in Sources */,
@@ -1123,12 +1199,15 @@
 				E0B3E4B81A093A880012A450 /* KKBookStoreMain.m in Sources */,
 				E02BEC7E1A024EA7002A5F6B /* NSUserDefaults+Encryption.m in Sources */,
 				E01359F21A07DDF000947773 /* AFURLSessionManager.m in Sources */,
+				E0276C5A1A0C76FF00254AAC /* KKBookFontTitlePhone.m in Sources */,
 				E0135A141A07F29C00947773 /* UIButton+AFNetworking.m in Sources */,
 				E0B3E4B31A0937170012A450 /* HGPageView.m in Sources */,
 				E02D97371A033C5C0014BCBF /* CHTCollectionViewWaterfallLayout.m in Sources */,
+				E0276C5D1A0C775400254AAC /* KKBookFontDetailPad.m in Sources */,
 				E02B07031A0A307300745E57 /* KKBookStoreCell.m in Sources */,
 				E0135A3C1A07FE6400947773 /* MKAnnotationView+WebCache.m in Sources */,
 				E02D97321A033C4D0014BCBF /* CHTCollectionViewWaterfallCell.m in Sources */,
+				E0276C631A0C7CE000254AAC /* KKBookView.m in Sources */,
 				E01359FE1A07EF1B00947773 /* BookModel.m in Sources */,
 				E050D5201A00BA6A007B3686 /* BaseNavigationController.m in Sources */,
 				E07FD4551A01407400F890CF /* BaseViewController.m in Sources */,
@@ -1139,9 +1218,11 @@
 				E050D52A1A00DE20007B3686 /* KKBookStoreVC.m in Sources */,
 				E0135A451A07FE6400947773 /* UIButton+WebCache.m in Sources */,
 				E0135A3F1A07FE6400947773 /* SDWebImageCompat.m in Sources */,
+				E0276C601A0C777B00254AAC /* KKBookFontDetailPhone.m in Sources */,
 				E050D51F1A00BA6A007B3686 /* BaseNavigationBar.m in Sources */,
 				E01359F11A07DDF000947773 /* AFURLResponseSerialization.m in Sources */,
 				E050D5231A00D4F2007B3686 /* Utility.m in Sources */,
+				E0276C571A0C76C400254AAC /* KKBookFontTitlePad.m in Sources */,
 				E050D5261A00DBC4007B3686 /* BaseWindow.m in Sources */,
 				E01359EA1A07DDF000947773 /* AFHTTPRequestOperation.m in Sources */,
 				E01359EF1A07DDF000947773 /* AFURLConnectionOperation.m in Sources */,
@@ -1149,12 +1230,14 @@
 				E01359EB1A07DDF000947773 /* AFHTTPRequestOperationManager.m in Sources */,
 				E02B06E81A0A282F00745E57 /* StoreScrollingTableViewCell.m in Sources */,
 				E0B3E4BC1A093E190012A450 /* BannerModel.m in Sources */,
+				E0276C6E1A0CA16F00254AAC /* InternetChecking.m in Sources */,
 				E050D4EF1A00A437007B3686 /* KKBooK.xcdatamodeld in Sources */,
 				E0135A461A07FE6400947773 /* UIImage+GIF.m in Sources */,
 				E0135A151A07F29C00947773 /* UIImageView+AFNetworking.m in Sources */,
 				E0135A131A07F29C00947773 /* UIAlertView+AFNetworking.m in Sources */,
 				E02BEC7B1A024E70002A5F6B /* UIColor+SCBColor.m in Sources */,
 				E0135A421A07FE6400947773 /* SDWebImageDownloaderOperation.m in Sources */,
+				E0276C501A0C766900254AAC /* KKBookFontHeaderPad.m in Sources */,
 				E0F2C7DA1A04D7B400DDE4AE /* KKBookLibraryVC.m in Sources */,
 				E0135A471A07FE6400947773 /* UIImage+MultiFormat.m in Sources */,
 				E0135A4B1A07FE6400947773 /* UIView+WebCacheOperation.m in Sources */,
@@ -1168,6 +1251,7 @@
 				E0135A121A07F29C00947773 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				E0B3E4B41A0937170012A450 /* HGPageImageView.m in Sources */,
 				E02BEC781A024E61002A5F6B /* NSString+SCBString.m in Sources */,
+				E0276C531A0C769700254AAC /* KKBookFontHeaderPhone.m in Sources */,
 				E0F2C7DE1A04DC3E00DDE4AE /* Repository.m in Sources */,
 				E0135A3E1A07FE6400947773 /* SDImageCache.m in Sources */,
 			);

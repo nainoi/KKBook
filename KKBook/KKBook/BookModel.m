@@ -7,6 +7,7 @@
 //
 
 #import "BookModel.h"
+#import "FormValidation.h"
 
 @implementation BookModel
 
@@ -14,36 +15,36 @@
 {
     self = [super init];
     if (self) {
-        self.bookID = [attribute objectForKey:@"BookID"];
-        self.bookName = [attribute objectForKey:@"BookName"];
-        self.bookDesc = [attribute objectForKey:@"BookDesc"];
-        self.bookDate = [attribute objectForKey:@"BookDate"];
-        self.authorID = [attribute objectForKey:@"AuthorID"];
-        self.authorName = [attribute objectForKey:@"AuthorName"];
-        self.coverPrice = [attribute objectForKey:@"CoverPrice"];
-        self.editDate = [attribute objectForKey:@"EditDate"];
-        self.editUser = [attribute objectForKey:@"EditUser"];
-        self.fileAndroidPhoneURL = [attribute objectForKey:@"FileAndroidTabURL"];
-        self.fileAndroidTabURL = [attribute objectForKey:@"FileAndroidTabURL"];
-        self.filePadURL = [attribute objectForKey:@"FilePadURL"];
-        self.filePhoneURL = [attribute objectForKey:@"FilePhoneURL"];
-        self.fileSizeAndroidPhoneURL = [attribute objectForKey:@"FileSizeAndroidPhoneURL"];
-        self.fileSizeAndroidTabURL = [attribute objectForKey:@"FileSizeAndroidTabURL"];
-        self.fileSizePadURL = [attribute objectForKey:@"FileSizePadURL"];
-        self.fileSizePhoneURL = [attribute objectForKey:@"FileSizePhoneURL"];
-        self.fileTypeID = [attribute objectForKey:@"FileTypeID"];
-        self.fileTypeName = [attribute objectForKey:@"FileTypeName"];
-        self.free = [attribute objectForKey:@"Free"];
-        self.issn = [attribute objectForKey:@"ISSN"];
-        self.onSaleDate = [attribute objectForKey:@"OnSaleDate"];
-        self.padImageURL = [attribute objectForKey:@"PadImageURL"];
-        self.phoneImageURL = [attribute objectForKey:@"PhoneImageURL"];
-        self.padImageHDURL = [attribute objectForKey:@"PadImageHDURL"];
-        self.phoneImageHDURL = [attribute objectForKey:@"PhoneImageHDURL"];
-        self.price = [attribute objectForKey:@"Price"];
-        self.publisherID = [attribute objectForKey:@"PublisherID"];
-        self.publisherName = [attribute objectForKey:@"PublisherName"];
-        self.version = [attribute objectForKey:@"Version"];
+        self.bookID = [FormValidation stringValue:[attribute objectForKey:@"BookID"]];
+        self.bookName = [FormValidation stringValue:[attribute objectForKey:@"BookName"]];
+        self.bookDesc = [FormValidation stringValue:[attribute objectForKey:@"BookDesc"]];
+        self.bookDate = [FormValidation stringValue:[attribute objectForKey:@"BookDate"]];
+        self.authorID = [FormValidation stringValue:[attribute objectForKey:@"AuthorID"]];
+        self.authorName = [FormValidation stringValue:[attribute objectForKey:@"AuthorName"]];
+        self.coverPrice = [FormValidation stringValue:[attribute objectForKey:@"CoverPrice"]];
+        self.editDate = [FormValidation stringValue:[attribute objectForKey:@"EditDate"]];
+        self.editUser = [FormValidation stringValue:[attribute objectForKey:@"EditUser"]];
+        self.fileAndroidPhoneURL = [FormValidation stringValue:[attribute objectForKey:@"FileAndroidTabURL"]];
+        self.fileAndroidTabURL = [FormValidation stringValue:[attribute objectForKey:@"FileAndroidTabURL"]];
+        self.filePadURL = [FormValidation stringValue:[attribute objectForKey:@"FilePadURL"]];
+        self.filePhoneURL = [FormValidation stringValue:[attribute objectForKey:@"FilePhoneURL"]];
+        self.fileSizeAndroidPhoneURL = [FormValidation stringValue:[attribute objectForKey:@"FileSizeAndroidPhoneURL"]];
+        self.fileSizeAndroidTabURL = [FormValidation stringValue:[attribute objectForKey:@"FileSizeAndroidTabURL"]];
+        self.fileSizePadURL = [FormValidation stringValue:[attribute objectForKey:@"FileSizePadURL"]];
+        self.fileSizePhoneURL = [FormValidation stringValue:[attribute objectForKey:@"FileSizePhoneURL"]];
+        self.fileTypeID = [FormValidation stringValue:[attribute objectForKey:@"FileTypeID"]];
+        self.fileTypeName = [FormValidation stringValue:[attribute objectForKey:@"FileTypeName"]];
+        self.free = [FormValidation stringValue:[attribute objectForKey:@"Free"]];
+        self.issn = [FormValidation stringValue:[attribute objectForKey:@"ISSN"]];
+        self.onSaleDate = [FormValidation stringValue:[attribute objectForKey:@"OnSaleDate"]];
+        self.padImageURL = [FormValidation stringValue:[attribute objectForKey:@"PadImageURL"]];
+        self.phoneImageURL = [FormValidation stringValue:[attribute objectForKey:@"PhoneImageURL"]];
+        self.padImageHDURL = [FormValidation stringValue:[attribute objectForKey:@"PadImageHDURL"]];
+        self.phoneImageHDURL = [FormValidation stringValue:[attribute objectForKey:@"PhoneImageHDURL"]];
+        self.price = [FormValidation stringValue:[attribute objectForKey:@"Price"]];
+        self.publisherID = [FormValidation stringValue:[attribute objectForKey:@"PublisherID"]];
+        self.publisherName = [FormValidation stringValue:[attribute objectForKey:@"PublisherName"]];
+        self.version = [FormValidation stringValue:[attribute objectForKey:@"Version"]];
     }
     return self;
 }
@@ -88,7 +89,21 @@
 }
 
 -(NSURL *)coverImageURL{
-    NSURL *url = [NSURL URLWithString:[IMAGE_URL stringByAppendingString:[Utility isPad] ? _padImageURL : _phoneImageURL]];
+    NSString *stringURL;
+    if ([Utility isPad]) {
+        if ([Utility isRetina]) {
+            stringURL = [IMAGE_URL stringByAppendingString:_padImageHDURL];
+        }else{
+            stringURL = [IMAGE_URL stringByAppendingString:_padImageURL];
+        }
+    }else{
+        if ([Utility isRetina]) {
+            stringURL = [IMAGE_URL stringByAppendingString:_phoneImageHDURL];
+        }else{
+            stringURL = [IMAGE_URL stringByAppendingString:_phoneImageURL];
+        }
+    }
+    NSURL *url = [NSURL URLWithString:stringURL];
     return url;
 }
 

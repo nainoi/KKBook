@@ -17,6 +17,7 @@
 + (NSString *) platformString;
 + (NSString *) getDeviceUDID;
 + (BOOL) isPad;
++ (BOOL)isRetina;
 + (NSString *) getDeviceType;
 + (NSString *) getDocumentPath;
 @end

@@ -205,22 +205,6 @@
 
 #pragma mark - StoreScrollingTableViewCellDelegate
 
-//- (void)scrollingTableViewCell:(StoreScrollingTableViewCell *)scrollingTableViewCell didSelectImageAtIndexPath:(NSIndexPath*)indexPathOfImage atCategoryRowIndex:(NSInteger)categoryRowIndex
-//{
-//    
-//    NSDictionary *images = [self.images objectAtIndex:categoryRowIndex];
-//    NSArray *imageCollection = [images objectForKey:@"images"];
-//    NSString *imageTitle = [[imageCollection objectAtIndex:[indexPathOfImage row]]objectForKey:@"title"];
-//    NSString *categoryTitle = [[self.images objectAtIndex:categoryRowIndex] objectForKey:@"category"];
-//    
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat: @"Image %@",imageTitle]
-//                                                    message:[NSString stringWithFormat: @"in %@",categoryTitle]
-//                                                   delegate:self
-//                                          cancelButtonTitle:@"OK"
-//                                          otherButtonTitles: nil];
-//    [alert show];
-//}
-
 -(void)scrollingTableViewCell:(StoreScrollingTableViewCell *)scrollingTableViewCell didSelectBook:(BookModel *)book{
     KKBookStoreDetailVC *bookDetailVC = [[KKBookStoreDetailVC alloc] initWithBook:book];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:bookDetailVC];

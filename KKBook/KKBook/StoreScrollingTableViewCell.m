@@ -94,11 +94,6 @@
 
 #pragma mark - PPImageScrollingViewDelegate
 
-- (void)collectionView:(PPImageScrollingCellView *)collectionView didSelectImageItemAtIndexPath:(NSIndexPath*)indexPath {
-
-    [self.delegate scrollingTableViewCell:self didSelectImageAtIndexPath:indexPath atCategoryRowIndex:self.tag];
-}
-
 -(void)collectionView:(PPImageScrollingCellView *)collectionView didSelectBook:(BookModel *)book{
     [self.delegate scrollingTableViewCell:self didSelectBook:book];
 }

@@ -57,6 +57,17 @@ else
     return YES;
 }
 
++ (BOOL)isRetina{
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]
+        && [[UIScreen mainScreen] scale] == 2.0) {
+        // Retina
+        return YES;
+    } else {
+        // Not Retina
+        return NO;
+    }
+}
+
 //+ (NSString *) getUserAgent
 //{
 //    return USER_AGENT;

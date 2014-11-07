@@ -11,17 +11,31 @@
 @implementation UIFont (Custom)
 
 +(UIFont *)fontRegularWithSize:(float)fontSize{
+    UIFont *font;
     if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
-        return [UIFont fontWithName:@"PSLxKittithada" size:fontSize];
+        font = [UIFont fontWithName:@"PSLxKittithada" size:fontSize];
+    }else{
+        font = [UIFont fontWithName:@"PSLTextNewPro" size:fontSize];
     }
-    return [UIFont fontWithName:@"PSLTextNewPro" size:fontSize];
+    
+    if (!font) {
+        font = [UIFont systemFontOfSize:fontSize];
+    }
+    return font;
 }
 
 +(UIFont *)fontBoldWithSize:(float)fontSize{
+    UIFont *font;
     if (SYSTEM_VERSION_LESS_THAN(@"8.0")) {
-        return [UIFont fontWithName:@"SCBPSLxKittithadaErgoBold" size:fontSize];
+        font = [UIFont fontWithName:@"SCBPSLxKittithadaErgoBold" size:fontSize];
+    }else{
+        font = [UIFont fontWithName:@"PSLTextNewProBold" size:fontSize];
     }
-    return [UIFont fontWithName:@"PSLTextNewProBold" size:fontSize];
+    
+    if (!font) {
+        font = [UIFont systemFontOfSize:fontSize];
+    }
+    return font;
 }
 
 @end

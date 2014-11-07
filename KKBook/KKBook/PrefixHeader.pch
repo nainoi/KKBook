@@ -14,5 +14,6 @@
 #import "Utility.h"
 #import "KKBookURL.h"
 #import "KKBookService.h"
+#import "UIFont+Custom.h"
 
 #endif
