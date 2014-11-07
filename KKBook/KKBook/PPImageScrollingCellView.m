@@ -100,17 +100,11 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    [self.delegate collectionView:self didSelectImageItemAtIndexPath:(NSIndexPath*)indexPath];
+    KKBookStoreCell *cell = (KKBookStoreCell*)[collectionView dequeueReusableCellWithReuseIdentifier:STORE_CELL forIndexPath:indexPath];
+    cell = (KKBookStoreCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    //KKBookStoreCell *cell = collectionView.
+    //[self.delegate collectionView:self didSelectImageItemAtIndexPath:(NSIndexPath*)indexPath];
+    [self.delegate collectionView:self didSelectBook:cell.bookModel];
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

@@ -6,12 +6,15 @@
 //  Copyright (c) 2013年 popochess. All rights reserved.
 //
 #import <UIKit/UIKit.h>
+#import "BookModel.h"
 
 @class PPImageScrollingCellView;
 
 @protocol PPImageScrollingViewDelegate <NSObject>
 
-- (void)collectionView:(PPImageScrollingCellView *)collectionView didSelectImageItemAtIndexPath:(NSIndexPath*)indexPath;
+//- (void)collectionView:(PPImageScrollingCellView *)collectionView didSelectImageItemAtIndexPath:(NSIndexPath*)indexPath;
+
+- (void)collectionView:(PPImageScrollingCellView *)collectionView didSelectBook:(BookModel*)book;
 
 @end
 

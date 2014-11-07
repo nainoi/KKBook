@@ -10,7 +10,7 @@
 #import "HGPageScrollView.h"
 #import "HGPageImageView.h"
 
-@interface KKBookStoreMain : UIViewController<HGPageScrollViewDelegate, HGPageScrollViewDataSource, UITextFieldDelegate> {
+@interface KKBookStoreMain : BaseViewController<HGPageScrollViewDelegate, HGPageScrollViewDataSource, UITextFieldDelegate> {
     
     HGPageScrollView *_myPageScrollView;
     NSMutableArray   *_myPageDataArray;

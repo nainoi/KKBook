@@ -21,6 +21,7 @@
 @property (nonatomic, copy) NSString *publisherID;
 @property (nonatomic, copy) NSString *publisherName;
 @property (nonatomic, copy) NSString *authorID;
+@property (nonatomic, copy) NSString *authorName;
 @property (nonatomic, copy) NSString *price;
 @property (nonatomic, copy) NSString *coverPrice;
 @property (nonatomic, copy) NSString *page;
@@ -49,9 +50,13 @@
 // class value
 
 @property (nonatomic, assign) BOOL isFree;
-@property (nonatomic, assign) float fileSizePhone;
-@property (nonatomic, assign) float fileSizePad;
+@property (nonatomic, copy) NSString *fileSizeDisplay;
+@property (nonatomic, copy) NSString *priceDisplay;
 @property (nonatomic, assign) float versionPackage;
+@property (nonatomic, copy) NSString *publisherDisplay;
+@property (nonatomic, copy) NSString *authorDisplay;
+@property (nonatomic, copy) NSURL *coverImageURL;
+@property (nonatomic, copy) NSURL *coverImageDetailBookURL;
 
 -(instancetype)initWithAttributes:(NSDictionary*)attribute;
 

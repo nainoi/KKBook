@@ -9,6 +9,7 @@
 #import "KKBookStoreMain.h"
 #import "BannerModel.h"
 #import "StoreScrollingTableViewCell.h"
+#import "KKBookStoreDetailVC.h"
 
 @interface KKBookStoreMain ()<StoreScrollingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -190,7 +191,7 @@
     [customCell setTag:[indexPath section]];
     [customCell setImageTitleTextColor:[UIColor whiteColor] withBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
     [customCell setImageTitleLabelWitdh:90 withHeight:45];
-    [customCell setCollectionViewBackgroundColor:[UIColor darkGrayColor]];
+    [customCell setCollectionViewBackgroundColor:[UIColor whiteColor]];
     
     return customCell;
 }
@@ -204,22 +205,30 @@
 
 #pragma mark - StoreScrollingTableViewCellDelegate
 
-- (void)scrollingTableViewCell:(StoreScrollingTableViewCell *)scrollingTableViewCell didSelectImageAtIndexPath:(NSIndexPath*)indexPathOfImage atCategoryRowIndex:(NSInteger)categoryRowIndex
-{
-    
-    NSDictionary *images = [self.images objectAtIndex:categoryRowIndex];
-    NSArray *imageCollection = [images objectForKey:@"images"];
-    NSString *imageTitle = [[imageCollection objectAtIndex:[indexPathOfImage row]]objectForKey:@"title"];
-    NSString *categoryTitle = [[self.images objectAtIndex:categoryRowIndex] objectForKey:@"category"];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat: @"Image %@",imageTitle]
-                                                    message:[NSString stringWithFormat: @"in %@",categoryTitle]
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles: nil];
-    [alert show];
-}
+//- (void)scrollingTableViewCell:(StoreScrollingTableViewCell *)scrollingTableViewCell didSelectImageAtIndexPath:(NSIndexPath*)indexPathOfImage atCategoryRowIndex:(NSInteger)categoryRowIndex
+//{
+//    
+//    NSDictionary *images = [self.images objectAtIndex:categoryRowIndex];
+//    NSArray *imageCollection = [images objectForKey:@"images"];
+//    NSString *imageTitle = [[imageCollection objectAtIndex:[indexPathOfImage row]]objectForKey:@"title"];
+//    NSString *categoryTitle = [[self.images objectAtIndex:categoryRowIndex] objectForKey:@"category"];
+//    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat: @"Image %@",imageTitle]
+//                                                    message:[NSString stringWithFormat: @"in %@",categoryTitle]
+//                                                   delegate:self
+//                                          cancelButtonTitle:@"OK"
+//                                          otherButtonTitles: nil];
+//    [alert show];
+//}
 
+-(void)scrollingTableViewCell:(StoreScrollingTableViewCell *)scrollingTableViewCell didSelectBook:(BookModel *)book{
+    KKBookStoreDetailVC *bookDetailVC = [[KKBookStoreDetailVC alloc] initWithBook:book];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:bookDetailVC];
+    //[self.navigationController pushViewController:bookDetailVC animated:YES];
+    [self presentViewController:nav animated:YES completion:^{
+        
+    }];
+}
 -(void)loadStoreMainData{
     NSURLSessionTask *task = [KKBookService storeMainService:^(NSArray *source, NSError *error) {
         if (!error) {

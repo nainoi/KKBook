@@ -8,6 +8,7 @@
 
 #import "StoreScrollingTableViewCell.h"
 #import "PPImageScrollingCellView.h"
+#import "BookModel.h"
 
 #define kScrollingViewHieght 190
 #define kCategoryLabelWidth 200
@@ -96,6 +97,10 @@
 - (void)collectionView:(PPImageScrollingCellView *)collectionView didSelectImageItemAtIndexPath:(NSIndexPath*)indexPath {
 
     [self.delegate scrollingTableViewCell:self didSelectImageAtIndexPath:indexPath atCategoryRowIndex:self.tag];
+}
+
+-(void)collectionView:(PPImageScrollingCellView *)collectionView didSelectBook:(BookModel *)book{
+    [self.delegate scrollingTableViewCell:self didSelectBook:book];
 }
 
 @end

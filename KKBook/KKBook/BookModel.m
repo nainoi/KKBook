@@ -19,6 +19,7 @@
         self.bookDesc = [attribute objectForKey:@"BookDesc"];
         self.bookDate = [attribute objectForKey:@"BookDate"];
         self.authorID = [attribute objectForKey:@"AuthorID"];
+        self.authorName = [attribute objectForKey:@"AuthorName"];
         self.coverPrice = [attribute objectForKey:@"CoverPrice"];
         self.editDate = [attribute objectForKey:@"EditDate"];
         self.editUser = [attribute objectForKey:@"EditUser"];
@@ -55,19 +56,40 @@
     }
 }
 
--(float)fileSizePad{
-    float size = [_filePadURL floatValue];
-    return size;
-}
+#pragma mark - display value
 
--(float)fileSizePhone{
-    float size = [_filePhoneURL floatValue];
+-(NSString *)fileSizeDisplay{
+    NSString *size = [Utility isPad] ? _fileSizePadURL : _fileSizePhoneURL;
     return size;
 }
 
 -(float)versionPackage{
-    float size = [_version floatValue];
-    return size;
+    float version = [_version floatValue];
+    return version;
+}
+
+-(NSString *)priceDisplay{
+    NSString *price = [self isFree] ? @"FREE" : _price;
+    return price;
+}
+
+-(NSString *)publisherDisplay{
+    NSString *publisher = [_publisherName isEqualToString:@""] ? @"-" : _publisherName;
+    return publisher;
+}
+
+-(NSString *)authorDisplay{
+    return [_authorName isEqualToString:@""] ? @"-" : _authorName;
+}
+
+-(NSURL *)coverImageDetailBookURL{
+    NSURL *url = [NSURL URLWithString:[IMAGE_URL stringByAppendingString:_padImageURL]];
+    return url;
+}
+
+-(NSURL *)coverImageURL{
+    NSURL *url = [NSURL URLWithString:[IMAGE_URL stringByAppendingString:[Utility isPad] ? _padImageURL : _phoneImageURL]];
+    return url;
 }
 
 @end
