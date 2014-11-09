@@ -22,6 +22,7 @@
         self.authorID = [FormValidation stringValue:[attribute objectForKey:@"AuthorID"]];
         self.authorName = [FormValidation stringValue:[attribute objectForKey:@"AuthorName"]];
         self.coverPrice = [FormValidation stringValue:[attribute objectForKey:@"CoverPrice"]];
+        self.page = [FormValidation stringValue:[attribute objectForKey:@"Page"]];
         self.editDate = [FormValidation stringValue:[attribute objectForKey:@"EditDate"]];
         self.editUser = [FormValidation stringValue:[attribute objectForKey:@"EditUser"]];
         self.fileAndroidPhoneURL = [FormValidation stringValue:[attribute objectForKey:@"FileAndroidTabURL"]];
@@ -45,6 +46,7 @@
         self.publisherID = [FormValidation stringValue:[attribute objectForKey:@"PublisherID"]];
         self.publisherName = [FormValidation stringValue:[attribute objectForKey:@"PublisherName"]];
         self.version = [FormValidation stringValue:[attribute objectForKey:@"Version"]];
+        self.status = DOWNLOADWAITING;
     }
     return self;
 }
@@ -83,12 +85,11 @@
     return [_authorName isEqualToString:@""] ? @"-" : _authorName;
 }
 
--(NSURL *)coverImageDetailBookURL{
-    NSURL *url = [NSURL URLWithString:[IMAGE_URL stringByAppendingString:_padImageURL]];
-    return url;
+-(NSString *)coverImageDetailBookURL{
+    return [IMAGE_URL stringByAppendingString:_padImageURL];
 }
 
--(NSURL *)coverImageURL{
+-(NSString *)coverImageURL{
     NSString *stringURL;
     if ([Utility isPad]) {
         if ([Utility isRetina]) {
@@ -103,8 +104,18 @@
             stringURL = [IMAGE_URL stringByAppendingString:_phoneImageURL];
         }
     }
-    NSURL *url = [NSURL URLWithString:stringURL];
-    return url;
+    return stringURL;
+}
+
+-(NSString *)fileURL{
+    NSString *stringURL;
+    if ([Utility isPad]) {
+        stringURL = [BOOK_URL stringByAppendingString:_filePadURL];
+    }else{
+        stringURL = [BOOK_URL stringByAppendingString:_filePhoneURL];
+    }
+    return stringURL;
+
 }
 
 @end

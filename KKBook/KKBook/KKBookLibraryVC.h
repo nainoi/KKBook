@@ -8,8 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class KKBookLibraryVC;
+@class BookEntity;
+
+@protocol KKBookLibraryDelegate <NSObject>
+
+-(void)didSelectBook:(KKBookLibraryVC*)bookLibrary withBookEntity:(BookEntity*)bookEntity;
+
+@end
+
 @interface KKBookLibraryVC : BaseViewController<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate>
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property(nonatomic, strong) NSMutableArray *myBook;
+@property(nonatomic, assign) id<KKBookLibraryDelegate> delegate;
 
 @end

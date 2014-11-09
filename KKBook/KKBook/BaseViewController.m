@@ -30,9 +30,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - navigation bar
+
+-(void)hiddenBackTitle{
+    ((UINavigationItem*)self.navigationController.navigationBar.items[0]).title = @"";
+}
+
+- (void)addBackNavigation{
+    ((BaseNavigationController*)self.navigationController).navigationItem.backBarButtonItem.title = @"";
+    NSLog(@"bact title %@",((BaseNavigationController*)self.navigationController).navigationItem.leftBarButtonItem);
+}
+
 - (void)setNavigationBar{
     ((BaseNavigationController*)self.navigationController).navigationBar.barTintColor = [UIColor colorWithRed:3/255.0 green:166/255.0 blue:130/255.0 alpha:1.0];
 }
+
+#pragma mark - progress
 
 -(void)showProgressLoading{
     HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];

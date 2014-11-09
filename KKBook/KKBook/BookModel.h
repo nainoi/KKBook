@@ -55,8 +55,10 @@
 @property (nonatomic, assign) float versionPackage;
 @property (nonatomic, copy) NSString *publisherDisplay;
 @property (nonatomic, copy) NSString *authorDisplay;
-@property (nonatomic, copy) NSURL *coverImageURL;
-@property (nonatomic, copy) NSURL *coverImageDetailBookURL;
+@property (nonatomic, copy) NSString *coverImageURL;
+@property (nonatomic, copy) NSString *coverImageDetailBookURL;
+@property (nonatomic, copy) NSString *fileURL;
+@property (nonatomic, copy) NSString *status;
 
 -(instancetype)initWithAttributes:(NSDictionary*)attribute;
 

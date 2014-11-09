@@ -10,6 +10,7 @@
 #import "BannerModel.h"
 #import "StoreScrollingTableViewCell.h"
 #import "KKBookStoreDetailVC.h"
+#import "BaseNavigationController.h"
 
 @interface KKBookStoreMain ()<StoreScrollingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -96,63 +97,18 @@
 
 -(void)initTable{
     
-    CGRect frame = CGRectMake(10, CGRectGetMaxY(_myPageScrollView.frame) + 5, CHILD_WIDTH, CGRectGetMaxY([UIScreen mainScreen].bounds) - CGRectGetMaxY(_myPageScrollView.frame) - 10);
+    CGRect frame = CGRectMake(10, CGRectGetMaxY(_myPageScrollView.frame) + 5, CHILD_WIDTH, CGRectGetMaxY([UIScreen mainScreen].bounds) - (CGRectGetMaxY(_myPageScrollView.frame) + 64));
+    NSLog(@"bact title %@",self.navigationController.navigationBar);
     self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    [self.tableView setBackgroundColor:[UIColor grayColor]];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:_tableView];
     
     
     static NSString *CellIdentifier = @"Cell";
     [self.tableView registerClass:[StoreScrollingTableViewCell class] forCellReuseIdentifier:CellIdentifier];
-    /*self.images = @[
-                    @{ @"category": @"Category A",
-                       @"images":
-                           @[
-                               @{ @"name":@"sample_1.jpeg", @"title":@"A-0"},
-                               @{ @"name":@"sample_2.jpeg", @"title":@"A-1"},
-                               @{ @"name":@"sample_3.jpeg", @"title":@"A-2"},
-                               @{ @"name":@"sample_4.jpeg", @"title":@"A-3"},
-                               @{ @"name":@"sample_5.jpeg", @"title":@"A-4"},
-                               @{ @"name":@"sample_6.jpeg", @"title":@"A-5"}
-                               
-                               ]
-                       },
-                    @{ @"category": @"Category B",
-                       @"images":
-                           @[
-                               @{ @"name":@"sample_3.jpeg", @"title":@"B-0"},
-                               @{ @"name":@"sample_1.jpeg", @"title":@"B-1"},
-                               @{ @"name":@"sample_2.jpeg", @"title":@"B-2"},
-                               @{ @"name":@"sample_5.jpeg", @"title":@"B-3"},
-                               @{ @"name":@"sample_6.jpeg", @"title":@"B-4"},
-                               @{ @"name":@"sample_4.jpeg", @"title":@"B-5"}
-                               ]
-                       },
-                    @{ @"category": @"Category C",
-                       @"images":
-                           @[
-                               @{ @"name":@"sample_6.jpeg", @"title":@"C-0"},
-                               @{ @"name":@"sample_2.jpeg", @"title":@"C-1"},
-                               @{ @"name":@"sample_3.jpeg", @"title":@"C-2"},
-                               @{ @"name":@"sample_1.jpeg", @"title":@"C-3"},
-                               @{ @"name":@"sample_5.jpeg", @"title":@"C-4"},
-                               @{ @"name":@"sample_4.jpeg", @"title":@"C-5"}
-                               ]
-                       },
-                    @{ @"category": @"Category D",
-                       @"images":
-                           @[
-                               @{ @"name":@"sample_3.jpeg", @"title":@"D-0"},
-                               @{ @"name":@"sample_1.jpeg", @"title":@"D-1"},
-                               @{ @"name":@"sample_2.jpeg", @"title":@"D-2"},
-                               @{ @"name":@"sample_5.jpeg", @"title":@"D-3"},
-                               @{ @"name":@"sample_6.jpeg", @"title":@"D-4"},
-                               @{ @"name":@"sample_4.jpeg", @"title":@"D-5"}
-                               ]
-                       }
-                    ];*/
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -206,12 +162,9 @@
 #pragma mark - StoreScrollingTableViewCellDelegate
 
 -(void)scrollingTableViewCell:(StoreScrollingTableViewCell *)scrollingTableViewCell didSelectBook:(BookModel *)book{
-    KKBookStoreDetailVC *bookDetailVC = [[KKBookStoreDetailVC alloc] initWithBook:book];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:bookDetailVC];
-    //[self.navigationController pushViewController:bookDetailVC animated:YES];
-    [self presentViewController:nav animated:YES completion:^{
-        
-    }];
+    if ([self delegate]) {
+        [[self delegate] bookStoreMain:self didBook:book];
+    }
 }
 -(void)loadStoreMainData{
     NSURLSessionTask *task = [KKBookService storeMainService:^(NSArray *source, NSError *error) {

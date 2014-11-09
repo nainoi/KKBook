@@ -36,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *detailLb;
 
 @property (strong, nonatomic) BookModel *book;
+@property (copy, nonatomic) void (^didDownload)(BookModel*);
 
 - (instancetype)initWithBook:(BookModel*)book;
 

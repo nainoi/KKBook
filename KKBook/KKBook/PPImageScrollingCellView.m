@@ -8,12 +8,12 @@
 
 #import "PPImageScrollingCellView.h"
 //#import "PPCollectionViewCell.h"
-#import "KKBookStoreCell.h"
+#import "StoreCollectionCell.h"
 
 @interface  PPImageScrollingCellView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 //@property (strong, nonatomic) PPCollectionViewCell *myCollectionViewCell;
-@property (strong, nonatomic) KKBookStoreCell *storeCollectionViewCell;
+@property (strong, nonatomic) StoreCollectionCell *storeCollectionViewCell;
 @property (strong, nonatomic) UICollectionView *myCollectionView;
 @property (strong, nonatomic) NSArray *collectionBookData;
 @property (nonatomic) CGFloat imagetitleWidth;
@@ -87,23 +87,17 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {    
-    KKBookStoreCell *cell = (KKBookStoreCell*)[collectionView dequeueReusableCellWithReuseIdentifier:STORE_CELL forIndexPath:indexPath];
+    StoreCollectionCell *cell = (StoreCollectionCell*)[collectionView dequeueReusableCellWithReuseIdentifier:STORE_CELL forIndexPath:indexPath];
     NSDictionary *bookDict = [self.collectionBookData objectAtIndex:[indexPath row]];
+    NSLog(@"book %@",bookDict);
     BookModel *book = [[BookModel alloc] initWithAttributes:bookDict];
     [cell setBookModel:book];
-    //cell.imageCover.image = [UIImage imageNamed:[imageDic objectForKey:@"name"]];
-//    [cell setImage:[UIImage imageNamed:[imageDic objectForKey:@"name"]]];
-//    [cell setImageTitleLabelWitdh:_imagetitleWidth withHeight:_imagetitleHeight];
-//    [cell setImageTitleTextColor:_imageTilteTextColor withBackgroundColor:_imageTilteBackgroundColor];
-//    [cell setTitle:[imageDic objectForKey:@"title"]];
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    KKBookStoreCell *cell = (KKBookStoreCell*)[collectionView dequeueReusableCellWithReuseIdentifier:STORE_CELL forIndexPath:indexPath];
-    cell = (KKBookStoreCell*)[collectionView cellForItemAtIndexPath:indexPath];
-    //KKBookStoreCell *cell = collectionView.
-    //[self.delegate collectionView:self didSelectImageItemAtIndexPath:(NSIndexPath*)indexPath];
+    StoreCollectionCell *cell = (StoreCollectionCell*)[collectionView dequeueReusableCellWithReuseIdentifier:STORE_CELL forIndexPath:indexPath];
+    cell = (StoreCollectionCell*)[collectionView cellForItemAtIndexPath:indexPath];
     [self.delegate collectionView:self didSelectBook:cell.bookModel];
 }
 

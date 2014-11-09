@@ -67,8 +67,6 @@
 		E02B06F71A0A2ABE00745E57 /* sample_5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E02B06F01A0A2ABE00745E57 /* sample_5.jpeg */; };
 		E02B06F81A0A2ABE00745E57 /* sample_6.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E02B06F11A0A2ABE00745E57 /* sample_6.jpeg */; };
 		E02B06F91A0A2ABE00745E57 /* sample_7.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E02B06F21A0A2ABE00745E57 /* sample_7.jpeg */; };
-		E02B07031A0A307300745E57 /* KKBookStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E02B07011A0A307300745E57 /* KKBookStoreCell.m */; };
-		E02B07041A0A307300745E57 /* KKBookStoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E02B07021A0A307300745E57 /* KKBookStoreCell.xib */; };
 		E02BEC4D1A0237D3002A5F6B /* ic_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = E02BEC4B1A0237D3002A5F6B /* ic_menu.png */; };
 		E02BEC4E1A0237D3002A5F6B /* ic_menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E02BEC4C1A0237D3002A5F6B /* ic_menu@2x.png */; };
 		E02BEC521A02397F002A5F6B /* KKBookLeftSidebar.m in Sources */ = {isa = PBXBuildFile; fileRef = E02BEC511A02397F002A5F6B /* KKBookLeftSidebar.m */; };
@@ -129,6 +127,16 @@
 		E050D5261A00DBC4007B3686 /* BaseWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E050D5251A00DBC4007B3686 /* BaseWindow.m */; };
 		E050D52A1A00DE20007B3686 /* KKBookStoreVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E050D5281A00DE20007B3686 /* KKBookStoreVC.m */; };
 		E050D52B1A00DE20007B3686 /* KKBookStoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E050D5291A00DE20007B3686 /* KKBookStoreVC.xib */; };
+		E05864C61A0E46D100C688D8 /* StoreCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E05864C41A0E46D100C688D8 /* StoreCollectionCell.m */; };
+		E05864C71A0E46D100C688D8 /* StoreCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E05864C51A0E46D100C688D8 /* StoreCollectionCell.xib */; };
+		E05864CA1A0E8D6800C688D8 /* BookEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = E05864C91A0E8D6800C688D8 /* BookEntity.m */; };
+		E05864CE1A0E9A9300C688D8 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E05864CD1A0E9A9300C688D8 /* DataManager.m */; };
+		E05864D11A0EA1AA00C688D8 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E05864D01A0EA1AA00C688D8 /* FileHelper.m */; };
+		E05864D51A0EA26D00C688D8 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = E05864D41A0EA26D00C688D8 /* ZipArchive.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E05864E01A0EA28500C688D8 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = E05864D81A0EA28500C688D8 /* ioapi.c */; };
+		E05864E11A0EA28500C688D8 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = E05864DA1A0EA28500C688D8 /* mztools.c */; };
+		E05864E21A0EA28500C688D8 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = E05864DC1A0EA28500C688D8 /* unzip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E05864E31A0EA28500C688D8 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = E05864DE1A0EA28500C688D8 /* zip.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E06BAE831A05A9CD007886F4 /* list-item-cover-men1.png in Resources */ = {isa = PBXBuildFile; fileRef = E06BAE751A05A9CD007886F4 /* list-item-cover-men1.png */; };
 		E06BAE841A05A9CD007886F4 /* list-item-cover-men1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E06BAE761A05A9CD007886F4 /* list-item-cover-men1@2x.png */; };
 		E06BAE851A05A9CD007886F4 /* list-item-cover-men2.png in Resources */ = {isa = PBXBuildFile; fileRef = E06BAE771A05A9CD007886F4 /* list-item-cover-men2.png */; };
@@ -161,6 +169,27 @@
 		E0B657731A0545C200196B14 /* KKBookLibraryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B657711A0545C200196B14 /* KKBookLibraryCell.m */; };
 		E0B657741A0545C200196B14 /* KKBookLibraryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B657721A0545C200196B14 /* KKBookLibraryCell.xib */; };
 		E0B657781A055AD700196B14 /* KKBookLibraryCell_Phone.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B657771A055AD700196B14 /* KKBookLibraryCell_Phone.xib */; };
+		E0DCC25E1A0F1D9600E87028 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E0DCC25D1A0F1D9600E87028 /* libz.dylib */; };
+		E0DCC2751A0FA2ED00E87028 /* ReaderConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC2621A0FA2ED00E87028 /* ReaderConstants.m */; };
+		E0DCC2761A0FA2ED00E87028 /* ReaderDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC2641A0FA2ED00E87028 /* ReaderDocument.m */; };
+		E0DCC2771A0FA2ED00E87028 /* ReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC2661A0FA2ED00E87028 /* ReaderViewController.m */; };
+		E0DCC2781A0FA2ED00E87028 /* ReaderMainToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC2681A0FA2ED00E87028 /* ReaderMainToolbar.m */; };
+		E0DCC2791A0FA2ED00E87028 /* ReaderMainPagebar.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC26A1A0FA2ED00E87028 /* ReaderMainPagebar.m */; };
+		E0DCC27A1A0FA2ED00E87028 /* ReaderContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC26C1A0FA2ED00E87028 /* ReaderContentView.m */; };
+		E0DCC27B1A0FA2ED00E87028 /* ReaderContentPage.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC26E1A0FA2ED00E87028 /* ReaderContentPage.m */; };
+		E0DCC27C1A0FA2ED00E87028 /* ReaderContentTile.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC2701A0FA2ED00E87028 /* ReaderContentTile.m */; };
+		E0DCC27D1A0FA2ED00E87028 /* ThumbsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC2721A0FA2ED00E87028 /* ThumbsViewController.m */; };
+		E0DCC27E1A0FA2ED00E87028 /* ThumbsMainToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC2741A0FA2ED00E87028 /* ThumbsMainToolbar.m */; };
+		E0DCC2931A0FA31000E87028 /* CGPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC2801A0FA31000E87028 /* CGPDFDocument.m */; };
+		E0DCC2941A0FA31000E87028 /* ReaderDocumentOutline.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC2821A0FA31000E87028 /* ReaderDocumentOutline.m */; };
+		E0DCC2951A0FA31000E87028 /* ReaderThumbRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC2841A0FA31000E87028 /* ReaderThumbRequest.m */; };
+		E0DCC2961A0FA31000E87028 /* ReaderThumbCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC2861A0FA31000E87028 /* ReaderThumbCache.m */; };
+		E0DCC2971A0FA31000E87028 /* ReaderThumbQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC2881A0FA31000E87028 /* ReaderThumbQueue.m */; };
+		E0DCC2981A0FA31000E87028 /* ReaderThumbFetch.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC28A1A0FA31000E87028 /* ReaderThumbFetch.m */; };
+		E0DCC2991A0FA31000E87028 /* ReaderThumbRender.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC28C1A0FA31000E87028 /* ReaderThumbRender.m */; };
+		E0DCC29A1A0FA31000E87028 /* ReaderThumbsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC28E1A0FA31000E87028 /* ReaderThumbsView.m */; };
+		E0DCC29B1A0FA31000E87028 /* ReaderThumbView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC2901A0FA31000E87028 /* ReaderThumbView.m */; };
+		E0DCC29C1A0FA31000E87028 /* UIXToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCC2921A0FA31000E87028 /* UIXToolbarView.m */; };
 		E0F2C7DA1A04D7B400DDE4AE /* KKBookLibraryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F2C7D81A04D7B400DDE4AE /* KKBookLibraryVC.m */; };
 		E0F2C7DB1A04D7B400DDE4AE /* KKBookLibraryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0F2C7D91A04D7B400DDE4AE /* KKBookLibraryVC.xib */; };
 		E0F2C7DE1A04DC3E00DDE4AE /* Repository.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F2C7DD1A04DC3E00DDE4AE /* Repository.m */; };
@@ -289,9 +318,6 @@
 		E02B06F01A0A2ABE00745E57 /* sample_5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_5.jpeg; sourceTree = "<group>"; };
 		E02B06F11A0A2ABE00745E57 /* sample_6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_6.jpeg; sourceTree = "<group>"; };
 		E02B06F21A0A2ABE00745E57 /* sample_7.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_7.jpeg; sourceTree = "<group>"; };
-		E02B07001A0A307300745E57 /* KKBookStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKBookStoreCell.h; sourceTree = "<group>"; };
-		E02B07011A0A307300745E57 /* KKBookStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKBookStoreCell.m; sourceTree = "<group>"; };
-		E02B07021A0A307300745E57 /* KKBookStoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKBookStoreCell.xib; sourceTree = "<group>"; };
 		E02BEC4B1A0237D3002A5F6B /* ic_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_menu.png; sourceTree = "<group>"; };
 		E02BEC4C1A0237D3002A5F6B /* ic_menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_menu@2x.png"; sourceTree = "<group>"; };
 		E02BEC501A02397F002A5F6B /* KKBookLeftSidebar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKBookLeftSidebar.h; sourceTree = "<group>"; };
@@ -377,6 +403,26 @@
 		E050D5271A00DE20007B3686 /* KKBookStoreVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKBookStoreVC.h; sourceTree = "<group>"; };
 		E050D5281A00DE20007B3686 /* KKBookStoreVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKBookStoreVC.m; sourceTree = "<group>"; };
 		E050D5291A00DE20007B3686 /* KKBookStoreVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KKBookStoreVC.xib; sourceTree = "<group>"; };
+		E05864C31A0E46D100C688D8 /* StoreCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoreCollectionCell.h; path = KKBook/StoreCollectionCell.h; sourceTree = SOURCE_ROOT; };
+		E05864C41A0E46D100C688D8 /* StoreCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoreCollectionCell.m; path = KKBook/StoreCollectionCell.m; sourceTree = SOURCE_ROOT; };
+		E05864C51A0E46D100C688D8 /* StoreCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StoreCollectionCell.xib; path = KKBook/StoreCollectionCell.xib; sourceTree = SOURCE_ROOT; };
+		E05864C81A0E8D6800C688D8 /* BookEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookEntity.h; path = KKBook/BookEntity.h; sourceTree = SOURCE_ROOT; };
+		E05864C91A0E8D6800C688D8 /* BookEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookEntity.m; path = KKBook/BookEntity.m; sourceTree = SOURCE_ROOT; };
+		E05864CC1A0E9A9300C688D8 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManager.h; path = KKBook/DataManager.h; sourceTree = SOURCE_ROOT; };
+		E05864CD1A0E9A9300C688D8 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = KKBook/DataManager.m; sourceTree = SOURCE_ROOT; };
+		E05864CF1A0EA1AA00C688D8 /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelper.h; sourceTree = "<group>"; };
+		E05864D01A0EA1AA00C688D8 /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
+		E05864D31A0EA26D00C688D8 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		E05864D41A0EA26D00C688D8 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
+		E05864D71A0EA28500C688D8 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		E05864D81A0EA28500C688D8 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		E05864D91A0EA28500C688D8 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		E05864DA1A0EA28500C688D8 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		E05864DB1A0EA28500C688D8 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		E05864DC1A0EA28500C688D8 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		E05864DD1A0EA28500C688D8 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		E05864DE1A0EA28500C688D8 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		E05864DF1A0EA28500C688D8 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		E06BAE751A05A9CD007886F4 /* list-item-cover-men1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-item-cover-men1.png"; sourceTree = "<group>"; };
 		E06BAE761A05A9CD007886F4 /* list-item-cover-men1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-item-cover-men1@2x.png"; sourceTree = "<group>"; };
 		E06BAE771A05A9CD007886F4 /* list-item-cover-men2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-item-cover-men2.png"; sourceTree = "<group>"; };
@@ -419,6 +465,47 @@
 		E0B657711A0545C200196B14 /* KKBookLibraryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBookLibraryCell.m; path = KKBook/KKBookLibraryCell.m; sourceTree = SOURCE_ROOT; };
 		E0B657721A0545C200196B14 /* KKBookLibraryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KKBookLibraryCell.xib; path = KKBook/KKBookLibraryCell.xib; sourceTree = SOURCE_ROOT; };
 		E0B657771A055AD700196B14 /* KKBookLibraryCell_Phone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KKBookLibraryCell_Phone.xib; path = KKBook/KKBookLibraryCell_Phone.xib; sourceTree = SOURCE_ROOT; };
+		E0DCC25D1A0F1D9600E87028 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		E0DCC2611A0FA2ED00E87028 /* ReaderConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderConstants.h; sourceTree = "<group>"; };
+		E0DCC2621A0FA2ED00E87028 /* ReaderConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderConstants.m; sourceTree = "<group>"; };
+		E0DCC2631A0FA2ED00E87028 /* ReaderDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderDocument.h; sourceTree = "<group>"; };
+		E0DCC2641A0FA2ED00E87028 /* ReaderDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderDocument.m; sourceTree = "<group>"; };
+		E0DCC2651A0FA2ED00E87028 /* ReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderViewController.h; sourceTree = "<group>"; };
+		E0DCC2661A0FA2ED00E87028 /* ReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderViewController.m; sourceTree = "<group>"; };
+		E0DCC2671A0FA2ED00E87028 /* ReaderMainToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderMainToolbar.h; sourceTree = "<group>"; };
+		E0DCC2681A0FA2ED00E87028 /* ReaderMainToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderMainToolbar.m; sourceTree = "<group>"; };
+		E0DCC2691A0FA2ED00E87028 /* ReaderMainPagebar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderMainPagebar.h; sourceTree = "<group>"; };
+		E0DCC26A1A0FA2ED00E87028 /* ReaderMainPagebar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderMainPagebar.m; sourceTree = "<group>"; };
+		E0DCC26B1A0FA2ED00E87028 /* ReaderContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderContentView.h; sourceTree = "<group>"; };
+		E0DCC26C1A0FA2ED00E87028 /* ReaderContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderContentView.m; sourceTree = "<group>"; };
+		E0DCC26D1A0FA2ED00E87028 /* ReaderContentPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderContentPage.h; sourceTree = "<group>"; };
+		E0DCC26E1A0FA2ED00E87028 /* ReaderContentPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderContentPage.m; sourceTree = "<group>"; };
+		E0DCC26F1A0FA2ED00E87028 /* ReaderContentTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderContentTile.h; sourceTree = "<group>"; };
+		E0DCC2701A0FA2ED00E87028 /* ReaderContentTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderContentTile.m; sourceTree = "<group>"; };
+		E0DCC2711A0FA2ED00E87028 /* ThumbsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbsViewController.h; sourceTree = "<group>"; };
+		E0DCC2721A0FA2ED00E87028 /* ThumbsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbsViewController.m; sourceTree = "<group>"; };
+		E0DCC2731A0FA2ED00E87028 /* ThumbsMainToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbsMainToolbar.h; sourceTree = "<group>"; };
+		E0DCC2741A0FA2ED00E87028 /* ThumbsMainToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbsMainToolbar.m; sourceTree = "<group>"; };
+		E0DCC27F1A0FA31000E87028 /* CGPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPDFDocument.h; sourceTree = "<group>"; };
+		E0DCC2801A0FA31000E87028 /* CGPDFDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGPDFDocument.m; sourceTree = "<group>"; };
+		E0DCC2811A0FA31000E87028 /* ReaderDocumentOutline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderDocumentOutline.h; sourceTree = "<group>"; };
+		E0DCC2821A0FA31000E87028 /* ReaderDocumentOutline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderDocumentOutline.m; sourceTree = "<group>"; };
+		E0DCC2831A0FA31000E87028 /* ReaderThumbRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderThumbRequest.h; sourceTree = "<group>"; };
+		E0DCC2841A0FA31000E87028 /* ReaderThumbRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderThumbRequest.m; sourceTree = "<group>"; };
+		E0DCC2851A0FA31000E87028 /* ReaderThumbCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderThumbCache.h; sourceTree = "<group>"; };
+		E0DCC2861A0FA31000E87028 /* ReaderThumbCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderThumbCache.m; sourceTree = "<group>"; };
+		E0DCC2871A0FA31000E87028 /* ReaderThumbQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderThumbQueue.h; sourceTree = "<group>"; };
+		E0DCC2881A0FA31000E87028 /* ReaderThumbQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderThumbQueue.m; sourceTree = "<group>"; };
+		E0DCC2891A0FA31000E87028 /* ReaderThumbFetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderThumbFetch.h; sourceTree = "<group>"; };
+		E0DCC28A1A0FA31000E87028 /* ReaderThumbFetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderThumbFetch.m; sourceTree = "<group>"; };
+		E0DCC28B1A0FA31000E87028 /* ReaderThumbRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderThumbRender.h; sourceTree = "<group>"; };
+		E0DCC28C1A0FA31000E87028 /* ReaderThumbRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderThumbRender.m; sourceTree = "<group>"; };
+		E0DCC28D1A0FA31000E87028 /* ReaderThumbsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderThumbsView.h; sourceTree = "<group>"; };
+		E0DCC28E1A0FA31000E87028 /* ReaderThumbsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderThumbsView.m; sourceTree = "<group>"; };
+		E0DCC28F1A0FA31000E87028 /* ReaderThumbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderThumbView.h; sourceTree = "<group>"; };
+		E0DCC2901A0FA31000E87028 /* ReaderThumbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderThumbView.m; sourceTree = "<group>"; };
+		E0DCC2911A0FA31000E87028 /* UIXToolbarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIXToolbarView.h; sourceTree = "<group>"; };
+		E0DCC2921A0FA31000E87028 /* UIXToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIXToolbarView.m; sourceTree = "<group>"; };
 		E0F2C7D71A04D7B400DDE4AE /* KKBookLibraryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookLibraryVC.h; path = KKBook/KKBookLibraryVC.h; sourceTree = SOURCE_ROOT; };
 		E0F2C7D81A04D7B400DDE4AE /* KKBookLibraryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBookLibraryVC.m; path = KKBook/KKBookLibraryVC.m; sourceTree = SOURCE_ROOT; };
 		E0F2C7D91A04D7B400DDE4AE /* KKBookLibraryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KKBookLibraryVC.xib; path = KKBook/KKBookLibraryVC.xib; sourceTree = SOURCE_ROOT; };
@@ -431,6 +518,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0DCC25E1A0F1D9600E87028 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +597,8 @@
 				E01359FD1A07EF1B00947773 /* BookModel.m */,
 				E0B3E4BA1A093E190012A450 /* BannerModel.h */,
 				E0B3E4BB1A093E190012A450 /* BannerModel.m */,
+				E05864C81A0E8D6800C688D8 /* BookEntity.h */,
+				E05864C91A0E8D6800C688D8 /* BookEntity.m */,
 			);
 			name = KKBookModel;
 			sourceTree = "<group>";
@@ -683,9 +773,9 @@
 				E02B06E71A0A282F00745E57 /* PPImageScrollingCellView.m */,
 				E02B06E21A0A282F00745E57 /* StoreScrollingTableViewCell.h */,
 				E02B06E31A0A282F00745E57 /* StoreScrollingTableViewCell.m */,
-				E02B07001A0A307300745E57 /* KKBookStoreCell.h */,
-				E02B07011A0A307300745E57 /* KKBookStoreCell.m */,
-				E02B07021A0A307300745E57 /* KKBookStoreCell.xib */,
+				E05864C31A0E46D100C688D8 /* StoreCollectionCell.h */,
+				E05864C41A0E46D100C688D8 /* StoreCollectionCell.m */,
+				E05864C51A0E46D100C688D8 /* StoreCollectionCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -721,6 +811,7 @@
 		E050D4DA1A00A437007B3686 = {
 			isa = PBXGroup;
 			children = (
+				E0DCC25D1A0F1D9600E87028 /* libz.dylib */,
 				E050D4E51A00A437007B3686 /* KKBooK */,
 				E050D5021A00A437007B3686 /* KKBooKTests */,
 				E050D4E41A00A437007B3686 /* Products */,
@@ -857,6 +948,8 @@
 				E0276C671A0C9EF700254AAC /* FormValidation.m */,
 				E0276C6C1A0CA16F00254AAC /* InternetChecking.h */,
 				E0276C6D1A0CA16F00254AAC /* InternetChecking.m */,
+				E05864CF1A0EA1AA00C688D8 /* FileHelper.h */,
+				E05864D01A0EA1AA00C688D8 /* FileHelper.m */,
 				E087374E1A0A8006002AE166 /* KKBookURL.h */,
 			);
 			name = ShareInstant;
@@ -865,6 +958,7 @@
 		E050D5131A00A698007B3686 /* KKBook */ = {
 			isa = PBXGroup;
 			children = (
+				E05864CB1A0E950600C688D8 /* DataModelManager */,
 				E01359FA1A07EEF600947773 /* KKBookModel */,
 				E01359F31A07E78800947773 /* KKBookService */,
 				E02BEC531A023D41002A5F6B /* MainViewController */,
@@ -880,6 +974,8 @@
 		E050D5141A00A6A9007B3686 /* ReaderPDF */ = {
 			isa = PBXGroup;
 			children = (
+				E0DCC2601A0FA2D400E87028 /* Support */,
+				E0DCC25F1A0FA2CB00E87028 /* Source */,
 			);
 			name = ReaderPDF;
 			sourceTree = "<group>";
@@ -918,6 +1014,41 @@
 				E0F2C7D91A04D7B400DDE4AE /* KKBookLibraryVC.xib */,
 			);
 			name = KKBookLibrary;
+			sourceTree = "<group>";
+		};
+		E05864CB1A0E950600C688D8 /* DataModelManager */ = {
+			isa = PBXGroup;
+			children = (
+				E05864CC1A0E9A9300C688D8 /* DataManager.h */,
+				E05864CD1A0E9A9300C688D8 /* DataManager.m */,
+			);
+			name = DataModelManager;
+			sourceTree = "<group>";
+		};
+		E05864D21A0EA25600C688D8 /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				E05864D61A0EA27100C688D8 /* miniZip */,
+				E05864D31A0EA26D00C688D8 /* ZipArchive.h */,
+				E05864D41A0EA26D00C688D8 /* ZipArchive.mm */,
+			);
+			name = ZipArchive;
+			sourceTree = "<group>";
+		};
+		E05864D61A0EA27100C688D8 /* miniZip */ = {
+			isa = PBXGroup;
+			children = (
+				E05864D71A0EA28500C688D8 /* crypt.h */,
+				E05864D81A0EA28500C688D8 /* ioapi.c */,
+				E05864D91A0EA28500C688D8 /* ioapi.h */,
+				E05864DA1A0EA28500C688D8 /* mztools.c */,
+				E05864DB1A0EA28500C688D8 /* mztools.h */,
+				E05864DC1A0EA28500C688D8 /* unzip.c */,
+				E05864DD1A0EA28500C688D8 /* unzip.h */,
+				E05864DE1A0EA28500C688D8 /* zip.c */,
+				E05864DF1A0EA28500C688D8 /* zip.h */,
+			);
+			name = miniZip;
 			sourceTree = "<group>";
 		};
 		E06BAE911A05BEEF007886F4 /* image */ = {
@@ -969,6 +1100,7 @@
 		E06BAE971A05FE6A007886F4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E05864D21A0EA25600C688D8 /* ZipArchive */,
 				E0276C4D1A0C754600254AAC /* CHTCollectionView */,
 				E0B3E4A91A0936F20012A450 /* HGPageScroll */,
 				E0135A1A1A07FE3D00947773 /* SDWebImage */,
@@ -999,6 +1131,60 @@
 				E0B3E4B01A0937170012A450 /* HGPageImageView.m */,
 			);
 			name = HGPageScroll;
+			sourceTree = "<group>";
+		};
+		E0DCC25F1A0FA2CB00E87028 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E0DCC2611A0FA2ED00E87028 /* ReaderConstants.h */,
+				E0DCC2621A0FA2ED00E87028 /* ReaderConstants.m */,
+				E0DCC2631A0FA2ED00E87028 /* ReaderDocument.h */,
+				E0DCC2641A0FA2ED00E87028 /* ReaderDocument.m */,
+				E0DCC2651A0FA2ED00E87028 /* ReaderViewController.h */,
+				E0DCC2661A0FA2ED00E87028 /* ReaderViewController.m */,
+				E0DCC2671A0FA2ED00E87028 /* ReaderMainToolbar.h */,
+				E0DCC2681A0FA2ED00E87028 /* ReaderMainToolbar.m */,
+				E0DCC2691A0FA2ED00E87028 /* ReaderMainPagebar.h */,
+				E0DCC26A1A0FA2ED00E87028 /* ReaderMainPagebar.m */,
+				E0DCC26B1A0FA2ED00E87028 /* ReaderContentView.h */,
+				E0DCC26C1A0FA2ED00E87028 /* ReaderContentView.m */,
+				E0DCC26D1A0FA2ED00E87028 /* ReaderContentPage.h */,
+				E0DCC26E1A0FA2ED00E87028 /* ReaderContentPage.m */,
+				E0DCC26F1A0FA2ED00E87028 /* ReaderContentTile.h */,
+				E0DCC2701A0FA2ED00E87028 /* ReaderContentTile.m */,
+				E0DCC2711A0FA2ED00E87028 /* ThumbsViewController.h */,
+				E0DCC2721A0FA2ED00E87028 /* ThumbsViewController.m */,
+				E0DCC2731A0FA2ED00E87028 /* ThumbsMainToolbar.h */,
+				E0DCC2741A0FA2ED00E87028 /* ThumbsMainToolbar.m */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		E0DCC2601A0FA2D400E87028 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				E0DCC27F1A0FA31000E87028 /* CGPDFDocument.h */,
+				E0DCC2801A0FA31000E87028 /* CGPDFDocument.m */,
+				E0DCC2811A0FA31000E87028 /* ReaderDocumentOutline.h */,
+				E0DCC2821A0FA31000E87028 /* ReaderDocumentOutline.m */,
+				E0DCC2831A0FA31000E87028 /* ReaderThumbRequest.h */,
+				E0DCC2841A0FA31000E87028 /* ReaderThumbRequest.m */,
+				E0DCC2851A0FA31000E87028 /* ReaderThumbCache.h */,
+				E0DCC2861A0FA31000E87028 /* ReaderThumbCache.m */,
+				E0DCC2871A0FA31000E87028 /* ReaderThumbQueue.h */,
+				E0DCC2881A0FA31000E87028 /* ReaderThumbQueue.m */,
+				E0DCC2891A0FA31000E87028 /* ReaderThumbFetch.h */,
+				E0DCC28A1A0FA31000E87028 /* ReaderThumbFetch.m */,
+				E0DCC28B1A0FA31000E87028 /* ReaderThumbRender.h */,
+				E0DCC28C1A0FA31000E87028 /* ReaderThumbRender.m */,
+				E0DCC28D1A0FA31000E87028 /* ReaderThumbsView.h */,
+				E0DCC28E1A0FA31000E87028 /* ReaderThumbsView.m */,
+				E0DCC28F1A0FA31000E87028 /* ReaderThumbView.h */,
+				E0DCC2901A0FA31000E87028 /* ReaderThumbView.m */,
+				E0DCC2911A0FA31000E87028 /* UIXToolbarView.h */,
+				E0DCC2921A0FA31000E87028 /* UIXToolbarView.m */,
+			);
+			name = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1111,7 +1297,6 @@
 				E02D97571A03A1010014BCBF /* list-item-stage-landscape@2x.png in Resources */,
 				E06BAE8F1A05A9CD007886F4 /* list-item-cover-vogue2@2x~ipad.png in Resources */,
 				E06BAE8B1A05A9CD007886F4 /* list-item-cover-vogue2-landscape.png in Resources */,
-				E02B07041A0A307300745E57 /* KKBookStoreCell.xib in Resources */,
 				E06BAE871A05A9CD007886F4 /* list-item-cover-vogue1-landscape.png in Resources */,
 				E02D974A1A03A0CC0014BCBF /* list-item-glare.png in Resources */,
 				E02BEC661A02478E002A5F6B /* gear.png in Resources */,
@@ -1143,6 +1328,7 @@
 				E02BEC4D1A0237D3002A5F6B /* ic_menu.png in Resources */,
 				E06BAE951A05F921007886F4 /* background.png in Resources */,
 				E0B3E4B91A093A880012A450 /* KKBookStoreMain.xib in Resources */,
+				E05864C71A0E46D100C688D8 /* StoreCollectionCell.xib in Resources */,
 				E00CB3571A02768800C8DC83 /* phone.jpg in Resources */,
 				E0B3E4C31A0946730012A450 /* image3.png in Resources */,
 				E0B3E4C41A0946730012A450 /* image4.png in Resources */,
@@ -1175,15 +1361,21 @@
 				E0135A401A07FE6400947773 /* SDWebImageDecoder.m in Sources */,
 				E0135A441A07FE6400947773 /* SDWebImagePrefetcher.m in Sources */,
 				E0135A171A07F29C00947773 /* UIRefreshControl+AFNetworking.m in Sources */,
+				E05864E31A0EA28500C688D8 /* zip.c in Sources */,
 				E0B3E4B11A0937170012A450 /* HGPageScrollView.m in Sources */,
 				E0135A491A07FE6400947773 /* UIImageView+HighlightedWebCache.m in Sources */,
+				E05864D11A0EA1AA00C688D8 /* FileHelper.m in Sources */,
 				E02BEC811A024F98002A5F6B /* UIFont+Custom.m in Sources */,
+				E0DCC27C1A0FA2ED00E87028 /* ReaderContentTile.m in Sources */,
+				E0DCC2971A0FA31000E87028 /* ReaderThumbQueue.m in Sources */,
 				E01359ED1A07DDF000947773 /* AFNetworkReachabilityManager.m in Sources */,
 				E02BEC751A024E21002A5F6B /* UINavigationBar+SCBNavigationBar.m in Sources */,
 				E0276C6B1A0C9F1300254AAC /* NSString+trimLeadingWhitespace.m in Sources */,
 				E0135A181A07F29C00947773 /* UIWebView+AFNetworking.m in Sources */,
+				E0DCC29A1A0FA31000E87028 /* ReaderThumbsView.m in Sources */,
 				E0135A481A07FE6400947773 /* UIImage+WebP.m in Sources */,
 				E0276C681A0C9EF700254AAC /* FormValidation.m in Sources */,
+				E05864CA1A0E8D6800C688D8 /* BookEntity.m in Sources */,
 				E02B06EA1A0A282F00745E57 /* PPImageScrollingCellView.m in Sources */,
 				E02D97331A033C4D0014BCBF /* CHTCollectionViewWaterfallHeader.m in Sources */,
 				E0135A161A07F29C00947773 /* UIProgressView+AFNetworking.m in Sources */,
@@ -1198,39 +1390,48 @@
 				E01359F61A07E7D200947773 /* KKBookService.m in Sources */,
 				E0B3E4B81A093A880012A450 /* KKBookStoreMain.m in Sources */,
 				E02BEC7E1A024EA7002A5F6B /* NSUserDefaults+Encryption.m in Sources */,
+				E0DCC2791A0FA2ED00E87028 /* ReaderMainPagebar.m in Sources */,
 				E01359F21A07DDF000947773 /* AFURLSessionManager.m in Sources */,
 				E0276C5A1A0C76FF00254AAC /* KKBookFontTitlePhone.m in Sources */,
 				E0135A141A07F29C00947773 /* UIButton+AFNetworking.m in Sources */,
 				E0B3E4B31A0937170012A450 /* HGPageView.m in Sources */,
 				E02D97371A033C5C0014BCBF /* CHTCollectionViewWaterfallLayout.m in Sources */,
+				E0DCC2941A0FA31000E87028 /* ReaderDocumentOutline.m in Sources */,
+				E05864E21A0EA28500C688D8 /* unzip.c in Sources */,
 				E0276C5D1A0C775400254AAC /* KKBookFontDetailPad.m in Sources */,
-				E02B07031A0A307300745E57 /* KKBookStoreCell.m in Sources */,
 				E0135A3C1A07FE6400947773 /* MKAnnotationView+WebCache.m in Sources */,
 				E02D97321A033C4D0014BCBF /* CHTCollectionViewWaterfallCell.m in Sources */,
 				E0276C631A0C7CE000254AAC /* KKBookView.m in Sources */,
 				E01359FE1A07EF1B00947773 /* BookModel.m in Sources */,
+				E05864CE1A0E9A9300C688D8 /* DataManager.m in Sources */,
 				E050D5201A00BA6A007B3686 /* BaseNavigationController.m in Sources */,
 				E07FD4551A01407400F890CF /* BaseViewController.m in Sources */,
 				E050D4EC1A00A437007B3686 /* AppDelegate.m in Sources */,
 				E06BAE9A1A0602C9007886F4 /* MBProgressHUD.m in Sources */,
+				E0DCC2761A0FA2ED00E87028 /* ReaderDocument.m in Sources */,
 				E050D4E91A00A437007B3686 /* main.m in Sources */,
 				E02D97341A033C4D0014BCBF /* CHTCollectionViewWaterfallFooter.m in Sources */,
 				E050D52A1A00DE20007B3686 /* KKBookStoreVC.m in Sources */,
 				E0135A451A07FE6400947773 /* UIButton+WebCache.m in Sources */,
 				E0135A3F1A07FE6400947773 /* SDWebImageCompat.m in Sources */,
 				E0276C601A0C777B00254AAC /* KKBookFontDetailPhone.m in Sources */,
+				E0DCC29C1A0FA31000E87028 /* UIXToolbarView.m in Sources */,
 				E050D51F1A00BA6A007B3686 /* BaseNavigationBar.m in Sources */,
 				E01359F11A07DDF000947773 /* AFURLResponseSerialization.m in Sources */,
 				E050D5231A00D4F2007B3686 /* Utility.m in Sources */,
 				E0276C571A0C76C400254AAC /* KKBookFontTitlePad.m in Sources */,
+				E0DCC2931A0FA31000E87028 /* CGPDFDocument.m in Sources */,
 				E050D5261A00DBC4007B3686 /* BaseWindow.m in Sources */,
+				E0DCC2981A0FA31000E87028 /* ReaderThumbFetch.m in Sources */,
 				E01359EA1A07DDF000947773 /* AFHTTPRequestOperation.m in Sources */,
 				E01359EF1A07DDF000947773 /* AFURLConnectionOperation.m in Sources */,
+				E0DCC2781A0FA2ED00E87028 /* ReaderMainToolbar.m in Sources */,
 				E0135A411A07FE6400947773 /* SDWebImageDownloader.m in Sources */,
 				E01359EB1A07DDF000947773 /* AFHTTPRequestOperationManager.m in Sources */,
 				E02B06E81A0A282F00745E57 /* StoreScrollingTableViewCell.m in Sources */,
 				E0B3E4BC1A093E190012A450 /* BannerModel.m in Sources */,
 				E0276C6E1A0CA16F00254AAC /* InternetChecking.m in Sources */,
+				E0DCC2991A0FA31000E87028 /* ReaderThumbRender.m in Sources */,
 				E050D4EF1A00A437007B3686 /* KKBooK.xcdatamodeld in Sources */,
 				E0135A461A07FE6400947773 /* UIImage+GIF.m in Sources */,
 				E0135A151A07F29C00947773 /* UIImageView+AFNetworking.m in Sources */,
@@ -1238,21 +1439,34 @@
 				E02BEC7B1A024E70002A5F6B /* UIColor+SCBColor.m in Sources */,
 				E0135A421A07FE6400947773 /* SDWebImageDownloaderOperation.m in Sources */,
 				E0276C501A0C766900254AAC /* KKBookFontHeaderPad.m in Sources */,
+				E0DCC27D1A0FA2ED00E87028 /* ThumbsViewController.m in Sources */,
+				E0DCC2951A0FA31000E87028 /* ReaderThumbRequest.m in Sources */,
+				E0DCC2751A0FA2ED00E87028 /* ReaderConstants.m in Sources */,
 				E0F2C7DA1A04D7B400DDE4AE /* KKBookLibraryVC.m in Sources */,
+				E05864E01A0EA28500C688D8 /* ioapi.c in Sources */,
 				E0135A471A07FE6400947773 /* UIImage+MultiFormat.m in Sources */,
+				E0DCC2771A0FA2ED00E87028 /* ReaderViewController.m in Sources */,
 				E0135A4B1A07FE6400947773 /* UIView+WebCacheOperation.m in Sources */,
+				E0DCC2961A0FA31000E87028 /* ReaderThumbCache.m in Sources */,
+				E0DCC27E1A0FA2ED00E87028 /* ThumbsMainToolbar.m in Sources */,
 				E02BEC851A024FD1002A5F6B /* Reachability.m in Sources */,
 				E0B657731A0545C200196B14 /* KKBookLibraryCell.m in Sources */,
 				E01359F01A07DDF000947773 /* AFURLRequestSerialization.m in Sources */,
+				E05864C61A0E46D100C688D8 /* StoreCollectionCell.m in Sources */,
 				E01359EE1A07DDF000947773 /* AFSecurityPolicy.m in Sources */,
 				E01359F91A07EDAF00947773 /* AFAppDotNetAPIClient.m in Sources */,
 				E01359EC1A07DDF000947773 /* AFHTTPSessionManager.m in Sources */,
 				E001CBC71A0BC9AA00A5995E /* KKBookStoreDetailVC.m in Sources */,
+				E0DCC27A1A0FA2ED00E87028 /* ReaderContentView.m in Sources */,
 				E0135A121A07F29C00947773 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				E0B3E4B41A0937170012A450 /* HGPageImageView.m in Sources */,
+				E0DCC29B1A0FA31000E87028 /* ReaderThumbView.m in Sources */,
+				E05864E11A0EA28500C688D8 /* mztools.c in Sources */,
 				E02BEC781A024E61002A5F6B /* NSString+SCBString.m in Sources */,
 				E0276C531A0C769700254AAC /* KKBookFontHeaderPhone.m in Sources */,
 				E0F2C7DE1A04DC3E00DDE4AE /* Repository.m in Sources */,
+				E0DCC27B1A0FA2ED00E87028 /* ReaderContentPage.m in Sources */,
+				E05864D51A0EA26D00C688D8 /* ZipArchive.mm in Sources */,
 				E0135A3E1A07FE6400947773 /* SDImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1365,7 +1579,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PREFIX_HEADER = KKBook/PrefixHeader.pch;
 				INFOPLIST_FILE = KKBooK/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1376,7 +1592,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PREFIX_HEADER = KKBook/PrefixHeader.pch;
 				INFOPLIST_FILE = KKBooK/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #define CELL_WIDTH 130
 
 #define kCollectionCellBorderTop 15.0

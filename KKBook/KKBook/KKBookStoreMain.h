@@ -10,6 +10,16 @@
 #import "HGPageScrollView.h"
 #import "HGPageImageView.h"
 
+@class KKBookStoreMain;
+@class BookModel;
+
+@protocol KKBookStoreMainDelegate <NSObject>
+
+-(void)bookStoreMain:(KKBookStoreMain*)storeMain didBook:(BookModel*)book;
+-(void)bookStoreMain:(KKBookStoreMain *)storeMain didListBook:(BookModel *)book;
+
+@end
+
 @interface KKBookStoreMain : BaseViewController<HGPageScrollViewDelegate, HGPageScrollViewDataSource, UITextFieldDelegate> {
     
     HGPageScrollView *_myPageScrollView;
@@ -18,6 +28,7 @@
     NSMutableIndexSet *indexesToDelete, *indexesToInsert, *indexesToReload;
 }
 
+@property(assign, nonatomic) id<KKBookStoreMainDelegate> delegate;
 
 
 @end

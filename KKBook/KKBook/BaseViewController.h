@@ -10,6 +10,9 @@
 
 @interface BaseViewController : UIViewController
 
+//navigation
+-(void)hiddenBackTitle;
+- (void)addBackNavigation;
 - (void)setNavigationBar;
 
 //progress

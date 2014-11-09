@@ -8,7 +8,7 @@
 
 #import "KKBookLibraryVC.h"
 #import "KKBookLibraryCell.h"
-#import "Repository.h"
+#import "DataManager.h"
 
 @interface KKBookLibraryVC ()
 
@@ -48,7 +48,7 @@
     [self.view addSubview:self.collectionView];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
     
-    self.title = @"Powered By AppDesignvault.com";
+    self.myBook = [[NSMutableArray alloc] initWithArray:[[DataManager shareInstance] selectAllMyBook]];
     
 //    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
 //    flowLayout.collectionView.frame = self.view.frame;
@@ -87,29 +87,30 @@
     [self arrangeCollectionView];
 }
 
+-(void)setMyBook:(NSMutableArray *)myBook{
+    _myBook = myBook;
+    [_collectionView reloadData];
+}
 
 #pragma mark - UICollectionView Datasource
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
     
-    return [[Repository dataIPad] count];
+    return [_myBook count];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
     
-    return 2;
+    return 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     KKBookLibraryCell *cell = (KKBookLibraryCell*)[cv dequeueReusableCellWithReuseIdentifier:LIBRARY_CELL forIndexPath:indexPath];
     
-    NSDictionary *item = [Repository dataIPad][indexPath.row];
+    BookEntity *item = _myBook[indexPath.row];
     cell.backgroundColor = [UIColor clearColor];
-    cell.labelTitle.text = item[@"title"];
-    cell.labelIssue.text = [NSString stringWithFormat:@"ISSUE %@", item[@"issue"]];
-    cell.imageCover.image = [UIImage imageNamed:[NSString stringWithFormat:@"list-item-cover-%@", item[@"cover"]]];
-    
+    [cell setBookEntity:item];
     
     return cell;
     
@@ -138,8 +139,9 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    [self performSegueWithIdentifier:@"detail" sender:self];
+    if ([self delegate]) {
+        [[self delegate] didSelectBook:self withBookEntity:_myBook[indexPath.row]];
+    }
 }
 
 @end

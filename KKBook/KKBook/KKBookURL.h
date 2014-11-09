@@ -11,9 +11,9 @@
 
 #define STORE_MAIN_URL @"http://glive-ubuntu.cloudapp.net/RestKKBooK/index.php/api/book/getHomePage"
 
-
 //for file
-
-#define IMAGE_URL @"http://glive-ubuntu.cloudapp.net/RestKKBooK/kkbook/Resource/"
+#define IMAGE_URL @"http://glive-ubuntu.cloudapp.net/"
+#define BOOK_URL @"http://glive-ubuntu.cloudapp.net/"
+//#define IMAGE_URL @"http://glive-ubuntu.cloudapp.net/RestKKBooK/kkbook/Resource/"
 
 #endif

@@ -70,6 +70,8 @@
     
     if ((NSNull*)value == [NSNull null]) {
         return @"";
+    }else if([value isKindOfClass:[NSNumber class]]){
+        return [(NSNumber*)value stringValue];
     }
     
     NSString *trimed = [(NSString*)value stringByTrimmingLeadingWhitespace];

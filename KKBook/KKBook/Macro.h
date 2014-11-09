@@ -22,7 +22,19 @@
 #define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
+#define appDelegate ((AppDelegate*)[[UIApplication sharedApplication] delegate])
+
 #define CHILD_MARGIN 10
 #define CHILD_WIDTH CGRectGetWidth([UIScreen mainScreen].bounds) - 20
+
+#define KKBOOK_KEY @"KKBook"
+#define DOWNLOADING @"DOWNLOADING"
+#define DOWNLOADFAIL @"DOWNLOADFAIL"
+#define DOWNLOADCOMPLETE @"DOWNLOADCOMPLETE"
+#define DOWNLOADWAITING @"DOWNLOADWAITING"
+
+#define BookDidStart @"BookDidStart"
+#define BookDidFail @"BookDidFail"
+#define BookDidFinish @"BookDidFinish"
 
 #endif
