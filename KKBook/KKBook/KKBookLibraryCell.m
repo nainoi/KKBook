@@ -18,6 +18,8 @@
 - (void)awakeFromNib {
     // Initialization code
     _progresView.hidden = YES;
+    _resumeBtn.hidden = YES;
+    _resumeBtn.backgroundColor = [UIColor colorWithRed:85/255.0 green:85/255.0 blue:85/255.0 alpha:0.65];
     [self removeNotification];
     [self addNotification];
 }
@@ -30,6 +32,7 @@
     if ([_bookEntity.status isEqualToString:DOWNLOADING]) {
         //operation = [[DataManager shareInstance].responceArray valueForKey:[bookEntity.bookID stringValue]];
         _progresView.hidden = NO;
+        _resumeBtn.hidden = YES;
         operation = [[DataManager shareInstance] selectResponseOperationWithBookEntity:bookEntity];
         if (operation) {
             __weak UIProgressView *progress = self.progresView;
@@ -43,8 +46,10 @@
         
     }else if ([_bookEntity.status isEqualToString:DOWNLOADFAIL]){
         _progresView.hidden = YES;
+        _resumeBtn.hidden = NO;
     }else if ([_bookEntity.status isEqualToString:DOWNLOADCOMPLETE]){
         _progresView.hidden = YES;
+        _resumeBtn.hidden = YES;
     }
 }
 -(void)addNotification
@@ -68,6 +73,7 @@
     BookEntity *b = (BookEntity*)[operations.userInfo objectForKey:KKBOOK_KEY];
     if (b.bookID == _bookEntity.bookID) {
         _progresView.hidden = NO;
+        _resumeBtn.hidden = YES;
         [operations setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalByteReading, long long totalByteWrite){
             float prog = (totalByteReading / (totalByteWrite * 1.0f) / 100.0);
             [self.progresView setProgress:prog];
@@ -82,6 +88,7 @@
     BookEntity *b = (BookEntity*)[operations.userInfo objectForKey:KKBOOK_KEY];
     if (b.bookID == _bookEntity.bookID) {
         _progresView.hidden = YES;
+        _resumeBtn.hidden = NO;
     }
 }
 
@@ -91,6 +98,7 @@
     BookEntity *b = (BookEntity*)[operations.userInfo objectForKey:KKBOOK_KEY];
     if (b.bookID == _bookEntity.bookID) {
         _progresView.hidden = YES;
+        _resumeBtn.hidden = YES;
     }
 }
 
@@ -105,4 +113,17 @@
     
 }
 
+- (IBAction)didResume:(id)sender {
+    //operation = [[DataManager shareInstance] selectResponseOperationWithBookEntity:_bookEntity];
+    if (operation) {
+        [operation resume];
+        __weak UIProgressView *progress = self.progresView;
+        [operation setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalByteReading, long long totalByteWrite){
+            float prog = (totalByteReading / (totalByteWrite * 1.0f) /** 100.0*/);
+            [progress setProgress:prog];
+            NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
+        }];
+    }
+
+}
 @end

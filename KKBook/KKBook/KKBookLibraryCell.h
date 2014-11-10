@@ -17,6 +17,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *labelTitle;
 @property (strong, nonatomic) IBOutlet UILabel *labelIssue;
 @property (strong, nonatomic) IBOutlet UIProgressView *progresView;
+@property (strong, nonatomic) IBOutlet UIButton *resumeBtn;
 @property (strong, nonatomic) BookEntity *bookEntity;
+
+- (IBAction)didResume:(id)sender;
 
 @end

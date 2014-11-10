@@ -12,7 +12,10 @@
 #import "KKBookStoreDetailVC.h"
 #import "BaseNavigationController.h"
 
-@interface KKBookStoreMain ()<StoreScrollingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface KKBookStoreMain ()<StoreScrollingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>{
+    int maxBanner;
+    int currentBanner;
+}
 
 @property(strong, nonatomic) UITableView *tableView;
 @property(strong, nonatomic) NSArray *images;
@@ -27,6 +30,7 @@
     [self initBannerView];
     [self initTable];
     [self loadStoreMainData];
+    [self initTimer];
     //[self dummyTable];
 }
 
@@ -49,7 +53,8 @@
         banner.bannerImage = [NSString stringWithFormat:@"image%d", i];
         [_myPageDataArray addObject:banner];
     }
-    
+    currentBanner = 0;
+    maxBanner = _myPageDataArray.count;
     CGRect frame = CGRectMake(10, 5, CHILD_WIDTH, 154);
     
     // now that we have the data, initialize the page scroll view
@@ -173,9 +178,37 @@
             [self.tableView reloadData];
         }
     }];
-    
 //    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
 //    [self.refreshControl setRefreshingWithStateOfTask:task];
 }
+
+#pragma mark - Slide banner
+
+-(void)initTimer{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0
+                                                  target:self
+                                                selector:@selector(slide:)
+                                                userInfo:nil repeats:YES];
+}
+
+-(void)stopAndDeleteTimer{
+    if ([self.timer isValid]) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}
+
+-(void)slide:(NSTimer*)timer{
+    
+    int nextpage = currentBanner+1;
+    if(nextpage > maxBanner-1){
+        nextpage = 0;
+    }
+    currentBanner = nextpage;
+    // update the scroll view to the appropriate page
+    [_myPageScrollView scrollToPageAtIndex:currentBanner animated:YES];
+    
+}
+
 
 @end

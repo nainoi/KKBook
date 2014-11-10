@@ -9,6 +9,8 @@
 #import "DataManager.h"
 #import "AFNetworking.h"
 #import "FileHelper.h"
+#import "AESCrypt.h"
+#import "NSData+CommonCrypto.h"
 
 @implementation DataManager
 
@@ -168,17 +170,35 @@
     operation.userInfo = [NSDictionary dictionaryWithObject:bookEntity forKey:KKBOOK_KEY];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Successfully downloaded file to %@", path);
+        NSString *extractFile = [[[[FileHelper booksPath] stringByAppendingPathComponent:bookEntity.folder]stringByAppendingPathComponent:bookEntity.folder]stringByAppendingPathExtension:@"pdf"];
         if ([FileHelper extractFile:path outputPath:[[FileHelper booksPath] stringByAppendingPathComponent:bookEntity.folder]]) {
             //DELETE OLD FILE
             if (![FileHelper removeAtPath:path]) {
                 //
             }
-            if (downloadStatus) {
-                downloadStatus(DOWNLOADCOMPLETE);
-            }
-            bookEntity.status = DOWNLOADCOMPLETE;
-            [self saveBookEntity:bookEntity];
-            [[NSNotificationCenter defaultCenter] postNotificationName:BookDidFinish object:operation];
+            // call the same method on a background thread
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                if ([FileHelper fileExists:extractFile isDir:NO]) {
+                    //Encrypt pdf file
+                    NSData *pdfData = [NSData dataWithContentsOfFile:extractFile];
+                    NSError *error = nil;
+                    [pdfData AES256EncryptedDataUsingKey:PASSWORD_ENCRYPT error:&error];
+                    [pdfData writeToFile:extractFile options:NSDataWritingAtomic error:&error];
+                    NSLog(@"Write returned error: %@", [error localizedDescription]);
+                }
+                
+                // update UI on the main thread
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (downloadStatus) {
+                        downloadStatus(DOWNLOADCOMPLETE);
+                    }
+                    bookEntity.status = DOWNLOADCOMPLETE;
+                    [self saveBookEntity:bookEntity];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:BookDidFinish object:operation];
+                });
+                
+            });
+            
         }
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -155,6 +155,10 @@
 		E06BAE961A05F921007886F4 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E06BAE941A05F921007886F4 /* background@2x.png */; };
 		E06BAE9A1A0602C9007886F4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E06BAE991A0602C9007886F4 /* MBProgressHUD.m */; };
 		E07FD4551A01407400F890CF /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E07FD4541A01407400F890CF /* BaseViewController.m */; };
+		E09A5AEA1A10BBC100262959 /* AESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = E09A5AE31A10BBC100262959 /* AESCrypt.m */; };
+		E09A5AEB1A10BBC100262959 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E09A5AE51A10BBC100262959 /* NSData+Base64.m */; };
+		E09A5AEC1A10BBC100262959 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = E09A5AE71A10BBC100262959 /* NSData+CommonCrypto.m */; };
+		E09A5AED1A10BBC100262959 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = E09A5AE91A10BBC100262959 /* NSString+Base64.m */; };
 		E0B3E4B11A0937170012A450 /* HGPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B3E4AB1A0937170012A450 /* HGPageScrollView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E0B3E4B21A0937170012A450 /* HGPageScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B3E4AC1A0937170012A450 /* HGPageScrollView.xib */; };
 		E0B3E4B31A0937170012A450 /* HGPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B3E4AE1A0937170012A450 /* HGPageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -445,6 +449,14 @@
 		E07FD4541A01407400F890CF /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = KKBook/BaseViewController.m; sourceTree = SOURCE_ROOT; };
 		E07FD4561A0140E200F890CF /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = KKBook/PrefixHeader.pch; sourceTree = SOURCE_ROOT; };
 		E087374E1A0A8006002AE166 /* KKBookURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookURL.h; path = KKBook/KKBookURL.h; sourceTree = SOURCE_ROOT; };
+		E09A5AE21A10BBC100262959 /* AESCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESCrypt.h; sourceTree = "<group>"; };
+		E09A5AE31A10BBC100262959 /* AESCrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESCrypt.m; sourceTree = "<group>"; };
+		E09A5AE41A10BBC100262959 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		E09A5AE51A10BBC100262959 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		E09A5AE61A10BBC100262959 /* NSData+CommonCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CommonCrypto.h"; sourceTree = "<group>"; };
+		E09A5AE71A10BBC100262959 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
+		E09A5AE81A10BBC100262959 /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
+		E09A5AE91A10BBC100262959 /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
 		E0B3E4AA1A0937170012A450 /* HGPageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGPageScrollView.h; sourceTree = "<group>"; };
 		E0B3E4AB1A0937170012A450 /* HGPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HGPageScrollView.m; sourceTree = "<group>"; };
 		E0B3E4AC1A0937170012A450 /* HGPageScrollView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HGPageScrollView.xib; sourceTree = "<group>"; };
@@ -1100,6 +1112,7 @@
 		E06BAE971A05FE6A007886F4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E09A5AE11A10BBA800262959 /* AESEncypt */,
 				E05864D21A0EA25600C688D8 /* ZipArchive */,
 				E0276C4D1A0C754600254AAC /* CHTCollectionView */,
 				E0B3E4A91A0936F20012A450 /* HGPageScroll */,
@@ -1117,6 +1130,21 @@
 				E06BAE991A0602C9007886F4 /* MBProgressHUD.m */,
 			);
 			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		E09A5AE11A10BBA800262959 /* AESEncypt */ = {
+			isa = PBXGroup;
+			children = (
+				E09A5AE21A10BBC100262959 /* AESCrypt.h */,
+				E09A5AE31A10BBC100262959 /* AESCrypt.m */,
+				E09A5AE41A10BBC100262959 /* NSData+Base64.h */,
+				E09A5AE51A10BBC100262959 /* NSData+Base64.m */,
+				E09A5AE61A10BBC100262959 /* NSData+CommonCrypto.h */,
+				E09A5AE71A10BBC100262959 /* NSData+CommonCrypto.m */,
+				E09A5AE81A10BBC100262959 /* NSString+Base64.h */,
+				E09A5AE91A10BBC100262959 /* NSString+Base64.m */,
+			);
+			name = AESEncypt;
 			sourceTree = "<group>";
 		};
 		E0B3E4A91A0936F20012A450 /* HGPageScroll */ = {
@@ -1378,6 +1406,7 @@
 				E05864CA1A0E8D6800C688D8 /* BookEntity.m in Sources */,
 				E02B06EA1A0A282F00745E57 /* PPImageScrollingCellView.m in Sources */,
 				E02D97331A033C4D0014BCBF /* CHTCollectionViewWaterfallHeader.m in Sources */,
+				E09A5AEC1A10BBC100262959 /* NSData+CommonCrypto.m in Sources */,
 				E0135A161A07F29C00947773 /* UIProgressView+AFNetworking.m in Sources */,
 				E0135A111A07F29C00947773 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				E02BEC571A024012002A5F6B /* KKBookMainVC.m in Sources */,
@@ -1405,6 +1434,7 @@
 				E01359FE1A07EF1B00947773 /* BookModel.m in Sources */,
 				E05864CE1A0E9A9300C688D8 /* DataManager.m in Sources */,
 				E050D5201A00BA6A007B3686 /* BaseNavigationController.m in Sources */,
+				E09A5AED1A10BBC100262959 /* NSString+Base64.m in Sources */,
 				E07FD4551A01407400F890CF /* BaseViewController.m in Sources */,
 				E050D4EC1A00A437007B3686 /* AppDelegate.m in Sources */,
 				E06BAE9A1A0602C9007886F4 /* MBProgressHUD.m in Sources */,
@@ -1413,6 +1443,7 @@
 				E02D97341A033C4D0014BCBF /* CHTCollectionViewWaterfallFooter.m in Sources */,
 				E050D52A1A00DE20007B3686 /* KKBookStoreVC.m in Sources */,
 				E0135A451A07FE6400947773 /* UIButton+WebCache.m in Sources */,
+				E09A5AEA1A10BBC100262959 /* AESCrypt.m in Sources */,
 				E0135A3F1A07FE6400947773 /* SDWebImageCompat.m in Sources */,
 				E0276C601A0C777B00254AAC /* KKBookFontDetailPhone.m in Sources */,
 				E0DCC29C1A0FA31000E87028 /* UIXToolbarView.m in Sources */,
@@ -1458,6 +1489,7 @@
 				E01359EC1A07DDF000947773 /* AFHTTPSessionManager.m in Sources */,
 				E001CBC71A0BC9AA00A5995E /* KKBookStoreDetailVC.m in Sources */,
 				E0DCC27A1A0FA2ED00E87028 /* ReaderContentView.m in Sources */,
+				E09A5AEB1A10BBC100262959 /* NSData+Base64.m in Sources */,
 				E0135A121A07F29C00947773 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				E0B3E4B41A0937170012A450 /* HGPageImageView.m in Sources */,
 				E0DCC29B1A0FA31000E87028 /* ReaderThumbView.m in Sources */,

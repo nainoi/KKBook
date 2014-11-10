@@ -29,6 +29,6 @@
 }
 
 @property(assign, nonatomic) id<KKBookStoreMainDelegate> delegate;
-
+@property (retain, nonatomic) NSTimer *timer;
 
 @end

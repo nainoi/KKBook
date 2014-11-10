@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="list-item-frame.png" translatesAutoresizingMaskIntoConstraints="NO" id="pJN-bf-0MJ">
-                    <rect key="frame" x="-2" y="16" width="135" height="174"/>
+                    <rect key="frame" x="-2" y="21" width="135" height="166"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="phone.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="aSc-8V-5Ms">
                     <rect key="frame" x="8" y="16" width="115" height="159"/>
@@ -20,6 +20,16 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="list-item-stage.png" translatesAutoresizingMaskIntoConstraints="NO" id="wea-DM-IQi">
                     <rect key="frame" x="-1" y="170" width="132" height="23"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sj-Br-2ER">
+                    <rect key="frame" x="8" y="22" width="114" height="153"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Resume">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didResume:" destination="-1" eventType="touchUpInside" id="HkR-kg-E5Z"/>
+                    </connections>
+                </button>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FuC-qw-Cfw">
                     <rect key="frame" x="8" y="89" width="116" height="2"/>
                     <color key="progressTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -33,8 +43,9 @@
             <connections>
                 <outlet property="imageCover" destination="aSc-8V-5Ms" id="Lx2-kF-Jbl"/>
                 <outlet property="progresView" destination="FuC-qw-Cfw" id="Rqr-Rz-3Uq"/>
+                <outlet property="resumeBtn" destination="0sj-Br-2ER" id="7bE-mQ-Ujn"/>
             </connections>
-            <point key="canvasLocation" x="-22" y="473"/>
+            <point key="canvasLocation" x="-22" y="471"/>
         </collectionReusableView>
     </objects>
     <resources>

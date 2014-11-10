@@ -38,4 +38,7 @@
 #define BookDidFail @"BookDidFail"
 #define BookDidFinish @"BookDidFinish"
 
+#define PASSWORD_ENCRYPT @"GLive2014KKBOOKKAENkhon"
+#define PASSWORD_UNZIP @"kKBook2014KaenKhon&nine&lek"
+
 #endif
