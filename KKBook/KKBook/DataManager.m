@@ -28,6 +28,13 @@
     return _sharedObject;
 }
 
+-(NSMutableArray *)responceArray{
+    if (!_responceArray) {
+        self.responceArray = [[NSMutableArray alloc] init];
+    }
+    return _responceArray;
+}
+
 -(NSManagedObjectContext *)managedObjectContext{
     return [appDelegate managedObjectContext];
 }
@@ -76,8 +83,9 @@
     if (![context save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:BookDidStart object:nil];
     [self downloadImageCover:bookEntity.imageUrl onComplete:^(NSString *imagePath){
+        //[self performSelector:@selector(downloadBook:onComplete:) withObject:bookEntity afterDelay:0.75];
         [self downloadBook:bookEntity onComplete:^(NSString *status){
             if (completionBlock) {
                 completionBlock([self selectAllMyBook]);
@@ -158,7 +166,6 @@
     NSString *path = [[FileHelper booksPath] stringByAppendingPathComponent:[bookEntity.folder stringByAppendingPathComponent:[ bookEntity.fileUrl lastPathComponent]]];
     operation.outputStream = [NSOutputStream outputStreamToFileAtPath:path append:NO];
     operation.userInfo = [NSDictionary dictionaryWithObject:bookEntity forKey:KKBOOK_KEY];
-    
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Successfully downloaded file to %@", path);
         if ([FileHelper extractFile:path outputPath:[[FileHelper booksPath] stringByAppendingPathComponent:bookEntity.folder]]) {
@@ -186,13 +193,23 @@
     
     bookEntity.status = DOWNLOADING;
     [self saveBookEntity:bookEntity];
-    [[NSNotificationCenter defaultCenter] postNotificationName:BookDidStart object:operation];
+    [self.responceArray addObject:operation];
+    [[NSNotificationCenter defaultCenter] postNotificationName:BookDidResponce object:operation];
     [operation start];
     if (downloadStatus) {
         downloadStatus(DOWNLOADING);
     }
-    
-    
+}
+
+-(AFHTTPRequestOperation*)selectResponseOperationWithBookEntity:(BookEntity*)bookEntity{
+    for (AFHTTPRequestOperation *operation in self.responceArray) {
+        BookEntity *book = (BookEntity*)[operation.userInfo objectForKey:KKBOOK_KEY];
+        NSLog(@"id = %@, id = %@",bookEntity.bookID, book.bookID);
+        if (book.bookID == bookEntity.bookID) {
+            return operation;
+        }
+    }
+    return nil;
 }
 
 @end

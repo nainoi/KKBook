@@ -166,7 +166,7 @@
     KKBookStoreDetailVC *bookDetailVC = [[KKBookStoreDetailVC alloc] initWithBook:book];
     bookDetailVC.didDownload = ^(BookModel *bookModel){
         [[DataManager shareInstance] insertBookWithBookModel:bookModel onComplete:^(NSArray *books){
-            [libraryVC setMyBook:[[NSMutableArray alloc] initWithArray:books]];
+            //[libraryVC setMyBook:[[NSMutableArray alloc] initWithArray:books]];
             [self sidebar:_leftSideBar didTapItemAtIndex:1];
         }];
     };

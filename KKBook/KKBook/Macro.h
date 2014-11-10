@@ -34,6 +34,7 @@
 #define DOWNLOADWAITING @"DOWNLOADWAITING"
 
 #define BookDidStart @"BookDidStart"
+#define BookDidResponce @"BookDidResponce"
 #define BookDidFail @"BookDidFail"
 #define BookDidFinish @"BookDidFinish"
 

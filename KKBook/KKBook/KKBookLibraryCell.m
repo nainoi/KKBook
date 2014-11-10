@@ -9,8 +9,11 @@
 #import "KKBookLibraryCell.h"
 #import "FileHelper.h"
 #import "AFHTTPRequestOperation.h"
+#import "DataManager.h"
 
-@implementation KKBookLibraryCell
+@implementation KKBookLibraryCell{
+    AFHTTPRequestOperation *operation;
+}
 
 - (void)awakeFromNib {
     // Initialization code
@@ -24,30 +27,49 @@
     NSString *coverPath = [[FileHelper coversPath] stringByAppendingPathComponent:_bookEntity.coverName];
     UIImage *image = [UIImage imageWithContentsOfFile:coverPath];
     [_imageCover setImage:image];
+    if ([_bookEntity.status isEqualToString:DOWNLOADING]) {
+        //operation = [[DataManager shareInstance].responceArray valueForKey:[bookEntity.bookID stringValue]];
+        _progresView.hidden = NO;
+        operation = [[DataManager shareInstance] selectResponseOperationWithBookEntity:bookEntity];
+        if (operation) {
+            __weak UIProgressView *progress = self.progresView;
+            [operation setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalByteReading, long long totalByteWrite){
+                float prog = (totalByteReading / (totalByteWrite * 1.0f) /** 100.0*/);
+                [progress setProgress:prog];
+                NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
+            }];
+        }
+        
+        
+    }else if ([_bookEntity.status isEqualToString:DOWNLOADFAIL]){
+        _progresView.hidden = YES;
+    }else if ([_bookEntity.status isEqualToString:DOWNLOADCOMPLETE]){
+        _progresView.hidden = YES;
+    }
 }
 -(void)addNotification
 {
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(responceDownload:) name:BookDidStart object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(responceDownload:) name:BookDidResponce object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failDownload:) name:BookDidFail object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishDownload:) name:BookDidFinish object:nil];
 }
 
 -(void)removeNotification
 {
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:BookDidStart object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:BookDidResponce object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:BookDidFail object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:BookDidFinish object:nil];
 }
 
 -(void)responceDownload:(NSNotification*)noti
 {
-    AFHTTPRequestOperation *operation = (AFHTTPRequestOperation*)noti.object;
-    BookEntity *b = (BookEntity*)[operation.userInfo objectForKey:KKBOOK_KEY];
+    AFHTTPRequestOperation *operations = (AFHTTPRequestOperation*)noti.object;
+    BookEntity *b = (BookEntity*)[operations.userInfo objectForKey:KKBOOK_KEY];
     if (b.bookID == _bookEntity.bookID) {
         _progresView.hidden = NO;
-        [operation setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalByteReading, long long totalByteWrite){
-            float prog = (totalByteReading / (totalByteWrite * 1.0f) * 100);
+        [operations setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalByteReading, long long totalByteWrite){
+            float prog = (totalByteReading / (totalByteWrite * 1.0f) / 100.0);
             [self.progresView setProgress:prog];
             NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
         }];
@@ -56,8 +78,8 @@
 
 -(void)failDownload:(NSNotification*)noti
 {
-    AFHTTPRequestOperation *operation = (AFHTTPRequestOperation*)noti.object;
-    BookEntity *b = (BookEntity*)[operation.userInfo objectForKey:KKBOOK_KEY];
+    AFHTTPRequestOperation *operations = (AFHTTPRequestOperation*)noti.object;
+    BookEntity *b = (BookEntity*)[operations.userInfo objectForKey:KKBOOK_KEY];
     if (b.bookID == _bookEntity.bookID) {
         _progresView.hidden = YES;
     }
@@ -65,8 +87,8 @@
 
 -(void)finishDownload:(NSNotification*)noti
 {
-    AFHTTPRequestOperation *operation = (AFHTTPRequestOperation*)noti.object;
-    BookEntity *b = (BookEntity*)[operation.userInfo objectForKey:KKBOOK_KEY];
+    AFHTTPRequestOperation *operations = (AFHTTPRequestOperation*)noti.object;
+    BookEntity *b = (BookEntity*)[operations.userInfo objectForKey:KKBOOK_KEY];
     if (b.bookID == _bookEntity.bookID) {
         _progresView.hidden = YES;
     }

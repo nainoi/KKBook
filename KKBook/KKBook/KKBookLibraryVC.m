@@ -40,21 +40,15 @@
 
 
 - (void)viewDidLoad {
-    //[self.collectionView registerClass:[KKBookLibraryCell class] forCellWithReuseIdentifier:LIBRARY_CELL];
-//    UINib *nib = [UINib nibWithNibName:LIBRARY_CELL bundle: nil];
-//    [self.collectionView registerNib:nib forCellWithReuseIdentifier:LIBRARY_CELL];
-//    self.collectionView.frame = self.view.frame;
     [self.collectionView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:self.collectionView];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
     
     self.myBook = [[NSMutableArray alloc] initWithArray:[[DataManager shareInstance] selectAllMyBook]];
     
-//    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-//    flowLayout.collectionView.frame = self.view.frame;
-    //flowLayout.scrollDirection =  UICollectionViewScrollDirectionHorizontal;
-    
     [super viewDidLoad];
+    [self removeNotification];
+    [self addNotification];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -87,10 +81,31 @@
     [self arrangeCollectionView];
 }
 
--(void)setMyBook:(NSMutableArray *)myBook{
-    _myBook = myBook;
+-(void)addNotification
+{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startDownload:) name:BookDidStart object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(responceDownload:) name:BookDidResponce object:nil];
+}
+
+-(void)removeNotification
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:BookDidStart object:nil];
+}
+
+-(void)startDownload:(NSNotification*)noti{
+    self.myBook = [[NSMutableArray alloc] initWithArray:[[DataManager shareInstance] selectAllMyBook]];
+    //[_collectionView reloadData];
+}
+
+-(void)responceDownload:(NSNotification*)noti
+{
     [_collectionView reloadData];
 }
+//-(void)setMyBook:(NSMutableArray *)myBook{
+//    _myBook = myBook;
+//    [_collectionView reloadData];
+//}
 
 #pragma mark - UICollectionView Datasource
 
