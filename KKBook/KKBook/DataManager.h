@@ -22,7 +22,7 @@
 
 -(NSArray*)selectAllMyBook;
 -(void)insertBookWithBookModel:(BookModel*)bookModel onComplete:(void (^)(NSArray *))completionBlock;
--(void)deleteBookWithBookID:(NSString *)bookID onComplete:(void (^)(NSArray *))completionBlock;
+-(void)deleteBookWithBookID:(BookEntity *)bookEntity onComplete:(void (^)(NSArray *))completionBlock;
 -(BookEntity*)selectBookFromBookID:(NSString*)bookID;
 
 -(void)downloadBook:(BookEntity*)bookEntity onComplete:(void (^)(NSString *))downloadStatus;

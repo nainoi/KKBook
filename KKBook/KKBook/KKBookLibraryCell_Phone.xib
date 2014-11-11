@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KKBookLibraryCell"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionReusableView opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KKBookLibraryCell_Phone" id="isx-e2-7cf" customClass="KKBookLibraryCell">
-            <rect key="frame" x="0.0" y="0.0" width="130" height="206"/>
+            <rect key="frame" x="0.0" y="0.0" width="133" height="207"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="list-item-frame.png" translatesAutoresizingMaskIntoConstraints="NO" id="pJN-bf-0MJ">
@@ -38,17 +38,28 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="list-item-glare.png" translatesAutoresizingMaskIntoConstraints="NO" id="UuZ-Nx-VAR">
                     <rect key="frame" x="11" y="22" width="109" height="105"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2IO-0S-KxF">
+                    <rect key="frame" x="100" y="8" width="32" height="32"/>
+                    <state key="normal" image="delete.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didDelete:" destination="-1" eventType="touchUpInside" id="Koo-bs-coB"/>
+                    </connections>
+                </button>
             </subviews>
             <gestureRecognizers/>
             <connections>
+                <outlet property="deleteBtn" destination="2IO-0S-KxF" id="f1L-CD-rhr"/>
                 <outlet property="imageCover" destination="aSc-8V-5Ms" id="Lx2-kF-Jbl"/>
                 <outlet property="progresView" destination="FuC-qw-Cfw" id="Rqr-Rz-3Uq"/>
                 <outlet property="resumeBtn" destination="0sj-Br-2ER" id="7bE-mQ-Ujn"/>
             </connections>
-            <point key="canvasLocation" x="-22" y="471"/>
+            <point key="canvasLocation" x="-20.5" y="471.5"/>
         </collectionReusableView>
     </objects>
     <resources>
+        <image name="delete.png" width="32" height="32"/>
         <image name="list-item-frame.png" width="135" height="176"/>
         <image name="list-item-glare.png" width="109" height="111"/>
         <image name="list-item-stage.png" width="132" height="23"/>

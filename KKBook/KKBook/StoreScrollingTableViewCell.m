@@ -97,7 +97,7 @@
     [self.contentView addSubview:_imageScrollingView];
 }
 
-#pragma mark - PPImageScrollingViewDelegate
+#pragma mark - PPImage delegate
 
 -(void)collectionView:(PPImageScrollingCellView *)collectionView didSelectBook:(BookModel *)book{
     [self.delegate scrollingTableViewCell:self didSelectBook:book];

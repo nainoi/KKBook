@@ -11,12 +11,19 @@
 #import "CHTCollectionViewWaterfallHeader.h"
 #import "CHTCollectionViewWaterfallFooter.h"
 #import "KKBookStoreCollectionCell.h"
+#import "UIAlertView+AFNetworking.h"
+#import "UIImage+WebP.h"
+#import "SDImageCache.h"
+#import "UIImageView+WebCache.h"
+#import <ImageIO/ImageIO.h>
 
 #define CELL_IDENTIFIER @"WaterfallCell"
 #define HEADER_IDENTIFIER @"WaterfallHeader"
 #define FOOTER_IDENTIFIER @"WaterfallFooter"
 
-@interface KKBookStoreVC ()
+@interface KKBookStoreVC (){
+    UIImage *cover;
+}
 
 @property (nonatomic, strong) NSMutableArray *cellSizes;
 @property (strong, nonatomic) NSMutableArray *books;
@@ -57,6 +64,37 @@
     return _collectionView;
 }
 
+-(void)fillSizeArray
+{
+    for (int i=0; i<[self.books count]; i++)
+    {
+        NSNumber *width = [NSNumber numberWithFloat:200];
+        NSNumber *height = [NSNumber numberWithFloat:200];
+        
+        BookModel *book = _books[i];
+        NSString *urlString = book.coverImageURL;
+        NSURL *imageFileURL = [NSURL URLWithString:urlString];
+        CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)imageFileURL, NULL);
+        CGSize rctSizeFinal = CGSizeZero;
+        if (imageSource) {
+            NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithBool:NO], (NSString *)kCGImageSourceShouldCache, nil];
+            CFDictionaryRef imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, (__bridge CFDictionaryRef)options);
+            if (imageProperties) {
+                width = (NSNumber *)CFDictionaryGetValue(imageProperties, kCGImagePropertyPixelWidth);
+                height = (NSNumber *)CFDictionaryGetValue(imageProperties, kCGImagePropertyPixelHeight);
+                
+                
+                CGSize textSize = [self labelSizeForString:book.bookName];
+                double scale = (CELL_WIDTH  - (kCollectionCellBorderLeft + kCollectionCellBorderRight)) / [width floatValue];
+                rctSizeFinal = CGSizeMake([width floatValue]*scale ,([height floatValue] * scale)+(textSize.height));
+                NSLog(@"Image dimensions: %f x %f px", rctSizeFinal.width, rctSizeFinal.height);
+                CFRelease(imageProperties);
+            }
+        }
+        _cellSizes[i] = [NSValue valueWithCGSize:rctSizeFinal];
+    }
+}
+
 //- (NSMutableArray *)cellSizes {
 //    if (!_cellSizes) {
 //        _cellSizes = [NSMutableArray array];
@@ -68,22 +106,6 @@
 //    return _cellSizes;
 //}
 
--(void)initArray{
-    NSArray *data = @[@{@"price":@"FREE", @"image":@"phone.jpg", @"name":@"Hello world"},
-                      @{@"price":@"FREE", @"image":@"cat2.jpg", @"name":@"สวนเรืองแสง"},
-                      @{@"price":@"120", @"image":@"cat4.jpg", @"name":@"Note that it’s not needed to include the ending"},
-                      @{@"price":@"299", @"image":@"cat3.jpg", @"name":@"Hello world"},
-                      @{@"price":@"FREE", @"image":@"phone.jpg", @"name":@"Hello world"},
-                      @{@"price":@"FREE", @"image":@"cat1.jpg", @"name":@"Hello world"},
-                      @{@"price":@"FREE", @"image":@"cat1.jpg", @"name":@"documentation"},
-                      @{@"price":@"FREE", @"image":@"cat3.jpg", @"name":@"วัฒนธรรมอีสาน ตำนานผาแดงนางไอ่"},
-                      @{@"price":@"399", @"image":@"phone.jpg", @"name":@"Hello world"},
-                      @{@"price":@"FREE", @"image":@"cat3.jpg", @"name":@"งานไหมและงานผูกเสี่ยว"},
-                      @{@"price":@"FREE", @"image":@"cat1.jpg", @"name":@"เที่ยวธรรมชาติที่ภูกระดึง"},
-                      @{@"price":@"2999", @"image":@"phone.jpg", @"name":@"วัฒนธรรมอีสาน ตำนานผาแดงนางไอ่"}];
-    _books = [[NSMutableArray alloc] initWithArray:data];
-}
-
 #pragma mark - Life Cycle
 
 - (void)dealloc {
@@ -93,7 +115,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initArray];
+    [self requestListBook];
     [self.view addSubview:self.collectionView];
 }
 
@@ -121,6 +143,21 @@
     layout.columnCount = [Utility isPad] ? 4 : 2;
 }
 
+#pragma mark - request book
+
+-(void)requestListBook{
+    [self showProgressLoading];
+    NSURLSessionTask *task = [KKBookService listAllBookService:^(NSArray *array, NSError *error) {
+        [self dismissProgress];
+        if (!error) {
+            _books = [[NSMutableArray alloc] initWithArray:array];
+            [self fillSizeArray];
+            [self.collectionView reloadData];
+        }
+    }];
+    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
+}
+
 #pragma mark - UICollectionViewDataSource
 
 //- (CGFloat)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout heightForItemAtIndexPath:(NSIndexPath*)indexPath
@@ -143,9 +180,10 @@
 //    return cell;
     KKBookStoreCollectionCell *cell =
     (KKBookStoreCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER
-                                                                                forIndexPath:indexPath];
+                                                                           forIndexPath:indexPath];
+    BookModel *model = _books[indexPath.row];
     cell.backgroundColor = [UIColor clearColor];
-    cell.book = _books[indexPath.row];
+    cell.bookModel = model;
     //cell.displayString = [NSString stringWithFormat:@"cell %ld", (long)indexPath.item];
     return cell;
 }
@@ -167,15 +205,26 @@
 }
 
 #pragma mark - CHTCollectionViewDelegateWaterfallLayout
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(CHTCollectionViewWaterfallLayout *)collectionViewLayout
+ heightForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return [self.cellSizes[indexPath.section + 1 * indexPath.item] floatValue];
+}
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    return /* a different size if the image is done downloading yet */;
+//}
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    //return [self.cellSizes[indexPath.item] CGSizeValue];
-    return [self computeSizeForRowAtIndexPath:indexPath.item];
+    return [self.cellSizes[indexPath.item] CGSizeValue];
+    return CGSizeMake(200.0, 180.0);
 }
 
--(CGSize)computeSizeForRowAtIndexPath:(NSInteger)index{
-    NSDictionary *dic = _books[index];
-    CGSize size = [UIImage imageNamed:dic[@"image"]].size;
-    CGSize textSize = [self labelSizeForString:dic[@"name"]];
+-(CGSize)computeSizeForRowAtIndexPath:(NSIndexPath*)indexPath{
+//    KKBookStoreCollectionCell *cell = (KKBookStoreCollectionCell*)[_collectionView dequeueReusableCellWithReuseIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
+//    cell = (KKBookStoreCollectionCell*)[_collectionView cellForItemAtIndexPath:indexPath];
+    BookModel *book = _books[indexPath.row];
+    CGSize size = cover.size;
+    CGSize textSize = [self labelSizeForString:book.bookName];
     double scale = (CELL_WIDTH  - (kCollectionCellBorderLeft + kCollectionCellBorderRight)) / size.width;
     CGSize rctSizeFinal = CGSizeMake(size.width*scale ,(size.height * scale)+(textSize.height));
     return rctSizeFinal;

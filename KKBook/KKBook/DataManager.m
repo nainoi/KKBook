@@ -96,8 +96,31 @@
     }];
 }
 
--(void)deleteBookWithBookID:(NSString *)bookID onComplete:(void (^)(NSArray *))completionBlock{
-
+-(void)deleteBookWithBookID:(BookEntity *)bookEntity onComplete:(void (^)(NSArray *))completionBlock{
+    NSString *folder = [[FileHelper booksPath] stringByAppendingPathComponent:bookEntity.folder];
+    if ([folder isEqualToString:[FileHelper booksPath]]) {
+        JLLog( @"Book folder is invalid:%@",folder);
+    }
+    
+    [[self managedObjectContext] deleteObject:bookEntity];
+    if([[self managedObjectContext] save:nil]){
+        
+        NSString *dlTempPath = [folder stringByAppendingPathExtension:@"tmp"];
+        if ([FileHelper fileExists:dlTempPath isDir:NO]) {
+            [FileHelper removeAtPath:dlTempPath];
+        }
+        
+        NSLog(@"Delete complete:%@",[folder lastPathComponent]);
+        if (![folder isEqualToString:[FileHelper booksPath]]){
+            [FileHelper removeDirAtPath:folder];
+        }
+        
+        if (completionBlock) {
+            completionBlock([self selectAllMyBook]);
+        }
+    }else{
+        
+    }
 }
 
 -(BookEntity *)selectBookFromBookID:(NSString *)bookID{
@@ -170,34 +193,40 @@
     operation.userInfo = [NSDictionary dictionaryWithObject:bookEntity forKey:KKBOOK_KEY];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Successfully downloaded file to %@", path);
-        NSString *extractFile = [[[[FileHelper booksPath] stringByAppendingPathComponent:bookEntity.folder]stringByAppendingPathComponent:bookEntity.folder]stringByAppendingPathExtension:@"pdf"];
+        //NSString *extractFile = [[[[FileHelper booksPath] stringByAppendingPathComponent:bookEntity.folder]stringByAppendingPathComponent:bookEntity.folder]stringByAppendingPathExtension:@"pdf"];
         if ([FileHelper extractFile:path outputPath:[[FileHelper booksPath] stringByAppendingPathComponent:bookEntity.folder]]) {
             //DELETE OLD FILE
             if (![FileHelper removeAtPath:path]) {
                 //
             }
+            if (downloadStatus) {
+                downloadStatus(DOWNLOADCOMPLETE);
+            }
+            bookEntity.status = DOWNLOADCOMPLETE;
+            [self saveBookEntity:bookEntity];
+            [[NSNotificationCenter defaultCenter] postNotificationName:BookDidFinish object:operation];
             // call the same method on a background thread
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                if ([FileHelper fileExists:extractFile isDir:NO]) {
-                    //Encrypt pdf file
-                    NSData *pdfData = [NSData dataWithContentsOfFile:extractFile];
-                    NSError *error = nil;
-                    [pdfData AES256EncryptedDataUsingKey:PASSWORD_ENCRYPT error:&error];
-                    [pdfData writeToFile:extractFile options:NSDataWritingAtomic error:&error];
-                    NSLog(@"Write returned error: %@", [error localizedDescription]);
-                }
-                
-                // update UI on the main thread
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (downloadStatus) {
-                        downloadStatus(DOWNLOADCOMPLETE);
-                    }
-                    bookEntity.status = DOWNLOADCOMPLETE;
-                    [self saveBookEntity:bookEntity];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:BookDidFinish object:operation];
-                });
-                
-            });
+//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//                if ([FileHelper fileExists:extractFile isDir:NO]) {
+//                    //Encrypt pdf file
+//                    NSData *pdfData = [NSData dataWithContentsOfFile:extractFile];
+//                    NSError *error = nil;
+//                    [pdfData AES256EncryptedDataUsingKey:PASSWORD_ENCRYPT error:&error];
+//                    [pdfData writeToFile:extractFile options:NSDataWritingAtomic error:&error];
+//                    NSLog(@"Write returned error: %@", [error localizedDescription]);
+//                }
+//                
+//                // update UI on the main thread
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    if (downloadStatus) {
+//                        downloadStatus(DOWNLOADCOMPLETE);
+//                    }
+//                    bookEntity.status = DOWNLOADCOMPLETE;
+//                    [self saveBookEntity:bookEntity];
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:BookDidFinish object:operation];
+//                });
+//                
+//            });
             
         }
 

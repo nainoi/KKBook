@@ -215,8 +215,8 @@
 	BOOL ret = NO;
 	ZipArchive* za = [[ZipArchive alloc] init];
 	
-	//if( [za UnzipOpenFile:path Password:@"1my2zip3p@ssw0rd4+.mm5file"] )
-    if( [za UnzipOpenFile:path]) //for test
+	if( [za UnzipOpenFile:path Password:PASSWORD_UNZIP] )
+    //if( [za UnzipOpenFile:path]) //for test
 		// if the Password is empty, get same  effect as if( [za UnzipOpenFile:@"/Volumes/data/testfolder/Archive.zip"] )
 	{
 		ret = [za UnzipFileTo:destPath overWrite:YES];

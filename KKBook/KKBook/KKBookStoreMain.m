@@ -11,10 +11,11 @@
 #import "StoreScrollingTableViewCell.h"
 #import "KKBookStoreDetailVC.h"
 #import "BaseNavigationController.h"
+#import "UIAlertView+AFNetworking.h"
 
 @interface KKBookStoreMain ()<StoreScrollingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>{
-    int maxBanner;
-    int currentBanner;
+    unsigned long maxBanner;
+    unsigned long currentBanner;
 }
 
 @property(strong, nonatomic) UITableView *tableView;
@@ -29,6 +30,7 @@
     [super viewDidLoad];
     [self initBannerView];
     [self initTable];
+    //[self addNavigationItem];
     [self loadStoreMainData];
     //[self dummyTable];
 }
@@ -69,6 +71,10 @@
     _myPageScrollView.dataSource = self;
     [self.view addSubview:_myPageScrollView];
     [_myPageScrollView reloadData];
+}
+-(void)addNavigationItem{
+    UIBarButtonItem *allBtn = [[UIBarButtonItem alloc] initWithTitle:@"ALL" style:UIBarButtonItemStylePlain target:self action:@selector(showAllBook)];
+    super.navigationItem.rightBarButtonItem = allBtn;
 }
 
 #pragma mark -
@@ -167,14 +173,22 @@
     }
 }
 -(void)loadStoreMainData{
+    [self showProgressLoading];
     NSURLSessionTask *task = [KKBookService storeMainService:^(NSArray *source, NSError *error) {
+        [self dismissProgress];
         if (!error) {
             self.dataSource = source;
             [self.tableView reloadData];
         }
     }];
-//    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
+    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
 //    [self.refreshControl setRefreshingWithStateOfTask:task];
+}
+
+-(void)showAllBook{
+    if ([self delegate]) {
+        [[self delegate] bookStoreMain:self didListBook:nil];
+    }
 }
 
 #pragma mark - Slide banner
@@ -195,7 +209,7 @@
 
 -(void)slide:(NSTimer*)timer{
     
-    int nextpage = currentBanner+1;
+    unsigned long nextpage = currentBanner+1;
     if(nextpage > maxBanner-1){
         nextpage = 0;
     }
@@ -204,6 +218,5 @@
     [_myPageScrollView scrollToPageAtIndex:currentBanner animated:YES];
     
 }
-
 
 @end

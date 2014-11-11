@@ -21,6 +21,7 @@
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property(nonatomic, strong) NSMutableArray *myBook;
+@property(nonatomic, assign) BOOL isDelete;
 @property(nonatomic, assign) id<KKBookLibraryDelegate> delegate;
 
 @end

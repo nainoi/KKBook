@@ -48,11 +48,11 @@
 #pragma mark - progress
 
 -(void)showProgressLoading{
-    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:HUD];
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
     
     HUD.delegate = self;
-    HUD.labelText = @"Loading";
+    HUD.labelText = @"Loading...";
     
     [HUD show:YES];
 }
@@ -61,6 +61,12 @@
     [HUD hide:YES];
 }
 
+#pragma mark - alertview
+
+-(void)showAlertWithMessage:(NSString*)message{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"KKBook" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alertView show];
+}
 /*
 #pragma mark - Navigation
 

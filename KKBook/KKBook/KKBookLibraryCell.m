@@ -53,6 +53,13 @@
         _progresView.hidden = YES;
         _resumeBtn.hidden = YES;
     }
+    
+    if (_isDelete) {
+        _deleteBtn.hidden = NO;
+        
+    }else{
+        _deleteBtn.hidden = YES;
+    }
 }
 -(void)addNotification
 {
@@ -133,6 +140,14 @@
             [[DataManager shareInstance] downloadBook:_bookEntity onComplete:^(NSString* status){
                 
             }];
+        }
+    }
+}
+
+- (IBAction)didDelete:(id)sender {
+    if (_isDelete) {
+        if ([self delegate]) {
+            [[self delegate] deleteBookOnLibrary:self withBookEntity:_bookEntity];
         }
     }
 }

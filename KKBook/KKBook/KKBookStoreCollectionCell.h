@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookModel.h"
 
 #define CELL_WIDTH 130
 
@@ -20,6 +21,6 @@
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *priceLabel;
 @property (nonatomic, strong) UIImageView *coverImageView;
-@property (nonatomic, strong) NSDictionary *book;
+@property (nonatomic, strong) BookModel *bookModel;
 
 @end

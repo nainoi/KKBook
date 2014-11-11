@@ -10,7 +10,7 @@
 #import "KKBookLibraryCell.h"
 #import "DataManager.h"
 
-@interface KKBookLibraryVC ()
+@interface KKBookLibraryVC ()<KKBookLibraryCellDelegate>
 
 @end
 
@@ -102,6 +102,11 @@
 {
     [_collectionView reloadData];
 }
+
+-(void)setIsDelete:(BOOL)isDelete{
+    _isDelete = isDelete;
+    [_collectionView reloadData];
+}
 //-(void)setMyBook:(NSMutableArray *)myBook{
 //    _myBook = myBook;
 //    [_collectionView reloadData];
@@ -125,6 +130,7 @@
     
     BookEntity *item = _myBook[indexPath.row];
     cell.backgroundColor = [UIColor clearColor];
+    [cell setIsDelete:_isDelete];
     [cell setBookEntity:item];
     
     return cell;
@@ -154,16 +160,31 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    KKBookLibraryCell *cell = (KKBookLibraryCell*)[collectionView dequeueReusableCellWithReuseIdentifier:LIBRARY_CELL forIndexPath:indexPath];
-    cell = (KKBookLibraryCell*)[collectionView cellForItemAtIndexPath:indexPath];
-    if ([cell.bookEntity.status isEqualToString:DOWNLOADCOMPLETE]) {
-        if ([self delegate]) {
-            [[self delegate] didSelectBook:self withBookEntity:_myBook[indexPath.row]];
+    if (!_isDelete) {
+        KKBookLibraryCell *cell = (KKBookLibraryCell*)[collectionView dequeueReusableCellWithReuseIdentifier:LIBRARY_CELL forIndexPath:indexPath];
+        cell = (KKBookLibraryCell*)[collectionView cellForItemAtIndexPath:indexPath];
+        if ([cell.bookEntity.status isEqualToString:DOWNLOADCOMPLETE]) {
+            if ([self delegate]) {
+                [[self delegate] didSelectBook:self withBookEntity:_myBook[indexPath.row]];
+            }
+        }else if ([cell.bookEntity.status isEqualToString:DOWNLOADFAIL]){
+            [cell didResume:cell.resumeBtn];
         }
-    }else if ([cell.bookEntity.status isEqualToString:DOWNLOADFAIL]){
-        [cell didResume:cell.resumeBtn];
+    }else{
+        [[DataManager shareInstance] deleteBookWithBookID:_myBook[indexPath.row] onComplete:^(NSArray *array){
+            self.myBook = [[NSMutableArray alloc] initWithArray:[[DataManager shareInstance] selectAllMyBook]];
+            [_collectionView reloadData];
+        }];
     }
-    
+}
+
+#pragma mark - delegate
+
+-(void)deleteBookOnLibrary:(KKBookLibraryCell *)cell withBookEntity:(BookEntity *)bookEntity{
+    [[DataManager shareInstance] deleteBookWithBookID:bookEntity onComplete:^(NSArray *array){
+        self.myBook = [[NSMutableArray alloc] initWithArray:[[DataManager shareInstance] selectAllMyBook]];
+        [_collectionView reloadData];
+    }];
 }
 
 @end

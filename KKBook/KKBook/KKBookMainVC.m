@@ -41,6 +41,7 @@
     libraryVC.delegate = self;
     [self setNavigationBar];
     [self setMainMenuItem];
+    [self addNavigationItem];
     [self initMainViewController];
     [self toggleViewController];
 }
@@ -111,6 +112,21 @@
     self.navigationItem.leftBarButtonItem = mainMenu;
 }
 
+#pragma mark - navigation item
+
+-(void)addNavigationItem{
+    if (_pageType == STORE) {
+        UIBarButtonItem *allBtn = [[UIBarButtonItem alloc] initWithTitle:@"ALL" style:UIBarButtonItemStylePlain target:self action:@selector(showAllBook)];
+        self.navigationItem.rightBarButtonItem = allBtn;
+    }else if (_pageType == LIBRARY){
+        UIBarButtonItem *allBtn = [[UIBarButtonItem alloc] initWithTitle:@"EDIT" style:UIBarButtonItemStylePlain target:self action:@selector(showDeleteBook)];
+        self.navigationItem.rightBarButtonItem = allBtn;
+    }else{
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+    
+}
+
 -(KKBookLeftSidebar *)leftSideBar{
     if (!_leftSideBar) {
         NSArray *images = @[
@@ -138,7 +154,7 @@
 
 -(void)tapLeftMainMenu{
            //    callout.showFromRight = YES;
-    [_leftSideBar show];
+    [self.leftSideBar show];
 
 }
 
@@ -155,6 +171,7 @@
         
     }
     [self toggleViewController];
+    [self addNavigationItem];
     [sidebar dismissAnimated:YES completion:nil];
 }
 
@@ -182,7 +199,22 @@
 }
 
 -(void)bookStoreMain:(KKBookStoreMain *)storeMain didListBook:(BookModel *)book{
-    
+    KKBookStoreVC *bookListVC = [[KKBookStoreVC alloc] init];
+    [self.navigationController pushViewController:bookListVC animated:YES];
+}
+
+-(void)showAllBook{
+    KKBookStoreVC *bookListVC = [[KKBookStoreVC alloc] init];
+    [self.navigationController pushViewController:bookListVC animated:YES];
+}
+
+-(void)showDeleteBook{
+    libraryVC.isDelete = !libraryVC.isDelete;
+    if(libraryVC.isDelete){
+        self.navigationItem.rightBarButtonItem.title = @"Done";
+    }else{
+        self.navigationItem.rightBarButtonItem.title = @"Edit";
+    }
 }
 
 #pragma mark - KKBookLibrary delegate
