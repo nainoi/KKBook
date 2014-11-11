@@ -111,7 +111,7 @@
     self.navigationItem.leftBarButtonItem = mainMenu;
 }
 
--(void)tapLeftMainMenu{
+-(KKBookLeftSidebar *)leftSideBar{
     if (!_leftSideBar) {
         NSArray *images = @[
                             [UIImage imageNamed:@"gear"],
@@ -128,11 +128,16 @@
         
         KKBookLeftSidebar *callout = [[KKBookLeftSidebar alloc] initWithImages:images selectedIndices:self.optionIndices borderColors:colors];
         callout.isSingleSelect = YES;
-        _leftSideBar = callout;
+        self.leftSideBar = callout;
         callout.delegate = self;
-
+        
     }
-       //    callout.showFromRight = YES;
+    return _leftSideBar;
+
+}
+
+-(void)tapLeftMainMenu{
+           //    callout.showFromRight = YES;
     [_leftSideBar show];
 
 }
@@ -167,7 +172,10 @@
     bookDetailVC.didDownload = ^(BookModel *bookModel){
         [[DataManager shareInstance] insertBookWithBookModel:bookModel onComplete:^(NSArray *books){
             //[libraryVC setMyBook:[[NSMutableArray alloc] initWithArray:books]];
-            [self sidebar:_leftSideBar didTapItemAtIndex:1];
+            [self.leftSideBar didTapItemAtIndex:1];
+            //[self sidebar:_leftSideBar didEnable:NO itemAtIndex:0];
+            //[self sidebar:_leftSideBar didEnable:YES itemAtIndex:1];
+            
         }];
     };
     [self.navigationController pushViewController:bookDetailVC animated:YES];

@@ -30,7 +30,6 @@
     [self initBannerView];
     [self initTable];
     [self loadStoreMainData];
-    [self initTimer];
     //[self dummyTable];
 }
 
@@ -41,8 +40,13 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
+    [self initTimer];
     //[_myPageScrollView reloadData];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self stopAndDeleteTimer];
 }
 
 -(void)initBannerView{
@@ -128,33 +132,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*static NSString *CellIdentifier = @"Cell";
-    NSDictionary *cellData = [self.images objectAtIndex:[indexPath section]];
-    StoreScrollingTableViewCell *customCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    [customCell setBackgroundColor:[UIColor grayColor]];
-    [customCell setDelegate:self];
-    [customCell setImageData:cellData];
-    [customCell setCategoryLabelText:[cellData objectForKey:@"category"] withColor:[UIColor whiteColor]];
-    [customCell setTag:[indexPath section]];
-    [customCell setImageTitleTextColor:[UIColor whiteColor] withBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
-    [customCell setImageTitleLabelWitdh:90 withHeight:45];
-    [customCell setCollectionViewBackgroundColor:[UIColor darkGrayColor]];
-    
-    return customCell;*/
-    
     static NSString *CellIdentifier = @"Cell";
     NSDictionary *cellData = [self.dataSource objectAtIndex:[indexPath section]];
-    StoreScrollingTableViewCell *customCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    [customCell setBackgroundColor:[UIColor grayColor]];
-    [customCell setDelegate:self];
-    [customCell setCategoryData:cellData];
-    [customCell setCategoryLabelText:[cellData objectForKey:@"category"] withColor:[UIColor whiteColor]];
-    [customCell setTag:[indexPath section]];
-    [customCell setImageTitleTextColor:[UIColor whiteColor] withBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
-    [customCell setImageTitleLabelWitdh:90 withHeight:45];
-    [customCell setCollectionViewBackgroundColor:[UIColor whiteColor]];
+    if ((NSNull*)cellData != [NSNull null]){
+        StoreScrollingTableViewCell *customCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        [customCell setBackgroundColor:[UIColor KKBookMediumSeagreenColor]];
+        [customCell setDelegate:self];
+        [customCell setCategoryData:cellData];
+        [customCell setCategoryLabelText:[cellData objectForKey:@"category"] withColor:[UIColor whiteColor]];
+        [customCell setTag:[indexPath section]];
+        [customCell setImageTitleTextColor:[UIColor whiteColor] withBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
+        [customCell setImageTitleLabelWitdh:90 withHeight:45];
+        [customCell setCollectionViewBackgroundColor:[UIColor whiteColor]];
+        
+        return customCell;
+    }else{
+        return nil;
+    }
     
-    return customCell;
 }
 
 #pragma mark - UITableViewDelegate

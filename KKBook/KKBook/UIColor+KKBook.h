@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIColor (SCBColor)
+@interface UIColor (KKBook)
+//
+
++(UIColor *)KKBookMediumSeagreenColor;
++(UIColor *)KKBookLightSeagreenColor;
+//
 
 +(UIColor *)SCBPurpleColor;
 +(UIColor *)SCBLightPurpleColor;

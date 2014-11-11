@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIFont (Custom)
+@interface UIFont (KKBook)
 
 +(UIFont*)fontRegularWithSize:(float)fontSize;
 +(UIFont*)fontBoldWithSize:(float)fontSize;

@@ -22,7 +22,8 @@
 #import "Utility.h"
 #import "KKBookURL.h"
 #import "KKBookService.h"
-#import "UIFont+Custom.h"
+#import "UIFont+KKBook.h"
+#import "UIColor+KKBook.h"
 #import "AppDelegate.h"
 
 #endif

@@ -37,6 +37,7 @@
 + (NSURLSessionDataTask *)previewBookService:(void (^)(NSArray *, NSError *))block{
     return [[AFAppDotNetAPIClient sharedClient] GET:@"stream/0/posts/stream/global" parameters:nil success:^(NSURLSessionDataTask * __unused task, id JSON) {
         NSArray *postsFromResponse = [JSON valueForKeyPath:@"data"];
+        NSLog(@"json %@",JSON);
         NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[postsFromResponse count]];
         for (NSDictionary *attributes in postsFromResponse) {
             BookModel *post = [[BookModel alloc] initWithAttributes:attributes];
@@ -54,7 +55,10 @@
 }
 
 +(NSURLSessionDataTask *)storeMainService:(void (^)(NSArray *, NSError *))block{
-    return [[AFAppDotNetAPIClient sharedClient] POST:STORE_MAIN_URL parameters:nil success:^(NSURLSessionDataTask * __unused task, id JSON) {
+    NSMutableDictionary *params = [KKBookService paramsLog];
+    [params setObject:FLAG_TEST forKey:@"TestFlag"];
+    return [[AFAppDotNetAPIClient sharedClient] POST:STORE_MAIN_URL parameters:params success:^(NSURLSessionDataTask * __unused task, id JSON) {
+        NSLog(@"json %@",JSON);
         NSArray *postsFromResponse = JSON;
         if (block) {
             block([NSArray arrayWithArray:postsFromResponse], nil);
@@ -87,24 +91,55 @@
     }];
     
     [operation start];
-    
-//    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"....zip"]];
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"....zip"];
-//    AFDownloadRequestOperation *operation = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:path shouldResume:YES];
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"Successfully downloaded file to %@", path);
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"Error: %@", error);
-//    }];
-//    [operation setProgressiveDownloadProgressBlock:^(NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
-//        NSLog(@"Operation%i: bytesRead: %d", 1, bytesRead);
-//        NSLog(@"Operation%i: totalBytesRead: %lld", 1, totalBytesRead);
-//        NSLog(@"Operation%i: totalBytesExpected: %lld", 1, totalBytesExpected);
-//        NSLog(@"Operation%i: totalBytesReadForFile: %lld", 1, totalBytesReadForFile);
-//        NSLog(@"Operation%i: totalBytesExpectedToReadForFile: %lld", 1, totalBytesExpectedToReadForFile);
-//    }];
-//    [operations addObject:operation];
 }
+
++(NSMutableDictionary*)paramsLog{
+    
+    NSString *osVersion = [UIDevice currentDevice].systemVersion;
+    
+    //--- Machine
+    //NSString *_machine = [[UIDevice currentDevice] platformString];
+    
+    //--- UDID
+    //NSString *uid = [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier];
+    
+    //--- Version
+    //NSString *version = [AppHelper appVersion];
+    
+    //--- Country
+    NSLocale *currentUsersLocale = [NSLocale currentLocale];
+    NSString *currentLocaleID = [currentUsersLocale localeIdentifier];
+    
+    //--- Language
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *languages = [defaults objectForKey:@"AppleLanguages"];
+    NSString *currentLanguage = [languages objectAtIndex:0];
+    //--- carrier
+    //NSString *carrier = [AppLogger carrier];
+    
+    //--- ip
+//    NSString *ip = [UIDevice localWiFiIPAddress];
+//    if (nil == ip) {
+//        ip = [UIDevice localCellularIPAddress];
+//    }
+//    if (ip == nil) {
+//        ip = @"";
+//    }
+    
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:osVersion forKey:@"VersionOS"];
+    [params setObject:[Utility platform] forKey:@"Machine"];
+    //[params setObject:uid forKey:@"UDID"];
+    //[params setObject:version forKey:@"VersionApp"];
+    [params setObject:currentLocaleID forKey:@"CurrentLocaleID"];
+    [params setObject:currentLanguage forKey:@"Language"];
+    //[params setObject:carrier forKey:@"Network"];
+    //[params setObject:ip forKey:@"IPAddress"];
+    [params setObject:[[NSBundle mainBundle] bundleIdentifier] forKey:@"ApplicationID"];
+    [params setObject:[Utility isPad]?@"pd":@"pn" forKey:@"platform"];
+    
+    return params;
+}
+
 
 @end

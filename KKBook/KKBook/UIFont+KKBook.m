@@ -6,9 +6,9 @@
 //  Copyright (c) 2557 Promptnow. All rights reserved.
 //
 
-#import "UIFont+Custom.h"
+#import "UIFont+KKBook.h"
 
-@implementation UIFont (Custom)
+@implementation UIFont (KKBook)
 
 +(UIFont *)fontRegularWithSize:(float)fontSize{
     UIFont *font;

@@ -57,8 +57,13 @@
 
 - (void)setCategoryData:(NSDictionary*)collection
 {
-    [_imageScrollingView setBookData:[collection objectForKey:@"book"]];
-    _categoryLabelText = [collection objectForKey:@"category"];
+    if (![collection isKindOfClass:[NSNull class]]) {
+        NSLog(@"collection %@",collection);
+        if ([collection objectForKey:@"book"] != [NSNull null]) {
+            [_imageScrollingView setBookData:[collection objectForKey:@"book"]];
+            _categoryLabelText = [collection objectForKey:@"category"];
+        }
+    }
 }
 
 - (void)setCategoryLabelText:(NSString*)text withColor:(UIColor*)color{

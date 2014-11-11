@@ -54,9 +54,11 @@
 }
 
 - (void) setBookData:(NSArray*)collectionBookData{
-
-    _collectionBookData = collectionBookData;
-    [_myCollectionView reloadData];
+    if ((NSNull*)collectionBookData != [NSNull null]) {
+        _collectionBookData = collectionBookData;
+        [_myCollectionView reloadData];
+    }
+    
 }
 
 - (void) setBackgroundColor:(UIColor*)color{

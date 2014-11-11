@@ -32,7 +32,8 @@
     if ([_bookEntity.status isEqualToString:DOWNLOADING]) {
         //operation = [[DataManager shareInstance].responceArray valueForKey:[bookEntity.bookID stringValue]];
         _progresView.hidden = NO;
-        _resumeBtn.hidden = YES;
+        _resumeBtn.hidden = NO;
+        [_resumeBtn setTitle:@"" forState:UIControlStateNormal];
         operation = [[DataManager shareInstance] selectResponseOperationWithBookEntity:bookEntity];
         if (operation) {
             __weak UIProgressView *progress = self.progresView;
@@ -47,6 +48,7 @@
     }else if ([_bookEntity.status isEqualToString:DOWNLOADFAIL]){
         _progresView.hidden = YES;
         _resumeBtn.hidden = NO;
+        [_resumeBtn setTitle:@"Resume" forState:UIControlStateNormal];
     }else if ([_bookEntity.status isEqualToString:DOWNLOADCOMPLETE]){
         _progresView.hidden = YES;
         _resumeBtn.hidden = YES;
@@ -87,8 +89,10 @@
     AFHTTPRequestOperation *operations = (AFHTTPRequestOperation*)noti.object;
     BookEntity *b = (BookEntity*)[operations.userInfo objectForKey:KKBOOK_KEY];
     if (b.bookID == _bookEntity.bookID) {
+        _bookEntity.status = DOWNLOADFAIL;
         _progresView.hidden = YES;
         _resumeBtn.hidden = NO;
+        [_resumeBtn setTitle:@"Resume" forState:UIControlStateNormal];
     }
 }
 
@@ -97,6 +101,7 @@
     AFHTTPRequestOperation *operations = (AFHTTPRequestOperation*)noti.object;
     BookEntity *b = (BookEntity*)[operations.userInfo objectForKey:KKBOOK_KEY];
     if (b.bookID == _bookEntity.bookID) {
+        _bookEntity.status = DOWNLOADCOMPLETE;
         _progresView.hidden = YES;
         _resumeBtn.hidden = YES;
     }
@@ -115,15 +120,20 @@
 
 - (IBAction)didResume:(id)sender {
     //operation = [[DataManager shareInstance] selectResponseOperationWithBookEntity:_bookEntity];
-    if (operation) {
-        [operation resume];
-        __weak UIProgressView *progress = self.progresView;
-        [operation setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalByteReading, long long totalByteWrite){
-            float prog = (totalByteReading / (totalByteWrite * 1.0f) /** 100.0*/);
-            [progress setProgress:prog];
-            NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
-        }];
+    if ([_bookEntity.status isEqualToString:DOWNLOADFAIL]) {
+        if (operation) {
+            [operation resume];
+            __weak UIProgressView *progress = self.progresView;
+            [operation setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalByteReading, long long totalByteWrite){
+                float prog = (totalByteReading / (totalByteWrite * 1.0f) /** 100.0*/);
+                [progress setProgress:prog];
+                NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
+            }];
+        }else{
+            [[DataManager shareInstance] downloadBook:_bookEntity onComplete:^(NSString* status){
+                
+            }];
+        }
     }
-
 }
 @end

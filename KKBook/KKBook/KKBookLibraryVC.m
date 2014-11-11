@@ -154,9 +154,16 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self delegate]) {
-        [[self delegate] didSelectBook:self withBookEntity:_myBook[indexPath.row]];
+    KKBookLibraryCell *cell = (KKBookLibraryCell*)[collectionView dequeueReusableCellWithReuseIdentifier:LIBRARY_CELL forIndexPath:indexPath];
+    cell = (KKBookLibraryCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    if ([cell.bookEntity.status isEqualToString:DOWNLOADCOMPLETE]) {
+        if ([self delegate]) {
+            [[self delegate] didSelectBook:self withBookEntity:_myBook[indexPath.row]];
+        }
+    }else if ([cell.bookEntity.status isEqualToString:DOWNLOADFAIL]){
+        [cell didResume:cell.resumeBtn];
     }
+    
 }
 
 @end

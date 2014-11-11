@@ -6,11 +6,16 @@
 //  Copyright (c) 2014 Promptnow MacMini's PE. All rights reserved.
 //
 
-#import "UIColor+SCBColor.h"
+#import "UIColor+KKBook.h"
 
-@implementation UIColor (SCBColor)
+@implementation UIColor (KKBook)
 
-
++(UIColor *)KKBookLightSeagreenColor{
+    return [UIColor colorFromHexString:@"#20b2aa"];
+}
++(UIColor *)KKBookMediumSeagreenColor{
+    return [UIColor colorFromHexString:@"#3cb371"];
+}
 +(UIColor *)SCBPurpleColor{
     return [UIColor colorFromHexString:@"#675293"];
 }
