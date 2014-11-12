@@ -7,18 +7,18 @@
 //
 
 #import "KKBookMainVC.h"
-#import "KKBookStoreVC.h"
 #import "KKBookLeftSidebar.h"
 #import "KKBookLibraryVC.h"
 #import "KKBookStoreMain.h"
 #import "KKBookStoreDetailVC.h"
 #import "ReaderViewController.h"
+#import "KKBookStoreListVC.h"
 
 #import "DataManager.h"
 #import "BookEntity.h"
 #import "FileHelper.h"
 
-@interface KKBookMainVC ()<KKBookLeftSidebarDelegate, KKBookStoreMainDelegate, ReaderViewControllerDelegate, KKBookLibraryDelegate>{
+@interface KKBookMainVC ()<KKBookLeftSidebarDelegate, KKBookStoreMainDelegate, ReaderViewControllerDelegate, KKBookLibraryDelegate, KKBookStoreListDelegate>{
     KKBookStoreMain *storeVC;
     KKBookLibraryVC *libraryVC;
     ReaderViewController *readerViewController;
@@ -199,13 +199,17 @@
 }
 
 -(void)bookStoreMain:(KKBookStoreMain *)storeMain didListBook:(BookModel *)book{
-    KKBookStoreVC *bookListVC = [[KKBookStoreVC alloc] init];
-    [self.navigationController pushViewController:bookListVC animated:YES];
+    KKBookStoreListVC *listVC = [[KKBookStoreListVC alloc] init];
+    listVC.delegate = self;
+    [self.navigationController pushViewController:listVC animated:YES];
+
 }
 
 -(void)showAllBook{
-    KKBookStoreVC *bookListVC = [[KKBookStoreVC alloc] init];
-    [self.navigationController pushViewController:bookListVC animated:YES];
+    //KKBookStoreVC *bookListVC = [[KKBookStoreVC alloc] init];
+    KKBookStoreListVC *listVC = [[KKBookStoreListVC alloc] init];
+    listVC.delegate = self;
+    [self.navigationController pushViewController:listVC animated:YES];
 }
 
 -(void)showDeleteBook{
@@ -215,6 +219,21 @@
     }else{
         self.navigationItem.rightBarButtonItem.title = @"Edit";
     }
+}
+
+#pragma mark - KKBookStoreList delegate
+
+-(void)storeListSelectBook:(BookModel *)bookModel{
+    KKBookStoreDetailVC *bookDetailVC = [[KKBookStoreDetailVC alloc] initWithBook:bookModel];
+    bookDetailVC.didDownload = ^(BookModel *bookModel){
+        [[DataManager shareInstance] insertBookWithBookModel:bookModel onComplete:^(NSArray *books){
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.leftSideBar didTapItemAtIndex:1];
+            
+        }];
+    };
+    [self.navigationController pushViewController:bookDetailVC animated:YES];
+
 }
 
 #pragma mark - KKBookLibrary delegate
@@ -230,7 +249,7 @@
     NSString *filePath = nil;
     NSFileManager * filemanager = [NSFileManager defaultManager];
     NSDirectoryEnumerator *pdfs = [filemanager enumeratorAtPath:[[FileHelper booksPath]stringByAppendingString:bookEntity.folder]];
-    NSString *pdfFile = [[[[FileHelper booksPath]stringByAppendingPathComponent:bookEntity.folder] stringByAppendingPathComponent:bookEntity.folder]stringByAppendingPathExtension:@"pdf"];
+    NSString *pdfFile = [[[[FileHelper booksPath]stringByAppendingPathComponent:bookEntity.folder] stringByAppendingPathComponent:@"F_PDF"]stringByAppendingPathExtension:@"pdf"];
     if ([FileHelper fileExists:pdfFile isDir:NO]) {
         filePath = pdfFile;
     }else{

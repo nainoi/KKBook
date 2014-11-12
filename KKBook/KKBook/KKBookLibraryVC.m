@@ -10,7 +10,9 @@
 #import "KKBookLibraryCell.h"
 #import "DataManager.h"
 
-@interface KKBookLibraryVC ()<KKBookLibraryCellDelegate>
+@interface KKBookLibraryVC ()<KKBookLibraryCellDelegate, UIAlertViewDelegate>{
+    NSInteger selectRow;
+}
 
 @end
 
@@ -171,10 +173,9 @@
             [cell didResume:cell.resumeBtn];
         }
     }else{
-        [[DataManager shareInstance] deleteBookWithBookID:_myBook[indexPath.row] onComplete:^(NSArray *array){
-            self.myBook = [[NSMutableArray alloc] initWithArray:[[DataManager shareInstance] selectAllMyBook]];
-            [_collectionView reloadData];
-        }];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"KKBook" message:@"Do you want to delete this book from device?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
+        [alertView show];
+        selectRow = indexPath.row;
     }
 }
 
@@ -185,6 +186,17 @@
         self.myBook = [[NSMutableArray alloc] initWithArray:[[DataManager shareInstance] selectAllMyBook]];
         [_collectionView reloadData];
     }];
+}
+
+#pragma mark - delegate
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        [[DataManager shareInstance] deleteBookWithBookID:_myBook[selectRow] onComplete:^(NSArray *array){
+            self.myBook = [[NSMutableArray alloc] initWithArray:[[DataManager shareInstance] selectAllMyBook]];
+            [_collectionView reloadData];
+        }];
+    }
 }
 
 @end
