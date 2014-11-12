@@ -59,10 +59,12 @@
     _mainController.view.frame = frame;
     //_mainController.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_mainController.view];
+    
     _pageType = STORE;
     storeVC.view.frame = frame;
     self.title = @"KKBook";
     [_mainController.view addSubview:storeVC.view];
+    [_mainController viewWillAppear:NO];
 }
 
 #pragma mark - top view
@@ -158,6 +160,11 @@
 
 }
 
+-(void)gotoLibrary{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.leftSideBar didTapItemAtIndex:1];
+}
+
 #pragma mark - RNFrostedSidebarDelegate
 
 - (void)sidebar:(KKBookLeftSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
@@ -226,11 +233,14 @@
 -(void)storeListSelectBook:(BookModel *)bookModel{
     KKBookStoreDetailVC *bookDetailVC = [[KKBookStoreDetailVC alloc] initWithBook:bookModel];
     bookDetailVC.didDownload = ^(BookModel *bookModel){
-        [[DataManager shareInstance] insertBookWithBookModel:bookModel onComplete:^(NSArray *books){
-            [self.navigationController popToRootViewControllerAnimated:YES];
-            [self.leftSideBar didTapItemAtIndex:1];
-            
-        }];
+        if ([[DataManager shareInstance] selectBookFromBookID:bookModel.bookID]) {
+            [self gotoLibrary];
+        }else{
+            [[DataManager shareInstance] insertBookWithBookModel:bookModel onComplete:^(NSArray *books){
+                [self gotoLibrary];
+                
+            }];
+        }
     };
     [self.navigationController pushViewController:bookDetailVC animated:YES];
 

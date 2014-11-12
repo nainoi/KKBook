@@ -21,6 +21,7 @@
 -(void)awakeFromNib
 {
     self.font = [UIFont fontBoldWithSize:22];
+    self.textColor = [UIColor KKBookMediumSeagreenColor];
 }
 
 @end

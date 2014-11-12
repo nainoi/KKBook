@@ -22,6 +22,8 @@
 @property (nonatomic, copy) NSString *publisherName;
 @property (nonatomic, copy) NSString *authorID;
 @property (nonatomic, copy) NSString *authorName;
+@property (nonatomic, copy) NSString *categoryID;
+@property (nonatomic, copy) NSString *categoryName;
 @property (nonatomic, copy) NSString *price;
 @property (nonatomic, copy) NSString *coverPrice;
 @property (nonatomic, copy) NSString *page;

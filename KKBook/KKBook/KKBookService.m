@@ -16,11 +16,11 @@
 #pragma mark - book store service
 
 + (NSURLSessionDataTask *)listAllBookService:(void (^)(NSArray *, NSError *))block {
-    //NSMutableDictionary *params = [KKBookService paramsLog];
-    //[params setObject:FLAG_TEST forKey:@"TestFlag"];
+    NSMutableDictionary *params = [KKBookService paramsLog];
+    [params setObject:FLAG_TEST forKey:@"TestFlag"];
     return [[AFAppDotNetAPIClient sharedClient] POST:STORE_LIST_URL parameters:nil success:^(NSURLSessionDataTask * __unused task, id JSON) {
         NSLog(@"json %@",JSON);
-        NSArray *postsFromResponse = [JSON objectForKey:@"data"];
+        NSArray *postsFromResponse = [JSON objectForKey:@"book"];
         NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[postsFromResponse count]];
         for (NSDictionary *attributes in postsFromResponse) {
             BookModel *post = [[BookModel alloc] initWithAttributes:attributes];
@@ -75,27 +75,50 @@
     }];
 }
 
-#pragma mark - Load File
-
-+(void)downloadFileWithURL{
-    NSURL *url = [NSURL URLWithString:@"http://www.raywenderlich.com/wp-content/uploads/2014/01/sunny-background.png"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    operation.responseSerializer = [AFImageResponseSerializer serializer];
-    
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
++(NSURLSessionDataTask *)requestPreviewServiceWithBook:(NSString*)bookID complete:(void (^)(NSArray *, NSError *))block{
+    NSMutableDictionary *params = [KKBookService paramsLog];
+    [params setObject:FLAG_TEST forKey:@"TestFlag"];
+    [params setObject:bookID forKey:@"BookID"];
+    return [[AFAppDotNetAPIClient sharedClient] POST:PREVIEW_URL parameters:params success:^(NSURLSessionDataTask * __unused task, id JSON) {
+        NSLog(@"json %@",JSON);
+        NSArray *postsFromResponse = [JSON objectForKey:@"preview"];
+        NSMutableArray *previews = [[NSMutableArray alloc] init];
+        for (NSDictionary *dict in postsFromResponse) {
+            [previews addObject:[IMAGE_URL stringByAppendingString:[dict objectForKey:@"PreviewURL"]]];
+        }
+        if (block) {
+            block([NSArray arrayWithArray:previews], nil);
+        }
         
-        //self.backgroundImageView.image = responseObject;
-//        [self saveImage:responseObject withFilename:@"background.png"];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        NSLog(@"Error: %@", error);
+    } failure:^(NSURLSessionDataTask *__unused task, NSError *error) {
+        if (block) {
+            block([NSArray array], error);
+        }
     }];
-    
-    [operation start];
 }
+
++(NSURLSessionDataTask *)requestBannerService:(void (^)(NSArray *, NSError *))block{
+    NSMutableDictionary *params = [KKBookService paramsLog];
+    [params setObject:FLAG_TEST forKey:@"TestFlag"];
+    return [[AFAppDotNetAPIClient sharedClient] POST:BANNER_URL parameters:params success:^(NSURLSessionDataTask * __unused task, id JSON) {
+        NSLog(@"json %@",JSON);
+        NSArray *postsFromResponse = [JSON objectForKey:@"banner"];
+        NSMutableArray *banners = [[NSMutableArray alloc] init];
+        for (NSDictionary *dict in postsFromResponse) {
+            [banners addObject:[BANNER_PATH_URL stringByAppendingString:[dict objectForKey:[Utility isPad] ? @"TabletURL" : @"PhoneURL"]]];
+        }
+        if (block) {
+            block([NSArray arrayWithArray:banners], nil);
+        }
+        
+    } failure:^(NSURLSessionDataTask *__unused task, NSError *error) {
+        if (block) {
+            block([NSArray array], error);
+        }
+    }];
+}
+
+#pragma mark - Load File
 
 +(NSMutableDictionary*)paramsLog{
     

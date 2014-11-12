@@ -21,6 +21,7 @@
 -(void)awakeFromNib
 {
     self.font = [UIFont fontBoldWithSize:16];
+    self.textColor = [UIColor grayColor];
 }
 
 @end

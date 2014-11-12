@@ -12,6 +12,9 @@
 #import "KKBookStoreDetailVC.h"
 #import "BaseNavigationController.h"
 #import "UIAlertView+AFNetworking.h"
+#import "UIImage+WebP.h"
+
+#define BANNER_HEIGHT [Utility isPad] ? 308 : 154
 
 @interface KKBookStoreMain ()<StoreScrollingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>{
     unsigned long maxBanner;
@@ -30,14 +33,20 @@
     [super viewDidLoad];
     [self initBannerView];
     [self initTable];
-    //[self addNavigationItem];
+    [self loadBanner];
     [self loadStoreMainData];
+    [self initTimer];
     //[self dummyTable];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self initTimer];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -51,6 +60,20 @@
     [self stopAndDeleteTimer];
 }
 
+-(void)loadBanner{
+    //[self showProgressLoading];
+    NSURLSessionTask *task = [KKBookService requestBannerService:^(NSArray *source, NSError *error) {
+        //[self dismissProgress];
+        if (!error) {
+            _myPageDataArray = [[NSMutableArray alloc] initWithArray:source];
+            currentBanner = 0;
+            maxBanner = _myPageDataArray.count;
+            [_myPageScrollView reloadData];
+        }
+    }];
+    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
+}
+
 -(void)initBannerView{
     _myPageDataArray = [[NSMutableArray alloc] initWithCapacity : 4];
     
@@ -61,7 +84,7 @@
     }
     currentBanner = 0;
     maxBanner = _myPageDataArray.count;
-    CGRect frame = CGRectMake(10, 5, CHILD_WIDTH, 154);
+    CGRect frame = CGRectMake(10, 5, CHILD_WIDTH, BANNER_HEIGHT);
     
     // now that we have the data, initialize the page scroll view
     //_myPageScrollView = [[[NSBundle mainBundle] loadNibNamed:HGPageScrollViewNIB owner:self options:nil] objectAtIndex:0];
@@ -70,7 +93,7 @@
     _myPageScrollView.delegate = self;
     _myPageScrollView.dataSource = self;
     [self.view addSubview:_myPageScrollView];
-    [_myPageScrollView reloadData];
+    //[_myPageScrollView reloadData];
 }
 -(void)addNavigationItem{
     UIBarButtonItem *allBtn = [[UIBarButtonItem alloc] initWithTitle:@"ALL" style:UIBarButtonItemStylePlain target:self action:@selector(showAllBook)];
@@ -90,12 +113,13 @@
 - (HGPageView *)pageScrollView:(HGPageScrollView *)scrollView viewForPageAtIndex:(NSInteger)index;
 {
     
-    BannerModel *banner = [_myPageDataArray objectAtIndex:index];
-    UIImage *image = [UIImage imageNamed:banner.bannerImage];
-    CGRect frame = CGRectMake(0, 0, CGRectGetWidth(_myPageScrollView.frame)-20, 154);
+//    BannerModel *banner = [_myPageDataArray objectAtIndex:index];
+//    UIImage *image = [UIImage imageNamed:banner.bannerImage];
+    CGRect frame = CGRectMake(0, 0, CGRectGetWidth(_myPageScrollView.frame)-20, BANNER_HEIGHT);
     HGPageImageView *imageView = [[HGPageImageView alloc]
                                   initWithFrame:frame];
-    [imageView setImage:image];
+    //[imageView setImage:image];
+    [imageView setImageURL:[NSURL URLWithString:[_myPageDataArray objectAtIndex:index]]];
     [imageView setReuseIdentifier:@"imageId"];
     
     return imageView;
@@ -162,13 +186,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 220;
+    return [Utility isPad] ? 220 : 220;
 }
 
 #pragma mark - StoreScrollingTableViewCellDelegate
 
 -(void)scrollingTableViewCell:(StoreScrollingTableViewCell *)scrollingTableViewCell didSelectBook:(BookModel *)book{
     if ([self delegate]) {
+        [self viewWillDisappear:NO];
         [[self delegate] bookStoreMain:self didBook:book];
     }
 }
@@ -194,10 +219,12 @@
 #pragma mark - Slide banner
 
 -(void)initTimer{
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0
-                                                  target:self
-                                                selector:@selector(slide:)
-                                                userInfo:nil repeats:YES];
+    if (!_timer) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0
+                                                      target:self
+                                                    selector:@selector(slide:)
+                                                    userInfo:nil repeats:YES];
+    }
 }
 
 -(void)stopAndDeleteTimer{
@@ -215,7 +242,16 @@
     }
     currentBanner = nextpage;
     // update the scroll view to the appropriate page
-    [_myPageScrollView scrollToPageAtIndex:currentBanner animated:YES];
+    @try {
+        [_myPageScrollView scrollToPageAtIndex:currentBanner animated:YES];
+    }
+    @catch (NSException *exception) {
+        currentBanner = 0;
+    }
+    @finally {
+        //
+    }
+    
     
 }
 

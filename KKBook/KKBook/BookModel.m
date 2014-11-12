@@ -8,6 +8,7 @@
 
 #import "BookModel.h"
 #import "FormValidation.h"
+#import "FileHelper.h"
 
 @implementation BookModel
 
@@ -21,6 +22,8 @@
         self.bookDate = [FormValidation stringValue:[attribute objectForKey:@"BookDate"]];
         self.authorID = [FormValidation stringValue:[attribute objectForKey:@"AuthorID"]];
         self.authorName = [FormValidation stringValue:[attribute objectForKey:@"AuthorName"]];
+        self.categoryID = [FormValidation stringValue:[attribute objectForKey:@"CategoryID"]];
+        self.categoryName = [FormValidation stringValue:[attribute objectForKey:@"CategoryName"]];
         self.coverPrice = [FormValidation stringValue:[attribute objectForKey:@"CoverPrice"]];
         self.page = [FormValidation stringValue:[attribute objectForKey:@"Page"]];
         self.editDate = [FormValidation stringValue:[attribute objectForKey:@"EditDate"]];
@@ -62,7 +65,9 @@
 #pragma mark - display value
 
 -(NSString *)fileSizeDisplay{
-    NSString *size = [Utility isPad] ? _fileSizePadURL : _fileSizePhoneURL;
+    float file = [Utility isPad] ? [_fileSizePadURL floatValue] : [_fileSizePhoneURL floatValue];
+    float fileSize =  file/(1024.0f*1024.0f);
+    NSString *size = [NSString stringWithFormat:@"%.2f MB",fileSize];
     return size;
 }
 
@@ -72,7 +77,7 @@
 }
 
 -(NSString *)priceDisplay{
-    NSString *price = [self isFree] ? @"FREE" : _price;
+    NSString *price = [self isFree] ? @"FREE" : [[NSString stringWithCurrencyformat:_price] stringByAppendingString:@" $"];
     return price;
 }
 

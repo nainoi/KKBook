@@ -13,5 +13,7 @@
 + (NSURLSessionDataTask *)listAllBookService:(void (^)(NSArray *posts, NSError *error))block;
 + (NSURLSessionDataTask *)previewBookService:(void (^)(NSArray *posts, NSError *error))block;
 + (NSURLSessionDataTask *)storeMainService:(void (^)(NSArray *posts, NSError *error))block;
++ (NSURLSessionDataTask *)requestPreviewServiceWithBook:(NSString*)bookID complete:(void (^)(NSArray *, NSError *))block;
++(NSURLSessionDataTask *)requestBannerService:(void (^)(NSArray *, NSError *))block;
 
 @end

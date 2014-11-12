@@ -25,6 +25,7 @@
 #import "UIFont+KKBook.h"
 #import "UIColor+KKBook.h"
 #import "AppDelegate.h"
+#import "NSString+SCBString.h"
 
 #endif
 

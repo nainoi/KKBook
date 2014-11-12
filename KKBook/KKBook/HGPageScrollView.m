@@ -169,8 +169,8 @@ typedef enum{
     // set gradient for background view
     CAGradientLayer *glayer = [CAGradientLayer layer];
     glayer.frame = _pageDeckBackgroundView.bounds;
-    UIColor *topColor = [UIColor colorWithRed:0.57 green:0.63 blue:0.68 alpha:1.0]; //light blue-gray
-    UIColor *bottomColor = [UIColor colorWithRed:0.31 green:0.41 blue:0.48 alpha:1.0]; //dark blue-gray
+    UIColor *topColor = [UIColor colorWithRed:0.98 green:0.98 blue:0.98 alpha:1.0]; //light blue-gray
+    UIColor *bottomColor = [UIColor colorWithRed:0.99 green:0.99 blue:0.99 alpha:1.0]; //dark blue-gray
     glayer.colors = [NSArray arrayWithObjects:(id)[topColor CGColor], (id)[bottomColor CGColor], nil];
     [_pageDeckBackgroundView.layer insertSublayer:glayer atIndex:0];
     
@@ -717,7 +717,7 @@ typedef enum{
 
 - (void) setFrameForPage : (UIView*) page atIndex : (NSInteger) index;
 {
-    page.transform = CGAffineTransformMakeScale(0.98,0.95);
+    page.transform = CGAffineTransformMakeScale(0.99,0.95);
 	//CGFloat contentOffset = index * _scrollView.frame.size.width;
 	//CGFloat margin = (_scrollView.frame.size.width - page.frame.size.width)/2 ;
     CGFloat contentOffset = index * _scrollView.frame.size.width;

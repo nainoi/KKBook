@@ -78,16 +78,22 @@
 
 -(void)responceDownload:(NSNotification*)noti
 {
-    AFHTTPRequestOperation *operations = (AFHTTPRequestOperation*)noti.object;
-    BookEntity *b = (BookEntity*)[operations.userInfo objectForKey:KKBOOK_KEY];
-    if (b.bookID == _bookEntity.bookID) {
-        _progresView.hidden = NO;
-        _resumeBtn.hidden = YES;
-        [operations setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalByteReading, long long totalByteWrite){
-            float prog = (totalByteReading / (totalByteWrite * 1.0f) / 100.0);
-            [self.progresView setProgress:prog];
-            NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
-        }];
+    @try {
+        AFHTTPRequestOperation *operations = (AFHTTPRequestOperation*)noti.object;
+        BookEntity *b = (BookEntity*)[operations.userInfo objectForKey:KKBOOK_KEY];
+        if ([b.bookID isEqualToNumber:_bookEntity.bookID]) {
+            _progresView.hidden = NO;
+            _resumeBtn.hidden = YES;
+            [operations setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalByteReading, long long totalByteWrite){
+                float prog = (totalByteReading / (totalByteWrite * 1.0f) / 100.0);
+                [self.progresView setProgress:prog];
+                NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
+            }];
+        }
+
+    }
+    @catch (NSException *exception) {
+        //
     }
 }
 
@@ -95,7 +101,7 @@
 {
     AFHTTPRequestOperation *operations = (AFHTTPRequestOperation*)noti.object;
     BookEntity *b = (BookEntity*)[operations.userInfo objectForKey:KKBOOK_KEY];
-    if (b.bookID == _bookEntity.bookID) {
+    if ([b.bookID isEqualToNumber:_bookEntity.bookID]) {
         _bookEntity.status = DOWNLOADFAIL;
         _progresView.hidden = YES;
         _resumeBtn.hidden = NO;
@@ -107,7 +113,7 @@
 {
     AFHTTPRequestOperation *operations = (AFHTTPRequestOperation*)noti.object;
     BookEntity *b = (BookEntity*)[operations.userInfo objectForKey:KKBOOK_KEY];
-    if (b.bookID == _bookEntity.bookID) {
+    if ([b.bookID isEqualToNumber:_bookEntity.bookID]) {
         _bookEntity.status = DOWNLOADCOMPLETE;
         _progresView.hidden = YES;
         _resumeBtn.hidden = YES;

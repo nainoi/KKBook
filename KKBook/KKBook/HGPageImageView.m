@@ -24,6 +24,7 @@
 //
 
 #import "HGPageImageView.h"
+#import "UIImageView+WebCache.h"
 
 @implementation HGPageImageView
 
@@ -60,10 +61,30 @@
     [imageView setImage:image];
 }
 
+-(void)setImageURL:(NSURL *)imageURL{
+    __block UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+   // __weak UIImageView *weakImageView = imageView;
+    [imageView sd_setImageWithURL:imageURL
+                           placeholderImage:nil
+                                    options:SDWebImageProgressiveDownload
+                                   progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                       if (!activityIndicator) {
+                                           [imageView addSubview:activityIndicator];
+                                           activityIndicator.center = imageView.center;
+                                           [activityIndicator startAnimating];
+                                       }
+                                   }
+                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                      [activityIndicator removeFromSuperview];
+                                      activityIndicator = nil;
+                                  }];
+
+}
+
 - (void)dealloc {
     [imageView release];
     [image release];
-
+    [_imageURL release];
     [super dealloc];
 }
 

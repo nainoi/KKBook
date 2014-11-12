@@ -51,6 +51,7 @@
 }
 
 -(void)insertBookWithBookModel:(BookModel *)bookModel onComplete:(void (^)(NSArray *))completionBlock{
+    
     NSManagedObjectContext *context = [self managedObjectContext];
     BookEntity *bookEntity = [NSEntityDescription
                                       insertNewObjectForEntityForName:@"BookEntity"
@@ -205,29 +206,6 @@
             bookEntity.status = DOWNLOADCOMPLETE;
             [self saveBookEntity:bookEntity];
             [[NSNotificationCenter defaultCenter] postNotificationName:BookDidFinish object:operation];
-            // call the same method on a background thread
-//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//                if ([FileHelper fileExists:extractFile isDir:NO]) {
-//                    //Encrypt pdf file
-//                    NSData *pdfData = [NSData dataWithContentsOfFile:extractFile];
-//                    NSError *error = nil;
-//                    [pdfData AES256EncryptedDataUsingKey:PASSWORD_ENCRYPT error:&error];
-//                    [pdfData writeToFile:extractFile options:NSDataWritingAtomic error:&error];
-//                    NSLog(@"Write returned error: %@", [error localizedDescription]);
-//                }
-//                
-//                // update UI on the main thread
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    if (downloadStatus) {
-//                        downloadStatus(DOWNLOADCOMPLETE);
-//                    }
-//                    bookEntity.status = DOWNLOADCOMPLETE;
-//                    [self saveBookEntity:bookEntity];
-//                    [[NSNotificationCenter defaultCenter] postNotificationName:BookDidFinish object:operation];
-//                });
-//                
-//            });
-            
         }
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -254,7 +232,7 @@
     for (AFHTTPRequestOperation *operation in self.responceArray) {
         BookEntity *book = (BookEntity*)[operation.userInfo objectForKey:KKBOOK_KEY];
         NSLog(@"id = %@, id = %@",bookEntity.bookID, book.bookID);
-        if (book.bookID == bookEntity.bookID) {
+        if ([book.bookID isEqualToNumber:bookEntity.bookID]) {
             return operation;
         }
     }

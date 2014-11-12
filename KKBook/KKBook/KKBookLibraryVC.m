@@ -22,9 +22,9 @@
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         
-        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-        layout.minimumLineSpacing = 20;
-        layout.minimumInteritemSpacing = 10;
+        layout.sectionInset = [Utility isPad] ? UIEdgeInsetsMake(20, 20, 20, 20) : UIEdgeInsetsMake(10, 10, 10, 10);
+        layout.minimumLineSpacing = [Utility isPad] ? 40 : 20;
+        layout.minimumInteritemSpacing = [Utility isPad] ? 20 : 10 ;
         
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -93,6 +93,7 @@
 -(void)removeNotification
 {
     [[NSNotificationCenter defaultCenter]removeObserver:self name:BookDidStart object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:BookDidResponce object:nil];
 }
 
 -(void)startDownload:(NSNotification*)noti{
@@ -149,7 +150,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if ([Utility isPad]) {
-        return CGSizeMake(320, 200);
+        return CGSizeMake(130, 200);
     }else{
         return CGSizeMake(130, 200);
     }

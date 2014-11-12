@@ -30,5 +30,6 @@
 }
 
 @property (nonatomic, retain, setter=setImage:) UIImage *image;
+@property (nonatomic, retain) NSURL *imageURL;
 
 @end

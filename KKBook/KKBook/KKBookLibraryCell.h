@@ -11,7 +11,7 @@
 
 @class KKBookLibraryCell;
 
-#define LIBRARY_CELL [Utility isPad] ? @"KKBookLibraryCell" : @"KKBookLibraryCell_Phone"
+#define LIBRARY_CELL [Utility isPad] ? @"KKBookLibraryCell_Phone" : @"KKBookLibraryCell_Phone"
 
 @protocol KKBookLibraryCellDelegate <NSObject>
 

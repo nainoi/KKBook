@@ -8,6 +8,9 @@
 
 #import "KKBookStoreDetailVC.h"
 #import "UIImageView+WebCache.h"
+#import "KKBookService.h"
+#import "UIAlertView+AFNetworking.h"
+#import "KKBookPreviewVC.h"
 
 @interface KKBookStoreDetailVC ()
 
@@ -26,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
     [self setNavigationBar];
     [self hiddenBackTitle];
     [self initBookData];
@@ -39,16 +43,22 @@
 }
 
 -(void)initBookData{
+    
     self.title = _book.bookName;
     self.bookNameTitle.text = _book.bookName;
     self.bookNameLb.text = _book.bookName;
-    self.categoryLb.text = @"category";
+    self.categoryLb.text = _book.categoryName;
     self.publisherLb.text = _book.publisherDisplay;
     self.auhorLb.text = _book.authorDisplay;
     [self.priceBtn setTitle:_book.priceDisplay forState:UIControlStateNormal];
     self.totalPageLb.text = _book.page;
     self.fileSizeLb.text = _book.fileSizeDisplay;
     self.detailLb.text = _book.bookDesc;
+    self.priceLb.text = [_book.coverPrice stringByAppendingString:@" ฿"];
+    
+    _detailLb.numberOfLines = 0;
+    [_detailLb sizeToFit];
+    
     [self loadImageWithUrl];
 }
 
@@ -79,6 +89,7 @@
 }
 
 - (IBAction)didPreviewBtn:(id)sender {
+    [self loadPreview];
 }
 
 - (IBAction)didShareBtn:(id)sender {
@@ -89,4 +100,22 @@
         self.didDownload(_book);
     }
 }
+
+#pragma mark - Service
+
+-(void)loadPreview{
+    [self showProgressLoading];
+    NSURLSessionTask *task = [KKBookService requestPreviewServiceWithBook:_book.bookID complete:^(NSArray *array, NSError *error){
+        [self dismissProgress];
+        if (!error) {
+            KKBookPreviewVC *previewVC = [[KKBookPreviewVC alloc] init];
+            previewVC.previews = array;
+            [self.navigationController pushViewController:previewVC animated:YES];
+        }else{
+            [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
+        }
+        
+    }];
+}
+
 @end

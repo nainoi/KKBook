@@ -36,9 +36,9 @@
         /* Set flowLayout for CollectionView*/
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        flowLayout.itemSize = CGSizeMake(130.0, 170.0);
-        flowLayout.sectionInset = UIEdgeInsetsMake(0, 10, 5, 10);
-        flowLayout.minimumLineSpacing = 5;
+        flowLayout.itemSize = [Utility isPad] ? CGSizeMake(140.0, 190.0) : CGSizeMake(130.0, 170.0);
+        flowLayout.sectionInset = [Utility isPad] ? UIEdgeInsetsMake(5, 20, 10, 20) : UIEdgeInsetsMake(0, 10, 5, 10);
+        flowLayout.minimumLineSpacing = [Utility isPad] ? 20 : 5;
 
         /* Init and Set CollectionView */
         self.myCollectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:flowLayout];
