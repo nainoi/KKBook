@@ -13,6 +13,7 @@
                 <outlet property="bookNameTitle" destination="WKC-hd-91L" id="12w-6r-vMU"/>
                 <outlet property="categoryLb" destination="F5f-Mp-QiS" id="WkH-Fl-MHX"/>
                 <outlet property="categoryTitleLb" destination="3Wa-6y-Pbs" id="GTq-TH-mZn"/>
+                <outlet property="contentView" destination="2Or-sn-jyK" id="W1g-QI-lOg"/>
                 <outlet property="coverImageView" destination="eSy-bk-re5" id="QSf-wh-JPJ"/>
                 <outlet property="coverPriceTitleLb" destination="y8V-gA-Vay" id="V4k-zO-ANZ"/>
                 <outlet property="detailLb" destination="jKK-DT-ZTL" id="RYL-Vy-cWr"/>
@@ -28,6 +29,8 @@
                 <outlet property="shareBtn" destination="fZB-DH-Mpy" id="E0F-Hf-O2K"/>
                 <outlet property="totalPageLb" destination="kiO-sW-kHb" id="xLw-7w-VKQ"/>
                 <outlet property="totalPageTitleLb" destination="c7t-Xb-fob" id="KzA-Gu-TyG"/>
+                <outlet property="typeLb" destination="X4f-Ag-474" id="0lu-cs-mpm"/>
+                <outlet property="typeTitleLb" destination="QPh-30-tPw" id="ztT-AR-V7J"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -36,7 +39,7 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="2Or-sn-jyK">
+                <view contentMode="scaleToFill" id="2Or-sn-jyK" customClass="KKBookView">
                     <rect key="frame" x="30" y="92" width="708" height="900"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>

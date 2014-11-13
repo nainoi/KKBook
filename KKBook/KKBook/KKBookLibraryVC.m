@@ -22,9 +22,9 @@
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         
-        layout.sectionInset = [Utility isPad] ? UIEdgeInsetsMake(20, 20, 20, 20) : UIEdgeInsetsMake(10, 10, 10, 10);
-        layout.minimumLineSpacing = [Utility isPad] ? 40 : 20;
-        layout.minimumInteritemSpacing = [Utility isPad] ? 20 : 10 ;
+        layout.sectionInset = [Utility isPad] ? UIEdgeInsetsMake(20, 20, 20, 20) :[Utility isLessPhone5] ? UIEdgeInsetsMake(2, 2, 2, 2) : UIEdgeInsetsMake(10, 5, 10, 5);
+        layout.minimumLineSpacing = [Utility isPad] ? 40 :[Utility isLessPhone5] ? 2 : 20;
+        layout.minimumInteritemSpacing = [Utility isPad] ? 20 : [Utility isLessPhone5] ? 2 : 10 ;
         
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -152,6 +152,7 @@
     if ([Utility isPad]) {
         return CGSizeMake(130, 200);
     }else{
+        
         return CGSizeMake(130, 200);
     }
     
@@ -159,7 +160,7 @@
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     
-    return UIEdgeInsetsMake(10, 30, 5, 30);
+    return [Utility isLessPhone5] ? UIEdgeInsetsMake(5, 15, 5, 15) : UIEdgeInsetsMake(10, 30, 5, 30);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{

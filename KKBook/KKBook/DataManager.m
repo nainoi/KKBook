@@ -104,7 +104,10 @@
     }
     
     [[self managedObjectContext] deleteObject:bookEntity];
-    if([[self managedObjectContext] save:nil]){
+
+    NSError *error;
+    
+    if([[self managedObjectContext] save:&error]){
         
         NSString *dlTempPath = [folder stringByAppendingPathExtension:@"tmp"];
         if ([FileHelper fileExists:dlTempPath isDir:NO]) {
@@ -183,7 +186,7 @@
     JLLog(@"Load book from url : %@",bookEntity.fileUrl);
     NSURL *url = [NSURL URLWithString:bookEntity.fileUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    __block AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
     if (![FileHelper fileExists:[[FileHelper booksPath]stringByAppendingPathComponent:bookEntity.folder] isDir:YES]){
         if([FileHelper createAtPath:[[FileHelper booksPath]stringByAppendingPathComponent:bookEntity.folder]])
@@ -208,6 +211,11 @@
             bookEntity.status = DOWNLOADCOMPLETE;
             [self saveBookEntity:bookEntity];
             [[NSNotificationCenter defaultCenter] postNotificationName:BookDidFinish object:operation];
+            for (AFHTTPRequestOperation *oper in self.responceArray) {
+                if (oper == operation) {
+                    [self.responceArray removeObject:operation];
+                }
+            }
         }
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -222,12 +230,12 @@
     
     bookEntity.status = DOWNLOADING;
     [self saveBookEntity:bookEntity];
-    [self.responceArray addObject:operation];
-    [[NSNotificationCenter defaultCenter] postNotificationName:BookDidResponce object:operation];
     [operation start];
     if (downloadStatus) {
         downloadStatus(DOWNLOADING);
     }
+    [self.responceArray addObject:operation];
+    //[[NSNotificationCenter defaultCenter] postNotificationName:BookDidResponce object:operation];
 }
 
 -(AFHTTPRequestOperation*)selectResponseOperationWithBookEntity:(BookEntity*)bookEntity{

@@ -15,8 +15,13 @@
     AFHTTPRequestOperation *operation;
 }
 
+-(void)dealloc{
+    [self removeNotification];
+}
+
 - (void)awakeFromNib {
     // Initialization code
+    _progresView.progress = 0.0;
     _progresView.hidden = YES;
     _resumeBtn.hidden = YES;
     _resumeBtn.backgroundColor = [UIColor colorWithRed:85/255.0 green:85/255.0 blue:85/255.0 alpha:0.65];
@@ -40,8 +45,9 @@
             [operation setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalByteReading, long long totalByteWrite){
                 float prog = (totalByteReading / (totalByteWrite * 1.0f) /** 100.0*/);
                 [progress setProgress:prog];
-                NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
+                //NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
             }];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishDownload:) name:BookDidFinish object:nil];
         }
         
         
@@ -52,6 +58,7 @@
     }else if ([_bookEntity.status isEqualToString:DOWNLOADCOMPLETE]){
         _progresView.hidden = YES;
         _resumeBtn.hidden = YES;
+        [[NSNotificationCenter defaultCenter]removeObserver:self name:BookDidFinish object:nil];
     }
     
     if (_isDelete) {
@@ -87,7 +94,7 @@
             [operations setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalByteReading, long long totalByteWrite){
                 float prog = (totalByteReading / (totalByteWrite * 1.0f) / 100.0);
                 [self.progresView setProgress:prog];
-                NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
+                //NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
             }];
         }
 
@@ -101,7 +108,8 @@
 {
     AFHTTPRequestOperation *operations = (AFHTTPRequestOperation*)noti.object;
     BookEntity *b = (BookEntity*)[operations.userInfo objectForKey:KKBOOK_KEY];
-    if ([b.bookID isEqualToNumber:_bookEntity.bookID]) {
+    //BookEntity *b = (BookEntity*)noti.object;
+    if (b.bookID == _bookEntity.bookID) {
         _bookEntity.status = DOWNLOADFAIL;
         _progresView.hidden = YES;
         _resumeBtn.hidden = NO;
@@ -113,11 +121,14 @@
 {
     AFHTTPRequestOperation *operations = (AFHTTPRequestOperation*)noti.object;
     BookEntity *b = (BookEntity*)[operations.userInfo objectForKey:KKBOOK_KEY];
-    if ([b.bookID isEqualToNumber:_bookEntity.bookID]) {
+    //BookEntity *b = (BookEntity*)noti.object;
+    if ([b.bookID integerValue] == [_bookEntity.bookID integerValue]) {
         _bookEntity.status = DOWNLOADCOMPLETE;
         _progresView.hidden = YES;
         _resumeBtn.hidden = YES;
+        //[[NSNotificationCenter defaultCenter]removeObserver:self name:BookDidFinish object:nil];
     }
+
 }
 
 - (void)layoutSubviews {
@@ -140,7 +151,7 @@
             [operation setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalByteReading, long long totalByteWrite){
                 float prog = (totalByteReading / (totalByteWrite * 1.0f) /** 100.0*/);
                 [progress setProgress:prog];
-                NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
+                //NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
             }];
         }else{
             [[DataManager shareInstance] downloadBook:_bookEntity onComplete:^(NSString* status){

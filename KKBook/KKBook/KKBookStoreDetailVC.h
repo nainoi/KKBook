@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "BookModel.h"
+#import "KKBookView.h"
+#import "AAShareBubbles.h"
 
 #define KKBookStoreDetailXIB [Utility isPad] ? @"KKBookStoreDetailVCPad" :@"KKBookStoreDetailVCPhone"
 
-@interface KKBookStoreDetailVC : BaseViewController
+@interface KKBookStoreDetailVC : BaseViewController<AAShareBubblesDelegate>
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet KKBookView *contentView;
 @property (weak, nonatomic) IBOutlet UIImageView *coverImageView;
 @property (weak, nonatomic) IBOutlet UILabel *bookNameTitle;
 @property (weak, nonatomic) IBOutlet UILabel *bookNameLb;
@@ -34,6 +38,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *fileSizeLb;
 @property (weak, nonatomic) IBOutlet UIView *line2View;
 @property (weak, nonatomic) IBOutlet UILabel *detailLb;
+@property (weak, nonatomic) IBOutlet UILabel *typeTitleLb;
+@property (weak, nonatomic) IBOutlet UILabel *typeLb;
 
 @property (strong, nonatomic) BookModel *book;
 @property (copy, nonatomic) void (^didDownload)(BookModel*);

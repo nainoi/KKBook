@@ -64,6 +64,8 @@
 		E014EC9E1A12EC6E0081BAE7 /* Reader-Print@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E014EC8E1A12EC6E0081BAE7 /* Reader-Print@2x.png */; };
 		E014EC9F1A12EC6E0081BAE7 /* Reader-Thumbs.png in Resources */ = {isa = PBXBuildFile; fileRef = E014EC8F1A12EC6E0081BAE7 /* Reader-Thumbs.png */; };
 		E014ECA01A12EC6E0081BAE7 /* Reader-Thumbs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E014EC901A12EC6E0081BAE7 /* Reader-Thumbs@2x.png */; };
+		E0237EAB1A14B81000176E05 /* AAShareBubbles.m in Sources */ = {isa = PBXBuildFile; fileRef = E0237EA91A14B81000176E05 /* AAShareBubbles.m */; };
+		E0237EAC1A14B81000176E05 /* AAShareBubbles.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E0237EAA1A14B81000176E05 /* AAShareBubbles.bundle */; };
 		E0276C501A0C766900254AAC /* KKBookFontHeaderPad.m in Sources */ = {isa = PBXBuildFile; fileRef = E0276C4F1A0C766900254AAC /* KKBookFontHeaderPad.m */; };
 		E0276C531A0C769700254AAC /* KKBookFontHeaderPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E0276C521A0C769700254AAC /* KKBookFontHeaderPhone.m */; };
 		E0276C571A0C76C400254AAC /* KKBookFontTitlePad.m in Sources */ = {isa = PBXBuildFile; fileRef = E0276C561A0C76C400254AAC /* KKBookFontTitlePad.m */; };
@@ -317,6 +319,9 @@
 		E014EC8E1A12EC6E0081BAE7 /* Reader-Print@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Print@2x.png"; sourceTree = "<group>"; };
 		E014EC8F1A12EC6E0081BAE7 /* Reader-Thumbs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs.png"; sourceTree = "<group>"; };
 		E014EC901A12EC6E0081BAE7 /* Reader-Thumbs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs@2x.png"; sourceTree = "<group>"; };
+		E0237EA81A14B81000176E05 /* AAShareBubbles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAShareBubbles.h; sourceTree = "<group>"; };
+		E0237EA91A14B81000176E05 /* AAShareBubbles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAShareBubbles.m; sourceTree = "<group>"; };
+		E0237EAA1A14B81000176E05 /* AAShareBubbles.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AAShareBubbles.bundle; sourceTree = "<group>"; };
 		E0276C4E1A0C766900254AAC /* KKBookFontHeaderPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookFontHeaderPad.h; path = KKBook/KKBookFontHeaderPad.h; sourceTree = SOURCE_ROOT; };
 		E0276C4F1A0C766900254AAC /* KKBookFontHeaderPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBookFontHeaderPad.m; path = KKBook/KKBookFontHeaderPad.m; sourceTree = SOURCE_ROOT; };
 		E0276C511A0C769700254AAC /* KKBookFontHeaderPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookFontHeaderPhone.h; path = KKBook/KKBookFontHeaderPhone.h; sourceTree = SOURCE_ROOT; };
@@ -729,6 +734,16 @@
 				E014EC901A12EC6E0081BAE7 /* Reader-Thumbs@2x.png */,
 			);
 			name = "PDF Reader";
+			sourceTree = "<group>";
+		};
+		E0237EA71A14B7CF00176E05 /* AAShareBubbles */ = {
+			isa = PBXGroup;
+			children = (
+				E0237EA81A14B81000176E05 /* AAShareBubbles.h */,
+				E0237EA91A14B81000176E05 /* AAShareBubbles.m */,
+				E0237EAA1A14B81000176E05 /* AAShareBubbles.bundle */,
+			);
+			name = AAShareBubbles;
 			sourceTree = "<group>";
 		};
 		E0276C4D1A0C754600254AAC /* CHTCollectionView */ = {
@@ -1160,6 +1175,7 @@
 		E06BAE971A05FE6A007886F4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E0237EA71A14B7CF00176E05 /* AAShareBubbles */,
 				E09A5AE11A10BBA800262959 /* AESEncypt */,
 				E05864D21A0EA25600C688D8 /* ZipArchive */,
 				E0276C4D1A0C754600254AAC /* CHTCollectionView */,
@@ -1409,6 +1425,7 @@
 				E0B3E4B91A093A880012A450 /* KKBookStoreMain.xib in Resources */,
 				E05864C71A0E46D100C688D8 /* StoreCollectionCell.xib in Resources */,
 				E00CB3571A02768800C8DC83 /* phone.jpg in Resources */,
+				E0237EAC1A14B81000176E05 /* AAShareBubbles.bundle in Resources */,
 				E0B3E4C31A0946730012A450 /* image3.png in Resources */,
 				E0B3E4C41A0946730012A450 /* image4.png in Resources */,
 				E014ECA01A12EC6E0081BAE7 /* Reader-Thumbs@2x.png in Resources */,
@@ -1511,6 +1528,7 @@
 				E075F21C1A1173AC00DAE0F8 /* AFDownloadRequestOperation.m in Sources */,
 				E050D5261A00DBC4007B3686 /* BaseWindow.m in Sources */,
 				E0DCC2981A0FA31000E87028 /* ReaderThumbFetch.m in Sources */,
+				E0237EAB1A14B81000176E05 /* AAShareBubbles.m in Sources */,
 				E01359EA1A07DDF000947773 /* AFHTTPRequestOperation.m in Sources */,
 				E01359EF1A07DDF000947773 /* AFURLConnectionOperation.m in Sources */,
 				E0DCC2781A0FA2ED00E87028 /* ReaderMainToolbar.m in Sources */,
@@ -1669,8 +1687,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: suthisak chuenjit (R2R9P6683M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: suthisak chuenjit (R2R9P6683M)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: suthisak chuenjit (HSCEZMNNG9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: suthisak chuenjit (HSCEZMNNG9)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = KKBook/PrefixHeader.pch;
 				INFOPLIST_FILE = KKBooK/Info.plist;
@@ -1685,8 +1703,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: suthisak chuenjit (R2R9P6683M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: suthisak chuenjit (R2R9P6683M)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: suthisak chuenjit (HSCEZMNNG9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: suthisak chuenjit (HSCEZMNNG9)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = KKBook/PrefixHeader.pch;
 				INFOPLIST_FILE = KKBooK/Info.plist;

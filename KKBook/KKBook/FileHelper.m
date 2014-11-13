@@ -142,10 +142,16 @@
 }
 
 +(NSString*)coversPath{
-    
-    NSString *path = [[FileHelper tempDirPath] stringByAppendingPathComponent:@"covers"];
-    if(![FileHelper fileExists:path isDir:YES])
-        [FileHelper createAtPath:path];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSString *libraryPath = [paths objectAtIndex:0];
+    NSString *path = [libraryPath stringByAppendingPathComponent:@"covers"];
+    if(![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:path
+                                  withIntermediateDirectories:YES
+                                                   attributes:nil
+                                                        error:NULL];
+        [self addSkipBackupAttributeToItemAtURL:[NSURL fileURLWithPath:path]];
+    }
     
 	return path;
 }

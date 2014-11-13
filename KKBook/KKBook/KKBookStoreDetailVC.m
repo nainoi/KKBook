@@ -12,7 +12,11 @@
 #import "UIAlertView+AFNetworking.h"
 #import "KKBookPreviewVC.h"
 
-@interface KKBookStoreDetailVC ()
+@interface KKBookStoreDetailVC (){
+    AAShareBubbles *shareBubbles;
+    float radius;
+    float bubbleRadius;
+}
 
 @end
 
@@ -33,6 +37,9 @@
     [self setNavigationBar];
     [self hiddenBackTitle];
     [self initBookData];
+    
+    radius = 130;
+    bubbleRadius = 40;
     
     //NSLog(@"bact title %@",((UINavigationItem*)self.navigationController.navigationBar.items[0]).title);
 }
@@ -55,11 +62,20 @@
     self.fileSizeLb.text = _book.fileSizeDisplay;
     self.detailLb.text = _book.bookDesc;
     self.priceLb.text = [_book.coverPrice stringByAppendingString:@" ฿"];
+    self.typeLb.text = _book.fileTypeName;
     
     _detailLb.numberOfLines = 0;
     [_detailLb sizeToFit];
     
     [self loadImageWithUrl];
+    
+    if (![Utility isPad]) {
+        CGRect frame = _contentView.frame;
+        frame.size.height = CGRectGetMaxY(_detailLb.frame) + 5;
+        _contentView.frame = frame;
+        
+        _scrollView.contentSize = CGSizeMake(_contentView.frame.size.width, _contentView.frame.size.height);
+    }
 }
 
 -(void)loadImageWithUrl{
@@ -93,6 +109,44 @@
 }
 
 - (IBAction)didShareBtn:(id)sender {
+    /*if(shareBubbles) {
+        shareBubbles = nil;
+    }
+    shareBubbles = [[AAShareBubbles alloc] initWithPoint:_shareBtn.center radius:radius inView:self.view];
+    shareBubbles.delegate = self;
+    shareBubbles.bubbleRadius = bubbleRadius;
+    shareBubbles.showFacebookBubble = YES;
+    shareBubbles.showTwitterBubble = YES;
+    shareBubbles.showGooglePlusBubble = YES;
+    //shareBubbles.showTumblrBubble = YES;
+    //shareBubbles.showVkBubble = YES;
+    shareBubbles.showLinkedInBubble = YES;
+    //shareBubbles.showYoutubeBubble = YES;
+    //shareBubbles.showVimeoBubble = YES;
+    //shareBubbles.showRedditBubble = YES;
+    //shareBubbles.showPinterestBubble = YES;
+    shareBubbles.showInstagramBubble = YES;
+    shareBubbles.showWhatsappBubble = YES;
+    [shareBubbles show];*/
+    
+    NSString *textToShare = @"Look at this awesome website for aspiring iOS Developers!";
+    NSURL *myWebsite = [NSURL URLWithString:@"http://www.codingexplorer.com/"];
+    
+    NSArray *objectsToShare = @[textToShare, myWebsite];
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:objectsToShare applicationActivities:nil];
+    
+    NSArray *excludeActivities = @[UIActivityTypeAirDrop,
+                                   UIActivityTypePrint,
+                                   UIActivityTypeAssignToContact,
+                                   UIActivityTypeSaveToCameraRoll,
+                                   UIActivityTypeAddToReadingList,
+                                   UIActivityTypePostToFlickr,
+                                   UIActivityTypePostToVimeo];
+    
+    activityVC.excludedActivityTypes = excludeActivities;
+    
+    [self presentViewController:activityVC animated:YES completion:nil];
 }
 
 -(void)download{
@@ -117,5 +171,48 @@
         
     }];
 }
+
+#pragma mark -
+#pragma mark AAShareBubbles
+
+-(void)aaShareBubbles:(AAShareBubbles *)shareBubbles tappedBubbleWithType:(AAShareBubbleType)bubbleType
+{
+    switch (bubbleType) {
+        case AAShareBubbleTypeFacebook:
+            NSLog(@"Facebook");
+            break;
+        case AAShareBubbleTypeTwitter:
+            NSLog(@"Twitter");
+            break;
+        case AAShareBubbleTypeGooglePlus:
+            NSLog(@"Google+");
+            break;
+        case AAShareBubbleTypeTumblr:
+            NSLog(@"Tumblr");
+            break;
+        case AAShareBubbleTypeVk:
+            NSLog(@"Vkontakte (vk.com)");
+            break;
+        case AAShareBubbleTypeLinkedIn:
+            NSLog(@"LinkedIn");
+            break;
+        case AAShareBubbleTypeYoutube:
+            NSLog(@"Youtube");
+            break;
+        case AAShareBubbleTypeVimeo:
+            NSLog(@"Vimeo");
+            break;
+        case AAShareBubbleTypeReddit:
+            NSLog(@"Reddit");
+            break;
+        default:
+            break;
+    }
+}
+
+-(void)aaShareBubblesDidHide:(AAShareBubbles*)bubbles {
+    NSLog(@"All Bubbles hidden");
+}
+
 
 @end

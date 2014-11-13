@@ -18,6 +18,8 @@
 + (NSString *) getDeviceUDID;
 + (BOOL) isPad;
 + (BOOL)isRetina;
++ (BOOL)isLessPhone5;
 + (NSString *) getDeviceType;
 + (NSString *) getDocumentPath;
+
 @end
