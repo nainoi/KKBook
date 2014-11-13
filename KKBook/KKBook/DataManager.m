@@ -129,6 +129,8 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"BookEntity"
                                               inManagedObjectContext:context];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bookID == %@",bookID];
+    [fetchRequest setPredicate:predicate];
     [fetchRequest setEntity:entity];
     
     NSError *error;

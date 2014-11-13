@@ -27,7 +27,7 @@
 #define CHILD_MARGIN 10
 #define CHILD_WIDTH CGRectGetWidth([UIScreen mainScreen].bounds) - 20
 
-#define FLAG_TEST @"N"
+#define FLAG_TEST @"Y"
 
 #define KKBOOK_KEY @"KKBook"
 #define DOWNLOADING @"DOWNLOADING"

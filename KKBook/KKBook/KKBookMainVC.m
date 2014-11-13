@@ -194,13 +194,14 @@
 -(void)bookStoreMain:(KKBookStoreMain *)storeMain didBook:(BookModel *)book{
     KKBookStoreDetailVC *bookDetailVC = [[KKBookStoreDetailVC alloc] initWithBook:book];
     bookDetailVC.didDownload = ^(BookModel *bookModel){
-        [[DataManager shareInstance] insertBookWithBookModel:bookModel onComplete:^(NSArray *books){
-            //[libraryVC setMyBook:[[NSMutableArray alloc] initWithArray:books]];
+        if ([[DataManager shareInstance] selectBookFromBookID:bookModel.bookID]) {
             [self.leftSideBar didTapItemAtIndex:1];
-            //[self sidebar:_leftSideBar didEnable:NO itemAtIndex:0];
-            //[self sidebar:_leftSideBar didEnable:YES itemAtIndex:1];
-            
-        }];
+        }else{
+            [[DataManager shareInstance] insertBookWithBookModel:bookModel onComplete:^(NSArray *books){
+                [self.leftSideBar didTapItemAtIndex:1];
+                
+            }];
+        }
     };
     [self.navigationController pushViewController:bookDetailVC animated:YES];
 }
