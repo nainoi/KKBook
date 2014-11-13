@@ -13,7 +13,9 @@
 #import "KKBookStoreDetailVC.h"
 #import "ReaderViewController.h"
 #import "KKBookStoreListVC.h"
+#import "KKBookSettingVC.h"
 
+#import "InternetChecking.h"
 #import "DataManager.h"
 #import "BookEntity.h"
 #import "FileHelper.h"
@@ -21,6 +23,7 @@
 @interface KKBookMainVC ()<KKBookLeftSidebarDelegate, KKBookStoreMainDelegate, ReaderViewControllerDelegate, KKBookLibraryDelegate, KKBookStoreListDelegate>{
     KKBookStoreMain *storeVC;
     KKBookLibraryVC *libraryVC;
+    KKBookSettingVC *settingVC;
     ReaderViewController *readerViewController;
 }
 
@@ -34,15 +37,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //init
-    self.optionIndices = [NSMutableIndexSet indexSetWithIndex:0];
-    storeVC = [[KKBookStoreMain alloc] init];
-    storeVC.delegate = self;
-    libraryVC = [[KKBookLibraryVC alloc] init];
-    libraryVC.delegate = self;
+    
     [self setNavigationBar];
     [self setMainMenuItem];
     [self addNavigationItem];
     [self initMainViewController];
+    [self initView];
     [self toggleViewController];
 }
 
@@ -53,6 +53,7 @@
 
 -(void)initMainViewController{
     self.mainController = [[UIViewController alloc] init];
+    
     CGRect frame = self.view.bounds;
     frame.origin.y = CGRectGetMaxY(self.navigationController.navigationBar.frame);
     frame.size.height = CGRectGetHeight(frame) - CGRectGetMaxY(self.navigationController.navigationBar.frame);
@@ -60,26 +61,55 @@
     //_mainController.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_mainController.view];
     
-    _pageType = STORE;
-    storeVC.view.frame = frame;
-    self.title = @"KKBook";
-    [_mainController.view addSubview:storeVC.view];
-    [_mainController viewWillAppear:NO];
+    storeVC = [[KKBookStoreMain alloc] init];
+    storeVC.delegate = self;
+    storeVC.view.frame = [self frameForViewController];
+    
+    libraryVC = [[KKBookLibraryVC alloc] init];
+    libraryVC.delegate = self;
+    libraryVC.view.frame = [self frameForViewController];
+    
+    if (![InternetChecking sharedInstance].isActived) {
+        self.optionIndices = [NSMutableIndexSet indexSetWithIndex:0];
+        _pageType = STORE;
+        self.title = @"KKBook";
+        [_mainController.view addSubview:storeVC.view];
+        [_mainController viewWillAppear:NO];
+    }else{
+        self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];
+        _pageType = LIBRARY;
+        self.title = @"Library";
+        [_mainController.view addSubview:libraryVC.view];
+    }
+    
+    
+    
+}
+
+-(void)initView{
+    settingVC = [[KKBookSettingVC alloc] init];
+}
+
+-(CGRect)frameForViewController{
+    CGRect frame = _mainController.view.frame;
+    frame.origin.y = 0;
+    return frame;
 }
 
 #pragma mark - top view
 
 -(void)toggleViewController{
-    CGRect frame = _mainController.view.bounds;
-    frame.origin.y = 0;
+//    CGRect frame = _mainController.view.bounds;
+//    frame.origin.y = 0;
     switch (_pageType) {
         case STORE:
             if (_mainController.view.superview == storeVC.view) {
                 return;
             }else{
                 [libraryVC.view removeFromSuperview];
+                [settingVC.view removeFromSuperview];
             }
-            storeVC.view.frame = frame;
+            storeVC.view.frame = [self frameForViewController];
             self.title = @"KKBook";
             [_mainController.view addSubview:storeVC.view];
             break;
@@ -90,9 +120,34 @@
             }else{
                 [storeVC.view removeFromSuperview];
             }
-            libraryVC.view.frame = frame;
+            libraryVC.view.frame = [self frameForViewController];
             self.title = @"Library";
             [_mainController.view addSubview:libraryVC.view];
+            break;
+            
+        case ABOUT:
+            if (_mainController.view.superview == libraryVC.view) {
+                return;
+            }else{
+                [storeVC.view removeFromSuperview];
+                [libraryVC.view removeFromSuperview];
+                [settingVC.view removeFromSuperview];
+            }
+            libraryVC.view.frame = [self frameForViewController];
+            self.title = @"Library";
+            [_mainController.view addSubview:libraryVC.view];
+            break;
+            
+        case SETTING:
+            if (_mainController.view.superview == settingVC.view) {
+                return;
+            }else{
+                [storeVC.view removeFromSuperview];
+                [libraryVC.view removeFromSuperview];
+            }
+            settingVC.view.frame = [self frameForViewController];
+            self.title = @"Setting";
+            [_mainController.view addSubview:settingVC.view];
             break;
             
         default:
@@ -174,8 +229,10 @@
     }else if (index == 1){
         _pageType = LIBRARY;
     }
-    if (index == 2) {
+    else if (index == 2) {
         
+    }else if(index == 3){
+        _pageType = SETTING;
     }
     [self toggleViewController];
     [self addNavigationItem];

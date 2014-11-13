@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "BaseNavigationController.h"
+#import "InternetChecking.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +24,7 @@
     _window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    [[InternetChecking sharedInstance] isActived];
     self.kkbookMainVC = [[KKBookMainVC alloc] init];
     BaseNavigationController *naviCtrl = [[BaseNavigationController alloc] initWithRootViewController:_kkbookMainVC];
     
