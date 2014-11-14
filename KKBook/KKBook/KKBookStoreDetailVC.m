@@ -136,12 +136,11 @@
     
     UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:objectsToShare applicationActivities:nil];
     
-    NSArray *excludeActivities = @[UIActivityTypeAirDrop,
+    NSArray *excludeActivities = @[UIActivityTypePostToFacebook,
+                                   UIActivityTypePostToTwitter,
                                    UIActivityTypePrint,
                                    UIActivityTypeAssignToContact,
-                                   UIActivityTypeSaveToCameraRoll,
                                    UIActivityTypeAddToReadingList,
-                                   UIActivityTypePostToFlickr,
                                    UIActivityTypePostToVimeo];
     
     activityVC.excludedActivityTypes = excludeActivities;

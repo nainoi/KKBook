@@ -14,6 +14,7 @@
 #import "ReaderViewController.h"
 #import "KKBookStoreListVC.h"
 #import "KKBookSettingVC.h"
+#import "InteractiveReader.h"
 
 #import "InternetChecking.h"
 #import "DataManager.h"
@@ -187,10 +188,10 @@
 -(KKBookLeftSidebar *)leftSideBar{
     if (!_leftSideBar) {
         NSArray *images = @[
-                            [UIImage imageNamed:@"gear"],
                             [UIImage imageNamed:@"globe"],
+                            [UIImage imageNamed:@"gear"],
                             [UIImage imageNamed:@"profile"],
-                            [UIImage imageNamed:@"star"],
+                            [UIImage imageNamed:@"gear"],
                             ];
         NSArray *colors = @[
                             [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
@@ -216,8 +217,9 @@
 }
 
 -(void)gotoLibrary{
-    [self.navigationController popToRootViewControllerAnimated:YES];
     [self.leftSideBar didTapItemAtIndex:1];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
 }
 
 #pragma mark - RNFrostedSidebarDelegate
@@ -307,7 +309,12 @@
 #pragma mark - KKBookLibrary delegate
 
 -(void)didSelectBook:(KKBookLibraryVC *)bookLibrary withBookEntity:(BookEntity *)bookEntity{
-    [self pdfReaderWithBookEntity:bookEntity];
+    if ([bookEntity.fileTypeName isEqualToString:@"PDF"]) {
+        [self pdfReaderWithBookEntity:bookEntity];
+    }else{
+        [self readerInteractive:bookEntity];
+    }
+    
 }
 
 #pragma mark - PDF Reader
@@ -354,6 +361,13 @@
 
 -(void)dismissReaderViewController:(ReaderViewController *)viewController{
     [viewController dismissViewControllerAnimated:YES completion:^{}];
+}
+
+#pragma mark - Interactive Reader
+
+-(void)readerInteractive:(BookEntity*)book{
+    InteractiveReader *reader = [[InteractiveReader alloc] initWithBook:book];
+    [self.navigationController pushViewController:reader animated:YES];
 }
 
 @end

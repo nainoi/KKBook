@@ -168,6 +168,10 @@
 		E06BAE951A05F921007886F4 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E06BAE931A05F921007886F4 /* background.png */; };
 		E06BAE961A05F921007886F4 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E06BAE941A05F921007886F4 /* background@2x.png */; };
 		E06BAE9A1A0602C9007886F4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E06BAE991A0602C9007886F4 /* MBProgressHUD.m */; };
+		E0730B751A15FC1800C955A1 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0730B701A15FC1800C955A1 /* ContentViewController.m */; };
+		E0730B761A15FC1800C955A1 /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0730B711A15FC1800C955A1 /* ContentViewController.xib */; };
+		E0730B771A15FC1800C955A1 /* InteractiveReader.m in Sources */ = {isa = PBXBuildFile; fileRef = E0730B731A15FC1800C955A1 /* InteractiveReader.m */; };
+		E0730B781A15FC1800C955A1 /* InteractiveReader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0730B741A15FC1800C955A1 /* InteractiveReader.xib */; };
 		E075F21C1A1173AC00DAE0F8 /* AFDownloadRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E075F21B1A1173AC00DAE0F8 /* AFDownloadRequestOperation.m */; };
 		E07FD4551A01407400F890CF /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E07FD4541A01407400F890CF /* BaseViewController.m */; };
 		E09A5AEA1A10BBC100262959 /* AESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = E09A5AE31A10BBC100262959 /* AESCrypt.m */; };
@@ -480,6 +484,12 @@
 		E06BAE941A05F921007886F4 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		E06BAE981A0602C9007886F4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		E06BAE991A0602C9007886F4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		E0730B6F1A15FC1800C955A1 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		E0730B701A15FC1800C955A1 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		E0730B711A15FC1800C955A1 /* ContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
+		E0730B721A15FC1800C955A1 /* InteractiveReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractiveReader.h; sourceTree = "<group>"; };
+		E0730B731A15FC1800C955A1 /* InteractiveReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteractiveReader.m; sourceTree = "<group>"; };
+		E0730B741A15FC1800C955A1 /* InteractiveReader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InteractiveReader.xib; sourceTree = "<group>"; };
 		E075F21A1A1173AC00DAE0F8 /* AFDownloadRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFDownloadRequestOperation.h; sourceTree = "<group>"; };
 		E075F21B1A1173AC00DAE0F8 /* AFDownloadRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFDownloadRequestOperation.m; sourceTree = "<group>"; };
 		E07FD4531A01407400F890CF /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = KKBook/BaseViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1103,6 +1113,12 @@
 		E050D5151A00A6B6007B3686 /* ReaderInteractive */ = {
 			isa = PBXGroup;
 			children = (
+				E0730B6F1A15FC1800C955A1 /* ContentViewController.h */,
+				E0730B701A15FC1800C955A1 /* ContentViewController.m */,
+				E0730B711A15FC1800C955A1 /* ContentViewController.xib */,
+				E0730B721A15FC1800C955A1 /* InteractiveReader.h */,
+				E0730B731A15FC1800C955A1 /* InteractiveReader.m */,
+				E0730B741A15FC1800C955A1 /* InteractiveReader.xib */,
 			);
 			name = ReaderInteractive;
 			sourceTree = "<group>";
@@ -1422,6 +1438,7 @@
 				E047CBCF1A11CAD300582881 /* delete@2x.png in Resources */,
 				E02BEC6D1A02478E002A5F6B /* Profile_image@2x.png in Resources */,
 				E014EC911A12EC6E0081BAE7 /* Reader-Button-H.png in Resources */,
+				E0730B781A15FC1800C955A1 /* InteractiveReader.xib in Resources */,
 				E02BEC6B1A02478E002A5F6B /* profile@2x.png in Resources */,
 				E02D974E1A03A0ED0014BCBF /* list-item-glare@2x~ipad.png in Resources */,
 				E014EC951A12EC6E0081BAE7 /* Reader-Email.png in Resources */,
@@ -1446,6 +1463,7 @@
 				E02BEC6E1A02478E002A5F6B /* star.png in Resources */,
 				E014EC991A12EC6E0081BAE7 /* Reader-Mark-N.png in Resources */,
 				E02BEC4D1A0237D3002A5F6B /* ic_menu.png in Resources */,
+				E0730B761A15FC1800C955A1 /* ContentViewController.xib in Resources */,
 				E06BAE951A05F921007886F4 /* background.png in Resources */,
 				E0B3E4B91A093A880012A450 /* KKBookStoreMain.xib in Resources */,
 				E05864C71A0E46D100C688D8 /* StoreCollectionCell.xib in Resources */,
@@ -1482,6 +1500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0730B771A15FC1800C955A1 /* InteractiveReader.m in Sources */,
 				E0135A401A07FE6400947773 /* SDWebImageDecoder.m in Sources */,
 				E0135A441A07FE6400947773 /* SDWebImagePrefetcher.m in Sources */,
 				E0135A171A07F29C00947773 /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -1530,6 +1549,7 @@
 				E0135A3C1A07FE6400947773 /* MKAnnotationView+WebCache.m in Sources */,
 				E02D97321A033C4D0014BCBF /* CHTCollectionViewWaterfallCell.m in Sources */,
 				E0276C631A0C7CE000254AAC /* KKBookView.m in Sources */,
+				E0730B751A15FC1800C955A1 /* ContentViewController.m in Sources */,
 				E01359FE1A07EF1B00947773 /* BookModel.m in Sources */,
 				E05864CE1A0E9A9300C688D8 /* DataManager.m in Sources */,
 				E050D5201A00BA6A007B3686 /* BaseNavigationController.m in Sources */,
