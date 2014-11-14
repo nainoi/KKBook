@@ -69,7 +69,7 @@
     libraryVC.delegate = self;
     libraryVC.view.frame = [self frameForViewController];
     
-    if (![InternetChecking sharedInstance].isActived) {
+    if ([InternetChecking sharedInstance].isActived) {
         self.optionIndices = [NSMutableIndexSet indexSetWithIndex:0];
         _pageType = STORE;
         self.title = @"KKBook";
