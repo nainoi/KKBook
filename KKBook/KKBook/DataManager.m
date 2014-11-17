@@ -11,6 +11,7 @@
 #import "FileHelper.h"
 #import "AESCrypt.h"
 #import "NSData+CommonCrypto.h"
+#import "AFDownloadRequestOperation.h"
 
 @implementation DataManager
 
@@ -183,7 +184,7 @@
 }
 
 -(void)downloadBook:(BookEntity*)bookEntity onComplete:(void (^)(NSString *))downloadStatus{
-    JLLog(@"Load book from url : %@",bookEntity.fileUrl);
+    /*JLLog(@"Load book from url : %@",bookEntity.fileUrl);
     NSURL *url = [NSURL URLWithString:bookEntity.fileUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     __block AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
@@ -226,6 +227,8 @@
         bookEntity.status = DOWNLOADFAIL;
         [self saveBookEntity:bookEntity];
         [[NSNotificationCenter defaultCenter] postNotificationName:BookDidFail object:operation];
+        [self.responceArray removeObject:operation];
+        [self.responceArray addObject:operation];
     }];
     
     bookEntity.status = DOWNLOADING;
@@ -235,7 +238,78 @@
         downloadStatus(DOWNLOADING);
     }
     [self.responceArray addObject:operation];
-    //[[NSNotificationCenter defaultCenter] postNotificationName:BookDidResponce object:operation];
+    //[[NSNotificationCenter defaultCenter] postNotificationName:BookDidResponce object:operation];*/
+    NSString *path = [[FileHelper booksPath] stringByAppendingPathComponent:[bookEntity.folder stringByAppendingPathComponent:[ bookEntity.fileUrl lastPathComponent]]];
+
+    NSURL *url = [NSURL URLWithString:bookEntity.fileUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    __block AFHTTPRequestOperation *operation = [[AFDownloadRequestOperation alloc] initWithRequest:request targetPath:path shouldResume:YES];
+    
+    if (![FileHelper fileExists:[[FileHelper booksPath]stringByAppendingPathComponent:bookEntity.folder] isDir:YES]){
+        if([FileHelper createAtPath:[[FileHelper booksPath]stringByAppendingPathComponent:bookEntity.folder]])
+            NSLog(@"create folder %@",bookEntity.folder);
+    }
+    
+    
+//    NSString *path = [[FileHelper booksPath] stringByAppendingPathComponent:[bookEntity.folder stringByAppendingPathComponent:[ bookEntity.fileUrl lastPathComponent]]];
+//    operation.outputStream = [NSOutputStream outputStreamToFileAtPath:path append:NO];
+    operation.userInfo = [NSDictionary dictionaryWithObject:bookEntity forKey:KKBOOK_KEY];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Successfully downloaded file to %@", path);
+        //NSString *extractFile = [[[[FileHelper booksPath] stringByAppendingPathComponent:bookEntity.folder]stringByAppendingPathComponent:bookEntity.folder]stringByAppendingPathExtension:@"pdf"];
+        if ([FileHelper extractFile:path outputPath:[[FileHelper booksPath] stringByAppendingPathComponent:bookEntity.folder]]) {
+            //DELETE OLD FILE
+            if (![FileHelper removeAtPath:path]) {
+                //
+            }
+            if (downloadStatus) {
+                downloadStatus(DOWNLOADCOMPLETE);
+            }
+            bookEntity.status = DOWNLOADCOMPLETE;
+            [self saveBookEntity:bookEntity];
+            [[NSNotificationCenter defaultCenter] postNotificationName:BookDidFinish object:operation];
+            for (AFHTTPRequestOperation *oper in self.responceArray) {
+                if (oper == operation) {
+                    [self.responceArray removeObject:operation];
+                }
+            }
+        }else{
+            if (downloadStatus) {
+                downloadStatus(DOWNLOADFAIL);
+            }
+            bookEntity.status = DOWNLOADFAIL;
+            [self saveBookEntity:bookEntity];
+            [[NSNotificationCenter defaultCenter] postNotificationName:BookDidFail object:operation];
+
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        if (downloadStatus) {
+            downloadStatus(DOWNLOADFAIL);
+        }
+        bookEntity.status = DOWNLOADFAIL;
+        [self saveBookEntity:bookEntity];
+        [[NSNotificationCenter defaultCenter] postNotificationName:BookDidFail object:operation];
+//        [self.responceArray removeObject:operation];
+//        [self.responceArray addObject:operation];
+    }];
+    
+    bookEntity.status = DOWNLOADING;
+    [self saveBookEntity:bookEntity];
+    [operation start];
+    if (downloadStatus) {
+        downloadStatus(DOWNLOADING);
+    }
+    [self.responceArray addObject:operation];
+    [[NSNotificationCenter defaultCenter] postNotificationName:BookDidResponce object:operation];
+    
+    
+    
+    
+//    [operation setProgressiveDownloadProgressBlock:^(NSInteger bytesRead, long long totalBytesRead, long long totalBytesExpected, long long totalBytesReadForFile, long long totalBytesExpectedToReadForFile) {
+//        // do something here.
+//    }];
 }
 
 -(AFHTTPRequestOperation*)selectResponseOperationWithBookEntity:(BookEntity*)bookEntity{

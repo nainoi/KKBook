@@ -37,7 +37,7 @@
     NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:UIPageViewControllerSpineLocationMin]
                                                         forKey: UIPageViewControllerOptionSpineLocationKey];
     
-    self.pageController = [[UIPageViewController alloc]initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl
+    self.pageController = [[UIPageViewController alloc]initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                            navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                            options: options];
     
@@ -57,11 +57,11 @@
     [[self view] addSubview:[_pageController view]];
     [_pageController didMoveToParentViewController:self];
     
-    [self.navigationController.navigationBar setTintColor:[UIColor
-                                                           colorWithRed:78.0/255.0
-                                                           green:156.0/255.0
-                                                           blue:206.0/255.0
-                                                           alpha:1.0]];
+//    [self.navigationController.navigationBar setTintColor:[UIColor
+//                                                           colorWithRed:78.0/255.0
+//                                                           green:156.0/255.0
+//                                                           blue:206.0/255.0
+//                                                           alpha:1.0]];
     
     
 //    MMLogoView * logo = [[MMLogoView alloc] initWithFrame:CGRectMake(0, 0, 29, 31)];
@@ -124,8 +124,13 @@
     
     NSMutableArray *data = [[NSMutableArray alloc] init];
     NSArray *directoryContent = [[NSFileManager  defaultManager] contentsOfDirectoryAtPath:path error:NULL];
+    if (directoryContent.count == 1) {
+        path = [path stringByAppendingPathComponent:directoryContent[0]];
+    }
     
-    for (NSString *file in directoryContent)
+    NSArray *directoryContent2 = [[NSFileManager  defaultManager] contentsOfDirectoryAtPath:path error:NULL];
+    
+    for (NSString *file in directoryContent2)
     {
        // NSString *file = [directoryContent objectAtIndex:count];
         if ([[file pathExtension] isEqualToString:@"html"]) {

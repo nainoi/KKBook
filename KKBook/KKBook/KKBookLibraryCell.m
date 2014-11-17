@@ -48,6 +48,7 @@
                 //NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
             }];
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishDownload:) name:BookDidFinish object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failDownload:) name:BookDidFail object:nil];
         }
         
         
@@ -59,6 +60,7 @@
         _progresView.hidden = YES;
         _resumeBtn.hidden = YES;
         [[NSNotificationCenter defaultCenter]removeObserver:self name:BookDidFinish object:nil];
+        [[NSNotificationCenter defaultCenter]removeObserver:self name:BookDidFail object:nil];
     }
     
     if (_isDelete) {
@@ -109,7 +111,7 @@
     AFHTTPRequestOperation *operations = (AFHTTPRequestOperation*)noti.object;
     BookEntity *b = (BookEntity*)[operations.userInfo objectForKey:KKBOOK_KEY];
     //BookEntity *b = (BookEntity*)noti.object;
-    if (b.bookID == _bookEntity.bookID) {
+    if ([b.bookID integerValue] == [_bookEntity.bookID integerValue]) {
         _bookEntity.status = DOWNLOADFAIL;
         _progresView.hidden = YES;
         _resumeBtn.hidden = NO;
@@ -144,15 +146,25 @@
 
 - (IBAction)didResume:(id)sender {
     //operation = [[DataManager shareInstance] selectResponseOperationWithBookEntity:_bookEntity];
+    
     if ([_bookEntity.status isEqualToString:DOWNLOADFAIL]) {
+        operation = [[DataManager shareInstance] selectResponseOperationWithBookEntity:_bookEntity];
         if (operation) {
             [operation resume];
-            __weak UIProgressView *progress = self.progresView;
-            [operation setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalByteReading, long long totalByteWrite){
-                float prog = (totalByteReading / (totalByteWrite * 1.0f) /** 100.0*/);
-                [progress setProgress:prog];
-                //NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
+//            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishDownload:) name:BookDidFinish object:nil];
+//            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failDownload:) name:BookDidFail object:nil];
+//            _progresView.hidden = NO;
+//            _resumeBtn.hidden = NO;
+//            [_resumeBtn setTitle:@"" forState:UIControlStateNormal];
+            [[DataManager shareInstance] downloadBook:_bookEntity onComplete:^(NSString* status){
+                
             }];
+//            __weak UIProgressView *progress = self.progresView;
+//            [operation setDownloadProgressBlock:^(NSUInteger bytesWritten, long long totalByteReading, long long totalByteWrite){
+//                float prog = (totalByteReading / (totalByteWrite * 1.0f) /** 100.0*/);
+//                [progress setProgress:prog];
+//                //NSLog(@"%f%% Uploaded", (totalByteReading / (totalByteWrite * 1.0f) * 100));
+//            }];
         }else{
             [[DataManager shareInstance] downloadBook:_bookEntity onComplete:^(NSString* status){
                 

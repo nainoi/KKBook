@@ -31,6 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    maxBanner = 0;
     [self initBannerView];
     [self initTable];
     [self loadBanner];
@@ -235,7 +236,7 @@
 }
 
 -(void)slide:(NSTimer*)timer{
-    
+
     unsigned long nextpage = currentBanner+1;
     if(nextpage > maxBanner-1){
         nextpage = 0;

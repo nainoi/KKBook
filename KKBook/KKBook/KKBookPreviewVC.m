@@ -29,8 +29,9 @@
 }
 
 -(void)initPageViewController{
-    self.pageViewControler = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationVertical options:nil];
+    self.pageViewControler = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     _pageViewControler.view.frame = self.view.frame;
+    _pageViewControler.dataSource = self;
     _pageViewControler.view.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_pageViewControler.view];
     if (_previews > 0 && _previews) {

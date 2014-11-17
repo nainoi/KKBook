@@ -363,9 +363,9 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
 }
 
 - (void)resume {
-    if (![self isPaused]) {
-        return;
-    }
+//    if (![self isPaused]) {
+//        return;
+//    }
     
     [self.lock lock];
     self.state = AFOperationReadyState;

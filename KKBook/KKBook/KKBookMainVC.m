@@ -83,7 +83,7 @@
         [_mainController.view addSubview:libraryVC.view];
     }
     
-    
+    [self addNavigationItem];
     
 }
 
@@ -95,6 +95,12 @@
     CGRect frame = _mainController.view.frame;
     frame.origin.y = 0;
     return frame;
+}
+
+#pragma mark - orientation
+
+-(BOOL)shouldAutorotate{
+    return NO;
 }
 
 #pragma mark - top view
@@ -320,24 +326,25 @@
 #pragma mark - PDF Reader
 
 -(void)pdfReaderWithBookEntity:(BookEntity*)bookEntity{
+    NSString *path = [[FileHelper booksPath]stringByAppendingPathComponent:bookEntity.folder];
     NSString *phrase = nil; // Document password (for unlocking most encrypted PDF files)
     NSString *filePath = nil;
-    NSFileManager * filemanager = [NSFileManager defaultManager];
-    NSDirectoryEnumerator *pdfs = [filemanager enumeratorAtPath:[[FileHelper booksPath]stringByAppendingString:bookEntity.folder]];
-    NSString *pdfFile = [[[[FileHelper booksPath]stringByAppendingPathComponent:bookEntity.folder] stringByAppendingPathComponent:@"F_PDF"]stringByAppendingPathExtension:@"pdf"];
-    if ([FileHelper fileExists:pdfFile isDir:NO]) {
-        filePath = pdfFile;
-    }else{
-        NSString *documentsSubpath;
-        while (documentsSubpath = [pdfs nextObject])
-        {
-            if (![documentsSubpath.pathExtension isEqual:@"pdf"]) {
-                continue;
-            }
-            
-            NSLog(@"found %@", documentsSubpath);
-            filePath = documentsSubpath;
+    
+    NSArray *directoryContent = [[NSFileManager  defaultManager] contentsOfDirectoryAtPath:path error:NULL];
+    
+    for (NSString *file in directoryContent)
+    {
+        // NSString *file = [directoryContent objectAtIndex:count];
+        if ([[file pathExtension] isEqualToString:@"pdf"]) {
+            filePath = [path stringByAppendingPathComponent:file];
         }
+        //NSLog(@"File %d: %@", (count + 1), [directoryContent objectAtIndex:count]);
+    }
+
+    
+    if (![FileHelper fileExists:filePath isDir:NO]) {
+        NSString *pdfFile = [[[[FileHelper booksPath]stringByAppendingPathComponent:bookEntity.folder] stringByAppendingPathComponent:@"F_PDF"]stringByAppendingPathExtension:@"pdf"];
+        filePath = pdfFile;
     }
     
     ReaderDocument *document = [ReaderDocument withDocumentFilePath:filePath password:phrase];

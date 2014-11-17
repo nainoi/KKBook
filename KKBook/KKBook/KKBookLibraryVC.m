@@ -98,7 +98,7 @@
 
 -(void)startDownload:(NSNotification*)noti{
     self.myBook = [[NSMutableArray alloc] initWithArray:[[DataManager shareInstance] selectAllMyBook]];
-    //[_collectionView reloadData];
+    [_collectionView reloadData];
 }
 
 -(void)responceDownload:(NSNotification*)noti
@@ -186,6 +186,9 @@
 -(void)deleteBookOnLibrary:(KKBookLibraryCell *)cell withBookEntity:(BookEntity *)bookEntity{
     [[DataManager shareInstance] deleteBookWithBookID:bookEntity onComplete:^(NSArray *array){
         self.myBook = [[NSMutableArray alloc] initWithArray:[[DataManager shareInstance] selectAllMyBook]];
+        if (_myBook.count == 0) {
+            _isDelete = NO;
+        }
         [_collectionView reloadData];
     }];
 }
