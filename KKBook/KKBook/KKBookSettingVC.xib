@@ -25,6 +25,9 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didFeedBack:" destination="-1" eventType="touchUpInside" id="nAl-AA-Muj"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXA-cQ-wUe">
                     <rect key="frame" x="170" y="202" width="260" height="49"/>
@@ -33,16 +36,36 @@
                         <constraint firstAttribute="height" constant="49" id="2IL-He-gqr"/>
                         <constraint firstAttribute="width" constant="260" id="gU7-4X-Gku"/>
                     </constraints>
-                    <state key="normal" title="Clear Cache">
+                    <state key="normal" title="About Us">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didAboutUs:" destination="-1" eventType="touchUpInside" id="t1I-aB-wK2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxJ-HO-GDl">
+                    <rect key="frame" x="170" y="348" width="260" height="49"/>
+                    <color key="backgroundColor" red="0.1123081423" green="0.90762515939999999" blue="0.45980531349999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="260" id="Mi8-GL-b6o"/>
+                        <constraint firstAttribute="height" constant="49" id="TkQ-Vq-AXe"/>
+                    </constraints>
+                    <state key="normal" title="Help Guide">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didHelpGuide:" destination="-1" eventType="touchUpInside" id="PK2-1v-chN"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="zxJ-HO-GDl" firstAttribute="leading" secondItem="29R-jB-pwI" secondAttribute="leading" id="4lz-3I-1Yc"/>
                 <constraint firstItem="29R-jB-pwI" firstAttribute="top" secondItem="zXA-cQ-wUe" secondAttribute="bottom" constant="22" id="cDn-PN-5zY"/>
                 <constraint firstItem="zXA-cQ-wUe" firstAttribute="leading" secondItem="29R-jB-pwI" secondAttribute="leading" id="d62-Bc-1r7"/>
+                <constraint firstItem="zxJ-HO-GDl" firstAttribute="top" secondItem="29R-jB-pwI" secondAttribute="bottom" constant="22" id="gxO-32-9zf"/>
                 <constraint firstItem="29R-jB-pwI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lsf-JZ-lgV"/>
                 <constraint firstItem="zXA-cQ-wUe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="202" id="qZV-cQ-lic"/>
                 <constraint firstItem="29R-jB-pwI" firstAttribute="trailing" secondItem="zXA-cQ-wUe" secondAttribute="trailing" id="wBj-Qk-kUm"/>

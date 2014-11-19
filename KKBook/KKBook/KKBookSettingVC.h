@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KKBookSettingVC : UIViewController
+@interface KKBookSettingVC : BaseViewController
+
+- (IBAction)didAboutUs:(id)sender;
+- (IBAction)didFeedBack:(id)sender;
+- (IBAction)didHelpGuide:(id)sender;
 
 @end

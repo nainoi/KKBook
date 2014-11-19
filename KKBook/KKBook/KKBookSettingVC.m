@@ -8,7 +8,9 @@
 
 #import "KKBookSettingVC.h"
 
-@interface KKBookSettingVC ()
+#import <MessageUI/MFMailComposeViewController.h>
+
+@interface KKBookSettingVC ()<MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -24,14 +26,53 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)didAboutUs:(id)sender {
 }
-*/
+
+- (IBAction)didFeedBack:(id)sender {
+    // Email Subject
+    NSString *emailTitle = @"KKBook Feedback";
+    // Email Content
+    NSString *messageBody = @"KKBook app is so fun!";
+    // To address
+    NSArray *toRecipents = [NSArray arrayWithObject:@"suthisak.ch@gmail.com"];
+    
+    MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+    controller.mailComposeDelegate = self;
+    [controller setSubject:emailTitle];
+    [controller setMessageBody:messageBody isHTML:NO];
+    [controller setToRecipients:toRecipents];
+    if (controller)
+        [self presentViewController:controller animated:YES completion:^(){}];
+}
+
+- (IBAction)didHelpGuide:(id)sender {
+}
+
+#pragma mark - MFMailCompose delegate
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error;
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail sent");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            break;
+        default:
+            break;
+    }
+    [controller dismissViewControllerAnimated:YES completion:^(){}];
+}
 
 @end
