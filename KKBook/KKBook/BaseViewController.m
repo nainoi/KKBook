@@ -46,11 +46,20 @@
 
 - (void)addBackNavigation{
     ((BaseNavigationController*)self.navigationController).navigationItem.backBarButtonItem.title = @"";
-    NSLog(@"bact title %@",((BaseNavigationController*)self.navigationController).navigationItem.leftBarButtonItem);
+    //NSLog(@"bact title %@",((BaseNavigationController*)self.navigationController).navigationItem.leftBarButtonItem);
+}
+
+-(void)addCloseBarButtonItem{
+    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(dismissNavigationController)];
+    self.navigationItem.leftBarButtonItem = closeButton;
 }
 
 - (void)setNavigationBar{
     ((BaseNavigationController*)self.navigationController).navigationBar.barTintColor = [UIColor colorWithRed:3/255.0 green:166/255.0 blue:130/255.0 alpha:1.0];
+}
+
+-(void)dismissNavigationController{
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 #pragma mark - progress
@@ -61,6 +70,14 @@
     
     HUD.delegate = self;
     HUD.labelText = @"Loading...";
+    
+    [HUD show:YES];
+}
+-(void)showProgress{
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    
+    HUD.delegate = self;
     
     [HUD show:YES];
 }

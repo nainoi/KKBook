@@ -12,11 +12,13 @@
 
 //navigation
 -(void)hiddenBackTitle;
-- (void)addBackNavigation;
-- (void)setNavigationBar;
+-(void)addBackNavigation;
+-(void)setNavigationBar;
+-(void)addCloseBarButtonItem;
 
 //progress
 -(void)showProgressLoading;
 -(void)dismissProgress;
+-(void)showProgress;
 
 @end

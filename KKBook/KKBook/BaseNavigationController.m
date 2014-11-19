@@ -33,6 +33,7 @@
         
         // To override the opacity of CRNavigationBar's barTintColor, set this value to YES.
         ((BaseNavigationBar *)self.navigationBar).overrideOpacity = NO;
+        //((BaseNavigationController*)self.navigationController).navigationBar.barTintColor = [UIColor colorWithRed:3/255.0 green:166/255.0 blue:130/255.0 alpha:1.0];
     }
     
     return self;

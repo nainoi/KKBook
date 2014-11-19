@@ -15,11 +15,14 @@
 #import "KKBookStoreListVC.h"
 #import "KKBookSettingVC.h"
 #import "InteractiveReader.h"
+#import "BakerViewController.h"
 
 #import "InternetChecking.h"
 #import "DataManager.h"
 #import "BookEntity.h"
 #import "FileHelper.h"
+#import "BakerBook.h"
+#import "Utils.h"
 
 @interface KKBookMainVC ()<KKBookLeftSidebarDelegate, KKBookStoreMainDelegate, ReaderViewControllerDelegate, KKBookLibraryDelegate, KKBookStoreListDelegate>{
     KKBookStoreMain *storeVC;
@@ -195,14 +198,12 @@
     if (!_leftSideBar) {
         NSArray *images = @[
                             [UIImage imageNamed:@"globe"],
-                            [UIImage imageNamed:@"gear"],
                             [UIImage imageNamed:@"profile"],
                             [UIImage imageNamed:@"gear"],
                             ];
         NSArray *colors = @[
                             [UIColor colorWithRed:240/255.f green:159/255.f blue:254/255.f alpha:1],
                             [UIColor colorWithRed:255/255.f green:137/255.f blue:167/255.f alpha:1],
-                            [UIColor colorWithRed:126/255.f green:242/255.f blue:195/255.f alpha:1],
                             [UIColor colorWithRed:119/255.f green:152/255.f blue:255/255.f alpha:1],
                             ];
         
@@ -238,7 +239,7 @@
         _pageType = LIBRARY;
     }
     else if (index == 2) {
-        
+        _pageType = SETTING;
     }else if(index == 3){
         _pageType = SETTING;
     }
@@ -373,8 +374,23 @@
 #pragma mark - Interactive Reader
 
 -(void)readerInteractive:(BookEntity*)book{
-    InteractiveReader *reader = [[InteractiveReader alloc] initWithBook:book];
-    [self.navigationController pushViewController:reader animated:YES];
+    /*InteractiveReader *reader = [[InteractiveReader alloc] initWithBook:book];
+    [self.navigationController pushViewController:reader animated:YES];*/
+    BakerBook *baker = [[BakerBook alloc] initWithBookEntity:book];
+    BakerViewController *bakerViewController = [[BakerViewController alloc] initWithBook:baker];
+    if (bakerViewController) {
+        [self.navigationController pushViewController:bakerViewController animated:YES];
+    } else {
+        NSLog(@"[ERROR] Book %@ could not be initialized", book.bookID);
+//        issue.transientStatus = BakerIssueTransientStatusNone;
+//        // Let's refresh everything as it's easier. This is an edge case anyway ;)
+//        for (IssueViewController *controller in issueViewControllers) {
+//            [controller refresh];
+//        }
+        [Utils showAlertWithTitle:NSLocalizedString(@"ISSUE_OPENING_FAILED_TITLE", nil)
+                          message:NSLocalizedString(@"ISSUE_OPENING_FAILED_MESSAGE", nil)
+                      buttonTitle:NSLocalizedString(@"ISSUE_OPENING_FAILED_CLOSE", nil)];
+    }
 }
 
 @end

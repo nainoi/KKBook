@@ -97,8 +97,4 @@
     [self.contentView addSubview:_imageScrollingView];
 }
 
--(void)collectionView:(PPImageScrollingCellView *)collectionView didSelectBook:(BookModel *)book{
-    [self.delegate scrollingTableViewCell:self didSelectBook:book];
-}
-
 @end

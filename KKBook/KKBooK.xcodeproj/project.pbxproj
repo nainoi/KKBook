@@ -168,6 +168,25 @@
 		E06BAE951A05F921007886F4 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E06BAE931A05F921007886F4 /* background.png */; };
 		E06BAE961A05F921007886F4 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E06BAE941A05F921007886F4 /* background@2x.png */; };
 		E06BAE9A1A0602C9007886F4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E06BAE991A0602C9007886F4 /* MBProgressHUD.m */; };
+		E06C3FE31A1C4FC100333C64 /* KKBookAboutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C3FE11A1C4FC100333C64 /* KKBookAboutVC.m */; };
+		E06C3FE41A1C4FC100333C64 /* KKBookAboutVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E06C3FE21A1C4FC100333C64 /* KKBookAboutVC.xib */; };
+		E06C3FE61A1C519300333C64 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = E06C3FE51A1C519300333C64 /* about.html */; };
+		E06C3FF41A1C83F400333C64 /* BakerBook.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C3FE91A1C83F400333C64 /* BakerBook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E06C3FF51A1C83F400333C64 /* BakerBookStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C3FEB1A1C83F400333C64 /* BakerBookStatus.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E06C3FF61A1C83F400333C64 /* BakerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C3FED1A1C83F400333C64 /* BakerViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E06C3FF71A1C83F400333C64 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C3FEF1A1C83F400333C64 /* IndexViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E06C3FF81A1C83F400333C64 /* InterceptorWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C3FF11A1C83F400333C64 /* InterceptorWindow.m */; };
+		E06C3FF91A1C83F400333C64 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C3FF31A1C83F400333C64 /* ModalViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E06C40041A1C84FA00333C64 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C3FFD1A1C84FA00333C64 /* GTMNSString+HTML.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E06C40051A1C84FA00333C64 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C3FFF1A1C84FA00333C64 /* SSZipArchive.m */; };
+		E06C40061A1C84FA00333C64 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C40011A1C84FA00333C64 /* Utils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E06C40071A1C84FA00333C64 /* JSONStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C40031A1C84FA00333C64 /* JSONStatus.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E06C400A1A1C850F00333C64 /* PageTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C40091A1C850F00333C64 /* PageTitleLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E06C40151A1C857700333C64 /* NSMutableURLRequest+WebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C400C1A1C857600333C64 /* NSMutableURLRequest+WebServiceClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E06C40161A1C857700333C64 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C400E1A1C857600333C64 /* NSString+Extensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E06C40171A1C857700333C64 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C40101A1C857700333C64 /* NSString+UUID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E06C40181A1C857700333C64 /* NSURL+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C40121A1C857700333C64 /* NSURL+Extensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E06C40191A1C857700333C64 /* UIColor+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E06C40141A1C857700333C64 /* UIColor+Extensions.m */; };
 		E0730B751A15FC1800C955A1 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0730B701A15FC1800C955A1 /* ContentViewController.m */; };
 		E0730B761A15FC1800C955A1 /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0730B711A15FC1800C955A1 /* ContentViewController.xib */; };
 		E0730B771A15FC1800C955A1 /* InteractiveReader.m in Sources */ = {isa = PBXBuildFile; fileRef = E0730B731A15FC1800C955A1 /* InteractiveReader.m */; };
@@ -484,6 +503,43 @@
 		E06BAE941A05F921007886F4 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		E06BAE981A0602C9007886F4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		E06BAE991A0602C9007886F4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		E06C3FE01A1C4FC100333C64 /* KKBookAboutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookAboutVC.h; path = KKBook/KKBookAboutVC.h; sourceTree = SOURCE_ROOT; };
+		E06C3FE11A1C4FC100333C64 /* KKBookAboutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBookAboutVC.m; path = KKBook/KKBookAboutVC.m; sourceTree = SOURCE_ROOT; };
+		E06C3FE21A1C4FC100333C64 /* KKBookAboutVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KKBookAboutVC.xib; path = KKBook/KKBookAboutVC.xib; sourceTree = SOURCE_ROOT; };
+		E06C3FE51A1C519300333C64 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		E06C3FE81A1C83F400333C64 /* BakerBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BakerBook.h; sourceTree = "<group>"; };
+		E06C3FE91A1C83F400333C64 /* BakerBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BakerBook.m; sourceTree = "<group>"; };
+		E06C3FEA1A1C83F400333C64 /* BakerBookStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BakerBookStatus.h; sourceTree = "<group>"; };
+		E06C3FEB1A1C83F400333C64 /* BakerBookStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BakerBookStatus.m; sourceTree = "<group>"; };
+		E06C3FEC1A1C83F400333C64 /* BakerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BakerViewController.h; sourceTree = "<group>"; };
+		E06C3FED1A1C83F400333C64 /* BakerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BakerViewController.m; sourceTree = "<group>"; };
+		E06C3FEE1A1C83F400333C64 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
+		E06C3FEF1A1C83F400333C64 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
+		E06C3FF01A1C83F400333C64 /* InterceptorWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterceptorWindow.h; sourceTree = "<group>"; };
+		E06C3FF11A1C83F400333C64 /* InterceptorWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterceptorWindow.m; sourceTree = "<group>"; };
+		E06C3FF21A1C83F400333C64 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
+		E06C3FF31A1C83F400333C64 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
+		E06C3FFB1A1C84FA00333C64 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		E06C3FFC1A1C84FA00333C64 /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
+		E06C3FFD1A1C84FA00333C64 /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		E06C3FFE1A1C84FA00333C64 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		E06C3FFF1A1C84FA00333C64 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
+		E06C40001A1C84FA00333C64 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		E06C40011A1C84FA00333C64 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		E06C40021A1C84FA00333C64 /* JSONStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONStatus.h; sourceTree = "<group>"; };
+		E06C40031A1C84FA00333C64 /* JSONStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONStatus.m; sourceTree = "<group>"; };
+		E06C40081A1C850F00333C64 /* PageTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTitleLabel.h; sourceTree = "<group>"; };
+		E06C40091A1C850F00333C64 /* PageTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageTitleLabel.m; sourceTree = "<group>"; };
+		E06C400B1A1C857600333C64 /* NSMutableURLRequest+WebServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableURLRequest+WebServiceClient.h"; path = "KKBook/NSMutableURLRequest+WebServiceClient.h"; sourceTree = SOURCE_ROOT; };
+		E06C400C1A1C857600333C64 /* NSMutableURLRequest+WebServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableURLRequest+WebServiceClient.m"; path = "KKBook/NSMutableURLRequest+WebServiceClient.m"; sourceTree = SOURCE_ROOT; };
+		E06C400D1A1C857600333C64 /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Extensions.h"; path = "KKBook/NSString+Extensions.h"; sourceTree = SOURCE_ROOT; };
+		E06C400E1A1C857600333C64 /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Extensions.m"; path = "KKBook/NSString+Extensions.m"; sourceTree = SOURCE_ROOT; };
+		E06C400F1A1C857600333C64 /* NSString+UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+UUID.h"; path = "KKBook/NSString+UUID.h"; sourceTree = SOURCE_ROOT; };
+		E06C40101A1C857700333C64 /* NSString+UUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+UUID.m"; path = "KKBook/NSString+UUID.m"; sourceTree = SOURCE_ROOT; };
+		E06C40111A1C857700333C64 /* NSURL+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+Extensions.h"; path = "KKBook/NSURL+Extensions.h"; sourceTree = SOURCE_ROOT; };
+		E06C40121A1C857700333C64 /* NSURL+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+Extensions.m"; path = "KKBook/NSURL+Extensions.m"; sourceTree = SOURCE_ROOT; };
+		E06C40131A1C857700333C64 /* UIColor+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Extensions.h"; path = "KKBook/UIColor+Extensions.h"; sourceTree = SOURCE_ROOT; };
+		E06C40141A1C857700333C64 /* UIColor+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Extensions.m"; path = "KKBook/UIColor+Extensions.m"; sourceTree = SOURCE_ROOT; };
 		E0730B6F1A15FC1800C955A1 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		E0730B701A15FC1800C955A1 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 		E0730B711A15FC1800C955A1 /* ContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
@@ -764,6 +820,9 @@
 		E016BD291A15140F0031E66C /* KKBookAbout */ = {
 			isa = PBXGroup;
 			children = (
+				E06C3FE01A1C4FC100333C64 /* KKBookAboutVC.h */,
+				E06C3FE11A1C4FC100333C64 /* KKBookAboutVC.m */,
+				E06C3FE21A1C4FC100333C64 /* KKBookAboutVC.xib */,
 			);
 			name = KKBookAbout;
 			sourceTree = "<group>";
@@ -967,6 +1026,7 @@
 				E050D50F1A00A651007B3686 /* Category */,
 				E050D4EA1A00A437007B3686 /* AppDelegate.h */,
 				E050D4EB1A00A437007B3686 /* AppDelegate.m */,
+				E06C3FE51A1C519300333C64 /* about.html */,
 				E00CB3541A02768800C8DC83 /* phone@2x.jpg */,
 				E00CB3551A02768800C8DC83 /* phone.jpg */,
 				E050D4F61A00A437007B3686 /* Images.xcassets */,
@@ -1215,6 +1275,7 @@
 		E06BAE971A05FE6A007886F4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E06C3FE71A1C83DA00333C64 /* Baker */,
 				E0237EA71A14B7CF00176E05 /* AAShareBubbles */,
 				E09A5AE11A10BBA800262959 /* AESEncypt */,
 				E05864D21A0EA25600C688D8 /* ZipArchive */,
@@ -1234,6 +1295,54 @@
 				E06BAE991A0602C9007886F4 /* MBProgressHUD.m */,
 			);
 			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		E06C3FE71A1C83DA00333C64 /* Baker */ = {
+			isa = PBXGroup;
+			children = (
+				E06C3FFA1A1C84E700333C64 /* lib */,
+				E06C3FE81A1C83F400333C64 /* BakerBook.h */,
+				E06C3FE91A1C83F400333C64 /* BakerBook.m */,
+				E06C3FEA1A1C83F400333C64 /* BakerBookStatus.h */,
+				E06C3FEB1A1C83F400333C64 /* BakerBookStatus.m */,
+				E06C3FEC1A1C83F400333C64 /* BakerViewController.h */,
+				E06C3FED1A1C83F400333C64 /* BakerViewController.m */,
+				E06C3FEE1A1C83F400333C64 /* IndexViewController.h */,
+				E06C3FEF1A1C83F400333C64 /* IndexViewController.m */,
+				E06C3FF01A1C83F400333C64 /* InterceptorWindow.h */,
+				E06C3FF11A1C83F400333C64 /* InterceptorWindow.m */,
+				E06C3FF21A1C83F400333C64 /* ModalViewController.h */,
+				E06C3FF31A1C83F400333C64 /* ModalViewController.m */,
+			);
+			name = Baker;
+			sourceTree = "<group>";
+		};
+		E06C3FFA1A1C84E700333C64 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				E06C400B1A1C857600333C64 /* NSMutableURLRequest+WebServiceClient.h */,
+				E06C400C1A1C857600333C64 /* NSMutableURLRequest+WebServiceClient.m */,
+				E06C400D1A1C857600333C64 /* NSString+Extensions.h */,
+				E06C400E1A1C857600333C64 /* NSString+Extensions.m */,
+				E06C400F1A1C857600333C64 /* NSString+UUID.h */,
+				E06C40101A1C857700333C64 /* NSString+UUID.m */,
+				E06C40111A1C857700333C64 /* NSURL+Extensions.h */,
+				E06C40121A1C857700333C64 /* NSURL+Extensions.m */,
+				E06C40131A1C857700333C64 /* UIColor+Extensions.h */,
+				E06C40141A1C857700333C64 /* UIColor+Extensions.m */,
+				E06C40081A1C850F00333C64 /* PageTitleLabel.h */,
+				E06C40091A1C850F00333C64 /* PageTitleLabel.m */,
+				E06C3FFB1A1C84FA00333C64 /* GTMDefines.h */,
+				E06C3FFC1A1C84FA00333C64 /* GTMNSString+HTML.h */,
+				E06C3FFD1A1C84FA00333C64 /* GTMNSString+HTML.m */,
+				E06C3FFE1A1C84FA00333C64 /* SSZipArchive.h */,
+				E06C3FFF1A1C84FA00333C64 /* SSZipArchive.m */,
+				E06C40001A1C84FA00333C64 /* Utils.h */,
+				E06C40011A1C84FA00333C64 /* Utils.m */,
+				E06C40021A1C84FA00333C64 /* JSONStatus.h */,
+				E06C40031A1C84FA00333C64 /* JSONStatus.m */,
+			);
+			name = lib;
 			sourceTree = "<group>";
 		};
 		E09A5AE11A10BBA800262959 /* AESEncypt */ = {
@@ -1471,6 +1580,7 @@
 				E0237EAC1A14B81000176E05 /* AAShareBubbles.bundle in Resources */,
 				E0B3E4C31A0946730012A450 /* image3.png in Resources */,
 				E0B3E4C41A0946730012A450 /* image4.png in Resources */,
+				E06C3FE41A1C4FC100333C64 /* KKBookAboutVC.xib in Resources */,
 				E014ECA01A12EC6E0081BAE7 /* Reader-Thumbs@2x.png in Resources */,
 				E0378F781A12663E00643023 /* StoreListCell.xib in Resources */,
 				E001CBC81A0BC9AA00A5995E /* KKBookStoreDetailVCPad.xib in Resources */,
@@ -1482,6 +1592,7 @@
 				E02D975A1A03A1010014BCBF /* list-item-stage@2x~ipad.png in Resources */,
 				E02B06F91A0A2ABE00745E57 /* sample_7.jpeg in Resources */,
 				E02D97661A03A13A0014BCBF /* list-item-frame-landscape.png in Resources */,
+				E06C3FE61A1C519300333C64 /* about.html in Resources */,
 				E02D97561A03A1010014BCBF /* list-item-stage-landscape.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1501,12 +1612,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0730B771A15FC1800C955A1 /* InteractiveReader.m in Sources */,
+				E06C40151A1C857700333C64 /* NSMutableURLRequest+WebServiceClient.m in Sources */,
 				E0135A401A07FE6400947773 /* SDWebImageDecoder.m in Sources */,
 				E0135A441A07FE6400947773 /* SDWebImagePrefetcher.m in Sources */,
 				E0135A171A07F29C00947773 /* UIRefreshControl+AFNetworking.m in Sources */,
 				E05864E31A0EA28500C688D8 /* zip.c in Sources */,
 				E0B3E4B11A0937170012A450 /* HGPageScrollView.m in Sources */,
 				E0135A491A07FE6400947773 /* UIImageView+HighlightedWebCache.m in Sources */,
+				E06C3FF81A1C83F400333C64 /* InterceptorWindow.m in Sources */,
 				E05864D11A0EA1AA00C688D8 /* FileHelper.m in Sources */,
 				E016BD2D1A1514750031E66C /* KKBookSettingVC.m in Sources */,
 				E02BEC811A024F98002A5F6B /* UIFont+KKBook.m in Sources */,
@@ -1523,6 +1636,7 @@
 				E05864CA1A0E8D6800C688D8 /* BookEntity.m in Sources */,
 				E02B06EA1A0A282F00745E57 /* PPImageScrollingCellView.m in Sources */,
 				E02D97331A033C4D0014BCBF /* CHTCollectionViewWaterfallHeader.m in Sources */,
+				E06C3FF61A1C83F400333C64 /* BakerViewController.m in Sources */,
 				E09A5AEC1A10BBC100262959 /* NSData+CommonCrypto.m in Sources */,
 				E0135A161A07F29C00947773 /* UIProgressView+AFNetworking.m in Sources */,
 				E0135A111A07F29C00947773 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -1530,9 +1644,11 @@
 				E02BEC521A02397F002A5F6B /* KKBookLeftSidebar.m in Sources */,
 				E0408D831A131150004BB117 /* KKBookPreviewVC.m in Sources */,
 				E0135A4A1A07FE6400947773 /* UIImageView+WebCache.m in Sources */,
+				E06C40051A1C84FA00333C64 /* SSZipArchive.m in Sources */,
 				E02BEC721A024E13002A5F6B /* UINavigationController+Transition.m in Sources */,
 				E0135A431A07FE6400947773 /* SDWebImageManager.m in Sources */,
 				E0135A3D1A07FE6400947773 /* NSData+ImageContentType.m in Sources */,
+				E06C40181A1C857700333C64 /* NSURL+Extensions.m in Sources */,
 				E01359F61A07E7D200947773 /* KKBookService.m in Sources */,
 				E0B3E4B81A093A880012A450 /* KKBookStoreMain.m in Sources */,
 				E02BEC7E1A024EA7002A5F6B /* NSUserDefaults+Encryption.m in Sources */,
@@ -1558,27 +1674,34 @@
 				E050D4EC1A00A437007B3686 /* AppDelegate.m in Sources */,
 				E06BAE9A1A0602C9007886F4 /* MBProgressHUD.m in Sources */,
 				E0DCC2761A0FA2ED00E87028 /* ReaderDocument.m in Sources */,
+				E06C40071A1C84FA00333C64 /* JSONStatus.m in Sources */,
 				E050D4E91A00A437007B3686 /* main.m in Sources */,
 				E02D97341A033C4D0014BCBF /* CHTCollectionViewWaterfallFooter.m in Sources */,
 				E0135A451A07FE6400947773 /* UIButton+WebCache.m in Sources */,
 				E09A5AEA1A10BBC100262959 /* AESCrypt.m in Sources */,
 				E0135A3F1A07FE6400947773 /* SDWebImageCompat.m in Sources */,
+				E06C3FE31A1C4FC100333C64 /* KKBookAboutVC.m in Sources */,
 				E0276C601A0C777B00254AAC /* KKBookFontDetailPhone.m in Sources */,
+				E06C40061A1C84FA00333C64 /* Utils.m in Sources */,
 				E0DCC29C1A0FA31000E87028 /* UIXToolbarView.m in Sources */,
+				E06C40161A1C857700333C64 /* NSString+Extensions.m in Sources */,
 				E050D51F1A00BA6A007B3686 /* BaseNavigationBar.m in Sources */,
 				E01359F11A07DDF000947773 /* AFURLResponseSerialization.m in Sources */,
 				E050D5231A00D4F2007B3686 /* Utility.m in Sources */,
 				E0276C571A0C76C400254AAC /* KKBookFontTitlePad.m in Sources */,
 				E0378F721A12654000643023 /* KKBookStoreListVC.m in Sources */,
+				E06C40191A1C857700333C64 /* UIColor+Extensions.m in Sources */,
 				E0DCC2931A0FA31000E87028 /* CGPDFDocument.m in Sources */,
 				E075F21C1A1173AC00DAE0F8 /* AFDownloadRequestOperation.m in Sources */,
 				E050D5261A00DBC4007B3686 /* BaseWindow.m in Sources */,
+				E06C3FF41A1C83F400333C64 /* BakerBook.m in Sources */,
 				E0DCC2981A0FA31000E87028 /* ReaderThumbFetch.m in Sources */,
 				E0237EAB1A14B81000176E05 /* AAShareBubbles.m in Sources */,
 				E01359EA1A07DDF000947773 /* AFHTTPRequestOperation.m in Sources */,
 				E01359EF1A07DDF000947773 /* AFURLConnectionOperation.m in Sources */,
 				E0DCC2781A0FA2ED00E87028 /* ReaderMainToolbar.m in Sources */,
 				E0135A411A07FE6400947773 /* SDWebImageDownloader.m in Sources */,
+				E06C40171A1C857700333C64 /* NSString+UUID.m in Sources */,
 				E01359EB1A07DDF000947773 /* AFHTTPRequestOperationManager.m in Sources */,
 				E02B06E81A0A282F00745E57 /* StoreScrollingTableViewCell.m in Sources */,
 				E0B3E4BC1A093E190012A450 /* BannerModel.m in Sources */,
@@ -1600,6 +1723,7 @@
 				E0135A471A07FE6400947773 /* UIImage+MultiFormat.m in Sources */,
 				E0DCC2771A0FA2ED00E87028 /* ReaderViewController.m in Sources */,
 				E0135A4B1A07FE6400947773 /* UIView+WebCacheOperation.m in Sources */,
+				E06C3FF71A1C83F400333C64 /* IndexViewController.m in Sources */,
 				E0DCC2961A0FA31000E87028 /* ReaderThumbCache.m in Sources */,
 				E0DCC27E1A0FA2ED00E87028 /* ThumbsMainToolbar.m in Sources */,
 				E02BEC851A024FD1002A5F6B /* Reachability.m in Sources */,
@@ -1607,15 +1731,19 @@
 				E01359F01A07DDF000947773 /* AFURLRequestSerialization.m in Sources */,
 				E05864C61A0E46D100C688D8 /* StoreCollectionCell.m in Sources */,
 				E01359EE1A07DDF000947773 /* AFSecurityPolicy.m in Sources */,
+				E06C3FF91A1C83F400333C64 /* ModalViewController.m in Sources */,
+				E06C400A1A1C850F00333C64 /* PageTitleLabel.m in Sources */,
 				E01359F91A07EDAF00947773 /* AFAppDotNetAPIClient.m in Sources */,
 				E01359EC1A07DDF000947773 /* AFHTTPSessionManager.m in Sources */,
 				E001CBC71A0BC9AA00A5995E /* KKBookStoreDetailVC.m in Sources */,
 				E0DCC27A1A0FA2ED00E87028 /* ReaderContentView.m in Sources */,
 				E09A5AEB1A10BBC100262959 /* NSData+Base64.m in Sources */,
+				E06C40041A1C84FA00333C64 /* GTMNSString+HTML.m in Sources */,
 				E0135A121A07F29C00947773 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				E0B3E4B41A0937170012A450 /* HGPageImageView.m in Sources */,
 				E0378F771A12663E00643023 /* StoreListCell.m in Sources */,
 				E0DCC29B1A0FA31000E87028 /* ReaderThumbView.m in Sources */,
+				E06C3FF51A1C83F400333C64 /* BakerBookStatus.m in Sources */,
 				E05864E11A0EA28500C688D8 /* mztools.c in Sources */,
 				E02BEC781A024E61002A5F6B /* NSString+SCBString.m in Sources */,
 				E0276C531A0C769700254AAC /* KKBookFontHeaderPhone.m in Sources */,

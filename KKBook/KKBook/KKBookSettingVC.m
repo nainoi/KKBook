@@ -7,8 +7,9 @@
 //
 
 #import "KKBookSettingVC.h"
-
 #import <MessageUI/MFMailComposeViewController.h>
+#import "KKBookAboutVC.h"
+#import "BaseNavigationController.h"
 
 @interface KKBookSettingVC ()<MFMailComposeViewControllerDelegate>
 
@@ -27,6 +28,9 @@
 }
 
 - (IBAction)didAboutUs:(id)sender {
+    KKBookAboutVC *aboutVC = [[KKBookAboutVC alloc] init];
+    BaseNavigationController *naviCtrl = [[BaseNavigationController alloc] initWithRootViewController:aboutVC];
+    [self presentViewController:naviCtrl animated:YES completion:^{}];
 }
 
 - (IBAction)didFeedBack:(id)sender {
@@ -36,14 +40,18 @@
     NSString *messageBody = @"KKBook app is so fun!";
     // To address
     NSArray *toRecipents = [NSArray arrayWithObject:@"suthisak.ch@gmail.com"];
+    NSArray *ccRecipents = [NSArray arrayWithObject:@"thiraphong.ru@gmail.com"];
     
     MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
     controller.mailComposeDelegate = self;
     [controller setSubject:emailTitle];
     [controller setMessageBody:messageBody isHTML:NO];
     [controller setToRecipients:toRecipents];
-    if (controller)
-        [self presentViewController:controller animated:YES completion:^(){}];
+    [controller setCcRecipients:ccRecipents];
+    controller.modalPresentationStyle = UIModalPresentationFullScreen;
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    if(controller)
+        [self.view.window.rootViewController presentViewController:controller animated:YES completion:^(){}];
 }
 
 - (IBAction)didHelpGuide:(id)sender {
