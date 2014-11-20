@@ -198,6 +198,7 @@
         [[self delegate] bookStoreMain:self didBook:book];
     }
 }
+
 -(void)loadStoreMainData{
     [self showProgressLoading];
     NSURLSessionTask *task = [KKBookService storeMainService:^(NSArray *source, NSError *error) {

@@ -13,7 +13,6 @@
 @protocol StoreScrollingTableViewCellDelegate <NSObject>
 
 // Notifies the delegate when user click image
-//- (void)scrollingTableViewCell:(StoreScrollingTableViewCell *)scrollingTableViewCell didSelectImageAtIndexPath:(NSIndexPath*)indexPathOfImage atCategoryRowIndex:(NSInteger)categoryRowIndex;
 
 - (void)scrollingTableViewCell:(StoreScrollingTableViewCell *)scrollingTableViewCell didSelectBook:(BookModel*)book;
 

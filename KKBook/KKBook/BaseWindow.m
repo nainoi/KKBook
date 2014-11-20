@@ -29,8 +29,10 @@
 - (void)sendEvent:(UIEvent *)event {
   //   [self adjustFirstResponderForEvent:event];
     [super sendEvent:event];
+    //[super sendEvent:event];
+    [self interceptEvent:event];
 
-    NSSet *allTouches = [event allTouches];
+    /*NSSet *allTouches = [event allTouches];
     if ([allTouches count] > 0) {
 
         UITouchPhase phase = ((UITouch *)[allTouches anyObject]).phase;
@@ -41,7 +43,7 @@
         if (phase == UITouchPhaseEnded) {
         //    [SCBEasyBase_ViewController closeLeftMenu];
         }
-    }
+    }*/
 }
 
 - (void)resetIdleTimer {
@@ -118,5 +120,23 @@
         currentFirstResponder_ = nil;
     }
 }
+
+#pragma mark - Events management
+
+- (void)interceptEvent:(UIEvent *)event {
+    
+    if (event.type == UIEventTypeTouches)
+    {
+        NSSet *touches = [event allTouches];
+        if (touches.count == 1)
+        {
+            UITouch *touch = touches.anyObject;
+            
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:touch, @"touch", nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"notification_touch_intercepted" object:nil userInfo:userInfo];
+        }
+    }
+}
+
 
 @end

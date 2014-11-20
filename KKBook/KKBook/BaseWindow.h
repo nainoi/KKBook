@@ -11,5 +11,6 @@
 @interface BaseWindow : UIWindow
 
 - (void)resetIdleTimer;
+- (void)interceptEvent:(UIEvent *)event;
 
 @end

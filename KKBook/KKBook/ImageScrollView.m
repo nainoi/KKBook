@@ -219,10 +219,28 @@ static NSString *_ImageNameAtIndex(NSUInteger index);
     self.zoomScale = 1.0;
     _zoomView = [[UIImageView alloc] initWithFrame:self.frame];
     // make a new UIImageView for the new image
-    [_zoomView sd_setImageWithURL:imageURL placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *url){
-        [self configureForImageSize:image.size];
-        
-    } ];
+//    [_zoomView sd_setImageWithURL:imageURL placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *url){
+//        [self configureForImageSize:image.size];
+//        
+//    } ];
+    
+    __block UIActivityIndicatorView *activityIndicator;
+    __weak UIImageView *weakImageView = _zoomView;
+    [_zoomView sd_setImageWithURL:imageURL
+                           placeholderImage:nil
+                                    options:SDWebImageProgressiveDownload
+                                   progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                       if (!activityIndicator) {
+                                           [weakImageView addSubview:activityIndicator = [UIActivityIndicatorView.alloc initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray]];
+                                           activityIndicator.center = weakImageView.center;
+                                           [activityIndicator startAnimating];
+                                       }
+                                   }
+                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                      [self configureForImageSize:image.size];
+                                      [activityIndicator removeFromSuperview];
+                                      activityIndicator = nil;
+                                  }];
     //_zoomView = [[UIImageView alloc] initWithImage:image];
     [self addSubview:_zoomView];
     

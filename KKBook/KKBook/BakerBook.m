@@ -196,7 +196,8 @@
     {
         // NSString *file = [directoryContent objectAtIndex:count];
         if ([[file pathExtension] isEqualToString:@"html"]) {
-            [data addObject:[_path stringByAppendingPathComponent:file]];
+            [data addObject:file];
+            //[data addObject:[_path stringByAppendingPathComponent:file]];
         }
         //NSLog(@"File %d: %@", (count + 1), [directoryContent objectAtIndex:count]);
     }
