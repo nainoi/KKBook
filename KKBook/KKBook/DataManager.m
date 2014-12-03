@@ -257,10 +257,22 @@
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Successfully downloaded file to %@", path);
         //NSString *extractFile = [[[[FileHelper booksPath] stringByAppendingPathComponent:bookEntity.folder]stringByAppendingPathComponent:bookEntity.folder]stringByAppendingPathExtension:@"pdf"];
-        if ([FileHelper extractFile:path outputPath:[[FileHelper booksPath] stringByAppendingPathComponent:bookEntity.folder]]) {
+        NSString *folderPath = [[FileHelper booksPath] stringByAppendingPathComponent:bookEntity.folder];
+        if ([FileHelper extractFile:path outputPath:folderPath]) {
             //DELETE OLD FILE
             if (![FileHelper removeAtPath:path]) {
                 //
+            }
+            NSArray *files = [[NSFileManager defaultManager]contentsOfDirectoryAtPath:folderPath error:nil];
+            for(NSString* file in files){
+                if ([[file pathExtension]isEqualToString:@"pdf"]||[[file pathExtension] isEqualToString:@"PDF"]) {
+                    NSData *data = [NSData dataWithContentsOfFile:[folderPath stringByAppendingPathComponent:file]];
+                    NSError *error;
+                    NSData *dataEncrypt = [data AES256EncryptedDataUsingKey:PASSWORD_ENCRYPT error:&error];
+                    if(![dataEncrypt writeToFile:[folderPath stringByAppendingPathComponent:file] options:NSDataWritingAtomic error:&error])
+                        NSLog(@"Write returned error: %@", [error localizedDescription]);
+                    
+                }
             }
             if (downloadStatus) {
                 downloadStatus(DOWNLOADCOMPLETE);

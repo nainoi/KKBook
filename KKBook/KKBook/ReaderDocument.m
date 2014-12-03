@@ -26,6 +26,7 @@
 #import "ReaderDocument.h"
 #import "CGPDFDocument.h"
 #import <fcntl.h>
+#import "NSData+CommonCrypto.h"
 
 @interface ReaderDocument ()
 
@@ -236,7 +237,51 @@
 		}
 		else // Not a valid PDF file
 		{
-			self = nil;
+			//self = nil;
+            _guid = [ReaderDocument GUID]; // Create document's GUID
+            
+            _password = [phrase copy]; // Keep copy of document password
+            
+            _filePath = [filePath copy]; // Keep copy of document file path
+            
+            _pageNumber = [NSNumber numberWithInteger:1]; // Start on page one
+            
+            _bookmarks = [NSMutableIndexSet new]; // Bookmarked pages index set
+            
+           // CFURLRef docURLRef = (__bridge CFURLRef)[self fileURL]; // CFURLRef from NSURL
+            
+            NSData *data = [NSData dataWithContentsOfFile:[self filePath]];
+            NSError *error;
+            //data = [data decryptedAES256DataUsingKey:PASSWORD_ENCRYPT error:&error];
+            CFDataRef myPDFData = (__bridge CFDataRef)[data decryptedAES256DataUsingKey:PASSWORD_ENCRYPT error:&error];
+            CGDataProviderRef provider = CGDataProviderCreateWithCFData(myPDFData);
+            CGPDFDocumentRef thePDFDocRef = CGPDFDocumentCreateUsingData(provider, _password);
+            //CGPDFDocumentRef thePDFDocRef = CGPDFDocumentCreateUsingUrl(docURLRef, _password);
+            
+            if (thePDFDocRef != NULL) // Get the total number of pages in the document
+            {
+                NSInteger pageCount = CGPDFDocumentGetNumberOfPages(thePDFDocRef);
+                
+                _pageCount = [NSNumber numberWithInteger:pageCount];
+                
+                CGPDFDocumentRelease(thePDFDocRef); // Cleanup
+            }
+            else // Cupertino, we have a problem with the document
+            {
+                NSAssert(NO, @"CGPDFDocumentRef == NULL");
+            }
+            
+            _lastOpen = [NSDate dateWithTimeIntervalSinceReferenceDate:0.0];
+            
+            NSFileManager *fileManager = [NSFileManager defaultManager]; // Singleton
+            
+            NSDictionary *fileAttributes = [fileManager attributesOfItemAtPath:_filePath error:NULL];
+            
+            _fileDate = [fileAttributes objectForKey:NSFileModificationDate]; // File date
+            
+            _fileSize = [fileAttributes objectForKey:NSFileSize]; // File size (bytes)
+            
+            [self archiveDocumentProperties]; // Archive ReaderDocument object
 		}
 	}
 
@@ -281,9 +326,14 @@
 
 - (void)updateDocumentProperties
 {
-	CFURLRef docURLRef = (__bridge CFURLRef)[self fileURL]; // CFURLRef from NSURL
-
-	CGPDFDocumentRef thePDFDocRef = CGPDFDocumentCreateUsingUrl(docURLRef, _password);
+	//CFURLRef docURLRef = (__bridge CFURLRef)[self fileURL]; // CFURLRef from NSURL
+    NSError *error;
+    NSData *data = [NSData dataWithContentsOfURL:[self fileURL]];
+    CFDataRef myPDFData = (__bridge CFDataRef)[data decryptedAES256DataUsingKey:PASSWORD_ENCRYPT error:&error];
+    CGDataProviderRef provider = CGDataProviderCreateWithCFData(myPDFData);
+    CGPDFDocumentRef thePDFDocRef = CGPDFDocumentCreateUsingData(provider, _password);
+    
+	//CGPDFDocumentRef thePDFDocRef = CGPDFDocumentCreateUsingUrl(docURLRef, _password);
 
 	if (thePDFDocRef != NULL) // Get the total number of pages in the document
 	{

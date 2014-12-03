@@ -27,6 +27,7 @@
 #import "ReaderThumbCache.h"
 #import "ReaderThumbView.h"
 #import "CGPDFDocument.h"
+#import "NSData+CommonCrypto.h"
 
 #import <ImageIO/ImageIO.h>
 
@@ -75,9 +76,15 @@
 {
 	NSInteger page = request.thumbPage; NSString *password = request.password;
 
-	CGImageRef imageRef = NULL; CFURLRef fileURL = (__bridge CFURLRef)request.fileURL;
-
-	CGPDFDocumentRef thePDFDocRef = CGPDFDocumentCreateUsingUrl(fileURL, password);
+	CGImageRef imageRef = NULL;
+    //CFURLRef fileURL = (__bridge CFURLRef)request.fileURL;
+    
+    NSError *error;
+    NSData *data = [NSData dataWithContentsOfURL:request.fileURL];
+    CFDataRef myPDFData = (__bridge CFDataRef)[data decryptedAES256DataUsingKey:PASSWORD_ENCRYPT error:&error];
+    CGDataProviderRef provider = CGDataProviderCreateWithCFData(myPDFData);
+    CGPDFDocumentRef thePDFDocRef = CGPDFDocumentCreateUsingData(provider, password);
+	//CGPDFDocumentRef thePDFDocRef = CGPDFDocumentCreateUsingUrl(fileURL, password);
 
 	if (thePDFDocRef != NULL) // Check for non-NULL CGPDFDocumentRef
 	{

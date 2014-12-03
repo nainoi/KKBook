@@ -27,6 +27,7 @@
 #import "ReaderContentPage.h"
 #import "ReaderContentTile.h"
 #import "CGPDFDocument.h"
+#import "NSData+CommonCrypto.h"
 
 @implementation ReaderContentPage
 {
@@ -426,7 +427,13 @@
 
 	if (fileURL != nil) // Check for non-nil file URL
 	{
-		_PDFDocRef = CGPDFDocumentCreateUsingUrl((__bridge CFURLRef)fileURL, phrase);
+        NSData *data = [NSData dataWithContentsOfURL:fileURL];
+        NSError *error;
+        //data = [data decryptedAES256DataUsingKey:PASSWORD_ENCRYPT error:&error];
+        CFDataRef myPDFData = (__bridge CFDataRef)[data decryptedAES256DataUsingKey:PASSWORD_ENCRYPT error:&error];
+        CGDataProviderRef provider = CGDataProviderCreateWithCFData(myPDFData);
+        _PDFDocRef = CGPDFDocumentCreateUsingData(provider, phrase);
+		//_PDFDocRef = CGPDFDocumentCreateUsingUrl((__bridge CFURLRef)fileURL, phrase);
 
 		if (_PDFDocRef != NULL) // Check for non-NULL CGPDFDocumentRef
 		{
