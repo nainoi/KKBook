@@ -138,12 +138,11 @@
 -(void)initTable{
     
     CGRect frame = CGRectMake(10, CGRectGetMaxY(_myPageScrollView.frame) + 5, CHILD_WIDTH, CGRectGetMaxY([UIScreen mainScreen].bounds) - (CGRectGetMaxY(_myPageScrollView.frame) + 64));
-    NSLog(@"bact title %@",self.navigationController.navigationBar);
     self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self.tableView setBackgroundColor:[UIColor whiteColor]];
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:_tableView];
     
     
@@ -167,14 +166,14 @@
     NSDictionary *cellData = [self.dataSource objectAtIndex:[indexPath section]];
     if ((NSNull*)cellData != [NSNull null]){
         StoreScrollingTableViewCell *customCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        [customCell setBackgroundColor:[UIColor KKBookMediumSeagreenColor]];
+        [customCell setBackgroundColor:[UIColor clearColor]];
         [customCell setDelegate:self];
         [customCell setCategoryData:cellData];
-        [customCell setCategoryLabelText:[cellData objectForKey:@"category"] withColor:[UIColor whiteColor]];
+        [customCell setCategoryLabelText:[cellData objectForKey:@"category"] withColor:[UIColor KKBookMediumSeagreenColor]];
         [customCell setTag:[indexPath section]];
         [customCell setImageTitleTextColor:[UIColor whiteColor] withBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
         [customCell setImageTitleLabelWitdh:90 withHeight:45];
-        [customCell setCollectionViewBackgroundColor:[UIColor whiteColor]];
+        [customCell setCollectionViewBackgroundColor:[UIColor clearColor]];
         
         return customCell;
     }else{

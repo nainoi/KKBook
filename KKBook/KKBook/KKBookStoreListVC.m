@@ -7,11 +7,14 @@
 //
 
 #import "KKBookStoreListVC.h"
+#import "CategoryListTVC.h"
 #import "StoreListCell.h"
 #import "UIAlertView+AFNetworking.h"
 #import "BookModel.h"
 
-@interface KKBookStoreListVC ()
+@interface KKBookStoreListVC (){
+    NSArray *categories;
+}
 
 @end
 
@@ -49,6 +52,7 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"ALL BOOK";
     [self hiddenBackTitle];
+    [self requestCategory];
     [self requestListBook];
 }
 
@@ -79,6 +83,22 @@
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [self arrangeCollectionView];
+}
+
+-(void)addButtonNavigation{
+    UIBarButtonItem *categoryBtn = [[UIBarButtonItem alloc] initWithTitle:@"Category" style:UIBarButtonItemStylePlain target:self action:@selector(didSelectedCategory:)];
+    self.navigationItem.rightBarButtonItem = categoryBtn;
+}
+
+-(void)didSelectedCategory:(id)sender{
+    CategoryListTVC *categoryTbv = [[CategoryListTVC alloc] init];
+    categoryTbv.categories = categories;
+    _popoverViewController = [[UIPopoverController alloc] initWithContentViewController:categoryTbv];
+    
+    _popoverViewController.popoverContentSize = CGSizeMake(320.0, 400.0);
+    
+    [_popoverViewController presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+
 }
 
 #pragma mark - UICollectionView Datasource
@@ -142,6 +162,18 @@
         if (!error) {
             _myBook = [[NSMutableArray alloc] initWithArray:array];
             [self.collectionView reloadData];
+        }
+    }];
+    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
+}
+
+-(void)requestCategory{
+    //[self showProgressLoading];
+    NSURLSessionTask *task = [KKBookService requestCategoryService:^(NSArray *array, NSError *error) {
+        //[self dismissProgress];
+        if (!error) {
+            [self addButtonNavigation];
+            categories = [NSArray arrayWithArray:array];
         }
     }];
     [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];

@@ -19,6 +19,7 @@
 @interface KKBookStoreListVC : BaseViewController<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property(nonatomic, strong) UIPopoverController *popoverViewController;
 @property(nonatomic, strong) NSMutableArray *myBook;
 @property(nonatomic, assign) id<KKBookStoreListDelegate>delegate;
 

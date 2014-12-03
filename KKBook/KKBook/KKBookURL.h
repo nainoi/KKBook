@@ -13,6 +13,7 @@
 #define STORE_LIST_URL @"http://glive-ubuntu.cloudapp.net/RestKKBooK/index.php/api/book/getBook"
 #define PREVIEW_URL @"http://glive-ubuntu.cloudapp.net/RestKKBooK/index.php/api/book/getPreview"
 #define BANNER_URL @"http://glive-ubuntu.cloudapp.net/RestKKBooK/index.php/api/book/getBanner"
+#define CATEGORY_URL @"http://glive-ubuntu.cloudapp.net/RestKKBooK/index.php/api/book/getCategory"
 
 //for file
 #define IMAGE_URL @"http://glive-ubuntu.cloudapp.net/kkbook/Resource/Book/"

@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "AFAppDotNetAPIClient.h"
 #import "BookModel.h"
+#import "CategoryModel.h"
 
 @implementation KKBookService
 
@@ -117,6 +118,28 @@
         }
     }];
 }
+
++(NSURLSessionDataTask *)requestCategoryService:(void (^)(NSArray *, NSError *))block{
+    NSMutableDictionary *params = [KKBookService paramsLog];
+    //[params setObject:FLAG_TEST forKey:@"TestFlag"];
+    return [[AFAppDotNetAPIClient sharedClient] POST:CATEGORY_URL parameters:params success:^(NSURLSessionDataTask * __unused task, id JSON) {
+        NSLog(@"json %@",JSON);
+        NSArray *postsFromResponse = [JSON objectForKey:@"category"];
+        NSMutableArray *categories = [[NSMutableArray alloc] init];
+        for (NSDictionary *dict in postsFromResponse) {
+            [categories addObject:[[CategoryModel alloc] initWithDictionary:dict]];
+        }
+        if (block) {
+            block([NSArray arrayWithArray:categories], nil);
+        }
+        
+    } failure:^(NSURLSessionDataTask *__unused task, NSError *error) {
+        if (block) {
+            block([NSArray array], error);
+        }
+    }];
+}
+
 
 #pragma mark - Load File
 

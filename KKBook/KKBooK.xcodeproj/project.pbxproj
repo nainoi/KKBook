@@ -124,6 +124,9 @@
 		E02D97691A03A13A0014BCBF /* list-item-frame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E02D97631A03A13A0014BCBF /* list-item-frame@2x.png */; };
 		E02D976A1A03A13A0014BCBF /* list-item-frame@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E02D97641A03A13A0014BCBF /* list-item-frame@2x~ipad.png */; };
 		E02D976B1A03A13A0014BCBF /* list-item-frame~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = E02D97651A03A13A0014BCBF /* list-item-frame~ipad.png */; };
+		E0336B7D1A279DA700DCCAE2 /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E0336B7C1A279DA700DCCAE2 /* CategoryModel.m */; };
+		E0336B811A27A0A400DCCAE2 /* CategoryListTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E0336B7F1A27A0A400DCCAE2 /* CategoryListTVC.m */; };
+		E0336B821A27A0A400DCCAE2 /* CategoryListTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0336B801A27A0A400DCCAE2 /* CategoryListTVC.xib */; };
 		E0378F721A12654000643023 /* KKBookStoreListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E0378F701A12654000643023 /* KKBookStoreListVC.m */; };
 		E0378F731A12654100643023 /* KKBookStoreListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0378F711A12654000643023 /* KKBookStoreListVC.xib */; };
 		E0378F771A12663E00643023 /* StoreListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0378F751A12663E00643023 /* StoreListCell.m */; };
@@ -134,6 +137,7 @@
 		E0408D8A1A1312B1004BB117 /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0408D881A1312B1004BB117 /* ImageScrollView.m */; };
 		E0408D8D1A1313ED004BB117 /* TilingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E0408D8C1A1313ED004BB117 /* TilingView.m */; };
 		E0408D901A131A8C004BB117 /* PreviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E0408D8F1A131A8C004BB117 /* PreviewModel.m */; };
+		E0468E101A1E3DC700095FCC /* glive.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = E0468E0F1A1E3DC700095FCC /* glive.jpeg */; };
 		E047CBCE1A11CAD300582881 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = E047CBCB1A11CAD300582881 /* delete.png */; };
 		E047CBCF1A11CAD300582881 /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E047CBCC1A11CAD300582881 /* delete@2x.png */; };
 		E047CBD01A11CAD300582881 /* delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E047CBCD1A11CAD300582881 /* delete@3x.png */; };
@@ -421,6 +425,11 @@
 		E02D97631A03A13A0014BCBF /* list-item-frame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-item-frame@2x.png"; sourceTree = "<group>"; };
 		E02D97641A03A13A0014BCBF /* list-item-frame@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-item-frame@2x~ipad.png"; sourceTree = "<group>"; };
 		E02D97651A03A13A0014BCBF /* list-item-frame~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-item-frame~ipad.png"; sourceTree = "<group>"; };
+		E0336B7B1A279DA700DCCAE2 /* CategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryModel.h; path = KKBook/CategoryModel.h; sourceTree = SOURCE_ROOT; };
+		E0336B7C1A279DA700DCCAE2 /* CategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryModel.m; path = KKBook/CategoryModel.m; sourceTree = SOURCE_ROOT; };
+		E0336B7E1A27A0A400DCCAE2 /* CategoryListTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryListTVC.h; path = KKBook/CategoryListTVC.h; sourceTree = SOURCE_ROOT; };
+		E0336B7F1A27A0A400DCCAE2 /* CategoryListTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryListTVC.m; path = KKBook/CategoryListTVC.m; sourceTree = SOURCE_ROOT; };
+		E0336B801A27A0A400DCCAE2 /* CategoryListTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryListTVC.xib; path = KKBook/CategoryListTVC.xib; sourceTree = SOURCE_ROOT; };
 		E0378F6F1A12654000643023 /* KKBookStoreListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookStoreListVC.h; path = KKBook/KKBookStoreListVC.h; sourceTree = SOURCE_ROOT; };
 		E0378F701A12654000643023 /* KKBookStoreListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBookStoreListVC.m; path = KKBook/KKBookStoreListVC.m; sourceTree = SOURCE_ROOT; };
 		E0378F711A12654000643023 /* KKBookStoreListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KKBookStoreListVC.xib; path = KKBook/KKBookStoreListVC.xib; sourceTree = SOURCE_ROOT; };
@@ -438,6 +447,7 @@
 		E0408D8C1A1313ED004BB117 /* TilingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TilingView.m; sourceTree = "<group>"; };
 		E0408D8E1A131A8C004BB117 /* PreviewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreviewModel.h; path = KKBook/PreviewModel.h; sourceTree = SOURCE_ROOT; };
 		E0408D8F1A131A8C004BB117 /* PreviewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreviewModel.m; path = KKBook/PreviewModel.m; sourceTree = SOURCE_ROOT; };
+		E0468E0F1A1E3DC700095FCC /* glive.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = glive.jpeg; sourceTree = "<group>"; };
 		E047CBCB1A11CAD300582881 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		E047CBCC1A11CAD300582881 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
 		E047CBCD1A11CAD300582881 /* delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@3x.png"; sourceTree = "<group>"; };
@@ -628,6 +638,9 @@
 			children = (
 				E02B06FC1A0A2F8C00745E57 /* Controller */,
 				E02B06FB1A0A2F8500745E57 /* View */,
+				E0336B7E1A27A0A400DCCAE2 /* CategoryListTVC.h */,
+				E0336B7F1A27A0A400DCCAE2 /* CategoryListTVC.m */,
+				E0336B801A27A0A400DCCAE2 /* CategoryListTVC.xib */,
 			);
 			name = StoreList;
 			sourceTree = "<group>";
@@ -694,6 +707,8 @@
 				E05864C91A0E8D6800C688D8 /* BookEntity.m */,
 				E0408D8E1A131A8C004BB117 /* PreviewModel.h */,
 				E0408D8F1A131A8C004BB117 /* PreviewModel.m */,
+				E0336B7B1A279DA700DCCAE2 /* CategoryModel.h */,
+				E0336B7C1A279DA700DCCAE2 /* CategoryModel.m */,
 			);
 			name = KKBookModel;
 			sourceTree = "<group>";
@@ -1097,6 +1112,7 @@
 				E02BEC651A02478E002A5F6B /* star@2x.png */,
 				E02BEC4B1A0237D3002A5F6B /* ic_menu.png */,
 				E02BEC4C1A0237D3002A5F6B /* ic_menu@2x.png */,
+				E0468E0F1A1E3DC700095FCC /* glive.jpeg */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -1487,6 +1503,7 @@
 				E02D976A1A03A13A0014BCBF /* list-item-frame@2x~ipad.png in Resources */,
 				E02D975B1A03A1010014BCBF /* list-item-stage~ipad.png in Resources */,
 				E014EC941A12EC6E0081BAE7 /* Reader-Button-N@2x.png in Resources */,
+				E0336B821A27A0A400DCCAE2 /* CategoryListTVC.xib in Resources */,
 				E014EC981A12EC6E0081BAE7 /* Reader-Export@2x.png in Resources */,
 				E02D97681A03A13A0014BCBF /* list-item-frame.png in Resources */,
 				E014EC961A12EC6E0081BAE7 /* Reader-Email@2x.png in Resources */,
@@ -1532,6 +1549,7 @@
 				E02BEC681A02478E002A5F6B /* globe.png in Resources */,
 				E047CBCE1A11CAD300582881 /* delete.png in Resources */,
 				E02D975E1A03A1160014BCBF /* list-item.png in Resources */,
+				E0468E101A1E3DC700095FCC /* glive.jpeg in Resources */,
 				E001CBCA1A0BF37300A5995E /* KKBookStoreDetailVCPhone.xib in Resources */,
 				E014EC9C1A12EC6E0081BAE7 /* Reader-Mark-Y@2x.png in Resources */,
 				E00CB3561A02768800C8DC83 /* phone@2x.jpg in Resources */,
@@ -1650,6 +1668,7 @@
 				E0DCC29C1A0FA31000E87028 /* UIXToolbarView.m in Sources */,
 				E06C40161A1C857700333C64 /* NSString+Extensions.m in Sources */,
 				E050D51F1A00BA6A007B3686 /* BaseNavigationBar.m in Sources */,
+				E0336B811A27A0A400DCCAE2 /* CategoryListTVC.m in Sources */,
 				E01359F11A07DDF000947773 /* AFURLResponseSerialization.m in Sources */,
 				E050D5231A00D4F2007B3686 /* Utility.m in Sources */,
 				E0276C571A0C76C400254AAC /* KKBookFontTitlePad.m in Sources */,
@@ -1663,6 +1682,7 @@
 				E0237EAB1A14B81000176E05 /* AAShareBubbles.m in Sources */,
 				E01359EA1A07DDF000947773 /* AFHTTPRequestOperation.m in Sources */,
 				E01359EF1A07DDF000947773 /* AFURLConnectionOperation.m in Sources */,
+				E0336B7D1A279DA700DCCAE2 /* CategoryModel.m in Sources */,
 				E0DCC2781A0FA2ED00E87028 /* ReaderMainToolbar.m in Sources */,
 				E0135A411A07FE6400947773 /* SDWebImageDownloader.m in Sources */,
 				E06C40171A1C857700333C64 /* NSString+UUID.m in Sources */,

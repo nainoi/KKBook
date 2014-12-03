@@ -15,5 +15,6 @@
 + (NSURLSessionDataTask *)storeMainService:(void (^)(NSArray *posts, NSError *error))block;
 + (NSURLSessionDataTask *)requestPreviewServiceWithBook:(NSString*)bookID complete:(void (^)(NSArray *, NSError *))block;
 +(NSURLSessionDataTask *)requestBannerService:(void (^)(NSArray *, NSError *))block;
++(NSURLSessionDataTask *)requestCategoryService:(void (^)(NSArray *, NSError *))block;
 
 @end
