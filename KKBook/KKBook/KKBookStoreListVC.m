@@ -11,9 +11,11 @@
 #import "StoreListCell.h"
 #import "UIAlertView+AFNetworking.h"
 #import "BookModel.h"
+#import "CategoryModel.h"
 
 @interface KKBookStoreListVC (){
-    NSArray *categories;
+    NSMutableArray *categories;
+    NSMutableArray *sortArray;
 }
 
 @end
@@ -52,6 +54,7 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"ALL BOOK";
     [self hiddenBackTitle];
+    [self initCategoryList];
     [self requestCategory];
     [self requestListBook];
 }
@@ -75,6 +78,18 @@
     
 }
 
+-(void)initCategoryList{
+    categories = [[NSMutableArray alloc] init];
+    sortArray = [[NSMutableArray alloc] init];
+    
+    CategoryModel *category = [[CategoryModel alloc] init];
+    category.categoryID = @"99";
+    category.categoryName = @"ALL";
+    [categories addObject:category];
+    
+    [self addButtonNavigation];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -93,6 +108,22 @@
 -(void)didSelectedCategory:(id)sender{
     CategoryListTVC *categoryTbv = [[CategoryListTVC alloc] init];
     categoryTbv.categories = categories;
+    categoryTbv.didSelectCategoryList = ^(NSString *categoryID, NSString *categoryName){
+        [sortArray removeAllObjects];
+        if ([categoryID intValue] == 99) {
+            [sortArray addObjectsFromArray:_myBook];
+        }else{
+            for (BookModel *model in _myBook) {
+                if ([model.categoryID intValue] == [categoryID intValue]) {
+                    [sortArray addObject:model];
+                }
+            }
+
+        }
+        [self.collectionView reloadData];
+        
+        [_popoverViewController dismissPopoverAnimated:YES];
+    };
     _popoverViewController = [[UIPopoverController alloc] initWithContentViewController:categoryTbv];
     
     _popoverViewController.popoverContentSize = CGSizeMake(320.0, 400.0);
@@ -105,7 +136,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
     
-    return [_myBook count];
+    return [sortArray count];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
@@ -117,8 +148,8 @@
     
     StoreListCell *cell = (StoreListCell*)[cv dequeueReusableCellWithReuseIdentifier:StoreListCell_NIB forIndexPath:indexPath];
     
-    BookModel *item = _myBook[indexPath.row];
-    cell.backgroundColor = [UIColor whiteColor];
+    BookModel *item = sortArray[indexPath.row];
+    cell.backgroundColor = [UIColor clearColor];
     [cell setBookModel:item];
     
     return cell;
@@ -149,7 +180,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if ([self delegate]) {
-        [[self delegate] storeListSelectBook:_myBook[indexPath.row]];
+        [[self delegate] storeListSelectBook:sortArray[indexPath.row]];
     }
 }
 
@@ -161,6 +192,7 @@
         [self dismissProgress];
         if (!error) {
             _myBook = [[NSMutableArray alloc] initWithArray:array];
+            sortArray = [[NSMutableArray alloc] initWithArray:_myBook];
             [self.collectionView reloadData];
         }
     }];
@@ -172,8 +204,10 @@
     NSURLSessionTask *task = [KKBookService requestCategoryService:^(NSArray *array, NSError *error) {
         //[self dismissProgress];
         if (!error) {
-            [self addButtonNavigation];
-            categories = [NSArray arrayWithArray:array];
+            //[self addButtonNavigation];
+            for (CategoryModel *category in array) {
+                [categories addObject:category];
+            }
         }
     }];
     [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];

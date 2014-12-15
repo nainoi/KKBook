@@ -12,4 +12,6 @@
 
 @property(nonatomic, strong) NSArray *categories;
 
+@property(nonatomic, copy) void (^didSelectCategoryList)(NSString *categoryID, NSString *categoryName);
+
 @end
