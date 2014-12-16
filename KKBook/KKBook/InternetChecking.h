@@ -23,4 +23,6 @@
 
 + (InternetChecking*)sharedInstance;
 
++ (BOOL)isConnectedToInternet;
+
 @end

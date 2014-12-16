@@ -25,6 +25,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class BookEntity;
+
 @interface ReaderDocument : NSObject <NSObject, NSCoding>
 
 @property (nonatomic, strong, readonly) NSString *guid;
@@ -37,6 +39,7 @@
 @property (nonatomic, strong, readonly) NSString *password;
 @property (nonatomic, strong, readonly) NSString *fileName;
 @property (nonatomic, strong, readonly) NSURL *fileURL;
+@property (nonatomic, strong) BookEntity* bookEntity;
 
 @property (nonatomic, readonly) BOOL canEmail;
 @property (nonatomic, readonly) BOOL canExport;
@@ -45,6 +48,8 @@
 + (ReaderDocument *)withDocumentFilePath:(NSString *)filePath password:(NSString *)phrase;
 
 + (ReaderDocument *)unarchiveFromFileName:(NSString *)filePath password:(NSString *)phrase;
+
++ (ReaderDocument *)withDocumentFilePath:(NSString *)filePath password:(NSString *)phrase bookEntity:(BookEntity*)book;
 
 - (instancetype)initWithFilePath:(NSString *)filePath password:(NSString *)phrase;
 

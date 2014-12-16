@@ -18,9 +18,9 @@
 #define CATEGORY_URL [NSString stringWithFormat:@"%@getCategory",API_MAIN_URL]
 
 //for file
-#define IMAGE_URL @"http://glive-ubuntu.cloudapp.net/kkbook/Resource/Book/"
-#define BOOK_URL @"http://glive-ubuntu.cloudapp.net/kkbook/Resource/Book/"
-#define BANNER_PATH_URL @"http://glive-ubuntu.cloudapp.net/kkbook/Resource/Banner/"
+#define IMAGE_URL @"http://www.geniuskids.tv/RestKKBooK/index.php/Resource/"
+#define BOOK_URL @"http://www.geniuskids.tv/RestKKBooK/index.php/kkbook/Resource/Book/"
+#define BANNER_PATH_URL @"http://www.geniuskids.tv/RestKKBooK/index.php/kkbook/Resource/Banner/"
 //#define IMAGE_URL @"http://glive-ubuntu.cloudapp.net/RestKKBooK/kkbook/Resource/"
 
 #endif

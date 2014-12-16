@@ -27,6 +27,7 @@
 #import "CGPDFDocument.h"
 #import <fcntl.h>
 #import "NSData+CommonCrypto.h"
+#import "BookEntity.h"
 
 @interface ReaderDocument ()
 
@@ -149,7 +150,20 @@
 	return document;
 }
 
-+ (ReaderDocument *)withDocumentFilePath:(NSString *)filePath password:(NSString *)phrase
++ (ReaderDocument *)withDocumentFilePath:(NSString *)filePath password:(NSString *)phrase{
+    ReaderDocument *document = nil; // ReaderDocument object
+    
+    document = [ReaderDocument unarchiveFromFileName:filePath password:phrase];
+    
+    if (document == nil) // Unarchive failed so create a new ReaderDocument object
+    {
+        document = [[ReaderDocument alloc] initWithFilePath:filePath password:phrase];
+    }
+    
+    return document;
+}
+
++ (ReaderDocument *)withDocumentFilePath:(NSString *)filePath password:(NSString *)phrase bookEntity:(BookEntity*)book
 {
 	ReaderDocument *document = nil; // ReaderDocument object
 
@@ -158,8 +172,9 @@
 	if (document == nil) // Unarchive failed so create a new ReaderDocument object
 	{
 		document = [[ReaderDocument alloc] initWithFilePath:filePath password:phrase];
+        
 	}
-
+    document.bookEntity = book;
 	return document;
 }
 
@@ -304,12 +319,12 @@
 
 - (BOOL)canEmail
 {
-	return YES;
+	return NO;
 }
 
 - (BOOL)canExport
 {
-	return YES;
+	return NO;
 }
 
 - (BOOL)canPrint

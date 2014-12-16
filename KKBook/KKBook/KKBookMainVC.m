@@ -65,15 +65,15 @@
     //_mainController.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_mainController.view];
     
-    storeVC = [[KKBookStoreMain alloc] init];
-    storeVC.delegate = self;
-    storeVC.view.frame = [self frameForViewController];
-    
     libraryVC = [[KKBookLibraryVC alloc] init];
     libraryVC.delegate = self;
     libraryVC.view.frame = [self frameForViewController];
     
-    if ([InternetChecking sharedInstance].isActived) {
+    if ([InternetChecking isConnectedToInternet]) {
+        storeVC = [[KKBookStoreMain alloc] init];
+        storeVC.delegate = self;
+        storeVC.view.frame = [self frameForViewController];
+
         self.optionIndices = [NSMutableIndexSet indexSetWithIndex:0];
         _pageType = STORE;
         self.title = @"KKBook";
@@ -234,7 +234,11 @@
 - (void)sidebar:(KKBookLeftSidebar *)sidebar didTapItemAtIndex:(NSUInteger)index {
     NSLog(@"Tapped item at index %lu",(unsigned long)index);
     if (index == 0) {
-        _pageType = STORE;
+        if ([InternetChecking isConnectedToInternet]) {
+            _pageType = STORE;
+        }else{
+            [BaseViewController showAlertNotConnectInternet];
+        }
     }else if (index == 1){
         _pageType = LIBRARY;
     }
@@ -348,7 +352,7 @@
         filePath = pdfFile;
     }
     
-    ReaderDocument *document = [ReaderDocument withDocumentFilePath:filePath password:phrase];
+    ReaderDocument *document = [ReaderDocument withDocumentFilePath:filePath password:phrase bookEntity:bookEntity];
     
     if (document != nil) // Must have a valid ReaderDocument object in order to proceed
     {

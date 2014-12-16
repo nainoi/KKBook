@@ -21,4 +21,8 @@
 -(void)dismissProgress;
 -(void)showProgress;
 
+//alert
++(void)showAlertWithMessage:(NSString*)message;
++(void)showAlertNotConnectInternet;
+
 @end

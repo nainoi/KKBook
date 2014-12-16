@@ -11,6 +11,8 @@
 #import "KKBookService.h"
 #import "UIAlertView+AFNetworking.h"
 #import "KKBookPreviewVC.h"
+#import "InternetChecking.h"
+#import "UIImage+WebP.h"
 
 @interface KKBookStoreDetailVC (){
     AAShareBubbles *shareBubbles;
@@ -100,8 +102,13 @@
 }
 
 - (IBAction)didPriceBtn:(id)sender {
-    [self download];
-    [self.navigationController popViewControllerAnimated:YES];
+    if ([InternetChecking isConnectedToInternet]) {
+        [self download];
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [BaseViewController showAlertNotConnectInternet];
+    }
+    
 }
 
 - (IBAction)didPreviewBtn:(id)sender {
@@ -109,43 +116,47 @@
 }
 
 - (IBAction)didShareBtn:(id)sender {
-    /*if(shareBubbles) {
-        shareBubbles = nil;
+    if([InternetChecking isConnectedToInternet]){
+        if(shareBubbles)
+            shareBubbles = nil;
+        shareBubbles = [[AAShareBubbles alloc] initWithPoint:_shareBtn.center radius:radius inView:self.view];
+        shareBubbles.delegate = self;
+        shareBubbles.bubbleRadius = bubbleRadius;
+        shareBubbles.showFacebookBubble = YES;
+        shareBubbles.showTwitterBubble = YES;
+        //shareBubbles.showGooglePlusBubble = YES;
+        //shareBubbles.showTumblrBubble = YES;
+        //shareBubbles.showVkBubble = YES;
+        //shareBubbles.showLinkedInBubble = YES;
+        //shareBubbles.showYoutubeBubble = YES;
+        //shareBubbles.showVimeoBubble = YES;
+        //shareBubbles.showRedditBubble = YES;
+        //shareBubbles.showPinterestBubble = YES;
+        //shareBubbles.showInstagramBubble = YES;
+        //shareBubbles.showWhatsappBubble = YES;
+        [shareBubbles show];
+
+    }else{
+        [BaseViewController showAlertNotConnectInternet];
     }
-    shareBubbles = [[AAShareBubbles alloc] initWithPoint:_shareBtn.center radius:radius inView:self.view];
-    shareBubbles.delegate = self;
-    shareBubbles.bubbleRadius = bubbleRadius;
-    shareBubbles.showFacebookBubble = YES;
-    shareBubbles.showTwitterBubble = YES;
-    shareBubbles.showGooglePlusBubble = YES;
-    //shareBubbles.showTumblrBubble = YES;
-    //shareBubbles.showVkBubble = YES;
-    shareBubbles.showLinkedInBubble = YES;
-    //shareBubbles.showYoutubeBubble = YES;
-    //shareBubbles.showVimeoBubble = YES;
-    //shareBubbles.showRedditBubble = YES;
-    //shareBubbles.showPinterestBubble = YES;
-    shareBubbles.showInstagramBubble = YES;
-    shareBubbles.showWhatsappBubble = YES;
-    [shareBubbles show];*/
     
-    NSString *textToShare = @"Look at this awesome website for aspiring iOS Developers!";
+    /*NSString *textToShare = @"Look at this awesome website for aspiring iOS Developers!";
     NSURL *myWebsite = [NSURL URLWithString:@"http://www.codingexplorer.com/"];
     
-    NSArray *objectsToShare = @[textToShare, myWebsite];
+    NSArray *objectsToShare = @[textToShare, myWebsite, _book.coverImageURL];
     
     UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:objectsToShare applicationActivities:nil];
     
     NSArray *excludeActivities = @[UIActivityTypePostToFacebook,
                                    UIActivityTypePostToTwitter,
-                                   UIActivityTypePrint,
                                    UIActivityTypeAssignToContact,
-                                   UIActivityTypeAddToReadingList,
-                                   UIActivityTypePostToVimeo];
+                                   UIActivityTypeAddToReadingList];
     
     activityVC.excludedActivityTypes = excludeActivities;
     
-    [self presentViewController:activityVC animated:YES completion:nil];
+    [self presentViewController:activityVC animated:YES completion:nil];*/
+    
+    //[self sendFacebook:sender];
 }
 
 -(void)download{
@@ -179,9 +190,11 @@
     switch (bubbleType) {
         case AAShareBubbleTypeFacebook:
             NSLog(@"Facebook");
+            [self sendFacebook:nil];
             break;
         case AAShareBubbleTypeTwitter:
             NSLog(@"Twitter");
+            [self sendTwitter:nil];
             break;
         case AAShareBubbleTypeGooglePlus:
             NSLog(@"Google+");
@@ -213,5 +226,60 @@
     NSLog(@"All Bubbles hidden");
 }
 
+-(void)sendFacebook:(id)sender {
+    
+    SLComposeViewController *composeController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+    
+    [composeController setInitialText:_book.bookName];
+    [composeController addImage:_coverImageView.image];
+    [composeController addURL: [NSURL URLWithString:@"http://www.apple.com"]];
+    
+    [self presentViewController:composeController animated:YES completion:nil];
+    
+    
+    SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result){
+        if (result == SLComposeViewControllerResultCancelled) {
+            
+            NSLog(@"delete");
+            
+        } else
+            
+        {
+            NSLog(@"post");
+        }
+        
+        //    [composeController dismissViewControllerAnimated:YES completion:Nil];
+    };
+    composeController.completionHandler =myBlock;
+}
+
+-(void)sendTwitter:(id)sender {
+    
+    SLComposeViewController *composeController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+    
+    [composeController setInitialText:_book.bookName];
+    [composeController addImage:_coverImageView.image];
+    [composeController addURL: [NSURL URLWithString:
+                                @"http://www.apple.com"]];
+    
+    [self presentViewController:composeController
+                       animated:YES completion:nil];
+    
+    SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result){
+        if (result == SLComposeViewControllerResultCancelled) {
+            
+            NSLog(@"delete");
+            
+        } else
+            
+        {
+            NSLog(@"post");
+        }
+        
+        //   [composeController dismissViewControllerAnimated:YES completion:Nil];
+    };
+    composeController.completionHandler =myBlock;
+    
+}
 
 @end

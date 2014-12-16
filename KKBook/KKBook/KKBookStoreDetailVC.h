@@ -10,6 +10,9 @@
 #import "BookModel.h"
 #import "KKBookView.h"
 #import "AAShareBubbles.h"
+#import <Social/Social.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <Twitter/Twitter.h>
 
 #define KKBookStoreDetailXIB [Utility isPad] ? @"KKBookStoreDetailVCPad" :@"KKBookStoreDetailVCPhone"
 

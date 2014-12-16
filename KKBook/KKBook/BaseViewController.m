@@ -88,8 +88,13 @@
 
 #pragma mark - alertview
 
--(void)showAlertWithMessage:(NSString*)message{
++(void)showAlertWithMessage:(NSString*)message{
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"KKBook" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alertView show];
+}
+
++(void)showAlertNotConnectInternet{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"KKBook" message:@"ขออภัยค่ะ โทรศัพท์ของท่านไม่สามารถเชื่อมต่ออินเทอร์เน็ตได้ในขณะนี้ กรุณาตรวจสอบสัญญาณอินเทอร์เน็ตและลองใหม่อีกครั้ง" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alertView show];
 }
 /*

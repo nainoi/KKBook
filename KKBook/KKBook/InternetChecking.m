@@ -40,6 +40,15 @@ static dispatch_once_t onceToken;
 	return self;
 }
 
++ (BOOL)isConnectedToInternet {
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    [reachability startNotifier];
+    NetworkStatus status = [reachability currentReachabilityStatus];
+    if (status == ReachableViaWiFi|| status == ReachableViaWWAN)
+        return YES;
+    else
+        return NO;
+}
 
 /**************         Check internet active ********************/
 

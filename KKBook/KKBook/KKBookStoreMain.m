@@ -12,7 +12,7 @@
 #import "KKBookStoreDetailVC.h"
 #import "BaseNavigationController.h"
 #import "UIAlertView+AFNetworking.h"
-#import "UIImage+WebP.h"
+#import "InternetChecking.h"
 
 #define BANNER_HEIGHT [Utility isPad] ? 308 : 154
 
@@ -32,11 +32,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     maxBanner = 0;
-    [self initBannerView];
-    [self initTable];
-    [self loadBanner];
-    [self loadStoreMainData];
-    [self initTimer];
+    currentBanner = 0;
+    if ([InternetChecking isConnectedToInternet]) {
+        [self initBannerView];
+        [self initTable];
+        [self loadBanner];
+        [self loadStoreMainData];
+        [self initTimer];
+    }else{
+        [BaseViewController showAlertNotConnectInternet];
+    }
+    
     //[self dummyTable];
 }
 

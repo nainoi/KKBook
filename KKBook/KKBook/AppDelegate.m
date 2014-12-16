@@ -23,7 +23,7 @@
     self.window = [[BaseWindow alloc] initWithFrame:[UIScreen mainScreen].bounds ];
     _window.backgroundColor = [UIColor whiteColor];
     
-    [[InternetChecking sharedInstance] isActived ];
+    //[[InternetChecking sharedInstance] isActived ];
     
     self.kkbookMainVC = [[KKBookMainVC alloc] init];
     BaseNavigationController *naviCtrl = [[BaseNavigationController alloc] initWithRootViewController:_kkbookMainVC];
