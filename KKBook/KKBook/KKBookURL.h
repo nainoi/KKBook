@@ -9,11 +9,13 @@
 #ifndef KKBooK_KKBookURL_h
 #define KKBooK_KKBookURL_h
 
-#define STORE_MAIN_URL @"http://glive-ubuntu.cloudapp.net/RestKKBooK/index.php/api/book/getHomePage"
-#define STORE_LIST_URL @"http://glive-ubuntu.cloudapp.net/RestKKBooK/index.php/api/book/getBook"
-#define PREVIEW_URL @"http://glive-ubuntu.cloudapp.net/RestKKBooK/index.php/api/book/getPreview"
-#define BANNER_URL @"http://glive-ubuntu.cloudapp.net/RestKKBooK/index.php/api/book/getBanner"
-#define CATEGORY_URL @"http://glive-ubuntu.cloudapp.net/RestKKBooK/index.php/api/book/getCategory"
+#define API_MAIN_URL @"http://www.geniuskids.tv/RestKKBooK/index.php/api/book/"
+
+#define STORE_MAIN_URL [NSString stringWithFormat:@"%@getHomePage",API_MAIN_URL]
+#define STORE_LIST_URL [NSString stringWithFormat:@"%@getBook",API_MAIN_URL]
+#define PREVIEW_URL [NSString stringWithFormat:@"%@getPreview",API_MAIN_URL]
+#define BANNER_URL [NSString stringWithFormat:@"%@getBanner",API_MAIN_URL]
+#define CATEGORY_URL [NSString stringWithFormat:@"%@getCategory",API_MAIN_URL]
 
 //for file
 #define IMAGE_URL @"http://glive-ubuntu.cloudapp.net/kkbook/Resource/Book/"
