@@ -21,6 +21,7 @@
     // Override point for customization after application launch.
     
     self.window = [[BaseWindow alloc] initWithFrame:[UIScreen mainScreen].bounds ];
+    NSLog(@"main frame %f",[UIScreen mainScreen].bounds.size.height);
     _window.backgroundColor = [UIColor whiteColor];
     
     //[[InternetChecking sharedInstance] isActived ];
