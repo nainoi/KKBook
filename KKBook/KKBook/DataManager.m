@@ -133,7 +133,7 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"BookEntity"
                                               inManagedObjectContext:context];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bookID == %@",bookID];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bookID == %@",[NSNumber numberWithInteger:[bookID integerValue]]];
     [fetchRequest setPredicate:predicate];
     [fetchRequest setEntity:entity];
     
@@ -144,6 +144,24 @@
     }
     return nil;
 }
+
+-(BOOL)isHasBookFormBookID:(NSString *)bookID{
+    NSManagedObjectContext *context = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BookEntity"
+                                              inManagedObjectContext:context];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bookID == %@",[NSNumber numberWithInteger:[bookID integerValue]]];
+    [fetchRequest setPredicate:predicate];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects.count > 0) {
+        return YES;
+    }
+    return NO;
+}
+
 
 -(NSArray*)selectAllMyBook{
     NSManagedObjectContext *context = [self managedObjectContext];

@@ -452,7 +452,7 @@
 		E047CBCB1A11CAD300582881 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		E047CBCC1A11CAD300582881 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
 		E047CBCD1A11CAD300582881 /* delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@3x.png"; sourceTree = "<group>"; };
-		E050D4E31A00A437007B3686 /* KKBooK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KKBooK.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E050D4E31A00A437007B3686 /* kkbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kkbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E050D4E71A00A437007B3686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E050D4E81A00A437007B3686 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E050D4EA1A00A437007B3686 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1001,7 +1001,7 @@
 		E050D4E41A00A437007B3686 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E050D4E31A00A437007B3686 /* KKBooK.app */,
+				E050D4E31A00A437007B3686 /* kkbook.app */,
 				E050D4FF1A00A437007B3686 /* KKBooKTests.xctest */,
 			);
 			name = Products;
@@ -1439,7 +1439,7 @@
 			);
 			name = KKBooK;
 			productName = KKBooK;
-			productReference = E050D4E31A00A437007B3686 /* KKBooK.app */;
+			productReference = E050D4E31A00A437007B3686 /* kkbook.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E050D4FE1A00A437007B3686 /* KKBooKTests */ = {
@@ -1850,15 +1850,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: suthisak chuenjit (HSCEZMNNG9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: suthisak chuenjit (HSCEZMNNG9)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: suthisak chuenjit (R2R9P6683M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: suthisak chuenjit (R2R9P6683M)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = KKBook/PrefixHeader.pch;
 				INFOPLIST_FILE = KKBooK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = kkbook;
+				PROVISIONING_PROFILE = "2f725294-506f-472d-b64d-eed15e87f9a4";
 			};
 			name = Debug;
 		};
@@ -1867,15 +1867,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: suthisak chuenjit (HSCEZMNNG9)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: suthisak chuenjit (HSCEZMNNG9)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: suthisak chuenjit (R2R9P6683M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: suthisak chuenjit (R2R9P6683M)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = KKBook/PrefixHeader.pch;
 				INFOPLIST_FILE = KKBooK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = kkbook;
+				PROVISIONING_PROFILE = "2f725294-506f-472d-b64d-eed15e87f9a4";
 			};
 			name = Release;
 		};

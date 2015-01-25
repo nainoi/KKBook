@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E050D4E21A00A437007B3686"
-               BuildableName = "KKBooK.app"
+               BuildableName = "kkbook.app"
                BlueprintName = "KKBooK"
                ReferencedContainer = "container:KKBooK.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E050D4E21A00A437007B3686"
-            BuildableName = "KKBooK.app"
+            BuildableName = "kkbook.app"
             BlueprintName = "KKBooK"
             ReferencedContainer = "container:KKBooK.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E050D4E21A00A437007B3686"
-            BuildableName = "KKBooK.app"
+            BuildableName = "kkbook.app"
             BlueprintName = "KKBooK"
             ReferencedContainer = "container:KKBooK.xcodeproj">
          </BuildableReference>
@@ -94,7 +94,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E050D4E21A00A437007B3686"
-            BuildableName = "KKBooK.app"
+            BuildableName = "kkbook.app"
             BlueprintName = "KKBooK"
             ReferencedContainer = "container:KKBooK.xcodeproj">
          </BuildableReference>

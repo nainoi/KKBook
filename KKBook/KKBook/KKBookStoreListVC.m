@@ -12,6 +12,7 @@
 #import "UIAlertView+AFNetworking.h"
 #import "BookModel.h"
 #import "CategoryModel.h"
+#import "BaseNavigationController.h"
 
 @interface KKBookStoreListVC (){
     NSMutableArray *categories;
@@ -26,9 +27,11 @@
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         
-        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-        layout.minimumLineSpacing = 10;
-        layout.minimumInteritemSpacing = 10;
+        layout.sectionInset = [Utility isPad] ? UIEdgeInsetsMake(20, 20, 20, 20) :[Utility isLessPhone5] ? UIEdgeInsetsMake(0, 1, 1, 3) : UIEdgeInsetsMake(0, 1, 1, 3);
+//        layout.minimumLineSpacing = 10;
+//        layout.minimumInteritemSpacing = 10;
+        layout.minimumLineSpacing = [Utility isPad] ? 40 :[Utility isLessPhone5] ? 1 : 1;
+        layout.minimumInteritemSpacing = [Utility isPad] ? 20 : [Utility isLessPhone5] ? 1 : 1 ;
         
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -124,12 +127,18 @@
         
         [_popoverViewController dismissPopoverAnimated:YES];
     };
-    _popoverViewController = [[UIPopoverController alloc] initWithContentViewController:categoryTbv];
-    
-    _popoverViewController.popoverContentSize = CGSizeMake(320.0, 400.0);
-    
-    [_popoverViewController presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-
+    if ([Utility isPad]) {
+        _popoverViewController = [[UIPopoverController alloc] initWithContentViewController:categoryTbv];
+        
+        _popoverViewController.popoverContentSize = CGSizeMake(320.0, 400.0);
+        
+        [_popoverViewController presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }else{
+        BaseNavigationController *naviCtrl = [[BaseNavigationController alloc] initWithRootViewController:categoryTbv];
+        [self presentViewController:naviCtrl animated:YES completion:^(){
+            [naviCtrl setGreenNavigationBar];
+        }];
+    }
 }
 
 #pragma mark - UICollectionView Datasource
@@ -168,14 +177,14 @@
     if ([Utility isPad]) {
         return CGSizeMake(155, 275);
     }else{
-        return CGSizeMake(155, 275);
+        return CGSizeMake(150, 275);
     }
     
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     
-    return UIEdgeInsetsMake(10, 10, 10, 10);
+    return [Utility isPad] ? UIEdgeInsetsMake(20, 20, 20, 20) :[Utility isLessPhone5] ? UIEdgeInsetsMake(0, 0, 1, 1) : UIEdgeInsetsMake(0, 0, 1, 1);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{

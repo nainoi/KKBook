@@ -43,4 +43,7 @@
     return UIStatusBarStyleLightContent;
 }
 
+-(void)setGreenNavigationBar{
+    ((BaseNavigationController*)self.navigationController).navigationBar.barTintColor = [UIColor colorWithRed:3/255.0 green:166/255.0 blue:130/255.0 alpha:1.0];
+}
 @end

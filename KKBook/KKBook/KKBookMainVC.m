@@ -273,6 +273,19 @@
             }];
         }
     };
+    
+    //open
+    bookDetailVC.didOpen = ^(BookModel *bookModel){
+        BookEntity *bookEntity = [[DataManager shareInstance] selectBookFromBookID:bookModel.bookID];
+        [self.leftSideBar didTapItemAtIndex:1];
+         
+        if ([bookEntity.fileTypeName isEqualToString:@"PDF"]) {
+            [self pdfReaderWithBookEntity:bookEntity];
+        }else{
+            [self readerInteractive:bookEntity];
+        }
+
+    };
     [self.navigationController pushViewController:bookDetailVC animated:YES];
 }
 

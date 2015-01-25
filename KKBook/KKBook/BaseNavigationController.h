@@ -27,4 +27,6 @@
 
 @interface BaseNavigationController : UINavigationController
 
+-(void)setGreenNavigationBar;
+
 @end

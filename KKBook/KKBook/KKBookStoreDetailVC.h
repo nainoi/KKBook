@@ -46,6 +46,7 @@
 
 @property (strong, nonatomic) BookModel *book;
 @property (copy, nonatomic) void (^didDownload)(BookModel*);
+@property (copy, nonatomic) void (^didOpen)(BookModel*);
 
 - (instancetype)initWithBook:(BookModel*)book;
 

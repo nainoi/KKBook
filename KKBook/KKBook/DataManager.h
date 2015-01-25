@@ -27,5 +27,6 @@
 
 -(void)downloadBook:(BookEntity*)bookEntity onComplete:(void (^)(NSString *))downloadStatus;
 -(AFHTTPRequestOperation*)selectResponseOperationWithBookEntity:(BookEntity*)bookEntity;
+-(BOOL)isHasBookFormBookID:(NSString *)bookID;
 
 @end

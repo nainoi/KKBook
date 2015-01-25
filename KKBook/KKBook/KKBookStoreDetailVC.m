@@ -13,6 +13,7 @@
 #import "KKBookPreviewVC.h"
 #import "InternetChecking.h"
 #import "UIImage+WebP.h"
+#import "DataManager.h"
 
 @interface KKBookStoreDetailVC (){
     AAShareBubbles *shareBubbles;
@@ -59,13 +60,13 @@
     self.categoryLb.text = _book.categoryName;
     self.publisherLb.text = _book.publisherDisplay;
     self.auhorLb.text = _book.authorDisplay;
-    [self.priceBtn setTitle:_book.priceDisplay forState:UIControlStateNormal];
+    //[self.priceBtn setTitle:_book.priceDisplay forState:UIControlStateNormal];
     self.totalPageLb.text = _book.page;
     self.fileSizeLb.text = _book.fileSizeDisplay;
     self.detailLb.text = _book.bookDesc;
     self.priceLb.text = [_book.coverPrice stringByAppendingString:@" ฿"];
     self.typeLb.text = _book.fileTypeName;
-    
+    [self setStatusDownload];
     _detailLb.numberOfLines = 0;
     [_detailLb sizeToFit];
     
@@ -77,6 +78,17 @@
         _contentView.frame = frame;
         
         _scrollView.contentSize = CGSizeMake(_contentView.frame.size.width, _contentView.frame.size.height);
+    }
+}
+
+-(void)setStatusDownload{
+    [_priceBtn removeTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+    if([[DataManager shareInstance] isHasBookFormBookID:_book.bookID]){
+        [_priceBtn setTitle:@"OPEN" forState:UIControlStateNormal];
+        [_priceBtn addTarget:self action:@selector(didOpenBook) forControlEvents:UIControlEventTouchUpInside];
+    }else{
+        [_priceBtn setTitle:_book.priceDisplay forState:UIControlStateNormal];
+        [_priceBtn addTarget:self action:@selector(didPriceBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
 }
 
@@ -113,6 +125,13 @@
 
 - (IBAction)didPreviewBtn:(id)sender {
     [self loadPreview];
+}
+
+-(void)didOpenBook{
+    [self.navigationController popViewControllerAnimated:YES];
+    if (self.didOpen) {
+        self.didOpen(_book);
+    }
 }
 
 - (IBAction)didShareBtn:(id)sender {
