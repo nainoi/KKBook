@@ -58,7 +58,7 @@
 
 @implementation PhotoViewController
 
-+ (PhotoViewController *)photoViewControllerForPageIndex:(NSUInteger)pageIndex
+/*+ (PhotoViewController *)photoViewControllerForPageIndex:(NSUInteger)pageIndex
 {
     if (pageIndex < [ImageScrollView imageCount])
     {
@@ -121,6 +121,6 @@
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskAllButUpsideDown;
-}
+}*/
 
 @end

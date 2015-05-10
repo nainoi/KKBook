@@ -13,10 +13,11 @@
 #import "BaseNavigationController.h"
 #import "UIAlertView+AFNetworking.h"
 #import "InternetChecking.h"
+#import "ModalViewController.h"
 
 #define BANNER_HEIGHT [Utility isPad] ? 308 : 154
 
-@interface KKBookStoreMain ()<StoreScrollingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>{
+@interface KKBookStoreMain ()<StoreScrollingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, modalWebViewDelegate>{
     unsigned long maxBanner;
     unsigned long currentBanner;
 }
@@ -69,28 +70,29 @@
 
 -(void)loadBanner{
     //[self showProgressLoading];
-    NSURLSessionTask *task = [KKBookService requestBannerService:^(NSArray *source, NSError *error) {
+    /*NSURLSessionTask *task = */[KKBookService requestBannerService:^(NSArray *source, NSError *error) {
         //[self dismissProgress];
         if (!error) {
             _myPageDataArray = [[NSMutableArray alloc] initWithArray:source];
             currentBanner = 0;
             maxBanner = _myPageDataArray.count;
+            _myPageScrollView.delegate = self;
             [_myPageScrollView reloadData];
         }
     }];
-    [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
+    //[UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
 }
 
 -(void)initBannerView{
-    _myPageDataArray = [[NSMutableArray alloc] initWithCapacity : 4];
-    
-    for (int i=1; i<=4; i++) {
-        BannerModel *banner = [[BannerModel alloc] init];
-        banner.bannerImage = [NSString stringWithFormat:@"image%d", i];
-        [_myPageDataArray addObject:banner];
-    }
-    currentBanner = 0;
-    maxBanner = _myPageDataArray.count;
+//    _myPageDataArray = [[NSMutableArray alloc] initWithCapacity : 4];
+//    
+//    for (int i=1; i<=4; i++) {
+//        BannerModel *banner = [[BannerModel alloc] init];
+//        banner.bannerImage = [NSString stringWithFormat:@"image%d", i];
+//        [_myPageDataArray addObject:banner];
+//    }
+//    currentBanner = 0;
+//    maxBanner = _myPageDataArray.count;
     CGRect frame = CGRectMake(10, 5, CHILD_WIDTH, BANNER_HEIGHT);
     
     // now that we have the data, initialize the page scroll view
@@ -137,6 +139,21 @@
 
 - (void) pageScrollView:(HGPageScrollView *)scrollView didSelectPageAtIndex:(NSInteger)index
 {
+    NSURL *url = [NSURL URLWithString:@"www.google.co.th"];
+    ModalViewController *myModalViewController = [[ModalViewController alloc] initWithUrl:url];
+    myModalViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    myModalViewController.delegate = self;
+    
+    [self presentViewController:myModalViewController animated:YES completion:nil];
+
+}
+
+- (void)closeModalWebView {
+    /****************************************************************************************************
+     * This function is called from inside the modal view to close itself (delegate).
+     */
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDataSource

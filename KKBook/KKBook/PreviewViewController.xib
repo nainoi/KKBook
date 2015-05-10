@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PreviewViewController">
+            <connections>
+                <outlet property="pageControl" destination="ZGb-92-QLa" id="TrB-AR-A3h"/>
+                <outlet property="pagingScrollView" destination="6" id="19"/>
+                <outlet property="view" destination="3" id="23"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="3" userLabel="View">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <scrollView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6" customClass="MHPagingScrollView">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="20"/>
+                                <outlet property="pagingDelegate" destination="-1" id="21"/>
+                            </connections>
+                        </scrollView>
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZGb-92-QLa">
+                            <rect key="frame" x="73" y="532" width="454" height="37"/>
+                            <connections>
+                                <action selector="pageTurn" destination="-1" eventType="valueChanged" id="T0J-kO-doq"/>
+                            </connections>
+                        </pageControl>
+                    </subviews>
+                    <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="6" secondAttribute="bottom" id="8M5-b2-ggL"/>
+                        <constraint firstAttribute="trailing" secondItem="6" secondAttribute="trailing" id="8mO-Eg-B3d"/>
+                        <constraint firstItem="6" firstAttribute="top" secondItem="4" secondAttribute="top" id="CH2-Po-off"/>
+                        <constraint firstItem="6" firstAttribute="leading" secondItem="4" secondAttribute="leading" id="JzL-A9-Rdh"/>
+                        <constraint firstItem="6" firstAttribute="top" secondItem="4" secondAttribute="top" id="QUA-nc-5sm"/>
+                        <constraint firstAttribute="trailing" secondItem="6" secondAttribute="trailing" id="VMW-f9-3vS"/>
+                        <constraint firstItem="ZGb-92-QLa" firstAttribute="centerX" secondItem="6" secondAttribute="centerX" id="VgP-a0-sdM"/>
+                        <constraint firstItem="6" firstAttribute="leading" secondItem="4" secondAttribute="leading" id="iL8-FS-8dv"/>
+                        <constraint firstAttribute="bottom" secondItem="ZGb-92-QLa" secondAttribute="bottom" constant="31" id="jM5-24-TsJ"/>
+                        <constraint firstItem="ZGb-92-QLa" firstAttribute="leading" secondItem="4" secondAttribute="leading" constant="73" id="lsw-T9-Ki5"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="QUA-nc-5sm"/>
+                            <exclude reference="VMW-f9-3vS"/>
+                            <exclude reference="iL8-FS-8dv"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="4" firstAttribute="leading" secondItem="3" secondAttribute="leading" id="Jg5-zx-UUK"/>
+                <constraint firstAttribute="bottom" secondItem="4" secondAttribute="bottom" id="NEB-PV-S0m"/>
+                <constraint firstItem="4" firstAttribute="top" secondItem="3" secondAttribute="top" id="Rl3-wi-vSN"/>
+                <constraint firstAttribute="trailing" secondItem="4" secondAttribute="trailing" id="fBi-b2-5tW"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+            <point key="canvasLocation" x="313" y="325"/>
+        </view>
+    </objects>
+</document>

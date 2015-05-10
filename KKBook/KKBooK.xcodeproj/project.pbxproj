@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F3D232B1AFF46A0005C2D66 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D23291AFF46A0005C2D66 /* PreviewViewController.m */; };
+		9F3D232C1AFF46A0005C2D66 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F3D232A1AFF46A0005C2D66 /* PreviewViewController.xib */; };
+		9F3D232F1AFF470B005C2D66 /* HWViewPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D232E1AFF470B005C2D66 /* HWViewPager.m */; };
+		9F3D23321AFF4743005C2D66 /* MHPagingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D23311AFF4743005C2D66 /* MHPagingScrollView.m */; };
+		9F3D23351AFF4753005C2D66 /* PageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D23341AFF4753005C2D66 /* PageView.m */; };
 		E001CBC71A0BC9AA00A5995E /* KKBookStoreDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E001CBC51A0BC9AA00A5995E /* KKBookStoreDetailVC.m */; };
 		E001CBC81A0BC9AA00A5995E /* KKBookStoreDetailVCPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E001CBC61A0BC9AA00A5995E /* KKBookStoreDetailVCPad.xib */; };
 		E001CBCA1A0BF37300A5995E /* KKBookStoreDetailVCPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = E001CBC91A0BF37300A5995E /* KKBookStoreDetailVCPhone.xib */; };
@@ -241,6 +246,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F3D23281AFF46A0005C2D66 /* PreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
+		9F3D23291AFF46A0005C2D66 /* PreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
+		9F3D232A1AFF46A0005C2D66 /* PreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewViewController.xib; sourceTree = "<group>"; };
+		9F3D232D1AFF470B005C2D66 /* HWViewPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWViewPager.h; sourceTree = "<group>"; };
+		9F3D232E1AFF470B005C2D66 /* HWViewPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWViewPager.m; sourceTree = "<group>"; };
+		9F3D23301AFF4743005C2D66 /* MHPagingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHPagingScrollView.h; sourceTree = "<group>"; };
+		9F3D23311AFF4743005C2D66 /* MHPagingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHPagingScrollView.m; sourceTree = "<group>"; };
+		9F3D23331AFF4753005C2D66 /* PageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageView.h; sourceTree = "<group>"; };
+		9F3D23341AFF4753005C2D66 /* PageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageView.m; sourceTree = "<group>"; };
 		E001CBC41A0BC9AA00A5995E /* KKBookStoreDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KKBookStoreDetailVC.h; path = KKBook/KKBookStoreDetailVC.h; sourceTree = SOURCE_ROOT; };
 		E001CBC51A0BC9AA00A5995E /* KKBookStoreDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KKBookStoreDetailVC.m; path = KKBook/KKBookStoreDetailVC.m; sourceTree = SOURCE_ROOT; };
 		E001CBC61A0BC9AA00A5995E /* KKBookStoreDetailVCPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KKBookStoreDetailVCPad.xib; path = KKBook/KKBookStoreDetailVCPad.xib; sourceTree = SOURCE_ROOT; };
@@ -968,10 +982,14 @@
 		E041DC031A1DA49A005FB30D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9F3D23331AFF4753005C2D66 /* PageView.h */,
+				9F3D23341AFF4753005C2D66 /* PageView.m */,
 				E0408D851A1312B1004BB117 /* PhotoViewController.h */,
 				E0408D861A1312B1004BB117 /* PhotoViewController.m */,
 				E0408D871A1312B1004BB117 /* ImageScrollView.h */,
 				E0408D881A1312B1004BB117 /* ImageScrollView.m */,
+				9F3D23301AFF4743005C2D66 /* MHPagingScrollView.h */,
+				9F3D23311AFF4743005C2D66 /* MHPagingScrollView.m */,
 				E0408D8B1A1313ED004BB117 /* TilingView.h */,
 				E0408D8C1A1313ED004BB117 /* TilingView.m */,
 			);
@@ -984,6 +1002,11 @@
 				E0408D801A131150004BB117 /* KKBookPreviewVC.h */,
 				E0408D811A131150004BB117 /* KKBookPreviewVC.m */,
 				E0408D821A131150004BB117 /* KKBookPreviewVC.xib */,
+				9F3D23281AFF46A0005C2D66 /* PreviewViewController.h */,
+				9F3D23291AFF46A0005C2D66 /* PreviewViewController.m */,
+				9F3D232A1AFF46A0005C2D66 /* PreviewViewController.xib */,
+				9F3D232D1AFF470B005C2D66 /* HWViewPager.h */,
+				9F3D232E1AFF470B005C2D66 /* HWViewPager.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1566,6 +1589,7 @@
 				E06BAE951A05F921007886F4 /* background.png in Resources */,
 				E0B3E4B91A093A880012A450 /* KKBookStoreMain.xib in Resources */,
 				E05864C71A0E46D100C688D8 /* StoreCollectionCell.xib in Resources */,
+				9F3D232C1AFF46A0005C2D66 /* PreviewViewController.xib in Resources */,
 				E00CB3571A02768800C8DC83 /* phone.jpg in Resources */,
 				E0237EAC1A14B81000176E05 /* AAShareBubbles.bundle in Resources */,
 				E06C3FE41A1C4FC100333C64 /* KKBookAboutVC.xib in Resources */,
@@ -1620,9 +1644,11 @@
 				E0276C681A0C9EF700254AAC /* FormValidation.m in Sources */,
 				E0408D891A1312B1004BB117 /* PhotoViewController.m in Sources */,
 				E05864CA1A0E8D6800C688D8 /* BookEntity.m in Sources */,
+				9F3D23351AFF4753005C2D66 /* PageView.m in Sources */,
 				E02B06EA1A0A282F00745E57 /* PPImageScrollingCellView.m in Sources */,
 				E02D97331A033C4D0014BCBF /* CHTCollectionViewWaterfallHeader.m in Sources */,
 				E06C3FF61A1C83F400333C64 /* BakerViewController.m in Sources */,
+				9F3D232B1AFF46A0005C2D66 /* PreviewViewController.m in Sources */,
 				E09A5AEC1A10BBC100262959 /* NSData+CommonCrypto.m in Sources */,
 				E0135A161A07F29C00947773 /* UIProgressView+AFNetworking.m in Sources */,
 				E0135A111A07F29C00947773 /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -1667,6 +1693,7 @@
 				E09A5AEA1A10BBC100262959 /* AESCrypt.m in Sources */,
 				E0135A3F1A07FE6400947773 /* SDWebImageCompat.m in Sources */,
 				E06C3FE31A1C4FC100333C64 /* KKBookAboutVC.m in Sources */,
+				9F3D23321AFF4743005C2D66 /* MHPagingScrollView.m in Sources */,
 				E0276C601A0C777B00254AAC /* KKBookFontDetailPhone.m in Sources */,
 				E06C40061A1C84FA00333C64 /* Utils.m in Sources */,
 				E0DCC29C1A0FA31000E87028 /* UIXToolbarView.m in Sources */,
@@ -1677,6 +1704,7 @@
 				E050D5231A00D4F2007B3686 /* Utility.m in Sources */,
 				E0276C571A0C76C400254AAC /* KKBookFontTitlePad.m in Sources */,
 				E0378F721A12654000643023 /* KKBookStoreListVC.m in Sources */,
+				9F3D232F1AFF470B005C2D66 /* HWViewPager.m in Sources */,
 				E06C40191A1C857700333C64 /* UIColor+Extensions.m in Sources */,
 				E0DCC2931A0FA31000E87028 /* CGPDFDocument.m in Sources */,
 				E075F21C1A1173AC00DAE0F8 /* AFDownloadRequestOperation.m in Sources */,
@@ -1850,15 +1878,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: suthisak chuenjit (R2R9P6683M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: suthisak chuenjit (R2R9P6683M)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = KKBook/PrefixHeader.pch;
 				INFOPLIST_FILE = KKBooK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = kkbook;
-				PROVISIONING_PROFILE = "2f725294-506f-472d-b64d-eed15e87f9a4";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1867,15 +1895,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: suthisak chuenjit (R2R9P6683M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: suthisak chuenjit (R2R9P6683M)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = KKBook/PrefixHeader.pch;
 				INFOPLIST_FILE = KKBooK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = kkbook;
-				PROVISIONING_PROFILE = "2f725294-506f-472d-b64d-eed15e87f9a4";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

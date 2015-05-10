@@ -14,6 +14,7 @@
 #import "InternetChecking.h"
 #import "UIImage+WebP.h"
 #import "DataManager.h"
+#import "PreviewViewController.h"
 
 @interface KKBookStoreDetailVC (){
     AAShareBubbles *shareBubbles;
@@ -191,9 +192,12 @@
     NSURLSessionTask *task = [KKBookService requestPreviewServiceWithBook:_book.bookID complete:^(NSArray *array, NSError *error){
         [self dismissProgress];
         if (!error) {
-            KKBookPreviewVC *previewVC = [[KKBookPreviewVC alloc] init];
-            previewVC.previews = array;
-            [self.navigationController pushViewController:previewVC animated:YES];
+//            KKBookPreviewVC *previewVC = [[KKBookPreviewVC alloc] init];
+//            previewVC.previews = array;
+//            [self.navigationController pushViewController:previewVC animated:YES];
+            PreviewViewController *preview = [[PreviewViewController alloc] init];
+            preview.previews = array;
+            [self.navigationController pushViewController:preview animated:YES];
         }else{
             [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];
         }

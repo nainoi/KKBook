@@ -47,12 +47,30 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ImageScrollView : UIScrollView
+/*@interface ImageScrollView : UIScrollView
 
 @property (nonatomic) NSUInteger index;
 
 + (NSUInteger)imageCount;
 - (void)displayImage:(UIImage *)image;
+- (void)displayImageURL:(NSURL *)imageURL;*/
+
+@interface ImageScrollView : UIScrollView <UIScrollViewDelegate,UIGestureRecognizerDelegate> {
+    UIView        *imageView;
+    NSUInteger     index;
+}
+@property (assign) NSUInteger index;
+@property (assign) BOOL isZoomDisable;
+
+- (void)displayImage:(UIImage *)image;
 - (void)displayImageURL:(NSURL *)imageURL;
+
+- (void)setMaxMinZoomScalesForCurrentBounds;
+
+- (CGPoint)pointToCenterAfterRotation;
+- (CGFloat)scaleToRestoreAfterRotation;
+- (void)restoreCenterPoint:(CGPoint)oldCenter scale:(CGFloat)oldScale;
+- (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center;
+- (BOOL)zoomToDefaultwithCenter:(CGPoint)center;
 
 @end
