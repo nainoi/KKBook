@@ -50,6 +50,11 @@
     _identityFrame = [self frame];
 
     imageView = [[[UIImageView alloc] initWithFrame:[self frame]] retain];
+    imageView.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBanner:)];
+    [imageView addGestureRecognizer:tapGesture];
+    
     [self addSubview:imageView];
 }
 
@@ -79,6 +84,12 @@
                                       activityIndicator = nil;
                                   }];
 
+}
+
+-(void)tapBanner:(id)sender{
+    if ([[self delegate] respondsToSelector:@selector(didTapImage:)]) {
+        [[self delegate] didTapImage:imageView.tag];
+    }
 }
 
 - (void)dealloc {

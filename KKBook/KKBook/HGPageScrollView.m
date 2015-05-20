@@ -199,7 +199,7 @@ typedef enum{
     
     // set initial view mode
     _viewMode = HGPageScrollViewModeDeck;
-    
+    //_viewMode = HGPageScrollViewModePage;
     return self;
 
 }

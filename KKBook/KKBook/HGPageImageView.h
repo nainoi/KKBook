@@ -25,11 +25,19 @@
 
 #import "HGPageView.h"
 
+@protocol HGImageDelegate <NSObject>
+
+-(void)didTapImage:(NSInteger)tag;
+
+@end
+
 @interface HGPageImageView : HGPageView {
     UIImageView *imageView;
 }
 
+
 @property (nonatomic, retain, setter=setImage:) UIImage *image;
 @property (nonatomic, retain) NSURL *imageURL;
+@property (nonatomic, assign) id<HGImageDelegate>delegate;
 
 @end

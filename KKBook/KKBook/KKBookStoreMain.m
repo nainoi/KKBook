@@ -17,7 +17,7 @@
 
 #define BANNER_HEIGHT [Utility isPad] ? 308 : 154
 
-@interface KKBookStoreMain ()<StoreScrollingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, modalWebViewDelegate>{
+@interface KKBookStoreMain ()<StoreScrollingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, modalWebViewDelegate, HGImageDelegate>{
     unsigned long maxBanner;
     unsigned long currentBanner;
 }
@@ -76,7 +76,6 @@
             _myPageDataArray = [[NSMutableArray alloc] initWithArray:source];
             currentBanner = 0;
             maxBanner = _myPageDataArray.count;
-            _myPageScrollView.delegate = self;
             [_myPageScrollView reloadData];
         }
     }];
@@ -127,6 +126,8 @@
     CGRect frame = CGRectMake(0, 0, CGRectGetWidth(_myPageScrollView.frame)-20, BANNER_HEIGHT);
     HGPageImageView *imageView = [[HGPageImageView alloc]
                                   initWithFrame:frame];
+    imageView.tag = index;
+    imageView.delegate = self;
     //[imageView setImage:image];
     [imageView setImageURL:[NSURL URLWithString:[_myPageDataArray objectAtIndex:index]]];
     [imageView setReuseIdentifier:@"imageId"];
@@ -137,14 +138,18 @@
 #pragma mark -
 #pragma mark HGPageScrollViewDelegate
 
-- (void) pageScrollView:(HGPageScrollView *)scrollView didSelectPageAtIndex:(NSInteger)index
-{
-    NSURL *url = [NSURL URLWithString:@"www.google.co.th"];
+-(void)didTapImage:(NSInteger)tag{
+    NSURL *url = [NSURL URLWithString:@"https://www.google.co.th"];
     ModalViewController *myModalViewController = [[ModalViewController alloc] initWithUrl:url];
     myModalViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     myModalViewController.delegate = self;
     
     [self presentViewController:myModalViewController animated:YES completion:nil];
+}
+
+- (void) pageScrollView:(HGPageScrollView *)scrollView didSelectPageAtIndex:(NSInteger)index
+{
+    
 
 }
 
@@ -154,6 +159,30 @@
      */
     
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)webView:(UIWebView *)webView setCorrectOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    
+    // Since the UIWebView doesn't handle orientationchange events correctly we have to set the correct value for window.orientation property ourselves
+    NSString *jsOrientationGetter;
+    switch (interfaceOrientation) {
+        case UIInterfaceOrientationPortrait:
+            jsOrientationGetter = @"window.__defineGetter__('orientation', function() { return 0; });";
+            break;
+        case UIInterfaceOrientationLandscapeLeft:
+            jsOrientationGetter = @"window.__defineGetter__('orientation', function() { return 90; });";
+            break;
+        case UIInterfaceOrientationPortraitUpsideDown:
+            jsOrientationGetter = @"window.__defineGetter__('orientation', function() { return 180; });";
+            break;
+        case UIInterfaceOrientationLandscapeRight:
+            jsOrientationGetter = @"window.__defineGetter__('orientation', function() { return -90; });";
+            break;
+        default:
+            break;
+    }
+    
+    [webView stringByEvaluatingJavaScriptFromString:jsOrientationGetter];
 }
 
 #pragma mark - UITableViewDataSource
@@ -259,21 +288,20 @@
 }
 
 -(void)slide:(NSTimer*)timer{
+    if (_myPageDataArray.count > 0) {
+        unsigned long nextpage = currentBanner+1;
+        if(nextpage > maxBanner-1){
+            nextpage = 0;
+        }
+        currentBanner = nextpage;
+        // update the scroll view to the appropriate page
+        @try {
+            [_myPageScrollView scrollToPageAtIndex:currentBanner animated:YES];
+        }
+        @catch (NSException *exception) {
+            currentBanner = 0;
+        }
 
-    unsigned long nextpage = currentBanner+1;
-    if(nextpage > maxBanner-1){
-        nextpage = 0;
-    }
-    currentBanner = nextpage;
-    // update the scroll view to the appropriate page
-    @try {
-        [_myPageScrollView scrollToPageAtIndex:currentBanner animated:YES];
-    }
-    @catch (NSException *exception) {
-        currentBanner = 0;
-    }
-    @finally {
-        //
     }
     
 }

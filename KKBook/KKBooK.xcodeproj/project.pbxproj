@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D4A68C81B011FE2007EC8D1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D4A68C71B011FE2007EC8D1 /* Localizable.strings */; };
+		8D4A68CA1B0123B9007EC8D1 /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D4A68C91B0123B9007EC8D1 /* settings.plist */; };
+		8D4A68CC1B012463007EC8D1 /* BakerAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D4A68CB1B012463007EC8D1 /* BakerAssets.xcassets */; };
 		9F3D232B1AFF46A0005C2D66 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D23291AFF46A0005C2D66 /* PreviewViewController.m */; };
 		9F3D232C1AFF46A0005C2D66 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F3D232A1AFF46A0005C2D66 /* PreviewViewController.xib */; };
 		9F3D232F1AFF470B005C2D66 /* HWViewPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F3D232E1AFF470B005C2D66 /* HWViewPager.m */; };
@@ -246,6 +249,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D4A68C71B011FE2007EC8D1 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		8D4A68C91B0123B9007EC8D1 /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
+		8D4A68CB1B012463007EC8D1 /* BakerAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BakerAssets.xcassets; sourceTree = "<group>"; };
 		9F3D23281AFF46A0005C2D66 /* PreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
 		9F3D23291AFF46A0005C2D66 /* PreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
 		9F3D232A1AFF46A0005C2D66 /* PreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewViewController.xib; sourceTree = "<group>"; };
@@ -1055,6 +1061,9 @@
 		E050D4E61A00A437007B3686 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8D4A68CB1B012463007EC8D1 /* BakerAssets.xcassets */,
+				8D4A68C71B011FE2007EC8D1 /* Localizable.strings */,
+				8D4A68C91B0123B9007EC8D1 /* settings.plist */,
 				E050D4E71A00A437007B3686 /* Info.plist */,
 				E050D4E81A00A437007B3686 /* main.m */,
 				E07FD4561A0140E200F890CF /* PrefixHeader.pch */,
@@ -1535,6 +1544,7 @@
 				E014EC961A12EC6E0081BAE7 /* Reader-Email@2x.png in Resources */,
 				E014EC9B1A12EC6E0081BAE7 /* Reader-Mark-Y.png in Resources */,
 				E02D97671A03A13A0014BCBF /* list-item-frame-landscape@2x.png in Resources */,
+				8D4A68CA1B0123B9007EC8D1 /* settings.plist in Resources */,
 				E0B657781A055AD700196B14 /* KKBookLibraryCell_Phone.xib in Resources */,
 				E02D97591A03A1010014BCBF /* list-item-stage@2x.png in Resources */,
 				E0B3E4B21A0937170012A450 /* HGPageScrollView.xib in Resources */,
@@ -1562,6 +1572,7 @@
 				E02BEC6D1A02478E002A5F6B /* Profile_image@2x.png in Resources */,
 				E014EC911A12EC6E0081BAE7 /* Reader-Button-H.png in Resources */,
 				E0730B781A15FC1800C955A1 /* InteractiveReader.xib in Resources */,
+				8D4A68CC1B012463007EC8D1 /* BakerAssets.xcassets in Resources */,
 				E02BEC6B1A02478E002A5F6B /* profile@2x.png in Resources */,
 				E02D974E1A03A0ED0014BCBF /* list-item-glare@2x~ipad.png in Resources */,
 				E014EC951A12EC6E0081BAE7 /* Reader-Email.png in Resources */,
@@ -1589,6 +1600,7 @@
 				E06BAE951A05F921007886F4 /* background.png in Resources */,
 				E0B3E4B91A093A880012A450 /* KKBookStoreMain.xib in Resources */,
 				E05864C71A0E46D100C688D8 /* StoreCollectionCell.xib in Resources */,
+				8D4A68C81B011FE2007EC8D1 /* Localizable.strings in Resources */,
 				9F3D232C1AFF46A0005C2D66 /* PreviewViewController.xib in Resources */,
 				E00CB3571A02768800C8DC83 /* phone.jpg in Resources */,
 				E0237EAC1A14B81000176E05 /* AAShareBubbles.bundle in Resources */,
@@ -1879,14 +1891,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: suthisak chuenjit (R2R9P6683M)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = KKBook/PrefixHeader.pch;
 				INFOPLIST_FILE = KKBooK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = kkbook;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "90bc9d02-d343-46c6-8a6d-8a2c5aa4e2ea";
 			};
 			name = Debug;
 		};
@@ -1896,14 +1908,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: suthisak chuenjit (R2R9P6683M)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = KKBook/PrefixHeader.pch;
 				INFOPLIST_FILE = KKBooK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = kkbook;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "90bc9d02-d343-46c6-8a6d-8a2c5aa4e2ea";
 			};
 			name = Release;
 		};
