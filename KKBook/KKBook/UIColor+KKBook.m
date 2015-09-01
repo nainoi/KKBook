@@ -10,6 +10,14 @@
 
 @implementation UIColor (KKBook)
 
++(UIColor *)KKBookNavigationColor{
+    return [UIColor colorFromHexString:@"#75626A"];
+}
+
++(UIColor *)KKBookOrangeColor{
+    return [UIColor colorFromHexString:@"#F9A840"];
+}
+
 +(UIColor *)KKBookLightSeagreenColor{
     return [UIColor colorFromHexString:@"#20b2aa"];
 }

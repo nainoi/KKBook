@@ -196,7 +196,7 @@
 //            previewVC.previews = array;
 //            [self.navigationController pushViewController:previewVC animated:YES];
             PreviewViewController *preview = [[PreviewViewController alloc] init];
-            preview.previews = array;
+            preview.previews = [NSMutableArray arrayWithArray:array];
             [self.navigationController pushViewController:preview animated:YES];
         }else{
             [UIAlertView showAlertViewForTaskWithErrorOnCompletion:task delegate:nil];

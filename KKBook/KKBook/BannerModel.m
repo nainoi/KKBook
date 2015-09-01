@@ -13,9 +13,9 @@
 -(instancetype)initWithDictionary:(NSDictionary *)dict{
     self = [super init];
     if (self) {
-        self.bannerImage = dict[@""];
+        self.bannerImage = [BANNER_PATH_URL stringByAppendingString:dict[[Utility isPad] ? @"TabletURL" : @"PhoneURL"]];
         self.bannerName = dict[@""];
-        self.bannerURL = dict[@""];
+        self.bannerURL = dict[@"Link"];
     }
     return self;
 }

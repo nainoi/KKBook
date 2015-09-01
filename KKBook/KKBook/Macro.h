@@ -25,7 +25,7 @@
 #define appDelegate ((AppDelegate*)[[UIApplication sharedApplication] delegate])
 
 #define CHILD_MARGIN 10
-#define CHILD_WIDTH CGRectGetWidth([UIScreen mainScreen].bounds) - 20
+#define CHILD_WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
 
 #define FLAG_TEST @"Y"
 
@@ -76,6 +76,8 @@
 
 // Progress bar for issues that are being downloaded in the shelf
 #define ISSUES_PROGRESSBAR_TINT_COLOR @"#bc242a"
+
+#define NAVIGATIONBAR_COLOR @""
 
 
 #endif

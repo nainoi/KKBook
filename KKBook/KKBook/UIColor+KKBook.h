@@ -10,7 +10,8 @@
 
 @interface UIColor (KKBook)
 //
-
++(UIColor *)KKBookNavigationColor;
++(UIColor *)KKBookOrangeColor;
 +(UIColor *)KKBookMediumSeagreenColor;
 +(UIColor *)KKBookLightSeagreenColor;
 //

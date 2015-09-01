@@ -165,6 +165,8 @@ typedef enum{
     _scrollViewTouch.receiver = _scrollView;
     
     _pageSelector = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_scrollView.frame) - 40, f.size.width, 30)];
+    _pageSelector.tintColor = [UIColor blackColor];
+    _pageSelector.pageIndicatorTintColor = [UIColor blackColor];
     
     // set gradient for background view
     CAGradientLayer *glayer = [CAGradientLayer layer];
@@ -247,6 +249,7 @@ typedef enum{
 	
 	// setup pageSelector
 	[_pageSelector addTarget:self action:@selector(didChangePageValue:) forControlEvents:UIControlEventValueChanged];
+    _pageSelector.tintColor = [UIColor blackColor];
 	
 	// default number of pages 
 	_numberOfPages = 1;
@@ -410,8 +413,9 @@ typedef enum{
     _selectedPage = [self loadPageAtIndex:selectedPageScrollIndex insertIntoVisibleIndex:visibleIndex];
     _selectedPage.identityFrame = identityFrame;
     _selectedPage.frame = pageFrame;
-    [self setOpacity:0.0 forObstructionLayerOfPage:_selectedPage];
-    //_selectedPage.alpha = 1.0;
+    [self setOpacity:1.0 forObstructionLayerOfPage:_selectedPage];
+    _selectedPage.alpha = 1.0;
+    _selectedPage.tintColor = [UIColor blackColor];
     [self addSubview:_selectedPage];
 
 	[self setViewMode:HGPageScrollViewModeDeck animated:animated];
@@ -692,7 +696,7 @@ typedef enum{
     // update the selected page if it has been removed 
     if(selectedPageOffset != NSNotFound){
         NSInteger index = [[_scrollView subviews] indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-            CGFloat delta = fabsf(((UIView*)obj).frame.origin.x - selectedPageOffset);
+            CGFloat delta = fabs(((UIView*)obj).frame.origin.x - selectedPageOffset);
             return delta < 0.1;
         }];
         HGPageView *newSelectedPage=nil;

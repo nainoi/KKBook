@@ -46,7 +46,7 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-    _priceLb.textColor = [UIColor KKBookMediumSeagreenColor];
+    _priceLb.textColor = [UIColor KKBookOrangeColor];
     _typeLb.textColor = [UIColor grayColor];
 }
 

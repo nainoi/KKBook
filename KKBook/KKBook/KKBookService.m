@@ -11,6 +11,7 @@
 #import "AFAppDotNetAPIClient.h"
 #import "BookModel.h"
 #import "CategoryModel.h"
+#import "BannerModel.h"
 
 @implementation KKBookService
 
@@ -106,7 +107,7 @@
         NSArray *postsFromResponse = [JSON objectForKey:@"banner"];
         NSMutableArray *banners = [[NSMutableArray alloc] init];
         for (NSDictionary *dict in postsFromResponse) {
-            [banners addObject:[BANNER_PATH_URL stringByAppendingString:[dict objectForKey:[Utility isPad] ? @"TabletURL" : @"PhoneURL"]]];
+            [banners addObject:[[BannerModel alloc] initWithDictionary:dict]];
         }
         if (block) {
             block([NSArray arrayWithArray:banners], nil);

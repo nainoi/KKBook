@@ -50,6 +50,14 @@
     [self toggleViewController];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (_pageType == STORE) {
+        self.title = @"KhonKaen";
+        ((UINavigationItem*)self.navigationController.navigationBar.items[0]).title = @"KhonKaen";
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -76,7 +84,7 @@
 
         self.optionIndices = [NSMutableIndexSet indexSetWithIndex:0];
         _pageType = STORE;
-        self.title = @"KKBook";
+        self.title = @"KhonKaen";
         [_mainController.view addSubview:storeVC.view];
         [_mainController viewWillAppear:NO];
     }else{
@@ -120,7 +128,7 @@
                 [settingVC.view removeFromSuperview];
             }
             storeVC.view.frame = [self frameForViewController];
-            self.title = @"KKBook";
+            self.title = @"KhonKaen";
             [_mainController.view addSubview:storeVC.view];
             break;
             

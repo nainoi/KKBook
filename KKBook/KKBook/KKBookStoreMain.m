@@ -55,6 +55,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self initTimer];
+    self.title = @"KhonKaen";
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -92,7 +93,7 @@
 //    }
 //    currentBanner = 0;
 //    maxBanner = _myPageDataArray.count;
-    CGRect frame = CGRectMake(10, 5, CHILD_WIDTH, BANNER_HEIGHT);
+    CGRect frame = CGRectMake(0, 5, CHILD_WIDTH, BANNER_HEIGHT);
     
     // now that we have the data, initialize the page scroll view
     //_myPageScrollView = [[[NSBundle mainBundle] loadNibNamed:HGPageScrollViewNIB owner:self options:nil] objectAtIndex:0];
@@ -129,7 +130,8 @@
     imageView.tag = index;
     imageView.delegate = self;
     //[imageView setImage:image];
-    [imageView setImageURL:[NSURL URLWithString:[_myPageDataArray objectAtIndex:index]]];
+    BannerModel *banner = [_myPageDataArray objectAtIndex:index];
+    [imageView setImageURL:[NSURL URLWithString:banner.bannerImage]];
     [imageView setReuseIdentifier:@"imageId"];
     
     return imageView;
@@ -139,7 +141,8 @@
 #pragma mark HGPageScrollViewDelegate
 
 -(void)didTapImage:(NSInteger)tag{
-    NSURL *url = [NSURL URLWithString:@"https://www.google.co.th"];
+    BannerModel *banner = _myPageDataArray[tag];
+    NSURL *url = [NSURL URLWithString:banner.bannerURL];
     ModalViewController *myModalViewController = [[ModalViewController alloc] initWithUrl:url];
     myModalViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     myModalViewController.delegate = self;
@@ -221,7 +224,7 @@
         [customCell setBackgroundColor:[UIColor clearColor]];
         [customCell setDelegate:self];
         [customCell setCategoryData:cellData];
-        [customCell setCategoryLabelText:[cellData objectForKey:@"category"] withColor:[UIColor KKBookMediumSeagreenColor]];
+        [customCell setCategoryLabelText:[cellData objectForKey:@"category"] withColor:[UIColor KKBookOrangeColor]];
         [customCell setTag:[indexPath section]];
         [customCell setImageTitleTextColor:[UIColor whiteColor] withBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
         [customCell setImageTitleLabelWitdh:90 withHeight:45];
