@@ -35,9 +35,9 @@
 
 - (IBAction)didFeedBack:(id)sender {
     // Email Subject
-    NSString *emailTitle = @"KKBook Feedback";
+    NSString *emailTitle = @"KhonKaen Feedback";
     // Email Content
-    NSString *messageBody = @"KKBook app is so fun!";
+    NSString *messageBody = @"KhonKaen app is so fun!";
     // To address
     NSArray *toRecipents = [NSArray arrayWithObject:@"suthisak.ch@gmail.com"];
     NSArray *ccRecipents = [NSArray arrayWithObject:@"thiraphong.ru@gmail.com"];
