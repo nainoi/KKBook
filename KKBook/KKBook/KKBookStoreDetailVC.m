@@ -10,7 +10,6 @@
 #import "UIImageView+WebCache.h"
 #import "KKBookService.h"
 #import "UIAlertView+AFNetworking.h"
-#import "KKBookPreviewVC.h"
 #import "InternetChecking.h"
 #import "UIImage+WebP.h"
 #import "DataManager.h"
@@ -46,6 +45,12 @@
     bubbleRadius = 40;
     
     //NSLog(@"bact title %@",((UINavigationItem*)self.navigationController.navigationBar.items[0]).title);
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [Utility GAITrakerView:DETAIL_SCREEN];
+    [Utility GAITrakerEvent:DETAIL_ACTION action:DETAIL_ACTION label:_book.bookName];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -131,6 +136,7 @@
 -(void)didOpenBook{
     [self.navigationController popViewControllerAnimated:YES];
     if (self.didOpen) {
+        
         self.didOpen(_book);
     }
 }
@@ -181,6 +187,7 @@
 
 -(void)download{
     if (self.didDownload) {
+        [Utility GAITrakerEvent:DOWNLOAD_ACTION action:DOWNLOAD_ACTION label:_book.bookName];
         self.didDownload(_book);
     }
 }
@@ -188,6 +195,7 @@
 #pragma mark - Service
 
 -(void)loadPreview{
+    [Utility GAITrakerEvent:PREVIEW_ACTION action:PREVIEW_ACTION label:_book.bookName];
     [self showProgressLoading];
     NSURLSessionTask *task = [KKBookService requestPreviewServiceWithBook:_book.bookID complete:^(NSArray *array, NSError *error){
         [self dismissProgress];

@@ -95,7 +95,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [Utility GAITrakerView:ALL_BOOK_SCREEN];
     [self arrangeCollectionView];
 }
 

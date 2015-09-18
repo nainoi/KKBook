@@ -1,9 +1,9 @@
 //
 //	ReaderThumbRender.m
-//	Reader v2.8.0
+//	Reader v2.8.6
 //
 //	Created by Julius Oklamcak on 2011-09-01.
-//	Copyright © 2011-2014 Julius Oklamcak. All rights reserved.
+//	Copyright © 2011-2015 Julius Oklamcak. All rights reserved.
 //
 //	Permission is hereby granted, free of charge, to any person obtaining a copy
 //	of this software and associated documentation files (the "Software"), to deal
@@ -79,11 +79,19 @@
 	CGImageRef imageRef = NULL;
     //CFURLRef fileURL = (__bridge CFURLRef)request.fileURL;
     
+    NSData *data = nil;
+    CFDataRef myPDFData = nil;
+    CGDataProviderRef provider = nil;
     NSError *error;
-    NSData *data = [NSData dataWithContentsOfURL:request.fileURL];
-    CFDataRef myPDFData = (__bridge CFDataRef)[data decryptedAES256DataUsingKey:PASSWORD_ENCRYPT error:&error];
-    CGDataProviderRef provider = CGDataProviderCreateWithCFData(myPDFData);
-    CGPDFDocumentRef thePDFDocRef = CGPDFDocumentCreateUsingData(provider, password);
+    CGPDFDocumentRef thePDFDocRef = nil;
+    @autoreleasepool {
+        data = [NSData dataWithContentsOfURL:request.fileURL];
+        myPDFData = (__bridge CFDataRef)[data decryptedAES256DataUsingKey:PASSWORD_ENCRYPT error:&error];
+        provider = CGDataProviderCreateWithCFData(myPDFData);
+        thePDFDocRef = CGPDFDocumentCreateUsingData(provider, password);
+    }
+
+
 	//CGPDFDocumentRef thePDFDocRef = CGPDFDocumentCreateUsingUrl(fileURL, password);
 
 	if (thePDFDocRef != NULL) // Check for non-NULL CGPDFDocumentRef
@@ -165,6 +173,9 @@
 		}
 
 		CGPDFDocumentRelease(thePDFDocRef); // Release CGPDFDocumentRef reference
+        CGDataProviderRelease(provider);
+        myPDFData = NULL;
+        data = nil;
 	}
 
 	if (imageRef != NULL) // Create UIImage from CGImage and show it, then save thumb as PNG

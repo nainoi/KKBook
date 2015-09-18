@@ -1,9 +1,9 @@
 //
 //	ReaderContentPage.m
-//	Reader v2.8.1
+//	Reader v2.8.6
 //
 //	Created by Julius Oklamcak on 2011-07-01.
-//	Copyright © 2011-2014 Julius Oklamcak. All rights reserved.
+//	Copyright © 2011-2015 Julius Oklamcak. All rights reserved.
 //
 //	Permission is hereby granted, free of charge, to any person obtaining a copy
 //	of this software and associated documentation files (the "Software"), to deal
@@ -427,12 +427,17 @@
 
 	if (fileURL != nil) // Check for non-nil file URL
 	{
-        NSData *data = [NSData dataWithContentsOfURL:fileURL];
-        NSError *error;
-        //data = [data decryptedAES256DataUsingKey:PASSWORD_ENCRYPT error:&error];
-        CFDataRef myPDFData = (__bridge CFDataRef)[data decryptedAES256DataUsingKey:PASSWORD_ENCRYPT error:&error];
-        CGDataProviderRef provider = CGDataProviderCreateWithCFData(myPDFData);
-        _PDFDocRef = CGPDFDocumentCreateUsingData(provider, phrase);
+        NSData *data = nil;
+        CFDataRef myPDFData = nil;
+        CGDataProviderRef provider = nil;
+         NSError *error;
+        @autoreleasepool {
+            data = [NSData dataWithContentsOfURL:fileURL];
+            myPDFData = (__bridge CFDataRef)[data decryptedAES256DataUsingKey:PASSWORD_ENCRYPT error:&error];
+            provider = CGDataProviderCreateWithCFData(myPDFData);
+            _PDFDocRef = CGPDFDocumentCreateUsingData(provider, phrase);
+        }
+        
 		//_PDFDocRef = CGPDFDocumentCreateUsingUrl((__bridge CFURLRef)fileURL, phrase);
 
 		if (_PDFDocRef != NULL) // Check for non-NULL CGPDFDocumentRef
@@ -495,11 +500,17 @@
 		{
 			NSAssert(NO, @"CGPDFDocumentRef == NULL");
 		}
+        CGDataProviderRelease(provider); provider = NULL;
+        myPDFData = NULL;
+        data = nil;
+        
 	}
 	else // Error out with a diagnostic
 	{
 		NSAssert(NO, @"fileURL == nil");
 	}
+    
+    
 
 	ReaderContentPage *view = [self initWithFrame:viewRect];
 
@@ -554,6 +565,7 @@
 	CGContextDrawPDFPage(context, _PDFPageRef); // Render the PDF page into the context
 
 	if (readerContentPage != nil) readerContentPage = nil; // Release self
+    
 }
 
 @end

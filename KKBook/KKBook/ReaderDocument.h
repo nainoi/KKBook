@@ -1,9 +1,9 @@
 //
 //	ReaderDocument.h
-//	Reader v2.8.4
+//	Reader v2.8.6
 //
 //	Created by Julius Oklamcak on 2011-07-01.
-//	Copyright © 2011-2014 Julius Oklamcak. All rights reserved.
+//	Copyright © 2011-2015 Julius Oklamcak. All rights reserved.
 //
 //	Permission is hereby granted, free of charge, to any person obtaining a copy
 //	of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@class BookEntity;
+#import "BookEntity.h"
 
 @interface ReaderDocument : NSObject <NSObject, NSCoding>
 
@@ -39,17 +38,18 @@
 @property (nonatomic, strong, readonly) NSString *password;
 @property (nonatomic, strong, readonly) NSString *fileName;
 @property (nonatomic, strong, readonly) NSURL *fileURL;
+
 @property (nonatomic, strong) BookEntity* bookEntity;
 
 @property (nonatomic, readonly) BOOL canEmail;
 @property (nonatomic, readonly) BOOL canExport;
 @property (nonatomic, readonly) BOOL canPrint;
 
++ (ReaderDocument *)withDocumentFilePath:(NSString *)filePath password:(NSString *)phrase bookEntity:(BookEntity*)book;
+
 + (ReaderDocument *)withDocumentFilePath:(NSString *)filePath password:(NSString *)phrase;
 
 + (ReaderDocument *)unarchiveFromFileName:(NSString *)filePath password:(NSString *)phrase;
-
-+ (ReaderDocument *)withDocumentFilePath:(NSString *)filePath password:(NSString *)phrase bookEntity:(BookEntity*)book;
 
 - (instancetype)initWithFilePath:(NSString *)filePath password:(NSString *)phrase;
 

@@ -22,4 +22,9 @@
 + (NSString *) getDeviceType;
 + (NSString *) getDocumentPath;
 
+// google analytics
+
++(void)GAITrakerView:(NSString*)screenName;
++(void)GAITrakerEvent:(NSString *)category action:(NSString*)action label:(NSString*)label;
+
 @end

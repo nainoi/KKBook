@@ -48,6 +48,10 @@
     [super layoutSubviews];
     _priceLb.textColor = [UIColor KKBookOrangeColor];
     _typeLb.textColor = [UIColor grayColor];
+    _coverImageView.layer.shadowColor = [UIColor blackColor].CGColor;
+    _coverImageView.layer.shadowRadius = 3.0f;
+    _coverImageView.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
+    _coverImageView.layer.shadowOpacity = 0.5f;
 }
 
 

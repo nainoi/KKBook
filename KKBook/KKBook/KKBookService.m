@@ -21,7 +21,7 @@
     NSMutableDictionary *params = [KKBookService paramsLog];
     [params setObject:FLAG_TEST forKey:@"TestFlag"];
     return [[AFAppDotNetAPIClient sharedClient] POST:STORE_LIST_URL parameters:nil success:^(NSURLSessionDataTask * __unused task, id JSON) {
-        NSLog(@"json %@",JSON);
+        //NSLog(@"json %@",JSON);
         NSArray *postsFromResponse = [JSON objectForKey:@"book"];
         NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[postsFromResponse count]];
         for (NSDictionary *attributes in postsFromResponse) {
@@ -43,7 +43,7 @@
 + (NSURLSessionDataTask *)previewBookService:(void (^)(NSArray *, NSError *))block{
     return [[AFAppDotNetAPIClient sharedClient] GET:@"stream/0/posts/stream/global" parameters:nil success:^(NSURLSessionDataTask * __unused task, id JSON) {
         NSArray *postsFromResponse = [JSON valueForKeyPath:@"data"];
-        NSLog(@"json %@",JSON);
+        //NSLog(@"json %@",JSON);
         NSMutableArray *mutablePosts = [NSMutableArray arrayWithCapacity:[postsFromResponse count]];
         for (NSDictionary *attributes in postsFromResponse) {
             BookModel *post = [[BookModel alloc] initWithAttributes:attributes];
@@ -82,7 +82,7 @@
     [params setObject:FLAG_TEST forKey:@"TestFlag"];
     [params setObject:bookID forKey:@"BookID"];
     return [[AFAppDotNetAPIClient sharedClient] POST:PREVIEW_URL parameters:params success:^(NSURLSessionDataTask * __unused task, id JSON) {
-        NSLog(@"json %@",JSON);
+        //NSLog(@"json %@",JSON);
         NSArray *postsFromResponse = [JSON objectForKey:@"preview"];
         NSMutableArray *previews = [[NSMutableArray alloc] init];
         for (NSDictionary *dict in postsFromResponse) {
@@ -124,7 +124,7 @@
     NSMutableDictionary *params = [KKBookService paramsLog];
     //[params setObject:FLAG_TEST forKey:@"TestFlag"];
     return [[AFAppDotNetAPIClient sharedClient] POST:CATEGORY_URL parameters:params success:^(NSURLSessionDataTask * __unused task, id JSON) {
-        NSLog(@"json %@",JSON);
+        //NSLog(@"json %@",JSON);
         NSArray *postsFromResponse = [JSON objectForKey:@"category"];
         NSMutableArray *categories = [[NSMutableArray alloc] init];
         for (NSDictionary *dict in postsFromResponse) {

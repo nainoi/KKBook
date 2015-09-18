@@ -10,6 +10,7 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import "KKBookAboutVC.h"
 #import "BaseNavigationController.h"
+#import "HelpGuideVC.h"
 
 @interface KKBookSettingVC ()<MFMailComposeViewControllerDelegate>
 
@@ -20,6 +21,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [Utility GAITrakerView:SETTING_SCREEN];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,6 +61,9 @@
 }
 
 - (IBAction)didHelpGuide:(id)sender {
+    HelpGuideVC *helpVC = [[HelpGuideVC alloc] initWithNibName:[Utility isPad]? @"HelpGuideVC_iPad": @"HelpGuideVC" bundle:nil];
+    BaseNavigationController *naviCtrl = [[BaseNavigationController alloc] initWithRootViewController:helpVC];
+    [self presentViewController:naviCtrl animated:YES completion:^{}];
 }
 
 #pragma mark - MFMailCompose delegate

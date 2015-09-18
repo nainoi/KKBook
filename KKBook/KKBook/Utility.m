@@ -9,6 +9,7 @@
 #import "Utility.h"
 #include <sys/types.h>
 #include <sys/sysctl.h>
+#import <Google/Analytics.h>
 
 @implementation Utility
 
@@ -108,6 +109,23 @@ else
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return [paths objectAtIndex:0];
     //return @"/Users/PromptnowMacMini2/Desktop/";
+}
+
++(void)GAITrakerView:(NSString*)screenName{
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:screenName];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
+
++(void)GAITrakerEvent:(NSString *)category action:(NSString*)action label:(NSString*)label{
+    // May return nil if a tracker has not already been initialized with a property
+    // ID.
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:category     // Event category (required)
+                                                          action:label  // Event action (required)
+                                                           label:label          // Event label
+                                                           value:nil] build]];    // Event value
 }
 
 @end

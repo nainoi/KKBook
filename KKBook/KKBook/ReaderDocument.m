@@ -1,9 +1,9 @@
 //
 //	ReaderDocument.m
-//	Reader v2.8.4
+//	Reader v2.8.6
 //
 //	Created by Julius Oklamcak on 2011-07-01.
-//	Copyright © 2011-2014 Julius Oklamcak. All rights reserved.
+//	Copyright © 2011-2015 Julius Oklamcak. All rights reserved.
 //
 //	Permission is hereby granted, free of charge, to any person obtaining a copy
 //	of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,6 @@
 #import "CGPDFDocument.h"
 #import <fcntl.h>
 #import "NSData+CommonCrypto.h"
-#import "BookEntity.h"
 
 @interface ReaderDocument ()
 
@@ -150,20 +149,7 @@
 	return document;
 }
 
-+ (ReaderDocument *)withDocumentFilePath:(NSString *)filePath password:(NSString *)phrase{
-    ReaderDocument *document = nil; // ReaderDocument object
-    
-    document = [ReaderDocument unarchiveFromFileName:filePath password:phrase];
-    
-    if (document == nil) // Unarchive failed so create a new ReaderDocument object
-    {
-        document = [[ReaderDocument alloc] initWithFilePath:filePath password:phrase];
-    }
-    
-    return document;
-}
-
-+ (ReaderDocument *)withDocumentFilePath:(NSString *)filePath password:(NSString *)phrase bookEntity:(BookEntity*)book
++ (ReaderDocument *)withDocumentFilePath:(NSString *)filePath password:(NSString *)phrase
 {
 	ReaderDocument *document = nil; // ReaderDocument object
 
@@ -172,9 +158,8 @@
 	if (document == nil) // Unarchive failed so create a new ReaderDocument object
 	{
 		document = [[ReaderDocument alloc] initWithFilePath:filePath password:phrase];
-        
 	}
-    document.bookEntity = book;
+
 	return document;
 }
 
@@ -204,6 +189,22 @@
 }
 
 #pragma mark - ReaderDocument instance methods
+
++ (ReaderDocument *)withDocumentFilePath:(NSString *)filePath password:(NSString *)phrase bookEntity:(BookEntity*)book
+{
+    ReaderDocument *document = nil; // ReaderDocument object
+    
+    document = [ReaderDocument unarchiveFromFileName:filePath password:phrase];
+    
+    if (document == nil) // Unarchive failed so create a new ReaderDocument object
+    {
+        document = [[ReaderDocument alloc] initWithFilePath:filePath password:phrase];
+        
+    }
+    document.bookEntity = book;
+    return document;
+}
+
 
 - (instancetype)initWithFilePath:(NSString *)filePath password:(NSString *)phrase
 {
@@ -250,9 +251,9 @@
 
 			[self archiveDocumentProperties]; // Archive ReaderDocument object
 		}
-		else // Not a valid PDF file
-		{
-			//self = nil;
+        else // Not a valid PDF file
+        {
+            //self = nil;
             _guid = [ReaderDocument GUID]; // Create document's GUID
             
             _password = [phrase copy]; // Keep copy of document password
@@ -263,14 +264,19 @@
             
             _bookmarks = [NSMutableIndexSet new]; // Bookmarked pages index set
             
-           // CFURLRef docURLRef = (__bridge CFURLRef)[self fileURL]; // CFURLRef from NSURL
+            // CFURLRef docURLRef = (__bridge CFURLRef)[self fileURL]; // CFURLRef from NSURL
             
-            NSData *data = [NSData dataWithContentsOfFile:[self filePath]];
+            NSData *data = nil;
+            CFDataRef myPDFData = nil;
+            CGDataProviderRef provider = nil;
             NSError *error;
-            //data = [data decryptedAES256DataUsingKey:PASSWORD_ENCRYPT error:&error];
-            CFDataRef myPDFData = (__bridge CFDataRef)[data decryptedAES256DataUsingKey:PASSWORD_ENCRYPT error:&error];
-            CGDataProviderRef provider = CGDataProviderCreateWithCFData(myPDFData);
-            CGPDFDocumentRef thePDFDocRef = CGPDFDocumentCreateUsingData(provider, _password);
+            CGPDFDocumentRef thePDFDocRef = nil;
+            @autoreleasepool {
+                data = [NSData dataWithContentsOfURL:[self fileURL]];
+                myPDFData = (__bridge CFDataRef)[data decryptedAES256DataUsingKey:PASSWORD_ENCRYPT error:&error];
+                provider = CGDataProviderCreateWithCFData(myPDFData);
+                thePDFDocRef = CGPDFDocumentCreateUsingData(provider, phrase);
+            }
             //CGPDFDocumentRef thePDFDocRef = CGPDFDocumentCreateUsingUrl(docURLRef, _password);
             
             if (thePDFDocRef != NULL) // Get the total number of pages in the document
@@ -280,6 +286,9 @@
                 _pageCount = [NSNumber numberWithInteger:pageCount];
                 
                 CGPDFDocumentRelease(thePDFDocRef); // Cleanup
+                CGDataProviderRelease(provider);
+                myPDFData = NULL;
+                data = nil;
             }
             else // Cupertino, we have a problem with the document
             {
@@ -297,8 +306,8 @@
             _fileSize = [fileAttributes objectForKey:NSFileSize]; // File size (bytes)
             
             [self archiveDocumentProperties]; // Archive ReaderDocument object
-		}
-	}
+        }
+    }
 
 	return self;
 }
@@ -319,12 +328,12 @@
 
 - (BOOL)canEmail
 {
-	return NO;
+	return YES;
 }
 
 - (BOOL)canExport
 {
-	return NO;
+	return YES;
 }
 
 - (BOOL)canPrint
@@ -341,14 +350,9 @@
 
 - (void)updateDocumentProperties
 {
-	//CFURLRef docURLRef = (__bridge CFURLRef)[self fileURL]; // CFURLRef from NSURL
-    NSError *error;
-    NSData *data = [NSData dataWithContentsOfURL:[self fileURL]];
-    CFDataRef myPDFData = (__bridge CFDataRef)[data decryptedAES256DataUsingKey:PASSWORD_ENCRYPT error:&error];
-    CGDataProviderRef provider = CGDataProviderCreateWithCFData(myPDFData);
-    CGPDFDocumentRef thePDFDocRef = CGPDFDocumentCreateUsingData(provider, _password);
-    
-	//CGPDFDocumentRef thePDFDocRef = CGPDFDocumentCreateUsingUrl(docURLRef, _password);
+	CFURLRef docURLRef = (__bridge CFURLRef)[self fileURL]; // CFURLRef from NSURL
+
+	CGPDFDocumentRef thePDFDocRef = CGPDFDocumentCreateUsingUrl(docURLRef, _password);
 
 	if (thePDFDocRef != NULL) // Get the total number of pages in the document
 	{

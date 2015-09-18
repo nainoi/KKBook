@@ -15,7 +15,7 @@
 #import "InternetChecking.h"
 #import "ModalViewController.h"
 
-#define BANNER_HEIGHT [Utility isPad] ? 308 : 154
+#define BANNER_HEIGHT [Utility isPad] ? 310 : 160
 
 @interface KKBookStoreMain ()<StoreScrollingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, modalWebViewDelegate, HGImageDelegate>{
     unsigned long maxBanner;
@@ -56,6 +56,8 @@
     [super viewWillAppear:animated];
     [self initTimer];
     self.title = @"KhonKaen";
+    
+    [Utility GAITrakerView:STORE_SCREEN];
 }
 
 -(void)viewDidAppear:(BOOL)animated{

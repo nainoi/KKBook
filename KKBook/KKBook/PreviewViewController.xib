@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PreviewViewController">
@@ -20,20 +20,19 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
-                        <scrollView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6" customClass="MHPagingScrollView">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="20"/>
-                                <outlet property="pagingDelegate" destination="-1" id="21"/>
-                            </connections>
-                        </scrollView>
                         <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZGb-92-QLa">
                             <rect key="frame" x="73" y="532" width="454" height="37"/>
                             <connections>
                                 <action selector="pageTurn" destination="-1" eventType="valueChanged" id="T0J-kO-doq"/>
                             </connections>
                         </pageControl>
+                        <scrollView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6" customClass="MHPagingScrollView">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="20"/>
+                                <outlet property="pagingDelegate" destination="-1" id="21"/>
+                            </connections>
+                        </scrollView>
                     </subviews>
                     <color key="backgroundColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -64,8 +63,8 @@
                 <constraint firstItem="4" firstAttribute="top" secondItem="3" secondAttribute="top" id="Rl3-wi-vSN"/>
                 <constraint firstAttribute="trailing" secondItem="4" secondAttribute="trailing" id="fBi-b2-5tW"/>
             </constraints>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-            <point key="canvasLocation" x="313" y="325"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <point key="canvasLocation" x="421" y="319"/>
         </view>
     </objects>
 </document>

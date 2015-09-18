@@ -19,7 +19,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="list-item-stage.png" translatesAutoresizingMaskIntoConstraints="NO" id="rQn-yL-E0i">
                         <rect key="frame" x="16" y="162" width="288" height="44"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="phone.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="65B-W5-F2a">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="65B-W5-F2a">
                         <rect key="frame" x="32" y="9" width="115" height="159"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="list-item-glare.png" translatesAutoresizingMaskIntoConstraints="NO" id="Znh-JL-GZ1">
@@ -50,6 +50,5 @@
         <image name="list-item-frame.png" width="135" height="176"/>
         <image name="list-item-glare.png" width="109" height="111"/>
         <image name="list-item-stage.png" width="132" height="23"/>
-        <image name="phone.jpg" width="115" height="152"/>
     </resources>
 </document>

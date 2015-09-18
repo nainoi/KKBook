@@ -53,6 +53,11 @@
     self.labelIssue.textColor = [UIColor colorWithRed:1.00f green:0.25f blue:0.55f alpha:1.00f];
     self.labelIssue.backgroundColor = [UIColor clearColor];
     
+    _imageCover.layer.shadowColor = [UIColor blackColor].CGColor;
+    _imageCover.layer.shadowRadius = 3.0f;
+    _imageCover.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
+    _imageCover.layer.shadowOpacity = 0.5f;
+    
 }
 
 @end

@@ -90,7 +90,7 @@
     }else{
         self.optionIndices = [NSMutableIndexSet indexSetWithIndex:1];
         _pageType = LIBRARY;
-        self.title = @"Library";
+        self.title = @"My Shelf";
         [_mainController.view addSubview:libraryVC.view];
     }
     
@@ -139,7 +139,7 @@
                 [storeVC.view removeFromSuperview];
             }
             libraryVC.view.frame = [self frameForViewController];
-            self.title = @"Library";
+            self.title = @"My Shelf";
             [_mainController.view addSubview:libraryVC.view];
             break;
             
@@ -152,7 +152,7 @@
                 [settingVC.view removeFromSuperview];
             }
             libraryVC.view.frame = [self frameForViewController];
-            self.title = @"Library";
+            self.title = @"About";
             [_mainController.view addSubview:libraryVC.view];
             break;
             
@@ -164,7 +164,7 @@
                 [libraryVC.view removeFromSuperview];
             }
             settingVC.view.frame = [self frameForViewController];
-            self.title = @"Setting";
+            self.title = @"Help";
             [_mainController.view addSubview:settingVC.view];
             break;
             
@@ -194,7 +194,7 @@
         UIBarButtonItem *allBtn = [[UIBarButtonItem alloc] initWithTitle:@"ALL" style:UIBarButtonItemStylePlain target:self action:@selector(showAllBook)];
         self.navigationItem.rightBarButtonItem = allBtn;
     }else if (_pageType == LIBRARY){
-        UIBarButtonItem *allBtn = [[UIBarButtonItem alloc] initWithTitle:@"EDIT" style:UIBarButtonItemStylePlain target:self action:@selector(showDeleteBook)];
+        UIBarButtonItem *allBtn = [[UIBarButtonItem alloc] initWithTitle:@"DELETE" style:UIBarButtonItemStylePlain target:self action:@selector(showDeleteBook)];
         self.navigationItem.rightBarButtonItem = allBtn;
     }else{
         self.navigationItem.rightBarButtonItem = nil;
@@ -314,9 +314,9 @@
 -(void)showDeleteBook{
     libraryVC.isDelete = !libraryVC.isDelete;
     if(libraryVC.isDelete){
-        self.navigationItem.rightBarButtonItem.title = @"Done";
+        self.navigationItem.rightBarButtonItem.title = @"DONE";
     }else{
-        self.navigationItem.rightBarButtonItem.title = @"Edit";
+        self.navigationItem.rightBarButtonItem.title = @"DELETE";
     }
 }
 
@@ -334,6 +334,20 @@
             }];
         }
     };
+    
+    //open
+    bookDetailVC.didOpen = ^(BookModel *bookModel){
+        BookEntity *bookEntity = [[DataManager shareInstance] selectBookFromBookID:bookModel.bookID];
+        [self gotoLibrary];
+        
+        if ([bookEntity.fileTypeName isEqualToString:@"PDF"]) {
+            [self pdfReaderWithBookEntity:bookEntity];
+        }else{
+            [self readerInteractive:bookEntity];
+        }
+        
+    };
+
     [self.navigationController pushViewController:bookDetailVC animated:YES];
 
 }
@@ -352,6 +366,9 @@
 #pragma mark - PDF Reader
 
 -(void)pdfReaderWithBookEntity:(BookEntity*)bookEntity{
+    
+    [Utility GAITrakerEvent:READ_ACTION action:READ_ACTION label:bookEntity.bookName];
+    
     NSString *path = [[FileHelper booksPath]stringByAppendingPathComponent:bookEntity.folder];
     NSString *phrase = nil; // Document password (for unlocking most encrypted PDF files)
     NSString *filePath = nil;
@@ -388,12 +405,16 @@
         readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
         
         [self presentViewController:readerViewController animated:YES completion:NULL];
+        document = nil;
     }
 
 }
 
 -(void)dismissReaderViewController:(ReaderViewController *)viewController{
-    [viewController dismissViewControllerAnimated:YES completion:^{}];
+    [viewController dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    viewController = nil;
 }
 
 #pragma mark - Interactive Reader
@@ -401,6 +422,7 @@
 -(void)readerInteractive:(BookEntity*)book{
     /*InteractiveReader *reader = [[InteractiveReader alloc] initWithBook:book];
     [self.navigationController pushViewController:reader animated:YES];*/
+    [Utility GAITrakerEvent:READ_ACTION action:READ_ACTION label:book.bookName];
     BakerBook *baker = [[BakerBook alloc] initWithBookEntity:book];
     BakerViewController *bakerViewController = [[BakerViewController alloc] initWithBook:baker];
     if (bakerViewController) {

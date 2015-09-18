@@ -116,7 +116,7 @@
     _pagingScrollView.showsVerticalScrollIndicator = NO;
     _pagingScrollView.bounces = NO;
     _pagingScrollView.delaysContentTouches = NO;
-    _pagingScrollView.backgroundColor = [UIColor redColor];
+    _pagingScrollView.backgroundColor = [UIColor clearColor];
     
     //[self defaultScrollContentSize];
     

@@ -75,7 +75,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [Utility GAITrakerView:LIBRARY_SCREEN];
     [self arrangeCollectionView];
 }
 
@@ -175,7 +175,7 @@
             [cell didResume:cell.resumeBtn];
         }
     }else{
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"KKBook" message:@"Do you want to delete this book from device?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"KhonKaen" message:@"Do you want to delete this book from device?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
         [alertView show];
         selectRow = indexPath.row;
     }
@@ -198,6 +198,8 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 0) {
         [[DataManager shareInstance] deleteBookWithBookID:_myBook[selectRow] onComplete:^(NSArray *array){
+            BookEntity *b = _myBook[selectRow];
+            [Utility GAITrakerEvent:DELETE_ACTION action:DELETE_ACTION label:b.bookName];
             self.myBook = [[NSMutableArray alloc] initWithArray:[[DataManager shareInstance] selectAllMyBook]];
             [_collectionView reloadData];
         }];
