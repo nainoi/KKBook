@@ -26,7 +26,7 @@
         __block UIActivityIndicatorView *activityIndicator;
         __weak UIImageView *weakImageView = self.imageCover;
         [self.imageCover sd_setImageWithURL:[NSURL URLWithString:_bookModel.coverImageURL]
-                           placeholderImage:nil
+                           placeholderImage:[UIImage imageNamed:@"stub"]
                                     options:SDWebImageProgressiveDownload
                                    progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                                        if (!activityIndicator) {

@@ -15,7 +15,7 @@
 #import "InternetChecking.h"
 #import "ModalViewController.h"
 
-#define BANNER_HEIGHT [Utility isPad] ? 310 : 160
+#define BANNER_HEIGHT [Utility isPad] ? 310 : 130
 
 @interface KKBookStoreMain ()<StoreScrollingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate, modalWebViewDelegate, HGImageDelegate>{
     unsigned long maxBanner;

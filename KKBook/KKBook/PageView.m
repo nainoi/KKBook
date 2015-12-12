@@ -20,7 +20,7 @@
     __block UIActivityIndicatorView *activityIndicator;
     __weak UIImageView *weakImageView = self;
     [self sd_setImageWithURL:url
-                 placeholderImage:nil
+                 placeholderImage:[UIImage imageNamed:@"stub"]
                           options:SDWebImageProgressiveDownload
                          progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                              if (!activityIndicator) {

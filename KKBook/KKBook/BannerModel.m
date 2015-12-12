@@ -13,7 +13,7 @@
 -(instancetype)initWithDictionary:(NSDictionary *)dict{
     self = [super init];
     if (self) {
-        self.bannerImage = [BANNER_PATH_URL stringByAppendingString:dict[[Utility isPad] ? @"TabletURL" : @"PhoneURL"]];
+        self.bannerImage = [BANNER_PATH_URL stringByAppendingString:dict[[Utility isPad] ? @"PadURL" : @"PhoneURL"]];
         self.bannerName = dict[@""];
         self.bannerURL = dict[@"Link"];
     }

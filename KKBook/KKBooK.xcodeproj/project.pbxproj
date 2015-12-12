@@ -34,6 +34,7 @@
 		8D4A68CA1B0123B9007EC8D1 /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D4A68C91B0123B9007EC8D1 /* settings.plist */; };
 		8D4A68CC1B012463007EC8D1 /* BakerAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D4A68CB1B012463007EC8D1 /* BakerAssets.xcassets */; };
 		8D5568821BA5F6E900D453EB /* manual.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8D5568811BA5F6E900D453EB /* manual.jpg */; };
+		8D5AFEFA1BAE99C1008A4E71 /* stub.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D5AFEF91BAE99C1008A4E71 /* stub.png */; };
 		8D921EEF1BA1E75800188D06 /* HelpGuideVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D921EED1BA1E75800188D06 /* HelpGuideVC.m */; };
 		8D921EF01BA1E75800188D06 /* HelpGuideVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D921EEE1BA1E75800188D06 /* HelpGuideVC.xib */; };
 		8D921EF21BA1F67D00188D06 /* HelpGuideVC_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D921EF11BA1F67D00188D06 /* HelpGuideVC_iPad.xib */; };
@@ -294,6 +295,7 @@
 		8D4A68C91B0123B9007EC8D1 /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		8D4A68CB1B012463007EC8D1 /* BakerAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = BakerAssets.xcassets; sourceTree = "<group>"; };
 		8D5568811BA5F6E900D453EB /* manual.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = manual.jpg; sourceTree = "<group>"; };
+		8D5AFEF91BAE99C1008A4E71 /* stub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stub.png; sourceTree = "<group>"; };
 		8D921EEC1BA1E75800188D06 /* HelpGuideVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpGuideVC.h; path = KKBook/HelpGuideVC.h; sourceTree = SOURCE_ROOT; };
 		8D921EED1BA1E75800188D06 /* HelpGuideVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpGuideVC.m; path = KKBook/HelpGuideVC.m; sourceTree = SOURCE_ROOT; };
 		8D921EEE1BA1E75800188D06 /* HelpGuideVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelpGuideVC.xib; path = KKBook/HelpGuideVC.xib; sourceTree = SOURCE_ROOT; };
@@ -1151,6 +1153,7 @@
 				E047CBCD1A11CAD300582881 /* delete@3x.png */,
 				E06BAE931A05F921007886F4 /* background.png */,
 				E06BAE941A05F921007886F4 /* background@2x.png */,
+				8D5AFEF91BAE99C1008A4E71 /* stub.png */,
 				8D5568811BA5F6E900D453EB /* manual.jpg */,
 				E02BEC5C1A02478E002A5F6B /* gear.png */,
 				E02BEC5D1A02478E002A5F6B /* gear@2x.png */,
@@ -1619,6 +1622,7 @@
 				E0B657741A0545C200196B14 /* KKBookLibraryCell.xib in Resources */,
 				E02BEC581A024012002A5F6B /* KKBookMainVC.xib in Resources */,
 				E02D975F1A03A1160014BCBF /* list-item@2x.png in Resources */,
+				8D5AFEFA1BAE99C1008A4E71 /* stub.png in Resources */,
 				E02D975A1A03A1010014BCBF /* list-item-stage@2x~ipad.png in Resources */,
 				E02D97661A03A13A0014BCBF /* list-item-frame-landscape.png in Resources */,
 				8D921EF21BA1F67D00188D06 /* HelpGuideVC_iPad.xib in Resources */,

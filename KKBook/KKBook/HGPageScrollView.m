@@ -150,8 +150,10 @@ typedef enum{
     
     CGRect f = frame;
     f.origin.y = 0;
-    f.size.width = frame.size.width - 20;
-    f.origin.x = 10;
+    //f.size.width = frame.size.width - 20;
+    f.size.width = frame.size.width;
+    //f.origin.x = 10;
+    f.origin.x = 0;
     
     _scrollView = [[UIScrollView alloc] initWithFrame:f];
     _scrollView.decelerationRate = 1.0;//UIScrollViewDecelerationRateNormal;
@@ -164,7 +166,8 @@ typedef enum{
     _scrollViewTouch = [[HGTouchView alloc] initWithFrame:f];
     _scrollViewTouch.receiver = _scrollView;
     
-    _pageSelector = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_scrollView.frame) - 40, f.size.width, 30)];
+    //_pageSelector = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_scrollView.frame) - 40, f.size.width, 30)];
+    _pageSelector = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_scrollView.frame)-40, f.size.width, 30)];
     _pageSelector.tintColor = [UIColor blackColor];
     _pageSelector.pageIndicatorTintColor = [UIColor blackColor];
     
@@ -721,7 +724,8 @@ typedef enum{
 
 - (void) setFrameForPage : (UIView*) page atIndex : (NSInteger) index;
 {
-    page.transform = CGAffineTransformMakeScale(0.99,0.95);
+    //page.transform = CGAffineTransformMakeScale(0.99,0.95);
+    page.transform = CGAffineTransformMakeScale(1.0,1.0);
 	//CGFloat contentOffset = index * _scrollView.frame.size.width;
 	//CGFloat margin = (_scrollView.frame.size.width - page.frame.size.width)/2 ;
     CGFloat contentOffset = index * _scrollView.frame.size.width;

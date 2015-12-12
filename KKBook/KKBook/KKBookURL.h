@@ -35,7 +35,7 @@
 #define BOOK_URL @"http://www.md.kku.ac.th/mddoc/RestKKBooK/Resource/Book/"
 #define BANNER_PATH_URL @"http://www.md.kku.ac.th/mddoc/RestKKBooK/Resource/Banner/"*/
 
-#define API_MAIN_URL @"http://www.himmabhan.com/RestKKBooK/index.php/api/book/"
+#define API_MAIN_URL @"http://www.khonkaen.himmabhan.com/RestKKBooK/index.php/api/book/"
 
 #define STORE_MAIN_URL [NSString stringWithFormat:@"%@getHomePage",API_MAIN_URL]
 #define STORE_LIST_URL [NSString stringWithFormat:@"%@getBook",API_MAIN_URL]
@@ -43,9 +43,9 @@
 #define BANNER_URL [NSString stringWithFormat:@"%@getBanner",API_MAIN_URL]
 #define CATEGORY_URL [NSString stringWithFormat:@"%@getCategory",API_MAIN_URL]
 
-#define IMAGE_URL @"http://www.himmabhan.com/Resource/Book/"
-#define BOOK_URL @"http://www.himmabhan.com/Resource/Book/"
-#define BANNER_PATH_URL @"http://www.himmabhan.com/Resource/Banner/"
+#define IMAGE_URL @"http://www.khonkaen.himmabhan.com/Resource/Book/"
+#define BOOK_URL @"http://www.khonkaen.himmabhan.com/Resource/Book/"
+#define BANNER_PATH_URL @"http://www.khonkaen.himmabhan.com/Resource/Banner/"
 
 //analytics
 
